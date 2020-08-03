@@ -1,6 +1,6 @@
 ---
 name: "[Testing Issue] <Headline Description Here>"
-about: Describe this issue template's purpose here.
+about: Standard testing issue template.
 title: ''
 labels: ''
 assignees: ''
