@@ -1,6 +1,6 @@
 ---
 name: "[Design Issue] <Headline Description Here>"
-about: Describe this issue here.
+about: Standard UX/Design request template.
 title: ''
 labels: ''
 assignees: ''
