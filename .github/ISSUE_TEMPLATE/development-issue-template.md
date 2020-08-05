@@ -12,6 +12,9 @@ assignees: ''
 
 ### Screenshots
 
+ - Desktop version
+
+-  Mobile version
 
 
 ### Frontend Tasks (to be completed by Dev)
