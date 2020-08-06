@@ -23,12 +23,12 @@ Ensure that USDS's redesign does not diminsh NJ's ability to change and maintain
 
 ### Timeline
 To start:
-- Carmen reviews resources and independent training
-- USDS reviews new code with Carmen as it's pushing to staging(?)
+- NJ reviews resources and independent training
+- USDS reviews new code with NJ as it's pushing to staging(?)
 
 Next:
-- Carmen and USDS collaborate on changes based on feedback from usability testing and NJ DHS
-- Over time, Carmen takes the lead of updates/changes and USDS continues to review and provide feedback
+- NJ and USDS collaborate on changes based on feedback from usability testing and NJ DHS
+- Over time, NJ takes the lead of updates/changes and USDS continues to review and provide feedback
 
 ### Post-MVP
 - USDS available for 1 hour weekly meeting for 4-6 weeks
