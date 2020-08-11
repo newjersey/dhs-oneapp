@@ -1,0 +1,10 @@
+{
+    "authentication": {
+        "enabled": true,
+        "jwt": {
+            "secret": "development",
+            "algorithm": "HS256",
+            "expires": "1d"
+        }
+    }
+}
