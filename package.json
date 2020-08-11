@@ -1,0 +1,25 @@
+{
+  "name": "oneapp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "install:web": "yarn --cwd oneapp-web install",
+    "install:server": "yarn --cwd oneapp-server install",
+    "lint:pre:web": "yarn --cwd oneapp-web lint:pre",
+    "lint:pre:server": "yarn --cwd oneapp-server lint:pre",
+    "lint:web": "yarn --cwd oneapp-web lint",
+    "lint:server": "yarn --cwd oneapp-server lint",
+    "test:server": "yarn --cwd oneapp-server test",
+    "serve:web": "yarn --cwd oneapp-web serve",
+    "pkg:server": "yarn --cwd oneapp-server pkg",
+    "install": "yarn run install:web && yarn run install:server",
+    "lint:pre": "yarn run lint:pre:web && yarn run lint:pre:server",
+    "lint": "yarn run lint:web && yarn run lint:server",
+    "test": "yarn run test:server",
+    "serve": "yarn run serve:web",
+    "dist": "yarn run pkg:server"
+  },
+  "dependencies": {
+    "pre-commit": "^1.2.2"
+  }
+}

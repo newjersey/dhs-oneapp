@@ -1,0 +1,27 @@
+@import '~bootstrap/scss/bootstrap.scss';
+@import "~bootstrap/scss/variables.scss";
+@import "~bootstrap/scss/mixins/_breakpoints.scss";
+@import '~bootstrap-vue/src/index.scss';
+
+$fa-font-path: "./assets/webfonts";
+@import './fontawesome/fontawesome.scss';
+@import "./fontawesome/solid.scss";
+@import "./fontawesome/regular.scss";
+@import "./fontawesome/duotone.scss";
+@import "./fontawesome/light.scss";
+@import "./fontawesome/brands.scss";
+
+@import './typography.scss';
+
+//@import "~uswds/dist/css/uswds.min.css";
+// Layer in bootstrap class helpers to normalize things (from a bootstrapy perspective, which is why its optional!)
+//@import "../../uswds-vue/src/styles/bootstrap.scss";
+//@import "~uswds-vue/src/styles/bootstrap.scss";
+
+html,
+body,
+#app {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(243,251,255);
+}

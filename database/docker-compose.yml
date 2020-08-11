@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    container_name: oneapp-oracle-12c
+    image: quay.io/maksymbilenko/oracle-12c
+    privileged: true
+    ports:
+      - 1521:1521
+    volumes:
+      - ./scripts:/docker-entrypoint-initdb.d
+      - ./data:/data
