@@ -19,7 +19,11 @@
     "serve": "yarn run serve:web",
     "dist": "yarn run pkg:server"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "pre-commit": "^1.2.2"
-  }
+  },
+  "pre-commit": [
+    "lint:pre"
+  ]
 }
