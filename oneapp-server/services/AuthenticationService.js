@@ -2,7 +2,6 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const { rule, shield } = require('graphql-shield');
 const { AuthenticationError, ApolloError, UserInputError } = require('apollo-server-express');
-const logger = require('../logger.config');
 
 const rules = {
   isAuthenticated: rule({ cache: 'contextual' })(

@@ -7,9 +7,9 @@
                 <b-row align-v="start" v-t>
                     <b-col class="top-hero-text">
                         <h1 class="mb-4">Apply for New Jersey social services</h1>
-                        <p class="mb-4 " >Get food or cash assistance through one application.</p>
-                        <b-button variant="primary" class="mb-4 d-block d-lg-inline-block d-xl-inline-block" size="lg" :to="{ name: 'apply' }"  >Apply now</b-button>
-                        <p >Already started an application?<b-button variant="link" class="pl-0" :to="{ name: 'login' }">Sign in</b-button></p>
+                        <p class="mb-4 ">Get food or cash assistance through one application.</p>
+                        <b-button variant="primary" class="mb-4 d-block d-lg-inline-block d-xl-inline-block" size="lg" :to="{ name: 'apply' }">Apply now</b-button>
+                        <p>Already started an application?<b-button variant="link" class="pl-0" :to="{ name: 'login' }">Sign in</b-button></p>
                     </b-col>
                     <b-col class="d-none d-lg-block d-xl-block">
                         <b-img src="/images/home/home_hero_762x300.png" fluid alt="hero image" />

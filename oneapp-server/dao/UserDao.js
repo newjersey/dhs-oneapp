@@ -1,8 +1,7 @@
 /* eslint-disable class-methods-use-this */
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
-const { AuthenticationError } = require('apollo-server-express');
-const logger = require('../logger.config');
+const { AuthenticationError, ApolloError } = require('apollo-server-express');
 
 class UserDao extends SQLDataSource {
   async getUser(USER_ID, conn = this.knex) {

@@ -1,4 +1,4 @@
-const { gql, AuthenticationError } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 const { allow } = require('graphql-shield');
 const AuthenticationService = require('../services/AuthenticationService');
 

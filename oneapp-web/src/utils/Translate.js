@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import Vue from 'vue';
-import {BIconBullseye} from 'bootstrap-vue';
+import { BIconBullseye } from 'bootstrap-vue';
 
 var Translate = {};
 
@@ -17,8 +17,7 @@ var Translate = {};
  * @param {Vue} Vue The Vue instance
  * @param {object} options Pass in the 2-letter iso-code for the locale, or set dynamically later.
  */
-Translate.install = function (Vue, options) {
-
+Translate.install = function(Vue, options) {
     let watchers = [];
     let fuse = null;
     let missingList = [];
@@ -52,18 +51,18 @@ Translate.install = function (Vue, options) {
         });
     }
 
-    console.log(msgHash)
+    console.log(msgHash);
 
     // Create indexed string lookup
     const opts = {
         keys: ['txt'],
         includeScore: true,
         shouldSort: true,
-        // threshold: At what point does the match algorithm give up. A threshold of 0.0 requires 
+        // threshold: At what point does the match algorithm give up. A threshold of 0.0 requires
         // a perfect match (of both letters and location), a threshold of 1.0 would match anything.
         threshold: 0.1,
-        sortFn: (a,b) => {
-            return (a.score > b.score) ? -1 : 1;
+        sortFn: (a, b) => {
+            return a.score > b.score ? -1 : 1;
         }
     };
 
@@ -87,12 +86,10 @@ Translate.install = function (Vue, options) {
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
-    const _findMessage = function (val) {
-
+    const _findMessage = function(val) {
         let matches = fuse.search(val);
 
         if (matches && matches.length > 0) {
-
             console.log(`MATCH: "${val}"`, matches);
 
             return matches[0].item;
@@ -103,14 +100,13 @@ Translate.install = function (Vue, options) {
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
-    const _translateElement = function(el, depth){
-
-        if (!depth){
+    const _translateElement = function(el, depth) {
+        if (!depth) {
             depth = 0;
         }
 
         // Get the div text, but only for the parent but ignore child nodes
-        let val = (el.firstChild) ? el.firstChild.data : null;
+        let val = el.firstChild ? el.firstChild.data : null;
         let key = el.dataset.translateKey;
 
         //console.log(`[${depth}] element txt = "${val}"`);
@@ -121,8 +117,7 @@ Translate.install = function (Vue, options) {
             el.dataset.translateKey = key;
             // Start watching this element and update
             watchers.push(el);
-        }
-        else if (!val){
+        } else if (!val) {
             key = 'no-data';
             el.dataset.translateKey = key;
         }
@@ -147,14 +142,13 @@ Translate.install = function (Vue, options) {
 
         var children = el.children;
         for (var i = 0; i < children.length; i++) {
-
             // Translate the child element, unless it has a translate directive on it already!
-            if (!children[i].attributes['data-translate-key']){
+            if (!children[i].attributes['data-translate-key']) {
                 //console.log(`[${depth}] Child ${children[i].className} ${i}`, children[i].attributes);
-                _translateElement(children[i], depth+1);
+                _translateElement(children[i], depth + 1);
             }
         }
-    }
+    };
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -179,7 +173,7 @@ Translate.install = function (Vue, options) {
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
-    Vue.t = Vue.prototype.$t = function (val) {
+    Vue.t = Vue.prototype.$t = function(val) {
         let match = _findMessage(val);
         let key = match ? match.key : 'no-match';
 
