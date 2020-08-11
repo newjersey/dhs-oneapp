@@ -1,5 +1,3 @@
-# oneapp-web
-
 # The NJ DHS OneApp, mk2
 
 1. [Database Setup](/docs/oracle-setup.md)
@@ -19,7 +17,7 @@ git commit -m 'feat: JIRA-4567 Added new theme
 
 We use [standard_version](https://github.com/conventional-changelog/standard-version) to automate versioning and release notes.
 
-Simply run `yarn run release` to bump the version number appropriately and generate release notes. Run `git push --follow-tags origin master` to publish.
+Simply run `yarn run release` to bump the version number appropriately and generate release notes. Run `git push --follow-tags origin main` to publish.
 
 
 ## Project setup
@@ -50,4 +48,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 yarn dist
 ```
 
-Fully bundled artifacts can be found in `server/dist`.
+Fully bundled server artifacts can be found in `oneapp-server/dist`.
