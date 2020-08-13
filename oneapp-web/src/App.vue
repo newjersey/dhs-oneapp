@@ -6,8 +6,11 @@
     </div>
 </template>
 <script>
+
+import uswds from "uswds/dist/js/uswds.min.js";
 import Navbar from '@/components/layout/Navbar.vue';
 import FooterBar from '@/components/layout/FooterBar.vue';
+
 export default {
     name: 'app',
     components: {

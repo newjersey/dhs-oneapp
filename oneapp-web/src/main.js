@@ -6,9 +6,9 @@ import Logger from './utils/Logger';
 import Translate from './utils/Translate';
 import Notifications from './utils/Notifcations';
 //import { UswdsVue } from 'uswds-vue';
-//import { UswdsVue } from '../../uswds-vue/src/main.js';
-import { BootstrapVue } from 'bootstrap-vue';
-import VueI18n from 'vue-i18n';
+// Until stable, pulling from here
+import { UswdsVue } from '../../../uswds-vue/src/main.js';
+//import VueI18n from 'vue-i18n';
 
 // https://logaretm.github.io/vee-validate/
 import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';
@@ -42,8 +42,7 @@ Vue.use(VueI18n, {locale: 'en', messages: messages});
 Vue.use(Translate, { locale: 'en' });
 Vue.use(Logger, { level: 'debug' });
 Vue.use(Notifications, {});
-//Vue.use(UswdsVue);
-Vue.use(BootstrapVue);
+Vue.use(UswdsVue);
 
 Vue.config.productionTip = false;
 

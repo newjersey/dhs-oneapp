@@ -1,35 +1,35 @@
 <template>
     <footer id="FooterBar" v-if="showFooter">
         <nav class="navbar navbar-default navbar-bottom" role="navigation">
-            <b-container>
-                <b-row>
-                    <b-col class="d-none d-sm-block">
-                        <b-img src="/images/footer/logo_nj_snap_tanf.png" fluid class="d-none d-lg-block" alt="NJ, Snap and TANF Logos" />
-                        <b-img src="/images/footer/logo_nj_snap.png" fluid class="d-none d-sm-block d-lg-none" alt="NJ, Snap Logos" />
-                    </b-col>
-                    <b-col>
-                        <b-row cols="2" align-v="end" align-content="end">
-                            <b-col lg="4" xl="3">
-                                <b-button variant="link" class="p-0" href="tel:800-687-9512">(800) 687-9512</b-button>
-                            </b-col>
-                            <b-col lg="4" xl="3">
+            <us-container>
+                <us-row>
+                    <us-col class="d-none d-sm-block">
+                        <us-img src="/images/footer/logo_nj_snap_tanf.png" fluid class="d-none d-lg-block" alt="NJ, Snap and TANF Logos" />
+                        <us-img src="/images/footer/logo_nj_snap.png" fluid class="d-none d-sm-block d-lg-none" alt="NJ, Snap Logos" />
+                    </us-col>
+                    <us-col>
+                        <us-row cols="2" align-v="end" align-content="end">
+                            <us-col lg="4" xl="3">
+                                <us-button variant="link" class="p-0" href="tel:800-687-9512">(800) 687-9512</us-button>
+                            </us-col>
+                            <us-col lg="4" xl="3">
                                 <!-- TODO: get/confirm link -->
-                                <b-button variant="link" class="p-0" href="https://twitter.com/NJDHS">@NJDHS</b-button>
-                            </b-col>
-                            <b-col lg="4" xl="3">
-                                <b-button variant="link" class="p-0" href="https://nj.gov/nj/privacy.html">Privacy Notice</b-button>
-                            </b-col>
-                            <b-col lg="4" xl="3">
-                                <b-button variant="link" class="p-0" href="https://nj.gov/nj/accessibility.html">Accessibility</b-button>
-                            </b-col>
-                            <b-col lg="4" xl="3">
-                                <b-button variant="link" class="p-0" href="https://nj.gov/nj/legal.html">Legal Policy</b-button>
-                            </b-col>
-                            <b-col lg="4" xl="3">
+                                <us-button variant="link" class="p-0" href="https://twitter.com/NJDHS">@NJDHS</us-button>
+                            </us-col>
+                            <us-col lg="4" xl="3">
+                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/privacy.html">Privacy Notice</us-button>
+                            </us-col>
+                            <us-col lg="4" xl="3">
+                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/accessibility.html">Accessibility</us-button>
+                            </us-col>
+                            <us-col lg="4" xl="3">
+                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/legal.html">Legal Policy</us-button>
+                            </us-col>
+                            <us-col lg="4" xl="3">
                                 <!-- TODO: get link -->
-                                <b-button variant="link" class="p-0" href="">Nondiscrimination</b-button>
-                            </b-col>
-                        </b-row>
+                                <us-button variant="link" class="p-0" href="">Nondiscrimination</us-button>
+                            </us-col>
+                        </us-row>
 
                         <div class="mt-3">
                             <p>
@@ -37,13 +37,13 @@
                                 need for economic and health challenges.
                             </p>
                         </div>
-                    </b-col>
-                </b-row>
+                    </us-col>
+                </us-row>
 
                 <div align="right">
                     <span class="text-muted small">v{{ version }}</span>
                 </div>
-            </b-container>
+            </us-container>
         </nav>
     </footer>
 </template>

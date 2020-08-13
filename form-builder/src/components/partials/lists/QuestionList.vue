@@ -1,5 +1,10 @@
 <template>
     <div>        
+
+        <b-button variant="secondary" class="mb-1" size="sm">
+            <i class="fas fa-plus-circle"></i> Add Question
+        </b-button>
+
         <b-list-group v-if="page">
             <b-list-group-item 
                 v-for="(question, index) in page.fields" 
@@ -7,9 +12,10 @@
                 :class="{'active':value && value == question}"
                 class="d-flex justify-content-between align-items-center" 
                 @click="onSelectQuestion(question)"
+                variant="dark"
             >
                 {{question.label}}
-                <b-badge variant="light">{{question.type}}</b-badge>
+                <b-badge variant="info">{{question.type}}</b-badge>
             </b-list-group-item>
         </b-list-group>
     </div>

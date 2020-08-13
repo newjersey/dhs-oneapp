@@ -1,19 +1,24 @@
 <template>
-    <div>
-        
+    <div>        
+
+        <b-button variant="secondary" class="mb-1" size="sm">
+            <i class="fas fa-plus-circle"></i> Add page
+        </b-button>
+
         <b-list-group>
             <b-list-group-item 
-                button v-for="(page, index) in formConfig" 
+                v-for="(page, index) in formConfig" 
                 :key="index" 
                 :class="{'active':value && value.id == page.id}"
+                class="d-flex justify-content-between align-items-center" 
                 @click="onSelectPage(page)"
+                variant="dark"
             >
                 {{page.title}}
             </b-list-group-item>
         </b-list-group>
 
     </div>
-
 </template>
 
 <script>

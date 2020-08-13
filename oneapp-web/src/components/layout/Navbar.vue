@@ -1,30 +1,49 @@
 <template>
     <div>
-        <!-- Main Nav -->
 
-        <b-navbar id="NavBar" type="dark" variant="dark" v-if="showHeader">
-            <b-navbar-brand :to="{ name: 'home' }">
+        <us-official-header />
+
+        <!-- Main Nav -->
+        <us-header>
+
+            <us-header-brand :to="{ name: 'home' }">
                 <img src="/images/nav/state_seal_white.png" width="30px" height="30px" class="d-inline-block nj-seal" alt="NJ Logo" />
                 <span class="nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</span>
-            </b-navbar-brand>
+            </us-header-brand>
 
-            <b-navbar-nav class="ml-auto d-none d-md-inline-block">
-                <b-nav-item href="https://nj.gov">return to nj.gov</b-nav-item>
-            </b-navbar-nav>
-        </b-navbar>
+            <us-header-nav class="ml-auto d-none d-md-inline-block">
+                <us-nav-item href="https://nj.gov">return to nj.gov</us-nav-item>
+            </us-header-nav>
+
+        </us-header>
+<!--
+        <us-navbar id="NavBar" type="dark" variant="dark" v-if="showHeader">
+
+            <us-navbar-brand :to="{ name: 'home' }">
+                <img src="/images/nav/state_seal_white.png" width="30px" height="30px" class="d-inline-block nj-seal" alt="NJ Logo" />
+                <span class="nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</span>
+            </us-navbar-brand>
+
+            <us-navbar-nav class="ml-auto d-none d-md-inline-block">
+                <us-nav-item href="https://nj.gov">return to nj.gov</us-nav-item>
+            </us-navbar-nav>
+        </us-navbar>
+-->
+
 
         <!-- Sub Navbar -->
+<!--
+        <us-navbar id="NavBar" type="light" variant="transparent">
+            <us-navbar-nav>
+                <us-nav-item :to="{ name: 'home' }">NJOneApp</us-nav-item>
+            </us-navbar-nav>
 
-        <b-navbar id="NavBar" type="light" variant="transparent">
-            <b-navbar-nav>
-                <b-nav-item :to="{ name: 'home' }">NJOneApp</b-nav-item>
-            </b-navbar-nav>
-
-            <b-navbar-nav class="ml-auto">
-                <b-nav-item v-if="locale != 'es'" button @click="changeLocale('es')">Espa&ntilde;ol</b-nav-item>
-                <b-nav-item v-if="locale != 'en'" button @click="changeLocale('en')">English</b-nav-item>
-            </b-navbar-nav>
-        </b-navbar>
+            <us-navbar-nav class="ml-auto">
+                <us-nav-item v-if="locale != 'es'" button @click="changeLocale('es')">Espa&ntilde;ol</us-nav-item>
+                <us-nav-item v-if="locale != 'en'" button @click="changeLocale('en')">English</us-nav-item>
+            </us-navbar-nav>
+        </us-navbar>
+-->
     </div>
 </template>
 
@@ -58,16 +77,14 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables.scss';
-@import '~bootstrap/scss/mixins/_breakpoints.scss';
 
 #NavBar {
+    
     // Only for large screens, see https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
-    @include media-breakpoint-up(lg) {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
+    //@include media-breakpoint-up(lg) {
+    //    padding-left: 50px;
+    //    padding-right: 50px;
+    //}
 
     font-family: 'Roboto', sans-serif;
 

@@ -9,6 +9,7 @@
             <b-navbar-nav>
                 <b-nav-item :to="{name:'home'}">Home</b-nav-item>
                 <b-nav-item :to="{name:'builder'}">Builder</b-nav-item>
+                <b-nav-item :to="{name:'config'}">Config</b-nav-item>
             </b-navbar-nav>
 
         </b-collapse>
