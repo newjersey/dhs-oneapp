@@ -11,8 +11,7 @@
                 :key="index" 
                 :class="{'active':value && value.id == page.id}"
                 class="d-flex justify-content-between align-items-center" 
-                @click="onSelectPage(page)"
-                variant="dark"
+                @click="onSelectPage(page)"                
             >
                 {{page.title}}
             </b-list-group-item>

@@ -1,5 +1,5 @@
 <template>
-    <b-container id="BuilderPage" fluid dark>
+    <b-container id="BuilderPage" fluid>
         
         <h2>Builder</h2>
 
@@ -15,17 +15,17 @@
 
             <b-col>
 
-                <b-card v-if="selectedPage" title="Form Settings" text-variant="dark">
+                <b-card v-if="selectedPage" title="Form Settings">
                     
                     <form-input-text v-model="selectedPage.title" :config="{label: 'Title', required: true}"/>
 
-                    <b-button variant="danger" size="sm">
+                    <b-button size="sm">
                         <i class="fas fa-trash"></i> Delete Page
                     </b-button>                
 
                 </b-card>
 
-                <b-card v-if="selectedQuestion" title="Question Settings" class="mt-3" text-variant="dark">
+                <b-card v-if="selectedQuestion" title="Question Settings" class="mt-3">
                     <question-form v-model="selectedQuestion"></question-form>
                 </b-card>
 
@@ -61,7 +61,6 @@ export default {
 <style lang="scss">
 #BuilderPage {
     .card {
-        background-color: #c6c8ca;
     }
 }
 </style>

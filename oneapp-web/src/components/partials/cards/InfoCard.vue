@@ -1,15 +1,15 @@
 <template>
     <div class="info-card">
-        <b-row>
-            <b-col cols="auto">
+        <us-row>
+            <us-col cols="auto">
                 <i class="fas fa-info-circle fa-2x mt-3"></i>
-            </b-col>
+            </us-col>
 
-            <b-col class="mt-3 pl-0">
+            <us-col class="mt-3 pl-0">
                 <h3 v-t>{{ title }}</h3>
                 <slot></slot>
-            </b-col>
-        </b-row>
+            </us-col>
+        </us-row>
     </div>
 </template>
 

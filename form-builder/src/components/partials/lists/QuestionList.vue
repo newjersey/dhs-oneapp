@@ -11,8 +11,7 @@
                 :key="index" 
                 :class="{'active':value && value == question}"
                 class="d-flex justify-content-between align-items-center" 
-                @click="onSelectQuestion(question)"
-                variant="dark"
+                @click="onSelectQuestion(question)"               
             >
                 {{question.label}}
                 <b-badge variant="info">{{question.type}}</b-badge>

@@ -23,11 +23,12 @@
 
         <section style="background-color:white">
             <us-container>
+
                 <h2 style="color:#004877; margin-bottom:23px">Programs you can apply for:</h2>
 
-                <us-card style="background-color:#004877; padding: 12px; padding-bottom: 18px" text-variant="white">
+                <div style="background-color:#004877; padding: 12px; padding-bottom: 18px" class="text-white">
                     <us-row>
-                        <us-col md="6" class="m-lg-r-4">
+                        <us-col md="6" class="m-lg-r-4 desktop:margin-r-4">
                             <h2>Food Assistance</h2>
                             <p>
                                 <b>Supplemental Nutrition Assistance Program (SNAP)</b>
@@ -43,7 +44,7 @@
                             </p>
                         </us-col>
                     </us-row>
-                </us-card>
+                </div>
                 <p>
                     <small>
                         *For free or low-cost health care, fill out the
@@ -58,7 +59,6 @@
         <section style="background-color:#F2F2F2">
             <us-container>
                 <h2 style="margin-bottom:19px">Already completed your application?</h2>
-
                 <us-row>
                     <us-col md="6">
                         <p>Upload requested documents to your county</p>
