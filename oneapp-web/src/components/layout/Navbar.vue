@@ -1,49 +1,46 @@
 <template>
-    <div>
+    <div id="NavBar">
 
-        <us-official-header />
+        <div class="bg-warning pt-1 pb-1" v-if="alertMessage">
+            <us-container>
+                <p class="alert-text m-0"><i class="fas fa-exclamation-triangle mr-2"></i> {{alertMessage}}</p>
+            </us-container>
+        </div>
 
-        <!-- Main Nav -->
-        <us-header>
+        <!-- Main Navbar -->
 
-            <us-header-brand :to="{ name: 'home' }">
-                <img src="/images/nav/state_seal_white.png" width="30px" height="30px" class="d-inline-block nj-seal" alt="NJ Logo" />
-                <span class="nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</span>
-            </us-header-brand>
-
-            <us-header-nav class="ml-auto d-none d-md-inline-block">
-                <us-nav-item href="https://nj.gov">return to nj.gov</us-nav-item>
-            </us-header-nav>
-
-        </us-header>
-<!--
-        <us-navbar id="NavBar" type="dark" variant="dark" v-if="showHeader">
-
-            <us-navbar-brand :to="{ name: 'home' }">
-                <img src="/images/nav/state_seal_white.png" width="30px" height="30px" class="d-inline-block nj-seal" alt="NJ Logo" />
-                <span class="nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</span>
-            </us-navbar-brand>
-
-            <us-navbar-nav class="ml-auto d-none d-md-inline-block">
-                <us-nav-item href="https://nj.gov">return to nj.gov</us-nav-item>
-            </us-navbar-nav>
-        </us-navbar>
--->
-
+        <header class="nav-header bg-dark">
+            <us-container>
+                <us-row>
+                    <us-col>
+                        <img src="/images/nav/state_seal_white.png" width="30px" height="30px" class="nj-seal" alt="NJ Logo" />
+                        <div class="display-inline nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</div>
+                    </us-col>
+                    <us-col align="right">
+                        <us-button variant="link" class="nav-item" href="https://nj.gov">return to nj.gov</us-button>               
+                    </us-col>
+                </us-row>
+            </us-container>
+        </header>
 
         <!-- Sub Navbar -->
-<!--
-        <us-navbar id="NavBar" type="light" variant="transparent">
-            <us-navbar-nav>
-                <us-nav-item :to="{ name: 'home' }">NJOneApp</us-nav-item>
-            </us-navbar-nav>
 
-            <us-navbar-nav class="ml-auto">
-                <us-nav-item v-if="locale != 'es'" button @click="changeLocale('es')">Espa&ntilde;ol</us-nav-item>
-                <us-nav-item v-if="locale != 'en'" button @click="changeLocale('en')">English</us-nav-item>
-            </us-navbar-nav>
-        </us-navbar>
--->
+        <header variant="transparent">
+
+            <us-container>
+                <us-row>
+                    <us-col>
+                        <us-button variant="link" class="sub-nav-item" :to="{ name: 'home' }">NJOneApp</us-button>
+                    </us-col>
+                    <us-col align="right">
+                        <us-button variant="link" class="sub-nav-item" v-if="locale != 'es'" button @click="changeLocale('es')">Espa&ntilde;ol</us-button>
+                        <us-button variant="link" class="sub-nav-item" v-if="locale != 'en'" button @click="changeLocale('en')">English</us-button>
+                    </us-col>
+                </us-row>
+            </us-container>
+
+        </header>
+
     </div>
 </template>
 
@@ -53,6 +50,7 @@ export default {
     components: {},
     data() {
         return {
+            alertMessage: 'Alert message, system issues, or emergency information would go here.',
             locale: null
         };
     },
@@ -78,6 +76,8 @@ export default {
 </script>
 <style lang="scss">
 
+$navHeight: 54px;
+
 #NavBar {
     
     // Only for large screens, see https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
@@ -86,13 +86,40 @@ export default {
     //    padding-right: 50px;
     //}
 
+    .nav-header {
+        height: $navHeight;
+    }
+
     font-family: 'Roboto', sans-serif;
 
-    .nav-item {
+    .nj-seal {
+        margin-top: 10px;
+        float: left;
+    }
+
+    .alert-text {
+        font-size: 17px;
+        letter-spacing: 0;
+        line-height: 26px;
+    }
+
+    .sub-nav-item {
+        text-decoration: none;
         font-weight: normal;
+        color: #000000;
         font-size: 16px;
         letter-spacing: 0;
         line-height: 19px;
+        margin-top: 32px;
+    }
+
+    .nav-item {
+        font-weight: normal;
+        color: white;
+        font-size: 16px;
+        letter-spacing: 0;
+        line-height: $navHeight;
+        width: auto !important;
     }
 }
 </style>
