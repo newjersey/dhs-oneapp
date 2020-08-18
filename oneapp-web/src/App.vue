@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <us-responsive-info />
         <navbar />
         <router-view class="main-view" />
         <footer-bar />

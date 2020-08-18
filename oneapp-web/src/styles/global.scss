@@ -1,8 +1,19 @@
-@import "~uswds/dist/css/uswds.min.css";
+
+// Import USWDS sass files
+$theme-font-path: "~uswds/dist/fonts";
+$theme-image-path: "~uswds/dist/img";
+$theme-show-notifications: false;
+@import "~uswds/dist/scss/uswds.scss";
+
+// Import USWDS-VUE sass files
 @import "../../../uswds-vue/src/styles/uswds-vue.scss";
+
+// Import font awesome css
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
+
 @import './variables.scss';
 @import './typography.scss';
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');
+@import './colors.scss';
 
 
 html,
@@ -10,6 +21,7 @@ body,
 #app {
     height: 100%;
     width: 100%;
+    font-family: 'Roboto', sans-serif;
     background-color: rgb(243,251,255);
 }
 
@@ -23,4 +35,12 @@ body,
 
 .btn-link {
     text-decoration: underline;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.capitalize {
+    text-transform: capitalize;
 }

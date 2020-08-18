@@ -1,4 +1,7 @@
 <template>
+
+    <div>
+
     <footer id="FooterBar" v-if="showFooter">
         <nav class="navbar navbar-default navbar-bottom" role="navigation">
             <us-container>
@@ -10,24 +13,24 @@
                     <us-col>
                         <us-row cols="2" align-v="end" align-content="end">
                             <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0" href="tel:800-687-9512">(800) 687-9512</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="tel:800-687-9512">(800) 687-9512</us-button>
                             </us-col>
                             <us-col lg="4" xl="3">
                                 <!-- TODO: get/confirm link -->
-                                <us-button variant="link" class="p-0" href="https://twitter.com/NJDHS">@NJDHS</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="https://twitter.com/NJDHS">@NJDHS</us-button>
                             </us-col>
                             <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/privacy.html">Privacy Notice</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/privacy.html">Privacy Notice</us-button>
                             </us-col>
                             <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/accessibility.html">Accessibility</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/accessibility.html">Accessibility</us-button>
                             </us-col>
                             <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0" href="https://nj.gov/nj/legal.html">Legal Policy</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/legal.html">Legal Policy</us-button>
                             </us-col>
                             <us-col lg="4" xl="3">
                                 <!-- TODO: get link -->
-                                <us-button variant="link" class="p-0" href="">Nondiscrimination</us-button>
+                                <us-button variant="link" class="p-0 mb-1" href="">Nondiscrimination</us-button>
                             </us-col>
                         </us-row>
 
@@ -41,11 +44,15 @@
                 </us-row>
 
                 <div align="right">
-                    <span class="text-muted small">v{{ version }}</span>
+                    <span class="text-muted" style="font-size:12px">v{{ version }}</span>
                 </div>
             </us-container>
         </nav>
     </footer>
+
+    <!--<us-footer></us-footer>-->
+
+    </div>
 </template>
 
 <script>

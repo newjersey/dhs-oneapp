@@ -8,12 +8,14 @@ import Forgot from '@/components/pages/Forgot.vue';
 import Register from '@/components/pages/Register.vue';
 import Status from '@/components/pages/Status.vue';
 import NotFound from '@/components/pages/NotFound.vue';
+import StyleGuide from '@/components/pages/StyleGuide.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
     { path: '/', name: 'home', component: Home, meta: { header: true, footer: true } },
     { path: '/one-app', name: 'one-app', component: OneApp },
+    { path: '/style-guide', name: 'style-guide', component: StyleGuide },
     { path: '/apply', name: 'apply', component: Apply, meta: { header: true, footer: true } },
     { path: '/login', name: 'login', component: Login, meta: { header: true, footer: true } },
     { path: '/register', name: 'register', component: Register, meta: { header: true, footer: true } },

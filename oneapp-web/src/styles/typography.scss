@@ -4,7 +4,8 @@
 body, html {
     font-weight: 600;
     line-height: 1.2em;    
-    font-family: 'Public Sans', sans-serif;
+    //font-family: 'Public Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #222b45;
 }
 
@@ -36,3 +37,11 @@ a {
 p {
     font-weight: normal;
 }
+
+.text-bold {
+    font-weight: bold !important;
+}
+
+
+
+  

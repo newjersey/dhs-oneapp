@@ -1,11 +1,11 @@
 <template>
     <us-container id="ApplyStartPage" align="left">
 
-        <us-card class="form-wrapper" variant="light">
+        <us-card bg-variant="white" border-variant="light" class="mt-6">
 
             <h1 v-t>Apply for food or cash assistance</h1>
 
-            <info-card title="Save time—and save your work in progress — by signing in before starting your application" variant="info">            
+            <us-alert title="Save time—and save your work in progress — by signing in before starting your application" variant="primary">            
                 <p v-t>
                     When you’re signed into your account you can save your application in progress, and come back later to finish filling it out. You’ll have 45 days from the date
                     you start or update your application to submit it. If you’re unable to complete your application by then, you’ll have to start a new application.
@@ -14,9 +14,9 @@
                     <us-button variant="primary" size="lg" class="mt-2 mus-2" :to="{ name: 'register' }" v-t>Create an account</us-button>
                 </div>
                 <div>
-                    <us-button variant="link pl-0" :to="{ name: 'one-app' }" v-t>Start your application without signing in</us-button>
+                    <us-button variant="link" class="pl-0" :to="{ name: 'one-app' }" v-t>Start your application without signing in</us-button>
                 </div>
-            </info-card>
+            </us-alert>
 
             <h2 v-t>Follow the steps below to apply for assistance</h2>
 
@@ -128,13 +128,13 @@
 </template>
 
 <script>
-import InfoCard from '@/components/partials/cards/InfoCard.vue';
+//import InfoCard from '@/components/partials/cards/InfoCard.vue';
 import TimelineCard from '@/components/partials/cards/TimelineCard.vue';
 
 export default {
     name: 'apply',
     components: { 
-        InfoCard,
+        //InfoCard,
         TimelineCard
     }
 };

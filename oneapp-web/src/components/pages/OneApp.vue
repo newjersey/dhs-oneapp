@@ -1,8 +1,9 @@
 <template>
     <div id="ApplyPage">
-        <b-card class="form-wrapper">
+
+        <us-card bg-variant="white">
             <form-builder v-model="formData" :config="config" />
-        </b-card>
+        </us-card>
 
         <!--
         <pre>{{ formData }}</pre>

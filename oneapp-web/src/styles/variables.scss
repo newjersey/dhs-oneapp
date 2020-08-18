@@ -40,6 +40,14 @@ $container-max-widths: (
 
 */
 
+$light-gray: #e3e3e3;
+$medium-gray: #878787;
+$dark-gray: #2c2c2c;
+
+$black: #000000;
+$white: #fbfbfb;
+
+$body-background: #f8fbff;
 
 $theme-colors: (
   "primary": #0071BC,
@@ -50,14 +58,10 @@ $theme-colors: (
   "info": #17a2b8,
   "danger": #dc3545,
   "light": #f8f9fa,
-  "dark": #343a40
+  "dark": #343a40,
+  "transparent": rgba(0,0,0,0),
+  "white": $white,
+  "black": $black
 );
 
-$light-gray: #e3e3e3;
-$medium-gray: #878787;
-$dark-gray: #2c2c2c;
 
-$black: #000000;
-$white: #fbfbfb;
-
-$body-background: #f8fbff;
