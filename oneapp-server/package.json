@@ -24,7 +24,7 @@
     "graphql": "^15.3.0",
     "graphql-constraint-directive": "^2.0.3",
     "graphql-middleware": "^4.0.2",
-    "graphql-shield": "^7.3.3",
+    "graphql-shield": "^7.3.4",
     "graphql-tools": "^6.0.18",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.4",
