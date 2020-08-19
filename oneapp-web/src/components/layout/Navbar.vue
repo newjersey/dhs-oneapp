@@ -1,7 +1,7 @@
 <template>
     <div id="NavBar">
 
-        <div class="bg-warning pt-1 pb-1" v-if="alertMessage">
+        <div class="bg-warning pt-1 pb-1" v-if="alertMessage && showHeader">
             <us-container>
                 <p class="alert-text m-0"><i class="fas fa-exclamation-triangle mr-2"></i> {{alertMessage}}</p>
             </us-container>
@@ -9,7 +9,7 @@
 
         <!-- Main Navbar -->
 
-        <header class="nav-header bg-dark">
+        <header class="nav-header bg-dark" v-if="showHeader">
             <us-container>
                 <us-row>
                     <us-col>

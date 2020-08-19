@@ -1,7 +1,10 @@
 <template>
     <us-container id="ApplyStartPage" align="left">
 
-        <us-card bg-variant="white" border-variant="light" class="mt-6">
+        <!-- 
+        <us-card bg-variant="white" border-variant="none" class="mt-6">
+        -->
+        <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
 
             <h1 v-t>Apply for food or cash assistance</h1>
 
@@ -11,14 +14,14 @@
                     you start or update your application to submit it. If you’re unable to complete your application by then, you’ll have to start a new application.
                 </p>
                 <div>
-                    <us-button variant="primary" size="lg" class="mt-2 mus-2" :to="{ name: 'register' }" v-t>Create an account</us-button>
+                    <us-button variant="primary" class="mt-2 mb-2" :to="{ name: 'register' }" v-t>Create an account</us-button>
                 </div>
                 <div>
                     <us-button variant="link" class="pl-0" :to="{ name: 'one-app' }" v-t>Start your application without signing in</us-button>
                 </div>
             </us-alert>
 
-            <h2 v-t>Follow the steps below to apply for assistance</h2>
+            <h2 class="mt-5" v-t>Follow the steps below to apply for assistance</h2>
 
             <!-- PREPARE CARD -->
 
@@ -26,7 +29,7 @@
                 
                 <p>To fill out this application, you’ll need the information below.</p>
 
-                <p class="mus-1"><strong>For every person living in your home:</strong></p>
+                <p class="mb-1"><strong>For every person living in your home:</strong></p>
 
                 <ul>
                     <li>Name</li>
@@ -35,7 +38,7 @@
                     <li>Expenses (money you spend on rent, utilities, child care, and other needs)</li>
                 </ul>
                                 
-                <p class="mus-1"><strong>Only for those people who you want to get assistance:</strong></p>
+                <p class="mb-1"><strong>Only for those people who you want to get assistance:</strong></p>
 
                 <ul>
                     <li>Social Security number</li>
@@ -67,9 +70,9 @@
                     <li>Water, electric, phone, or other utility bills</li>
                     <li>Receipts for child care, health care, or other expenses</li>
                 </ul>
-                <p><us-button variant="link p-0" :to="{name:'document-checklist'}">Get a checklist of documents you’ll need to provide</us-button></p>
+                <p><us-button variant="link" class="p-0" :to="{name:'document-checklist'}">Get a checklist of documents you’ll need to provide</us-button></p>
                 <p>
-                    <strong>Note:</strong> You can <us-button variant="link p-0 m-0" :to="{name:'upload-documents'}">upload documents</us-button> for up to 60 days after you apply.
+                    <strong>Note:</strong> You can <us-button variant="link" class="p-0 m-0" :to="{name:'upload-documents'}">upload documents</us-button> for up to 60 days after you apply.
                 </p>
             </timeline-card>                 
 
@@ -84,7 +87,7 @@
 
             <!-- DECISION -->
 
-            <timeline-card title="Get your decision" :number="5" no-border class="mus-5" v-t>
+            <timeline-card title="Get your decision" :number="5" no-border style="border-left: 8px solid rgba(0,0,0,0);" v-t>
                 <p>We’ll send you a letter in the mail to tell you if you’re eligible for assistance.</p>
                 <p><strong>If you’re eligible</strong><br/>
                     You can get assistance within <strong>30 days</strong> from when we receive your application. If you have little 
@@ -100,20 +103,19 @@
             <section v-t>
 
                 <div>
-
-                    <us-button variant="primary" size="lg" class="mt-2 mus-2" :to="{ name: 'register' }" v-t>Create an account</us-button>
+                    <us-button variant="primary" class="mt-2 mb-2" :to="{ name: 'register' }" v-t>Create an account</us-button>
                 </div>
                 <div>
-                    <us-button variant="link pl-0" :to="{ name: 'one-app' }" v-t>Start your application without signing in</us-button>
+                    <us-button variant="link" class="pl-0" :to="{ name: 'one-app' }" v-t>Start your application without signing in</us-button>
                 </div>
 
                 <p class="mt-4"><strong>Note:</strong> You must provide or apply for a Social Security number (SSN) to get assistance. We use your SSN to 
                 help verify that you are who you say you are, and that you qualify for assistance. We may share this information with other 
-                federal and state agencies. <us-button variant="link p-0 m-0" href="https://nj.gov/nj/privacy.html">Read our full privacy policy</us-button>.</p>
+                federal and state agencies. <us-button variant="link" class="p-0 m-0" href="https://nj.gov/nj/privacy.html">Read our full privacy policy</us-button>.</p>
 
             </section>
 
-            <section v-t class="mt-5 mus-5">
+            <section v-t class="mt-5 mb-5">
                 <h3>Need help applying?</h3>
                 <hr style="border-top: 5px #0071BC solid"/>
                 <p>
@@ -123,7 +125,7 @@
                 <p>Monday – Friday, 8:00 a.m. – 8:00 p.m. ET</p>
             </section>
 
-        </us-card>
+        </div>
     </us-container>
 </template>
 
@@ -142,6 +144,11 @@ export default {
 <style lang="scss">
 #ApplyStartPage {
     
+    //.us-card {
+    //    border: 1px solid #E6E6E6;
+    //    border-radius: 0px !important;
+    //}
+
     section {
         line-height: 1.4em;
     }
@@ -152,14 +159,14 @@ export default {
 
     .form-wrapper {
         width: 100%;
-        min-width: 500px;
-        max-width: 850px;
-        margin: auto;
+        //max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
         padding-top: 30px;
-        /* 
-        padding-left: 50px;
-        padding-right: 50px;
-        */
+        margin-bottom: 40px;
+        margin-top: 50px;
+        background-color: white;
+        border: 1px solid #E6E6E6;
     }
 }
 </style>

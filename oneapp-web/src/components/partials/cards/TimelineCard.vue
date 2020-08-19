@@ -52,7 +52,7 @@ export default {
         border-radius: 18px;
         background-color: #757575;
         display: inline-block;
-        font-size: 1em;
+        font-size: 16px;
         font-weight: bold;
         line-height: 1.8em;
         text-align: center;        
@@ -61,8 +61,8 @@ export default {
     .card-body {
 
         margin-top: -70px;
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 10px;
+        padding-bottom: 20px;
         padding-right: 25px;
         padding-left: 25px;
 

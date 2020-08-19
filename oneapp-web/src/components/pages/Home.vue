@@ -56,7 +56,7 @@
         <!-- STEPS HERO -->
 
         <section style="background-color:#F2F2F2">
-            <us-container class="text-center text-md-left text-lg-left text-xl-left">
+            <us-container class="text-center text-md-left">
                 <h2>What are the steps?</h2>
 
                 <us-row>

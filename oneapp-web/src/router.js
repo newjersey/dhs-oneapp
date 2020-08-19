@@ -14,9 +14,9 @@ Vue.use(VueRouter);
 
 const routes = [
     { path: '/', name: 'home', component: Home, meta: { header: true, footer: true } },
-    { path: '/one-app', name: 'one-app', component: OneApp },
+    { path: '/one-app', name: 'one-app', component: OneApp, meta: { header: false, footer: false } },
     { path: '/style-guide', name: 'style-guide', component: StyleGuide },
-    { path: '/apply', name: 'apply', component: Apply, meta: { header: true, footer: true } },
+    { path: '/apply', name: 'apply', component: Apply, meta: { header: false, footer: false } },
     { path: '/login', name: 'login', component: Login, meta: { header: true, footer: true } },
     { path: '/register', name: 'register', component: Register, meta: { header: true, footer: true } },
     { path: '/forgot', name: 'forgot', component: Forgot, meta: { header: true, footer: true } },
