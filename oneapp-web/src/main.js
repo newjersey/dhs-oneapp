@@ -7,7 +7,7 @@ import Translate from './utils/Translate';
 import Notifications from './utils/Notifcations';
 //import { UswdsVue } from 'uswds-vue';
 // Until stable, pulling from here
-import { UswdsVue } from '../../../uswds-vue/src/main.js';
+import { UswdsVue } from './components/uswds-vue';
 //import VueI18n from 'vue-i18n';
 
 // https://logaretm.github.io/vee-validate/
