@@ -1,7 +1,15 @@
 <template>
     <validation-provider tag="div" :rules="{ 'required|email': opts.required }" :name="opts.name" :vid="vid" v-slot="v">
-        <b-form-group :label="opts.label" :label-sr-only="opts.hideLabel" :label-for="divId" :description="opts.description" label-class="oneapp-form-label">
-            <b-form-input
+        
+        <us-form-group 
+            :label="opts.label" 
+            :label-sr-only="opts.hideLabel" 
+            :label-for="divId" 
+            :description="opts.description" 
+            :error="v.errors[0]"
+            label-class="oneapp-form-label">
+
+            <us-form-input
                 :id="divId"
                 :name="opts.name"
                 v-model="currentValue"
@@ -9,9 +17,10 @@
                 :disabled="opts.disabled"
                 :placeholder="opts.placeholder"
                 :state="getValidationState(v)"
-            ></b-form-input>
-            <b-form-invalid-feedback>{{ v.errors[0] }}</b-form-invalid-feedback>
-        </b-form-group>
+            ></us-form-input>
+
+        </us-form-group>
+
     </validation-provider>
 </template>
 

@@ -1,14 +1,14 @@
 <template>
-    <div id="ApplyPage">
+    <us-container id="OneAppPage" align="left">
 
-        <us-card bg-variant="white">
+        <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
             <form-builder v-model="formData" :config="config" />
-        </us-card>
+        </div>
 
         <!--
         <pre>{{ formData }}</pre>
         -->
-    </div>
+    </us-container>
 </template>
 
 <script>
@@ -48,12 +48,18 @@ export default {
 </script>
 
 <style lang="scss">
-#ApplyPage {
+#OneAppPage {
     .form-wrapper {
         width: 100%;
-        min-width: 500px;
-        max-width: 850px;
-        margin: auto;
+        //max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        margin-top: 50px;
+        background-color: white;
+        border: 1px solid #E6E6E6;
     }
 }
 </style>
