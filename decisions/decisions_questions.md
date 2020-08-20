@@ -12,7 +12,7 @@
   - TBD
   - TBD
 - Training
-  - 
+  - TBD
 
 ## Questions 
 - 
