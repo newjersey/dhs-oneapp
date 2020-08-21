@@ -14,6 +14,7 @@
         - Is your household's total gross income less than $150.00 and your household's total liquid resources (such as cash or checking/savings accounts) $100.00 or less?
         - Is your household's monthly rent or mortgage plus utilities more than your household's total monthly gross income plus total liquid resources?Is anyone in your household a migrant/seasonal farm worker?Program is also required. 
         - Currently the Program 'NJ SNAP' automatically gets populated when the 'Do you want to apply for NJ SNAP for yourself or someone else in your household?' has a YES response
+        - *NOTE: the applicant does NOT need to include all household members before submitting.*
 
 - Design
   - New gender types categories to be added to the new OneApp per NJ DHS request will **not** impact downstream data systems.  That info is stored by the app, per Ron Heft.
