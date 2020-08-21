@@ -1,13 +1,15 @@
-const config = {
+const config = require('config');
+
+const dbConfig = {
   client: 'oracledb',
 
   // Database connection string
   // TODO: Use a config object per environment
   connection: {
-    host: '127.0.0.1',
-    user: '***REMOVED***',
-    password: '***REMOVED***',
-    database: 'xe',
+    host: config.get('database.host'),
+    user: config.get('database.user'),
+    password: config.get('database.pass'),
+    database: config.get('database.sid'),
   },
 
   // Connection pool settings
@@ -26,4 +28,4 @@ const config = {
   debug: false,
 };
 
-module.exports = config;
+module.exports = dbConfig;
