@@ -30,7 +30,7 @@
 ### For NJ DHS
 
 - **Success Metrics**
-  - Need Juan to confirm baseline for abadonment rate -- based on data provided so far, current abadon rate could be anywhere from 43-55%
+  - Need Juan to confirm baseline for abadonment rate -- based on snapshot data provided so far (June-August), current abadon rate could be anywhere from 43-55%
   - Need Juan to help translate data provided by Carmen into a "percent complete" baseline (e.g. on average, only <>% of the application is completed when submitted.
 
 - **Department of Corrections new policy questions**
