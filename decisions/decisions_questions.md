@@ -22,8 +22,8 @@
   - Need Juan to confirm baseline for abadonment rate -- based on data provided so far, current abadon rate could be anywhere from 43-55%
   - Need Juan to help translate data provided by Carmen into a "percent complete" baseline (e.g. on average, only <>% of the application is completed when submitted.
 
-- **Department of Corrections new policy questions
+- **Department of Corrections new policy questions**
   - Need Alecia/Juan to finalize if new questions for prisoners need to be added to the application
   
-- **Change Requests
-  - Need to determine what changes 
+- **NJ DHS Change Requests**
+  - Need to determine if all requested changes are (a) well defined/understood and (b) required (or can be de-scoped) for MVP launch.
