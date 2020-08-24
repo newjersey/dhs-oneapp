@@ -5,7 +5,10 @@ const { AuthenticationError, ApolloError, UserInputError } = require('apollo-ser
 
 const rules = {
   isAuthenticated: rule({ cache: 'contextual' })(
-    async (parent, args, ctx) => ctx.user !== null,
+    async (parent, args, ctx) => {
+      const hasAuthenticatedUser = ctx.user !== undefined && ctx.user !== null;
+      return hasAuthenticatedUser;
+    },
   ),
 };
 
