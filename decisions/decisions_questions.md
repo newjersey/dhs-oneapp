@@ -3,7 +3,7 @@
 ## Decisions Made (or Requirements validated)
 - Product/Requirements
   - Why Gender identity questions/categories presented this way, per NJ-DHS
-    - County workers need to know how to address applicant 
+    - County workers need to know how to address applicant (don't want to misgender someone based on gender assigned at birth)
     - County workers need to know transgender status if applicant needs help with shelter
     - Gender assigned at birth is required to submit to Social Security Administration
   - Incarcerated applicant changes to OneApp -- after much back and forth, Alecia says this has been finalized (e.g. approach for the online and paper app).  She will send to Leah.
