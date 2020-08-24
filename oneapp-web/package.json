@@ -15,7 +15,7 @@
     "bootstrap-vue": "^2.15.0",
     "core-js": "^3.6.5",
     "fuse.js": "^6.4.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "standard-version": "^8.0.2",
     "uswds": "^2.8.0",
     "vee-validate": "^3.3.9",
