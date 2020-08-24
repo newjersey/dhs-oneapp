@@ -1,3 +1,25 @@
+# Week of August 24-28
+
+## Decisions Made (or Requirements validated)
+- Product/Requirements
+  - TBD
+  
+- Design
+  - TBD
+  
+- Development
+  - TBD
+  
+
+  ## Questions 
+
+### For NJ DHS
+  - TBD
+  - TBD
+ 
+  
+*** 
+
 # Week of August 17-21
 
 ## Decisions Made (or Requirements validated)
@@ -18,12 +40,7 @@
 
 - Design
   - New gender types categories to be added to the new OneApp per NJ DHS request will **not** impact downstream data systems.  That info is stored by the app, per Ron Heft.
-  - TBD
-- Development
-  - TBD
-  - TBD
-- Training
-  - TBD
+
 
 ## Questions 
 
