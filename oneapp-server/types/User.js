@@ -15,6 +15,8 @@ const typeDef = gql`
   type Users {
     "Current logged in user"
     current: User!
+    "Check if a USER_ID is available"
+    userAvailable(USER_ID: String!): Boolean
   }
 
   type User {
@@ -72,6 +74,10 @@ const resolvers = {
   },
   Users: {
     current: (_parent, _args, { auth, dataSources }) => dataSources.UserDao.getUser(auth.user.USER_ID),
+    userAvailable: async (_parent, { USER_ID }, { dataSources }) => {
+      const userExists = await dataSources.UserDao.doesUserExist(USER_ID);
+      return userExists === false;
+    },
   },
 };
 

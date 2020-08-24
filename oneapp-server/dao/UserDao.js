@@ -11,6 +11,15 @@ class UserDao extends SQLDataSource {
       .first();
   }
 
+  async doesUserExist(USER_ID, conn = this.knex) {
+    const userCount = await conn
+      .from('OA_SAP_USER')
+      .where({ USER_ID })
+      .count('USER_ID as users')
+      .first();
+    return parseInt(userCount.users, 10) > 0;
+  }
+
   async authenticate(user) {
     const tx = await this.knex.transaction();
 
