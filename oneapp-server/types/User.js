@@ -82,11 +82,17 @@ const resolvers = {
 };
 
 const permissions = {
+  Query: {
+    users: allow,
+  },
   Mutation: {
     userAuthenticate: allow,
     userRegister: allow,
   },
   JwtToken: allow,
+  Users: {
+    userAvailable: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
+  },
 };
 
 module.exports = { typeDef, resolvers, permissions };

@@ -1,6 +1,7 @@
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const { rule, shield } = require('graphql-shield');
+const { createRateLimitRule } = require('graphql-rate-limit');
 const { AuthenticationError, ApolloError, UserInputError } = require('apollo-server-express');
 
 const rules = {
@@ -10,6 +11,13 @@ const rules = {
       return hasAuthenticatedUser;
     },
   ),
+  rateLimit: createRateLimitRule({
+    // Rate limit context is a hybrid of requestIP and authenticated user
+    identifyContext: (ctx) => ({
+      auth: ctx.auth,
+      requestIP: ctx.requestIP,
+    }),
+  }),
 };
 
 const service = {
