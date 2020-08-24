@@ -18,7 +18,7 @@
     "lodash": "^4.17.19",
     "standard-version": "^8.0.2",
     "uswds": "^2.8.0",
-    "vee-validate": "^3.3.7",
+    "vee-validate": "^3.3.9",
     "vue": "^2.6.11",
     "vue-i18n": "^8.18.2",
     "vue-router": "^3.4.3",
