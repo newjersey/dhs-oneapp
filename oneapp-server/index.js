@@ -55,7 +55,8 @@ const server = new ApolloServer({
   context: ({ req }) => {
     // If logged in, place the auth on the GraphQL context
     const auth = req.auth || null;
-    return { auth };
+    const requestIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    return { auth, requestIP };
   },
 
   // Configure our logger implementation
