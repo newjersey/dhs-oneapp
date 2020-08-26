@@ -12,7 +12,7 @@
   - TBD
   
 - Development
-  - TBD
+  - On 8/26, Tom Roosa signed off on making the GitHub Project repo -- containing the new USDS-developed app code -- public.  The legacy OneApp code and Database have been moved to separate Private NJ repos.
   
 
   ## Questions 
