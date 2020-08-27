@@ -3,12 +3,19 @@ node_modules
 **/.DS_Store
 **/node_modules
 dist
+
 oneapp-web/keys
 
 # local env files
 .env.local
 .env.*.local
 .env
+
+# Config files should be ingore, except for default files
+oneapp-server/config/*.json
+!oneapp-server/config/custom-environment-variables.json
+!oneapp-server/config/default.json
+!oneapp-server/config/test.json
 
 # Log files
 npm-debug.log*
