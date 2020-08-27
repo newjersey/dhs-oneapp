@@ -12,7 +12,7 @@
   - TBD
   
 - Development
-  - TBD
+  - On 8/26, Tom Roosa signed off on making the GitHub Project repo @ https://github.com/newjersey/dhs-oneapp -- containing the new USDS-developed app code -- public.  As a condition, the **legacy** OneApp front-end code and database export have been moved to separate private NJ repositories.
   
 
   ## Questions 
