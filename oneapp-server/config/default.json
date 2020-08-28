@@ -2,15 +2,15 @@
     "authentication": {
         "enabled": true,
         "jwt": {
-            "secret": "development",
+            "secret": "<insert_jwt_secret>",
             "algorithm": "HS256",
             "expires": "1d"
         }
     },
     "database": {
-        "host": "127.0.0.1",
-        "user": "***REMOVED***",
-        "pass": "***REMOVED***",
-        "sid": "xe"
+        "host": "",
+        "user": "",
+        "pass": "",
+        "sid": ""
     }
 }
