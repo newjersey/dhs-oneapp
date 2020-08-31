@@ -3920,10 +3920,10 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.4.tgz#2256bde14d3632958c465ebc96dc467ca07a29fb"
   integrity sha512-WjKPNJF79dtJAVniUlGGWHYGz2jWxT6VhN/4m1NdkbZ2nOsEF+cI1Edgql5zCRhs/VsQYRvrXctxktVXZUkixw==
 
-graphql-constraint-directive@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/graphql-constraint-directive/-/graphql-constraint-directive-2.0.3.tgz#5755455175a486b6fb02e4fccae8fb796682da4a"
-  integrity sha512-+LpTifcbAkliMavt4Q9+Q6rWPoFf3kuNcueCd+RPBwAn1PCc8r/GXB/zPxxiqVg+7Z672/+ofkXhHVpu/f3YoQ==
+graphql-constraint-directive@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-constraint-directive/-/graphql-constraint-directive-2.1.0.tgz#30a737720825bc8042e0fffe6cc7f666d69df9b5"
+  integrity sha512-gd8wKppP5ZlDm3EALZUwkSNSP7vTdbDECIVDAMnCX+ZaN1s+qNgStuMT8vQ46BKu0h27zcOsX9Kn/TKDjf8dig==
   dependencies:
     "@graphql-tools/schema" "^6.0.9"
     "@graphql-tools/utils" "^6.0.9"
