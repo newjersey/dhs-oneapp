@@ -17,10 +17,10 @@ const routes = [
     { path: '/one-app', name: 'one-app', component: OneApp, meta: { header: false, footer: false } },
     { path: '/style-guide', name: 'style-guide', component: StyleGuide },
     { path: '/apply', name: 'apply', component: Apply, meta: { header: false, footer: false } },
-    { path: '/login', name: 'login', component: Login, meta: { header: true, footer: true } },
-    { path: '/register', name: 'register', component: Register, meta: { header: true, footer: true } },
-    { path: '/forgot', name: 'forgot', component: Forgot, meta: { header: true, footer: true } },
-    { path: '/status', name: 'status', component: Status, meta: { header: true, footer: true } },
+    { path: '/login', name: 'login', component: Login, meta: { header: false, footer: false } },
+    { path: '/register', name: 'register', component: Register, meta: { header: false, footer: false } },
+    { path: '/forgot', name: 'forgot', component: Forgot, meta: { header: false, footer: false } },
+    { path: '/status', name: 'status', component: Status, meta: { header: false, footer: false } },
     { path: '/about', name: 'about', component: () => import(/* webpackChunkName: "about" */ '@/components/pages/About.vue') },
     { path: '*', name: 'not-found', component: NotFound } // 404 page
 ];

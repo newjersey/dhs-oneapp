@@ -51,9 +51,27 @@ axios.post(`https://api.monday.com/v2`, body, {
 
     }
     
+    async _send(query){
+
+        const payload = query;
+        console.log('SENDING: ', payload);
+
+        try {
+            let info = await axios.post(`${this.rootUrl}/graphql/query`, {query:payload})
+            return this._handleResponse(info);
+        }
+        catch(err){
+            console.error(err);
+            return null;
+        }  
+    }
+
+    /*
     async _send(queryTemplate, data){
 
         const payload = JSON.stringify({queryTemplate, variables: data})
+
+        console.log('Sending: ', payload);
 
         try {
             let info = await axios.post(`${this.rootUrl}/graphql/query`, payload)
@@ -65,6 +83,7 @@ axios.post(`https://api.monday.com/v2`, body, {
             return null;
         }  
     }
+    */
 
     _handleResponse(resp){
         console.log('RESPONE = ', resp);
@@ -90,45 +109,34 @@ axios.post(`https://api.monday.com/v2`, body, {
 
     async register(opts){
         
-        let data = {
-            USER_ID: opts.username,
-            PASSWORD: opts.password,
-            HINT_QUESTION: opts.hintQuestion,
-            HINT_ANSWER: opts.hintAnswer,
-            EMAIL_ADDRESS: opts.email           
-        }
-        
-        const template = `query UserInput($dice: Int!, $sides: Int) {
-            USER_ID: ID!,
-            PASSWORD: String!,
-            HINT_QUESTION: String!,
-            HINT_ANSWER: String!,
-            EMAIL_ADDRESS: String! @constraint(format: "email")
-        }`;
+        const qry = 
+            `mutation {
+                userRegister( input: {
+                    USER_ID: "${opts.username}", 
+                    PASSWORD: "${opts.password}"
+                    HINT_QUESTION: "${opts.hintQuestion}", ,
+                    HINT_ANSWER: "${opts.hintAnswer}", ,
+                    EMAIL_ADDRESS: "${opts.email}",                     
+                } ){token}
+            }`
 
-        //let qry = {
-        //    query: `mutate {UserInput {${JSON.stringify(data)}}}}`
-        //};
-
-        return await this._send(template, data);    
+        return await this._send(qry);    
     }
 
     async login(opts){
         
-        let data = {
-            USER_ID: opts.username,
-            PASSWORD: opts.password
-        }
-
-        const template = 
+        const qry = 
             `mutation {
-                userAuthenticate( input($userId: ID, $password: String!): {USER_ID: $userId,PASSWORD: $password} )
+                userAuthenticate( input: {USER_ID: "${opts.username}", PASSWORD: "${opts.password}"} )
                 {
                     token
                 }
             }`
 
         /*
+
+        mutation {userAuthenticate(input: {USER_ID: "rkh5",PASSWORD: "pwd"}){token}}
+
         mutation {
             userAuthenticate(input: {USER_ID: "rkh5",PASSWORD: "pwd"})
             {
@@ -137,6 +145,23 @@ axios.post(`https://api.monday.com/v2`, body, {
         }
         */
         
-        return await this._send(template, data);     
+        return await this._send(qry);     
+    }
+
+    async checkUsername(username){
+        
+        /*
+
+query {
+  users {userAvailable( USER_ID: "ONEAPP4") }
+}
+        */
+
+        const qry = `query {
+            users {userAvailable(USER_ID: "${username}")}
+        }`;
+
+        return await this._send(qry); 
+
     }
 }

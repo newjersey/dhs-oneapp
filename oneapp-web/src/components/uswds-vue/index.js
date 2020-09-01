@@ -1,8 +1,9 @@
 import UsAlert from './UsAlert';
 import UsCard from './UsCard';
-import UsForm from './UsForm';
-import UsFormInput from './UsFormInput';
-import UsFormGroup from './UsFormGroup';
+import UsForm from './form/UsForm';
+import UsFormInput from './form/UsFormInput';
+import UsFormGroup from './form/UsFormGroup';
+import UsComboBox from './form/UsComboBox';
 import UsButton from './UsButton';
 import UsTag from './UsTag';
 import UsPill from './UsPill';
@@ -31,6 +32,7 @@ const Components = {
 	UsForm,
 	UsFormInput,
 	UsFormGroup,
+	UsComboBox,
 	UsImg,
 	UsHeader,
 	UsNavItem,

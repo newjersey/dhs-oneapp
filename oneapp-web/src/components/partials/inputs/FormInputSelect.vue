@@ -1,6 +1,6 @@
 <template>
-    <validation-provider tag="div" :rules="opts.rules"  :mode="opts.validationMode" :name="opts.name" :vid="vid" v-slot="v">
-                
+    <validation-provider tag="div" :rules="opts.rules"  :name="opts.name" :vid="vid" v-slot="v">
+           
         <us-form-group 
             :label="opts.label" 
             :helpText="opts.help"
@@ -13,18 +13,18 @@
                 <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{error}}</span>
             </template>
 
-            <us-form-input
+            <us-combo-box
                 :id="divId"
                 :name="opts.name"
+                :options="opts.options"
                 v-model="currentValue"
-                :type="type"
                 :disabled="opts.disabled"
                 :placeholder="opts.placeholder"
                 :valid="getValidationState(v)"
-            ></us-form-input>
+            ></us-combo-box>
 
         </us-form-group>
-
+ 
     </validation-provider>
 </template>
 
@@ -41,14 +41,12 @@ export default {
     props: {
         // value, required, disabled, name, label, placeholder, description, hideLabel
         // provided by the InputMixin
-    },
+    },   
     mounted() {},
     data() {
         // divId, isUpdating, vid, currentValue, inputName
         // provided by the InputMixin
-        return {
-            type: 'text'
-        }
+        return {};
     },
     methods: {
         // getValidationState method provided by InputMixin

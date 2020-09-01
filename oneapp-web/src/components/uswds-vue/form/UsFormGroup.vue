@@ -2,15 +2,21 @@
 
     <div class="usa-form-group" :class="{'usa-form-group--error': valid === false}">
 
-        <label v-if="label" class="usa-label" :for="divId">{{label}}</label>
+        <slot name="label" v-bind:label="label">
+            <label v-if="label" class="usa-label" :for="divId">{{label}}</label>
+        </slot>
         
         <!-- Error Message -->
-        <span v-if="error" class="usa-error-message" id="input-error-message" role="alert">{{error}}</span>
+        <slot name="validation-error" v-bind:error="error">
+            <span v-if="error" class="usa-error-message" id="input-error-message" role="alert">{{error}}</span>
+        </slot>
 
         <!-- Help text -->
-        <span v-if="description" class="usa-hint">
-            {{description}}
-        </span>
+        <slot name="help-text" v-bind:helpText="helpText">
+            <span v-if="helpText" class="usa-hint">
+                {{helpText}}
+            </span>
+        </slot>
 
         <slot v-bind="{valid, divId}"></slot>
 
@@ -47,7 +53,7 @@ export default {
             type: String,
             default: null
         },
-        description: {
+        helpText: {
             type: String,
             default: null
         }

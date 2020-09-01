@@ -14,41 +14,72 @@
                     <form-input :config="{ 
                         type: 'text', 
                         label: 'Username', 
+                        validationMode: 'lazy', // validate on blur, default validates on input and blur
+                        rules: 'required|username-available',
                         name: 'username', 
-                        description: 'You username must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.', 
+                        help: 'Your username must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.', 
                         required: true }" 
                         v-model="formData.username" 
+                    />
+
+                    <form-input :config="{ 
+                        type: 'email', 
+                        label: 'Email Address', 
+                        name: 'email',
+                        required: true }" 
+                        v-model="formData.email" 
                     />
 
                     <form-input :config="{ 
                         type: 'password', 
                         label: 'Password', 
                         name: 'password', 
-                        help: 'You password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.', 
+                        help: 'Your password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.', 
                         required: true }" 
                         v-model="formData.password" 
                     />
 
-                    <form-input :config="{ type: 'password', label: 'Confirm your password', name: 'password confirmation', required: true }" v-model="formData.password2" />
+                    <form-input :config="{ 
+                        type: 'password-confirm', 
+                        label: 'Confirm your password',
+                        name: 'password confirmation', 
+                        required: true }" 
+                        v-model="formData.password2" />
 
-                    <form-input :config="{ type: 'email', label: 'Email Address', required: true }" v-model="formData.email" />
 
-                    <form-input :config="{ type: 'options', label: 'Hint question', required: true }" v-model="formData.hintQuestion" />
 
-                    <form-input :config="{ type: 'text', label: 'Hint answer', required: true }" v-model="formData.hintAnswer" />
+                    <form-input class="mt-5 mb-5" :config="{ 
+                        type: 'combo-box', 
+                        label: 'Hint question', 
+                        name: 'hint question',
+                        options: questions,
+                        required: true }" 
+                        v-model="formData.hintQuestion" />
 
+                    <form-input :config="{ 
+                        type: 'text', 
+                        label: 'Hint answer', 
+                        required: true }" 
+                        v-model="formData.hintAnswer" />
+                        
                     <div class="mt-4" align="left">
                         <us-button type="submit" variant="primary" class="mr-2" v-t>Create Account</us-button>
                     </div>
                     
                 </us-form>
             </validation-observer>
+            
         </div>
+
+        <pre>{{formData}}</pre>
+
     </us-container>
 </template>
 
 <script>
+
 import FormInput from '@/components/partials/forms/FormInput.vue';
+import User from '@/services/User.js';
 
 export default {
     name: 'login',
@@ -62,7 +93,13 @@ export default {
                 {value: 2, label: "In which city you were born?"},
                 {value: 3, label: "What is your favourite color?"},
             ],
-            formData: {},
+            formData: {
+                username: '',
+                email: '',
+                password: '',
+                password2: '',
+                hintQuestion: 2
+            },
             error: null
         };
     },
@@ -70,22 +107,17 @@ export default {
         await this.$store.dispatch('register');
     },
     methods: {
-        // ///////////////////////////////////////////////////////////////////////////////////////
-
-        onBack() {
-            this.step -= 1;
-        },
 
         // ///////////////////////////////////////////////////////////////////////////////////////
 
-        onCancel() {
-            this.$emit('onCancel');
-        },
+        async doSubmit() {
+            
+            // First, check if username is available
+            const user = new User();
+            const res = await user.checkUsername(this.formData.username);
 
-        // ///////////////////////////////////////////////////////////////////////////////////////
-
-        async onNext() {
-            this.step += 1;
+            this.$log(res);
+            //await this.$store.dispatch('register', this.formData);
         }
     }
 };

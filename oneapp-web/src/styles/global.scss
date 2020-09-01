@@ -24,29 +24,42 @@ $theme-show-notifications: false;
 
 html,
 body,
-#app {
+#nj-oneapp {
     height: 100%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
     background-color: rgb(243,251,255);
 }
 
-.debug-border {
-    border: 1px dashed red;
-}
+#nj-oneapp {
 
-.form-card {
+    .debug-border {
+        border: 1px dashed red;
+    }
     
-}
-
-.btn-link {
-    text-decoration: underline;
-}
-
-.uppercase {
-    text-transform: uppercase;
-}
-
-.capitalize {
-    text-transform: capitalize;
+    .btn-link {
+        text-decoration: underline;
+    }
+    
+    .uppercase {
+        text-transform: uppercase;
+    }
+    
+    .capitalize {
+        text-transform: capitalize;
+    }
+    
+    .form-wrapper {
+        width: 100%;
+        //max-width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        margin-top: 50px;
+        background-color: white;
+        border: 1px solid #E6E6E6;
+    }
+    
 }
