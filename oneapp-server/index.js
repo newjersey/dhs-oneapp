@@ -1,5 +1,12 @@
+const dotenv = require('dotenv');
+
+dotenv.config();
 const config = require('config');
 const args = require('yargs').argv;
+
+// eslint-disable-next-line no-console
+console.log(`Starting with environment config: ${config.util.getEnv('NODE_ENV')}`)
+
 const express = require('express');
 const expressJwt = require('express-jwt');
 const { ApolloServer } = require('apollo-server-express');
