@@ -14,7 +14,6 @@
                     <form-input :config="{ 
                         type: 'text', 
                         label: 'Username', 
-                        validationMode: 'lazy', // validate on blur, default validates on input and blur
                         rules: 'required|username-available',
                         name: 'username', 
                         help: 'Your username must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.', 

@@ -55,7 +55,11 @@ const baseInputMixin = {
     },
     created() {},
     mounted() {
+
         this.opts = this.config;
+
+         // validate on blur, default validates on input and blur
+        //this.opts.validationMode = 'lazy';
 
         // If a config object is NOT passed in as a prop, map to
         // the other props. This allows you to pass the other props

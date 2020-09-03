@@ -7,6 +7,7 @@
             :label-sr-only="opts.hideLabel" 
             :label-for="divId" 
             :error="opts.error || v.errors[0]"
+            :valid="getValidationState(v)"
             label-class="oneapp-form-label">
             
             <template v-slot:validation-error="{error}">
