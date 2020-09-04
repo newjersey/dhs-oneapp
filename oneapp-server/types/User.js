@@ -17,6 +17,8 @@ const typeDef = gql`
     current: User!
     "Check if a USER_ID is available"
     userAvailable(USER_ID: String!): Boolean
+    "Return a user's password hint question id, for resetting the password"
+    userPasswordHintQuestion(USER_ID: String!): String
   }
 
   type User {
@@ -78,6 +80,7 @@ const resolvers = {
       const userExists = await dataSources.UserDao.doesUserExist(USER_ID);
       return userExists === false;
     },
+    userPasswordHintQuestion: async (_parent, { USER_ID }, { dataSources }) => dataSources.UserDao.getUserPasswordHintQuestion(USER_ID),
   },
 };
 
@@ -92,6 +95,7 @@ const permissions = {
   JwtToken: allow,
   Users: {
     userAvailable: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
+    userPasswordHintQuestion: allow,
   },
 };
 
