@@ -1,11 +1,14 @@
+// eslint-disable-next-line import/newline-after-import
 const dotenv = require('dotenv');
-
 dotenv.config();
+
 const config = require('config');
 const args = require('yargs').argv;
 
-// eslint-disable-next-line no-console
-console.log(`Starting with environment config: ${config.util.getEnv('NODE_ENV')}`)
+// eslint-disable-next-line import/order
+const logger = require('./logger.config');
+
+logger.info('Starting with environment config: %s', config.util.getEnv('NODE_ENV'));
 
 const express = require('express');
 const expressJwt = require('express-jwt');
@@ -14,7 +17,6 @@ const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
 const dataSources = require('./db');
-const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
 
 const PATH = '/';
