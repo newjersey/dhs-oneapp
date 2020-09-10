@@ -1,9 +1,6 @@
 <template>
     <us-container id="ApplyStartPage" align="left">
 
-        {{selCompDur}}<span ng-if="selCompDur == '0d' || selCompDur == '1d'">{{compDurs[selCompDur].label}}</span>
-
-
         <!-- 
         <us-card bg-variant="white" border-variant="none" class="mt-6">
         -->
