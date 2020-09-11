@@ -28,16 +28,18 @@ Translate.install = function (Vue, options) {
 
     const messages = {
         en: {
-            h0: 'Apply for New Jersey social services',
-            h1: 'Already started an application?',
-            h2: 'Sign In',
-            h3: 'Get food or cash assistance through one application'
+            home_0: 'Apply for New Jersey social services',
+            home_1: 'Already started an application?',
+            home_2: 'Sign In',
+            home_3: 'Get food or cash assistance through one application',
+            login_1: 'Password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.'
         },
         es: {
-            h0: 'Solicitar servicios sociales de Nueva Jersey',
-            h1: '¿Ya comenzó una aplicación?',
-            h2: 'Iniciar sesión',
-            h3: 'Obtenga asistencia alimentaria o en efectivo a través de una solicitud.'
+            home_0: 'Solicitar servicios sociales de Nueva Jersey',
+            home_1: '¿Ya comenzó una aplicación?',
+            home_2: 'Iniciar sesión',
+            home_3: 'Obtenga asistencia alimentaria o en efectivo a través de una solicitud.',
+            login_1: 'La contraseña debe tener de 8 a 15 caracteres, contener al menos una letra y un número. No se permiten caracteres especiales ni espacios.'
         }
     };
 
@@ -179,6 +181,7 @@ Translate.install = function (Vue, options) {
     // ///////////////////////////////////////////////////////////////////////////////////////
 
     Vue.t = Vue.prototype.$t = function (val) {
+
         let match = _findMessage(val);
         let key = match ? match.key : 'no-match';
 

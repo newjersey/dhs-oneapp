@@ -7,6 +7,7 @@
         :aria-expanded="ariaExpanded"
         :aria-controls="ariaControls"
         :title="title"
+        :disabled="disabled || isLoading"
         :class="[buttonClass, {
             'usa-button--big': size == 'lg',
             'display-block': (block)
@@ -14,6 +15,7 @@
         <slot name="default">
             Button
         </slot>
+        <i class="fas fa-spinner fa-spin ml-1" v-if="isLoading"></i>
     </button>
 </template>
 
@@ -74,7 +76,15 @@ export default {
         to: {
             type: [String, Object],
             default: null 
-        }                
+        },
+        disabled: {
+            type: Boolean,
+            default: false
+        },         
+        isLoading: {
+            type: Boolean,
+            default: false
+        }             
     },
     computed: {
         buttonClass(){
