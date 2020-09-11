@@ -27,7 +27,8 @@ export default new Vuex.Store({
         
         async login({ state, commit, dispatch }, opts) {
             let user = new User();
-            await user.login(opts);
+            let info = await user.login(opts);
+            console.log(info)
         },
 
         // ///////////////////////////////////////////////////////////////////////////////////////
@@ -35,18 +36,14 @@ export default new Vuex.Store({
         /**
          * Get any basic data that we'll need 
          */
-        async register({ state, commit, dispatch }) {
+        async register({ state, commit, dispatch }, opts) {
 
             let user = new User();
 
             console.log('Getting user info...')
 
-            await user.load();
+            await user.register(opts);
 
-            // Get data meta info
-
-
-            console.log('user = ', user);
             return user;
 
         }

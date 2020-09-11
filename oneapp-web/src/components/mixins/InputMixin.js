@@ -44,10 +44,6 @@ const baseInputMixin = {
         },
         currentValue(val) {
             if (!this.isUpdating) {
-
-                this.$log('Value: ', this.value);
-                this.$log('CurrentValue: ', this.currentValue);
-                
                 // allows us to use v-model on our input.
                 this.$emit('input', val);
             }

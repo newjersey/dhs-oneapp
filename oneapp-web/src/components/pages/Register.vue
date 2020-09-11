@@ -3,8 +3,6 @@
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
             <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
 
-                <us-alert variant="danger" v-if="error">{{error}}</us-alert>
-
                 <h1 v-t>Sign Up</h1>
 
                 <h2 v-t>Create an account for NJOneApp</h2>
@@ -46,7 +44,6 @@
                         v-model="formData.password2" />
 
 
-
                     <form-input class="mt-5 mb-5" :config="{ 
                         type: 'combo-box', 
                         label: 'Hint question', 
@@ -62,15 +59,28 @@
                         v-model="formData.hintAnswer" />
                         
                     <div class="mt-4" align="left">
-                        <us-button type="submit" variant="primary" class="mr-2" v-t>Create Account</us-button>
+                        <us-button type="submit" variant="primary" class="mr-2" v-t :isLoading="isLoading">Create Account</us-button>
                     </div>
                     
+                    <us-alert variant="error" class="mt-3" v-if="error" v-t>{{error}}</us-alert>
+
+                    <us-alert variant="success" class="mt-3" v-if="success" v-t>
+                        Account created, please <router-link :to="{name:'login'}">login</router-link> to continue.
+                    </us-alert>
+
                 </us-form>
             </validation-observer>
             
-        </div>
+            <hr class="mb-4 mt-2"/>
 
-        <pre>{{formData}}</pre>
+            <div class="mb-1 mt-1">
+                <us-button variant="link" :to="{name:'home'}" v-t>Cancel</us-button>
+            </div>
+            <div class="mb-1 mt-1">
+                <us-button variant="link" href="https://nj.gov/nj/privacy.html" v-t>Security and Privacy Act Statement</us-button>
+            </div>
+
+        </div>
 
     </us-container>
 </template>
@@ -93,13 +103,10 @@ export default {
                 {value: 3, label: "What is your favourite color?"},
             ],
             formData: {
-                username: '',
-                email: '',
-                password: '',
-                password2: '',
-                hintQuestion: 2
             },
-            error: null
+            error: null,
+            success: false,
+            isLoading: false
         };
     },
     async mounted(){
@@ -109,14 +116,17 @@ export default {
 
         // ///////////////////////////////////////////////////////////////////////////////////////
 
-        async doSubmit() {
-            
-            // First, check if username is available
-            const user = new User();
-            const res = await user.checkUsername(this.formData.username);
-
-            this.$log(res);
-            //await this.$store.dispatch('register', this.formData);
+        async doSubmit() {        
+            this.isLoading = true;
+            try {
+                await this.$store.dispatch('register', this.formData);
+                this.error = null;
+                this.success = true;
+            }
+            catch (err){
+                this.error = err;
+            }
+            this.isLoading = false;
         }
     }
 };

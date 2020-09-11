@@ -4,7 +4,8 @@ import Home from '@/components/pages/Home.vue';
 import Apply from '@/components/pages/Apply.vue';
 import OneApp from '@/components/pages/OneApp.vue';
 import Login from '@/components/pages/Login.vue';
-import Forgot from '@/components/pages/Forgot.vue';
+import ForgotUsername from '@/components/pages/ForgotUsername.vue';
+import ForgotPassword from '@/components/pages/ForgotPassword.vue';
 import Register from '@/components/pages/Register.vue';
 import Status from '@/components/pages/Status.vue';
 import NotFound from '@/components/pages/NotFound.vue';
@@ -19,7 +20,8 @@ const routes = [
     { path: '/apply', name: 'apply', component: Apply, meta: { header: false, footer: false } },
     { path: '/login', name: 'login', component: Login, meta: { header: false, footer: false } },
     { path: '/register', name: 'register', component: Register, meta: { header: false, footer: false } },
-    { path: '/forgot', name: 'forgot', component: Forgot, meta: { header: false, footer: false } },
+    { path: '/forgot-username', name: 'forgot-username', component: ForgotUsername, meta: { header: false, footer: false } },
+    { path: '/forgot-password', name: 'forgot-password', component: ForgotPassword, meta: { header: false, footer: false } },
     { path: '/status', name: 'status', component: Status, meta: { header: false, footer: false } },
     { path: '/about', name: 'about', component: () => import(/* webpackChunkName: "about" */ '@/components/pages/About.vue') },
     { path: '*', name: 'not-found', component: NotFound } // 404 page

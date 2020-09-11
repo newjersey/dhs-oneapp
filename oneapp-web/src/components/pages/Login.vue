@@ -25,15 +25,16 @@
                         label: 'Password', 
                         name: 'password', 
                         rules: 'required',
-                        validationMessage: 'Password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.',
                         required: true }" 
                         v-model="formData.password" 
                     />
 
-                    <div class="mt-4" align="left">
-                        <us-button type="submit" variant="primary" class="mr-2" v-t>Sign In</us-button>
+                    <div class="mt-2" align="left">
+                        <us-button type="submit" variant="primary" class="mr-2" :isLoading="isLoading" v-t>Sign In</us-button>
                     </div>
-                    
+
+                    <us-alert variant="error" v-t class="mt-3" v-if="error">Username or password is incorrect</us-alert>
+
                 </us-form>
 
             </validation-observer>
@@ -64,13 +65,23 @@ export default {
     },
     data() {
         return {
-            formData: {}
+            formData: {},
+            error: null,
+            isLoading: false
         };
     },
     mounted() {},
     methods: {
         async doSubmit() {
-            await this.$store.dispatch('login', this.formData);
+            this.isLoading = true;
+            let token = await this.$store.dispatch('login', this.formData);
+            this.isLoading = false;
+            if (!token){
+                this.error = true;
+            }
+            else {
+                this.$router.replace({name:'one-app'})
+            }
         }
     }
 };

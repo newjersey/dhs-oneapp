@@ -6,6 +6,7 @@ const Logger = require('./utils/Logger.js');
 // Translations stored in FS_CONVERSION_TEXT
 
 const tables = {
+    /*
     OA_SAP_ADDRESS_HISTORY,
     OA_SAP_APPLICATION_CONTACT,
     OA_SAP_APPLICATION_FLAGS,
@@ -47,7 +48,16 @@ const tables = {
     OA_SAP_RESPONSIBLE_RELATIVE
     OA_SAP_VIOLATION
     OA_STG_APP_HOUSEHOLD
+    */
     users: 'OA_SAP_USER'
+}
+
+
+async function getPages(){
+    let cols = await conn('OA_PAGES').columnInfo();
+
+    //OA_CONVERSION_PAGE
+    //OA_CONVERSION_TEXT
 }
 
 setTimeout(async ()=>{
@@ -56,10 +66,26 @@ setTimeout(async ()=>{
 
     //let users = await conn(tables.users).select('USER_ID');
 
-    let tables = await 
-    let users = await conn(tables.users).columnInfo();
+    for (let key in tables){        
 
-    Logger.debug(users);
+        let cols = await conn(tables[key]).columnInfo();
+
+        /*
+FAILED_ANS_ATTEMPT_COUNT: {
+    type: 'NUMBER',
+    defaultValue: null,
+    maxLength: null,
+    nullable: true
+  },
+        */
+        for (let colName in cols){
+
+            let col = cols[colName];
+
+            Logger.debug(`Field: ${colName}, type: ${col.type}, defaultValue: ${col.defaultValue}`);
+        }
+    }
+
 
     process.exit(1);
 

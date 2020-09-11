@@ -1,6 +1,6 @@
 <template>
     <validation-provider tag="div" :rules="opts.rules"  :mode="opts.validationMode" :name="opts.name" :vid="vid" v-slot="v">
-                
+                        
         <us-form-group 
             :label="opts.label" 
             :helpText="opts.help"
@@ -43,7 +43,11 @@ export default {
         // value, required, disabled, name, label, placeholder, description, hideLabel
         // provided by the InputMixin
     },
-    mounted() {},
+    mounted() {
+        if (this.opts.type == 'password' || this.opts.type == 'password-confirm'){
+            this.type = 'password';
+        }
+    },
     data() {
         // divId, isUpdating, vid, currentValue, inputName
         // provided by the InputMixin

@@ -8,47 +8,7 @@ export default class User {
         this.rootUrl = process.env.VUE_API_ROOT_URL ? process.env.VUE_API_ROOT_URL : 'http://localhost:4000';
 
         console.log('Host: ' + window.location.host);
-        console.log('RootURL: ' + this.rootUrl)
-    
-        /*
-        return axios.create({
-            baseURL: rootUrl,
-            withCredentials: false,
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-
-
-const body = {
-  query: `
-	mutation ($boardId: Int!, $groupId: String!, $itemName: String!, $columnValues: JSON!) {
-	  create_item (
-	    board_id: $boardId,
-	    group_id: $groupId,
-	    item_name: $itemName,
-	    column_values: $columnValues
-	  ) {
-	    id
-	  }
-	}
-  `,
-  variables: {
-  	boardId: 1234567,
-	groupId: "topics",
-	itemName: "New item name",
-	columnsValues: JSON.stringify({ status: { index: 1 } })
-  }
-}
-axios.post(`https://api.monday.com/v2`, body, {
-    headers: {
-      Authorization: 'API_TOKEN'
-    }
-  })
-
-        */
-
+        console.log('RootURL: ' + this.rootUrl);
     }
     
     async _send(query){
@@ -57,7 +17,7 @@ axios.post(`https://api.monday.com/v2`, body, {
         console.log('SENDING: ', payload);
 
         try {
-            let info = await axios.post(`${this.rootUrl}/graphql/query`, {query:payload})
+            let info = await axios.post(`${this.rootUrl}/graphql/query`, {query:payload, timeout: 1000})
             return this._handleResponse(info);
         }
         catch(err){
@@ -65,25 +25,6 @@ axios.post(`https://api.monday.com/v2`, body, {
             return null;
         }  
     }
-
-    /*
-    async _send(queryTemplate, data){
-
-        const payload = JSON.stringify({queryTemplate, variables: data})
-
-        console.log('Sending: ', payload);
-
-        try {
-            let info = await axios.post(`${this.rootUrl}/graphql/query`, payload)
-            console.log(info);
-            return this._handleResponse(info);
-        }
-        catch(err){
-            console.error(err);
-            return null;
-        }  
-    }
-    */
 
     _handleResponse(resp){
         console.log('RESPONE = ', resp);
@@ -104,7 +45,7 @@ axios.post(`https://api.monday.com/v2`, body, {
     }
 
     async update(){
-
+        alert('TBD')
     }
 
     async register(opts){
@@ -123,7 +64,7 @@ axios.post(`https://api.monday.com/v2`, body, {
         return await this._send(qry);    
     }
 
-    async login(opts){
+    async login(opts){        
         
         const qry = 
             `mutation {
@@ -131,37 +72,30 @@ axios.post(`https://api.monday.com/v2`, body, {
                 {
                     token
                 }
-            }`
-
-        /*
-
-        mutation {userAuthenticate(input: {USER_ID: "rkh5",PASSWORD: "pwd"}){token}}
-
-        mutation {
-            userAuthenticate(input: {USER_ID: "rkh5",PASSWORD: "pwd"})
-            {
-                token
-            }
-        }
-        */
+            }`        
         
-        return await this._send(qry);     
+        let resp = await this._send(qry);
+
+        if (resp && resp.userAuthenticate && resp.userAuthenticate.token){
+            this.token = resp.userAuthenticate.token;
+            return this.token;
+        }
+
+        return false;
     }
 
-    async checkUsername(username){
-        
-        /*
+    static async requestPasswordReset(email){
+        throw new Error(`requestPasswordReset(${email}) not created yet!`);
+    }
 
-query {
-  users {userAvailable( USER_ID: "ONEAPP4") }
-}
-        */
+    static async requestUsername(email){
+        throw new Error(`requestUsername(${email}) not created yet!`);
+    }
 
+    static async checkUsername(username){
         const qry = `query {
             users {userAvailable(USER_ID: "${username}")}
         }`;
-
         return await this._send(qry); 
-
     }
 }

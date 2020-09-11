@@ -62,8 +62,7 @@ const throttledUsernameCheck = throttle(async function(username){
         return Vue.t('Username must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed');
     }
 
-    const user = new User();
-    const res = await user.checkUsername(username);
+    const res = await User.checkUsername(username);
 
     if (res && res.users && res.users.userAvailable) {
         return true;
