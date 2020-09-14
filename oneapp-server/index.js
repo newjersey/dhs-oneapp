@@ -81,6 +81,7 @@ server.applyMiddleware({ app, path: config.get('server.path') });
 // Start the server
 app.listen({ port: config.get('server.port') }, () => {
   logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${config.get('server.port')}${server.graphqlPath}`);
+  logger.info('Database URL: %s', config.get('database.host'));
 });
 
 module.exports = server;
