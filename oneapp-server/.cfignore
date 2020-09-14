@@ -4,19 +4,17 @@ node_modules
 **/node_modules
 dist
 
-oneapp-web/keys
-
 # local env files
 .env.local
 .env.*.local
 .env
 
 # Config files should be ingore, except for default files
-oneapp-server/config/*.json
-!oneapp-server/config/custom-environment-variables.json
-!oneapp-server/config/default.json
-!oneapp-server/config/test.json
-!oneapp-server/config/production.json
+config/*.json
+!config/custom-environment-variables.json
+!config/default.json
+!config/test.json
+!config/production.json
 
 # Log files
 npm-debug.log*
@@ -31,4 +29,3 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-database/dmp/import.log
