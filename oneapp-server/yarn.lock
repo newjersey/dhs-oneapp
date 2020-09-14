@@ -2368,6 +2368,15 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+cfenv@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/cfenv/-/cfenv-1.2.3.tgz#37c4fb92e8faae96a6f42418b6693fb121dc09b0"
+  integrity sha512-RDXQdRAVk7NxA4+/7ARr6RWkRnLQGH6o2+W0EQehc4vltfJYsyhRNYiivbfHu7Eh77yG9Rdn6JO/Wz/AuFE46Q==
+  dependencies:
+    js-yaml "3.13.x"
+    ports "1.1.x"
+    underscore "1.9.x"
+
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.1.0, chalk@^2.4.2:
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-2.4.2.tgz#cd42541677a54333cf541a49108c1432b44c9424"
@@ -5148,6 +5157,14 @@ joycon@^2.2.5:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
+js-yaml@3.13.x:
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
+  integrity sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^4.0.0"
+
 js-yaml@^3.13.0, js-yaml@^3.13.1:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
@@ -6450,6 +6467,11 @@ pkg@^4.4.9:
     progress "^2.0.3"
     resolve "^1.15.1"
     stream-meter "^1.0.4"
+
+ports@1.1.x:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/ports/-/ports-1.1.0.tgz#b701aa285e95dae8c96cda275217724a1f7f6c60"
+  integrity sha1-twGqKF6V2ujJbNonUhdySh9/bGA=
 
 posix-character-classes@^0.1.0:
   version "0.1.1"
@@ -7826,6 +7848,11 @@ undefsafe@^2.0.2:
   integrity sha512-nrXZwwXrD/T/JXeygJqdCO6NZZ1L66HrxM/Z7mIq2oPanoN0F1nLx3lwJMu6AwJY69hdixaFQOuoYsMjE5/C2A==
   dependencies:
     debug "^2.2.0"
+
+underscore@1.9.x:
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.2.tgz#0c8d6f536d6f378a5af264a72f7bec50feb7cf2f"
+  integrity sha512-D39qtimx0c1fI3ya1Lnhk3E9nONswSKhnffBI0gME9C99fYOkNi04xs8K6pePLhvl1frbDemkaBQ5ikWllR2HQ==
 
 union-value@^1.0.0:
   version "1.0.1"

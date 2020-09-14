@@ -1,4 +1,17 @@
 const config = require('config');
+const cfenv = require('cfenv');
+
+// Override config with CloudFoundary configuration
+const cfAppEnv = cfenv.getAppEnv();
+const cfUserServices = cfAppEnv.services['user-provided'];
+if (cfUserServices && cfUserServices[0]) {
+  const cfDbService = cfUserServices[0];
+  config.database.host = cfDbService.credentials.DB_HOST;
+  config.database.user = cfDbService.credentials.DB_USER;
+  config.database.pass = cfDbService.credentials.DB_PASS;
+  config.database.sid = cfDbService.credentials.DB_SID;
+}
+
 const args = require('yargs').argv;
 const express = require('express');
 const expressJwt = require('express-jwt');
@@ -9,7 +22,6 @@ const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-co
 const dataSources = require('./db');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
-
 const { typeDefs, resolvers, permissions } = require('./schema');
 
 // Build the schema

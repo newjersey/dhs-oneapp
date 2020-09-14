@@ -7,6 +7,8 @@ applications:
   memory: 256MB
   env:
     OPTIMIZE_MEMORY: true
+  services:
+    - oneapp-dev-db
 
 - name: usds-oneapp-staging-web
   path: ./oneapp-web/dist
