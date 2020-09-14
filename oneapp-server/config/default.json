@@ -12,5 +12,9 @@
         "user": "",
         "pass": "",
         "sid": ""
+    },
+    "server": {
+        "port": 4000,
+        "path": "/"
     }
 }

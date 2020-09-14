@@ -4,5 +4,8 @@
         "user": "DB_USER",
         "pass": "DB_PASS",
         "sid": "DB_SID"
+    },
+    "server": {
+        "port": "PORT"
     }
 }

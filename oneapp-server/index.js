@@ -10,9 +10,6 @@ const dataSources = require('./db');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
 
-const PATH = '/';
-const PORT = 4000;
-
 const { typeDefs, resolvers, permissions } = require('./schema');
 
 // Build the schema
@@ -79,11 +76,11 @@ const server = new ApolloServer({
   // Mocks
   mocks: args.mock || false,
 });
-server.applyMiddleware({ app, path: PATH });
+server.applyMiddleware({ app, path: config.get('server.path') });
 
 // Start the server
-app.listen({ port: PORT }, () => {
-  logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${PORT}${server.graphqlPath}`);
+app.listen({ port: config.get('server.port') }, () => {
+  logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${config.get('server.port')}${server.graphqlPath}`);
 });
 
 module.exports = server;
