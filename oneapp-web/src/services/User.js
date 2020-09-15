@@ -5,7 +5,7 @@ export default class User {
 
     constructor(){
 
-        this.rootUrl = process.env.VUE_API_ROOT_URL ? process.env.VUE_API_ROOT_URL : 'http://localhost:4000';
+        this.rootUrl = process.env.VUE_APP_API_ROOT_URL ? process.env.VUE_APP_API_ROOT_URL : 'http://localhost:4000';
 
         console.log('Host: ' + window.location.host);
         console.log('RootURL: ' + this.rootUrl);

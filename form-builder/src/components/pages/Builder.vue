@@ -3,19 +3,35 @@
         
         <h2>Builder</h2>
 
-        <b-row>
+        <b-row class="px-2">
             
-            <b-col md="2" class="">
-                <page-list v-model="selectedPage" />
+            <b-col md="2" class="px-1">
+                <b-card title="Pages">
+                    <page-list v-model="selectedPage" />
+                </b-card>
             </b-col>
 
-            <b-col md="3" class="">
-                <question-list :page="selectedPage" v-model="selectedQuestion"/>
+            <b-col md="3" class="px-1">
+                <b-card title="Questions">
+                    <question-list :page="selectedPage" v-model="selectedQuestion"/>
+                </b-card>
             </b-col>
 
-            <b-col>
+            <b-col class="px-1">
 
-                <b-card v-if="selectedPage" title="Form Settings">
+                <!--
+                <b-card v-if="selectedPage" title="Form Settings" class="">
+                    
+                    <form-input-text v-model="selectedPage.title" :config="{label: 'Title', required: true}"/>
+
+                    <b-button size="sm">
+                        <i class="fas fa-trash"></i> Delete Page
+                    </b-button>                
+
+                </b-card>
+                -->
+
+                <b-card v-if="selectedPage" title="Page Settings" class="">
                     
                     <form-input-text v-model="selectedPage.title" :config="{label: 'Title', required: true}"/>
 
@@ -25,7 +41,7 @@
 
                 </b-card>
 
-                <b-card v-if="selectedQuestion" title="Question Settings" class="mt-3">
+                <b-card v-if="selectedQuestion" title="Question Settings" class="mt-2">
                     <question-form v-model="selectedQuestion"></question-form>
                 </b-card>
 
@@ -60,7 +76,9 @@ export default {
 </script>
 <style lang="scss">
 #BuilderPage {
-    .card {
+    .card-body {
+        padding-left: 12px;
+        padding-right: 12px;
     }
 }
 </style>
