@@ -9,6 +9,7 @@
     },
     "database": {
         "host": "",
+        "port": "",
         "user": "",
         "pass": "",
         "sid": ""

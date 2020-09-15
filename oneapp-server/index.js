@@ -1,17 +1,4 @@
 const config = require('config');
-const cfenv = require('cfenv');
-
-// Override config with CloudFoundary configuration
-const cfAppEnv = cfenv.getAppEnv();
-const cfUserServices = cfAppEnv.services['user-provided'];
-if (cfUserServices && cfUserServices[0]) {
-  const cfDbService = cfUserServices[0];
-  config.database.host = cfDbService.credentials.DB_HOST;
-  config.database.user = cfDbService.credentials.DB_USER;
-  config.database.pass = cfDbService.credentials.DB_PASS;
-  config.database.sid = cfDbService.credentials.DB_SID;
-}
-
 const args = require('yargs').argv;
 const express = require('express');
 const expressJwt = require('express-jwt');
@@ -19,6 +6,9 @@ const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
+
+// eslint-disable-next-line no-unused-vars
+const cfConfig = require('./cf.config.js'); // cfConfig must be first import to override config values with CloudFoundary values
 const dataSources = require('./db');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
@@ -93,7 +83,7 @@ server.applyMiddleware({ app, path: config.get('server.path') });
 // Start the server
 app.listen({ port: config.get('server.port') }, () => {
   logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${config.get('server.port')}${server.graphqlPath}`);
-  logger.info('Database URL: %s', config.get('database.host'));
+  logger.info('Database URL: %s:%d', config.get('database.host'), config.get('database.port'));
 });
 
 module.exports = server;
