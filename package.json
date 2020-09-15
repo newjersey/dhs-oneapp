@@ -12,6 +12,7 @@
     "test:server": "yarn --cwd oneapp-server test",
     "serve:web": "yarn --cwd oneapp-web serve",
     "build:web": "yarn --cwd oneapp-web build",
+    "build:web:staging": "yarn --cwd oneapp-web build:staging",
     "pkg:server": "yarn --cwd oneapp-server pkg",
     "install": "yarn run install:web && yarn run install:server",
     "lint:pre": "yarn run lint:pre:web && yarn run lint:pre:server",
@@ -19,7 +20,7 @@
     "test": "yarn run test:server",
     "serve": "yarn run serve:web",
     "dist": "yarn run pkg:server",
-    "deploy:cf": "yarn run install:web && yarn run build:web && cf push"
+    "deploy:cf": "yarn run install:web && yarn run build:web:staging && cf push"
   },
   "dependencies": {},
   "devDependencies": {
