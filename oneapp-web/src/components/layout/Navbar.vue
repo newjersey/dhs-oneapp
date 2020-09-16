@@ -1,9 +1,8 @@
 <template>
     <div id="NavBar">
-
         <div class="bg-warning pt-1 pb-1" v-if="alertMessage && showHeader">
             <us-container>
-                <p class="alert-text m-0"><i class="fas fa-exclamation-triangle mr-2"></i> {{alertMessage}}</p>
+                <p class="alert-text m-0"><i class="fas fa-exclamation-triangle mr-2"></i> {{ alertMessage }}</p>
             </us-container>
         </div>
 
@@ -17,7 +16,7 @@
                         <div class="display-inline nav-item ml-2">OFFICIAL SITE OF THE STATE OF NEW JERSEY</div>
                     </us-col>
                     <us-col align="right">
-                        <us-button variant="link" class="nav-item" href="https://nj.gov">return to nj.gov</us-button>               
+                        <us-button variant="link" class="nav-item" href="https://nj.gov">return to nj.gov</us-button>
                     </us-col>
                 </us-row>
             </us-container>
@@ -26,7 +25,6 @@
         <!-- Sub Navbar -->
 
         <header variant="transparent">
-
             <us-container>
                 <us-row>
                     <us-col>
@@ -38,9 +36,7 @@
                     </us-col>
                 </us-row>
             </us-container>
-
         </header>
-
     </div>
 </template>
 
@@ -75,11 +71,9 @@ export default {
 };
 </script>
 <style lang="scss">
-
 $navHeight: 54px;
 
 #NavBar {
-    
     // Only for large screens, see https://www.dev-tips-and-tricks.com/use-bootstrap-4-media-query-mixins
     //@include media-breakpoint-up(lg) {
     //    padding-left: 50px;

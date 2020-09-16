@@ -1,10 +1,6 @@
 <template>
-    <div
-        class="usa-accordion"
-        :class="[`bg-${variant}`, {'usa-accordion--bordered': bordered}]"
-        :aria-multiselectable="multiSelect"
-    >
-		<slot></slot>
+    <div class="usa-accordion" :class="[`bg-${variant}`, { 'usa-accordion--bordered': bordered }]" :aria-multiselectable="multiSelect">
+        <slot></slot>
     </div>
 </template>
 
@@ -28,11 +24,11 @@ export default {
         bordered: {
             type: Boolean,
             default: false
-		},
+        },
         multiSelect: {
             type: Boolean,
             default: false
         }
-    }    
+    }
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
     <us-container id="OneAppPage" align="left">
-
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
             <form-builder v-model="formData" :config="config" />
         </div>
@@ -59,7 +58,7 @@ export default {
         padding-bottom: 40px;
         margin-top: 50px;
         background-color: white;
-        border: 1px solid #E6E6E6;
+        border: 1px solid #e6e6e6;
     }
 }
 </style>

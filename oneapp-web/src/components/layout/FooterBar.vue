@@ -1,57 +1,54 @@
 <template>
-
     <div>
+        <footer id="FooterBar" v-if="showFooter">
+            <nav class="navbar navbar-default navbar-bottom" role="navigation">
+                <us-container>
+                    <us-row>
+                        <us-col class="d-none d-sm-block">
+                            <us-img src="/images/footer/logo_nj_snap_tanf.png" fluid class="d-none d-lg-block" alt="NJ, Snap and TANF Logos" />
+                            <us-img src="/images/footer/logo_nj_snap.png" fluid class="d-none d-sm-block d-lg-none" alt="NJ, Snap Logos" />
+                        </us-col>
+                        <us-col>
+                            <us-row cols="2" align-v="end" align-content="end">
+                                <us-col lg="4" xl="3">
+                                    <us-button variant="link" class="p-0 mb-1" href="tel:800-687-9512">(800) 687-9512</us-button>
+                                </us-col>
+                                <us-col lg="4" xl="3">
+                                    <!-- TODO: get/confirm link -->
+                                    <us-button variant="link" class="p-0 mb-1" href="https://twitter.com/NJDHS">@NJDHS</us-button>
+                                </us-col>
+                                <us-col lg="4" xl="3">
+                                    <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/privacy.html">Privacy Notice</us-button>
+                                </us-col>
+                                <us-col lg="4" xl="3">
+                                    <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/accessibility.html">Accessibility</us-button>
+                                </us-col>
+                                <us-col lg="4" xl="3">
+                                    <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/legal.html">Legal Policy</us-button>
+                                </us-col>
+                                <us-col lg="4" xl="3">
+                                    <!-- TODO: get link -->
+                                    <us-button variant="link" class="p-0 mb-1" href="">Nondiscrimination</us-button>
+                                </us-col>
+                            </us-row>
 
-    <footer id="FooterBar" v-if="showFooter">
-        <nav class="navbar navbar-default navbar-bottom" role="navigation">
-            <us-container>
-                <us-row>
-                    <us-col class="d-none d-sm-block">
-                        <us-img src="/images/footer/logo_nj_snap_tanf.png" fluid class="d-none d-lg-block" alt="NJ, Snap and TANF Logos" />
-                        <us-img src="/images/footer/logo_nj_snap.png" fluid class="d-none d-sm-block d-lg-none" alt="NJ, Snap Logos" />
-                    </us-col>
-                    <us-col>
-                        <us-row cols="2" align-v="end" align-content="end">
-                            <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0 mb-1" href="tel:800-687-9512">(800) 687-9512</us-button>
-                            </us-col>
-                            <us-col lg="4" xl="3">
-                                <!-- TODO: get/confirm link -->
-                                <us-button variant="link" class="p-0 mb-1" href="https://twitter.com/NJDHS">@NJDHS</us-button>
-                            </us-col>
-                            <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/privacy.html">Privacy Notice</us-button>
-                            </us-col>
-                            <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/accessibility.html">Accessibility</us-button>
-                            </us-col>
-                            <us-col lg="4" xl="3">
-                                <us-button variant="link" class="p-0 mb-1" href="https://nj.gov/nj/legal.html">Legal Policy</us-button>
-                            </us-col>
-                            <us-col lg="4" xl="3">
-                                <!-- TODO: get link -->
-                                <us-button variant="link" class="p-0 mb-1" href="">Nondiscrimination</us-button>
-                            </us-col>
-                        </us-row>
+                            <div class="mt-3">
+                                <p>
+                                    The New Jersey Department of Human Services (DHS) provides numerous programs and services designed to give individuals and families the help
+                                    they need for economic and health challenges.
+                                </p>
+                            </div>
+                        </us-col>
+                    </us-row>
 
-                        <div class="mt-3">
-                            <p>
-                                The New Jersey Department of Human Services (DHS) provides numerous programs and services designed to give individuals and families the help they
-                                need for economic and health challenges.
-                            </p>
-                        </div>
-                    </us-col>
-                </us-row>
+                    <div align="right">
+                        <span class="text-muted" style="font-size: 12px">v{{ version }}</span>
+                    </div>
+                </us-container>
+            </nav>
+        </footer>
 
-                <div align="right">
-                    <span class="text-muted" style="font-size:12px">v{{ version }}</span>
-                </div>
-            </us-container>
-        </nav>
-    </footer>
-
-    <!--<us-footer></us-footer>-->
-
+        <!--<us-footer></us-footer>-->
     </div>
 </template>
 

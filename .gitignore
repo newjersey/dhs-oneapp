@@ -16,6 +16,7 @@ oneapp-server/config/*.json
 !oneapp-server/config/custom-environment-variables.json
 !oneapp-server/config/default.json
 !oneapp-server/config/test.json
+!oneapp-server/config/production.json
 
 # Log files
 npm-debug.log*

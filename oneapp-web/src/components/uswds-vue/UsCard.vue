@@ -1,10 +1,9 @@
 <template>
     <div class="usa-card">
         <div class="usa-card__container" :class="[`bg-${bgVariant}`, `text-${textVariant}`, `border-${borderVariant}`]">
-
             <header class="usa-card__header">
                 <slot name="title">
-                    <h2 v-if="title" class="usa-card__heading">{{title}}</h2>
+                    <h2 v-if="title" class="usa-card__heading">{{ title }}</h2>
                 </slot>
             </header>
 
@@ -15,7 +14,6 @@
             <div class="usa-card__footer">
                 <slot name="footer"></slot>
             </div>
-
         </div>
     </div>
 </template>
@@ -24,7 +22,7 @@
 /**
  * USWDS card component
  * Supports a default slot for the body content, and a 'header' and 'footer' slot
- * @props 
+ * @props
  */
 export default {
     name: 'us-card',
@@ -44,12 +42,10 @@ export default {
         borderVariant: {
             type: String,
             default: 'light'
-        }                   
+        }
     },
     computed: {
-        
-        alertClass(){
-            
+        alertClass() {
             /*
 
 Card variants
@@ -68,14 +64,10 @@ usa-card__footer--exdent: Extends the footer element out over the card border. U
             let variant = '';
 
             return variant;
-
         }
     }
 };
 </script>
 <style lang="scss">
 // Fix some weird behaviors, questionable css in WSDS
-
 </style>
-
-

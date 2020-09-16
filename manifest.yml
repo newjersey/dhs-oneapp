@@ -1,0 +1,19 @@
+---
+applications:
+
+- name: usds-oneapp-staging-api
+  path: ./oneapp-server
+  random-route: true
+  memory: 256MB
+  env:
+    OPTIMIZE_MEMORY: true
+  services:
+    - oneapp-dev-db
+
+- name: usds-oneapp-staging-web
+  path: ./oneapp-web/dist
+  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
+  random-route: true
+  memory: 64MB
+  env:
+    FORCE_HTTPS: true

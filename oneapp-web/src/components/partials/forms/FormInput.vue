@@ -17,7 +17,7 @@
 
     <!-- Email -->
 
-    <form-input-text v-else-if="config.type == 'email'" v-model="currentValue" :config="{ ...config, rules: {required:true, email:true} }" />
+    <form-input-text v-else-if="config.type == 'email'" v-model="currentValue" :config="{ ...config, rules: { required: true, email: true } }" />
 
     <!-- Password -->
 
@@ -26,7 +26,7 @@
 
     <!-- Url -->
 
-    <form-input-masked-text v-else-if="config.type == 'url'" v-model="currentValue" :config="{ ...config, rules: {required:true, url:true} }" />
+    <form-input-masked-text v-else-if="config.type == 'url'" v-model="currentValue" :config="{ ...config, rules: { required: true, url: true } }" />
 
     <!-- Zip Code -->
 
@@ -45,7 +45,6 @@
     <div v-else class="w-100">
         <form-input-text v-model="currentValue" :config="{ ...config, disabled: true, placeholder: `ERROR: ${config.type} is a unknown form input type` }" />
     </div>
-
 </template>
 
 <script>
@@ -65,16 +64,16 @@ export default {
         FormInputSelect,
         FormInputMaskedText
     },
-    data(){
+    data() {
         return {
             // isUpdating, currentValue provided by the InputMixin
             passwordRules: {
-                required: true, 
-                alpha_num: true, 
-                min: {length: 8}, 
-                max: {length: 15}
+                required: true,
+                alpha_num: true,
+                min: { length: 8 },
+                max: { length: 15 }
             }
-        }
+        };
     },
     mixins: [ValueWatcherMixin],
     props: {

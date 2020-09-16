@@ -1,5 +1,3 @@
-
-
 <template>
     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
         <title>icon-https</title>
@@ -16,4 +14,3 @@ export default {
     name: 'icon-https'
 };
 </script>
-

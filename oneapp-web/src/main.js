@@ -11,8 +11,6 @@ import Notifications from './utils/Notifcations';
 import { UswdsVue } from './components/uswds-vue';
 //import VueI18n from 'vue-i18n';
 
-
-
 /*
 const messages= {
     en: {
@@ -35,5 +33,5 @@ Vue.config.productionTip = false;
 new Vue({
     router,
     store,
-    render: h => h(App)
+    render: (h) => h(App)
 }).$mount('#nj-oneapp-vue-container');

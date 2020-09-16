@@ -6,6 +6,7 @@
   "bin": "index.js",
   "private": true,
   "scripts": {
+    "start": "yarn serve",
     "serve": "node index.js",
     "serve:mock": "node index.js --mock | pino-pretty",
     "live": "nodemon index.js | pino-pretty",
@@ -17,6 +18,7 @@
   },
   "dependencies": {
     "apollo-server-express": "^2.17.0",
+    "cfenv": "^1.2.3",
     "config": "^3.3.1",
     "datasource-sql": "^1.3.0",
     "express": "^4.17.1",
@@ -44,5 +46,9 @@
     "pino-pretty": "^4.2.1",
     "pkg": "^4.4.9",
     "prettier-eslint-cli": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
   }
 }

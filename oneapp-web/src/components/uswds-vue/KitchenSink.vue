@@ -1,7 +1,6 @@
 <template>
     <div>
-
-        <hr/>
+        <hr />
 
         <h3>Buttons</h3>
 
@@ -11,13 +10,11 @@
         <us-button variant="outline-danger">A outline danger button (tbd)</us-button>
 
         <us-button variant="outline" block>A outline button with 100% width</us-button>
-
     </div>
 </template>
 
 <script>
-
 export default {
-    name: 'kitchen-sink',
+    name: 'kitchen-sink'
 };
 </script>

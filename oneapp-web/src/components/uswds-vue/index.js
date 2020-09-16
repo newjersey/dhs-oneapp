@@ -22,54 +22,52 @@ import UsCol from './layout/UsCol';
 import UsResponsiveInfo from './debug/UsResponsiveInfo';
 
 const Components = {
-	UsPill,
-	UsTag,
-	UsRow,
-	UsCol,
+    UsPill,
+    UsTag,
+    UsRow,
+    UsCol,
     UsAlert,
-	UsCard,
-	UsButton,
-	UsForm,
-	UsFormInput,
-	UsFormGroup,
-	UsComboBox,
-	UsImg,
-	UsHeader,
-	UsNavItem,
-	UsHeaderNav,
-	UsContainer,
-	UsOfficialHeader,
-	UsHeaderBrand,
-	UsFooter,
-	UsResponsiveInfo
-}
-
+    UsCard,
+    UsButton,
+    UsForm,
+    UsFormInput,
+    UsFormGroup,
+    UsComboBox,
+    UsImg,
+    UsHeader,
+    UsNavItem,
+    UsHeaderNav,
+    UsContainer,
+    UsOfficialHeader,
+    UsHeaderBrand,
+    UsFooter,
+    UsResponsiveInfo
+};
 
 /**
  * Install function to enable global install;
  * import { UswdsVue } from 'uswds-vue';
  * Vue.use(UswdsVue);
- * 
- * @param {*} Vue 
- * @param {*} config 
+ *
+ * @param {*} Vue
+ * @param {*} config
  */
 const UswdsVue = {
-	install(Vue, config={}) {	
-		
-		Object.keys(Components).forEach(name => {
-			Vue.component(name, Components[name]);
-		});
+    install(Vue, config = {}) {
+        Object.keys(Components).forEach((name) => {
+            Vue.component(name, Components[name]);
+        });
 
-		if (config.bootstrap){
-			// Layer in bootstrap utility styles...
-		}
-	}
-}
+        if (config.bootstrap) {
+            // Layer in bootstrap utility styles...
+        }
+    }
+};
 
 export { UswdsVue };
 
 if (typeof window !== 'undefined' && window.Vue) {
-	window.Vue.use(UswdsVue)
+    window.Vue.use(UswdsVue);
 }
 
 /**

@@ -6,13 +6,12 @@ const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
+
+// eslint-disable-next-line no-unused-vars
+const cfConfig = require('./cf.config.js'); // cfConfig must be first import to override config values with CloudFoundary values
 const dataSources = require('./db');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
-
-const PATH = '/';
-const PORT = 4000;
-
 const { typeDefs, resolvers, permissions } = require('./schema');
 
 // Build the schema
@@ -79,11 +78,12 @@ const server = new ApolloServer({
   // Mocks
   mocks: args.mock || false,
 });
-server.applyMiddleware({ app, path: PATH });
+server.applyMiddleware({ app, path: config.get('server.path') });
 
 // Start the server
-app.listen({ port: PORT }, () => {
-  logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${PORT}${server.graphqlPath}`);
+app.listen({ port: config.get('server.port') }, () => {
+  logger.info('Running OneApp GraphQL API server at: %s', `http://localhost:${config.get('server.port')}${server.graphqlPath}`);
+  logger.info('Database URL: %s:%d', config.get('database.host'), config.get('database.port'));
 });
 
 module.exports = server;

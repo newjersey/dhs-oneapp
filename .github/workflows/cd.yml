@@ -1,0 +1,25 @@
+name: Continuous Deployment (CD)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install CloudFoundary CLI
+      run: sudo apt-get install cf7-cli
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+
+    - name: Deploy to Cloud.gov
+      run: yarn deploy:cf

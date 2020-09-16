@@ -12,7 +12,6 @@
 </template>
 
 <script>
-
 /**
  * USWDS nav link component
  */
@@ -26,12 +25,12 @@ export default {
         },
         href: {
             type: String,
-            default: null            
-        },       
+            default: null
+        },
         to: {
             type: [String, Object],
-            default: null 
-        }         
+            default: null
+        }
     }
 };
 </script>

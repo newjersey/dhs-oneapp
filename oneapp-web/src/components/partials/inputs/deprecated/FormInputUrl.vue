@@ -21,7 +21,7 @@ import { ValidationProvider, extend } from 'vee-validate';
 import InputMixin from '@/components/mixins/InputMixin.js';
 
 // Custom url rul
-extend('url', str => {
+extend('url', (str) => {
     // eslint-disable-next-line
     let expression = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
     let regex = new RegExp(expression);
