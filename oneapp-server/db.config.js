@@ -4,13 +4,10 @@ const dbConfig = {
   client: 'oracledb',
 
   // Database connection string
-  // TODO: Use a config object per environment
   connection: {
-    host: config.get('database.host'),
-    port: config.get('database.port'),
     user: config.get('database.user'),
     password: config.get('database.pass'),
-    database: config.get('database.sid'),
+    connectString: `${config.get('database.host')}:${config.get('database.port')}/${config.get('database.sid')}`,
   },
 
   // Connection pool settings
