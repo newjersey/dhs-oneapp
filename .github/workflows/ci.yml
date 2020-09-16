@@ -73,7 +73,7 @@ jobs:
         node-version: 12.x
     
     - name: Login to Cloud.gov
-      run: cf login -a https://api.fr.cloud.gov -u ${{secrets.CF_DEPLOY_USER}} -p {{secrets.CF_DEPLOY_PASS}} -o ORG -s sandbox-hhs
+      run: cf login -a https://api.fr.cloud.gov -u ${{secrets.CF_DEPLOY_USER}} -p ${{secrets.CF_DEPLOY_PASS}} -o ORG -s sandbox-hhs
 
     - name: Deploy to Cloud.gov
       run: yarn deploy:cf
