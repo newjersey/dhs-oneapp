@@ -20,7 +20,9 @@
     "test": "yarn run test:server",
     "serve": "yarn run serve:web",
     "dist": "yarn run pkg:server",
-    "deploy:cf": "yarn run install:web && yarn run build:web:staging && cf push"
+    "deploy:cf:api": "cf push usds-oneapp-staging-api --strategy rolling",
+    "deploy:cf:web": "yarn run install:web && yarn run build:web:staging && cf push usds-oneapp-staging-web --strategy rolling",
+    "deploy:cf": "yarn run deploy:cf:api && yarn run deploy:cf:web"
   },
   "dependencies": {},
   "devDependencies": {
