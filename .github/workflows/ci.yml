@@ -52,7 +52,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     # Only deploy from the main branch
-    if: ${{ github.ref == 'main' }}
+    if: ${{ github.ref == 'refs/heads/main' }}
 
     steps:
     - name: Install CloudFoundary CLI
