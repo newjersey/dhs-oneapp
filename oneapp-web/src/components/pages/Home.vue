@@ -1,6 +1,5 @@
 <template>
     <div id="HomePage">
-
         <!-- TOP HERO -->
 
         <section>
@@ -8,8 +7,8 @@
                 <us-row align-v="start" v-t>
                     <us-col class="top-hero-text">
                         <h1 class="mb-4">Apply for New Jersey social services</h1>
-                        <p class="mb-4 " >Get food or cash assistance through one application.</p>
-                        <us-button variant="primary" block="sm" size="lg" :to="{ name: 'apply' }"  >Apply now</us-button>
+                        <p class="mb-4">Get food or cash assistance through one application.</p>
+                        <us-button variant="primary" block="sm" size="lg" :to="{ name: 'apply' }">Apply now</us-button>
                         <p>Already started an application? <us-button variant="link" :to="{ name: 'login' }">Sign in</us-button></p>
                     </us-col>
                     <us-col class="d-none d-lg-block d-xl-block pt-3">
@@ -21,12 +20,11 @@
 
         <!-- PROGRAMS HERO -->
 
-        <section style="background-color:white">
+        <section style="background-color: white">
             <us-container>
+                <h2 style="color: #004877; margin-bottom: 23px">Programs you can apply for:</h2>
 
-                <h2 style="color:#004877; margin-bottom:23px">Programs you can apply for:</h2>
-
-                <div style="background-color:#004877" class="text-white pl-4 pr-4 pt-5 pb-4">
+                <div style="background-color: #004877" class="text-white pl-4 pr-4 pt-5 pb-4">
                     <us-row gutter="lg">
                         <us-col md="6">
                             <h2 class="text-bold">Food Assistance</h2>
@@ -34,7 +32,7 @@
                             <p class="mt-0">Money for food at supermarkets, farmer’s markets, and other approved stores</p>
                         </us-col>
                         <us-col class="d-md-none">
-                            <hr style="border-color:rgba(255,255,255,0.45);" />
+                            <hr style="border-color: rgba(255, 255, 255, 0.45)" />
                         </us-col>
                         <us-col md="6">
                             <h2 class="text-bold">Cash Assistance</h2>
@@ -55,7 +53,7 @@
 
         <!-- STEPS HERO -->
 
-        <section style="background-color:#F2F2F2">
+        <section style="background-color: #f2f2f2">
             <us-container class="text-center text-md-left">
                 <h2>What are the steps?</h2>
 
@@ -92,12 +90,11 @@
             </us-container>
         </section>
 
-
         <!-- CHECK STATUS HERO -->
 
-        <section style="background-color:white">
+        <section style="background-color: white">
             <us-container>
-                <h2 style="margin-bottom:19px">Already completed your application?</h2>
+                <h2 style="margin-bottom: 19px">Already completed your application?</h2>
                 <us-row>
                     <us-col md="6">
                         <p>Upload requested documents to your county</p>
@@ -110,7 +107,6 @@
                 </us-row>
             </us-container>
         </section>
-                
     </div>
 </template>
 
@@ -126,7 +122,6 @@ export default {
 </script>
 <style lang="scss">
 #HomePage {
-    
     .top-hero-text {
         //padding-top: 66px;
         //background-repeat: no-repeat;

@@ -19,7 +19,7 @@ const baseInputMixin = {
                     name: '',
                     label: '',
                     // validationMode, @see https://logaretm.github.io/vee-validate/guide/interaction-and-ux.html#interaction-modes
-                    validationMode: 'aggressive', 
+                    validationMode: 'aggressive',
                     rules: 'required',
                     placeholder: null,
                     description: null
@@ -51,10 +51,9 @@ const baseInputMixin = {
     },
     created() {},
     mounted() {
-
         this.opts = this.config;
 
-         // validate on blur, default validates on input and blur
+        // validate on blur, default validates on input and blur
         //this.opts.validationMode = 'lazy';
 
         // If a config object is NOT passed in as a prop, map to
@@ -89,10 +88,9 @@ const baseInputMixin = {
         }
 
         // Special case, to allow for password-confirmation vee-validate needs a 'vid' to target
-        if (this.config.type == 'password'){
-            this.vid = "pwdConfirmedVid";
-        }
-        else {
+        if (this.config.type == 'password') {
+            this.vid = 'pwdConfirmedVid';
+        } else {
             this.vid = 'vid-' + this.divId;
         }
 
@@ -104,7 +102,6 @@ const baseInputMixin = {
          */
         __onInputChanged() {
             try {
-
                 // Note that we're updating, so the watcher won't respond
                 this.isUpdating = true;
 
@@ -116,8 +113,7 @@ const baseInputMixin = {
                 this.$nextTick(() => {
                     this.isUpdating = false;
                 });
-            }
-            catch(err){
+            } catch (err) {
                 this.$logError('Error in InputMixin; ', err);
             }
         },

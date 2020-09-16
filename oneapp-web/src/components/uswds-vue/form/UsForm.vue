@@ -1,5 +1,5 @@
 <template>
-    <form class="usa-form" @submit.stop.prevent="doSubmit" novalidate :class="{'usa-form--large':size=='lg'}">
+    <form class="usa-form" @submit.stop.prevent="doSubmit" novalidate :class="{ 'usa-form--large': size == 'lg' }">
         <slot></slot>
     </form>
 </template>
@@ -17,6 +17,6 @@ export default {
         async doSubmit() {
             this.$emit('submit');
         }
-    }    
+    }
 };
 </script>

@@ -1,14 +1,6 @@
 <template>
     <validation-provider tag="div" :rules="{ 'required|email': opts.required }" :name="opts.name" :vid="vid" v-slot="v">
-        
-        <us-form-group 
-            :label="opts.label" 
-            :label-sr-only="opts.hideLabel" 
-            :label-for="divId" 
-            :description="opts.description" 
-            :error="v.errors[0]"
-            label-class="oneapp-form-label">
-
+        <us-form-group :label="opts.label" :label-sr-only="opts.hideLabel" :label-for="divId" :description="opts.description" :error="v.errors[0]" label-class="oneapp-form-label">
             <us-form-input
                 :id="divId"
                 :name="opts.name"
@@ -18,9 +10,7 @@
                 :placeholder="opts.placeholder"
                 :state="getValidationState(v)"
             ></us-form-input>
-
         </us-form-group>
-
     </validation-provider>
 </template>
 

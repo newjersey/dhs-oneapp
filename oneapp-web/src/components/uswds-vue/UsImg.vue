@@ -1,4 +1,3 @@
-
 <template>
     <img :src="value" />
 </template>

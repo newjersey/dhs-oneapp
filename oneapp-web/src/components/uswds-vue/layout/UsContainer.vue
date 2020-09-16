@@ -8,7 +8,7 @@
 /**
  * USWDS extendions: container component
  * This provides a centered container content with a width based on current breakpoint
- * @props 
+ * @props
  */
 export default {
     name: 'us-container',
@@ -17,16 +17,14 @@ export default {
             type: String,
             default: 'full'
         }
-    }   
+    }
 };
 </script>
 <style lang="scss">
-
-@import "@/styles/uswds-vue/variables.scss";
+@import '@/styles/uswds-vue/variables.scss';
 
 // Layer in some styles to help standardize
 .grid-container {
-    
     .fluid {
         width: 100%;
         margin-left: auto;
@@ -40,7 +38,7 @@ export default {
     .fluid-sm {
         max-width: map-get($grid-breakpoints, 'sm');
     }
-    
+
     .fluid-md {
         max-width: map-get($grid-breakpoints, 'md');
     }
@@ -52,8 +50,5 @@ export default {
     .fluid-xl {
         max-width: map-get($grid-breakpoints, 'xl');
     }
-
 }
 </style>
-
-

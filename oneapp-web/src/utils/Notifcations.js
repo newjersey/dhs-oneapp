@@ -10,7 +10,7 @@ var Notifications = {};
  *      append: The number of milliseconds before the toast auto dismisses itself
  *      autoHideDelay: The number of milliseconds before the toast auto dismisses itself
  */
-Notifications.install = function(Vue, options) {
+Notifications.install = function (Vue, options) {
     // Process default options...
     let defaults = {
         title: 'Message',
@@ -27,7 +27,7 @@ Notifications.install = function(Vue, options) {
         return type;
     }
 
-    Vue.notify = Vue.prototype.$notify = function(opts) {
+    Vue.notify = Vue.prototype.$notify = function (opts) {
         let options = {
             text: opts.text ? opts.text : '',
             variant: opts.type ? typeToVariant(opts.type) : defaults.type,
@@ -49,7 +49,7 @@ Notifications.install = function(Vue, options) {
         }
     };
 
-    Vue.confirm = Vue.prototype.$confirm = function(txt, callback) {
+    Vue.confirm = Vue.prototype.$confirm = function (txt, callback) {
         if (this.$bvModal.msgBoxConfirm) {
             this.$bvModal
                 .msgBoxConfirm(txt, {

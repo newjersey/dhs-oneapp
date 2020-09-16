@@ -1,21 +1,16 @@
 <template>
-    <div class="usa-combo-box mt-1" 
+    <div
+        class="usa-combo-box mt-1"
         :data-default-value="currentValue"
         :data-placeholder="placeholder"
         :class="{
             'usx-error': valid === false,
             'usx-success': valid === true
-        }">        
-        <select 
-            class="usa-select" 
-            v-if="options"
-            v-model="currentValue" 
-            :name="name" 
-            :id="divId"                     
-            :disabled="disabled"            
-        >
+        }"
+    >
+        <select class="usa-select" v-if="options" v-model="currentValue" :name="name" :id="divId" :disabled="disabled">
             <option v-for="(opt, index) in options" :key="index" :value="opt.value">
-                {{opt.label}}
+                {{ opt.label }}
             </option>
         </select>
     </div>
@@ -30,8 +25,8 @@ export default {
         },
         divId: {
             type: String,
-            default(){
-                return `id-` + Math.floor(100 + Math.random()*10000);
+            default() {
+                return `id-` + Math.floor(100 + Math.random() * 10000);
             }
         },
         disabled: {
@@ -41,7 +36,7 @@ export default {
         valid: {
             type: Boolean,
             default: null
-        },        
+        },
         name: {
             type: String,
             default: ''
@@ -63,11 +58,11 @@ export default {
             default: null
         },
         // Requires options in array of [value, label]
-        // TODO: 
+        // TODO:
         options: {
             type: Array,
             default: null
-        }      
+        }
     },
     data() {
         return {
@@ -87,57 +82,52 @@ export default {
             }
         }
     },
-    mounted(){
+    mounted() {
         this.init();
     },
     methods: {
-        
         /**
-         * Update internal value for v-model (currentValue) from what (if anything) was passed in 
+         * Update internal value for v-model (currentValue) from what (if anything) was passed in
          * from parent as the v-model
          */
-        init() {                   
-            if (this.value){
-                this.isUpdating = false;      
+        init() {
+            if (this.value) {
+                this.isUpdating = false;
                 this.currentValue = this.value;
                 this.$nextTick(() => {
                     this.isUpdating = false;
                 });
             }
         }
-    }    
+    }
 };
 </script>
 <style lang="scss">
-    
-    .usa-combo-box {
-
-        input {
-            // Fix margin bug when using validation classes
-            margin-top: 0;
-        }
-
-        &.usx-success {
-            input {
-                border-width: 0.25rem;
-                border-color: #00a91c;
-                border-style: solid;
-            }
-        }
-        
-        &.usx-error {
-            input {
-                border-width: 0.25rem;
-                border-color: #b50909;
-                border-style: solid;
-            }
-        }
-
-        .usa-select {
-            // Fix height bug in uswds
-            height: auto;
-        }
-
+.usa-combo-box {
+    input {
+        // Fix margin bug when using validation classes
+        margin-top: 0;
     }
 
+    &.usx-success {
+        input {
+            border-width: 0.25rem;
+            border-color: #00a91c;
+            border-style: solid;
+        }
+    }
+
+    &.usx-error {
+        input {
+            border-width: 0.25rem;
+            border-color: #b50909;
+            border-style: solid;
+        }
+    }
+
+    .usa-select {
+        // Fix height bug in uswds
+        height: auto;
+    }
+}
 </style>

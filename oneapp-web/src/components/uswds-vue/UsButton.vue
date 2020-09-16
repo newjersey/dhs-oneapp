@@ -1,6 +1,6 @@
 <template>
-    <button 
-        class="usa-button" 
+    <button
+        class="usa-button"
         @click="onClick()"
         :type="type"
         :aria-label="ariaLabel"
@@ -8,13 +8,15 @@
         :aria-controls="ariaControls"
         :title="title"
         :disabled="disabled || isLoading"
-        :class="[buttonClass, {
-            'usa-button--big': size == 'lg',
-            'display-block': (block)
-        }]">
-        <slot name="default">
-            Button
-        </slot>
+        :class="[
+            buttonClass,
+            {
+                'usa-button--big': size == 'lg',
+                'display-block': block
+            }
+        ]"
+    >
+        <slot name="default"> Button </slot>
         <i class="fas fa-spinner fa-spin ml-1" v-if="isLoading"></i>
     </button>
 </template>
@@ -23,11 +25,11 @@
 /**
  * USWDS button component
  * Supports a default slot for the body content, and a 'header' slot for title.
- * @props 
+ * @props
  *    variant (string): info, error|danger, success, warning|warn
  *    size (string): normal (default), small|slim
  *    noIcon (bool): false (default), true
- *    title (string): 
+ *    title (string):
  */
 export default {
     name: 'us-button',
@@ -35,19 +37,19 @@ export default {
         variant: {
             type: String,
             default: 'info'
-        },       
+        },
         block: {
             type: String,
             default: null
-        }, 
+        },
         type: {
             type: String,
             default: 'button'
-        },               
+        },
         title: {
             type: String,
             default: ''
-        },        
+        },
         // Size; lg
         size: {
             type: String,
@@ -63,51 +65,45 @@ export default {
         },
         ariaLabel: {
             type: String,
-            default: ''            
+            default: ''
         },
         href: {
             type: String,
-            default: null            
+            default: null
         },
         target: {
             type: String,
-            default: "_self"            
-        },        
+            default: '_self'
+        },
         to: {
             type: [String, Object],
-            default: null 
+            default: null
         },
         disabled: {
             type: Boolean,
             default: false
-        },         
+        },
         isLoading: {
             type: Boolean,
             default: false
-        }             
+        }
     },
     computed: {
-        buttonClass(){
-            
+        buttonClass() {
             let txt = '';
 
             // Deal with block sizing (setting as full width)
-            if (this.block == 'sm'){
+            if (this.block == 'sm') {
                 txt += `width-full tablet:width-auto desktop:width-auto desktop-lg:width-auto`;
-            }
-            else if (this.block == 'md'){
+            } else if (this.block == 'md') {
                 txt += `width-auto tablet:width-full`;
-            }
-            else if (this.block == 'lg'){
+            } else if (this.block == 'lg') {
                 txt += `width-auto desktop:width-full`;
-            }
-            else if (this.block == 'xl'){
+            } else if (this.block == 'xl') {
                 txt += `width-auto desktop-lg:width-full`;
-            }                
-            else if (this.block){
+            } else if (this.block) {
                 txt += 'width-full';
             }
-
 
             /*
             'usa-button--default': variant == 'primary',
@@ -119,54 +115,79 @@ export default {
             'usa-button--unstyled': variant == 'link'
 
             */
-        
-            switch (this.variant){
 
-                case 'link': txt += "usa-button--unstyled"; break;
+            switch (this.variant) {
+                case 'link':
+                    txt += 'usa-button--unstyled';
+                    break;
 
-                case 'primary': txt += 'usa-button--default '; break;
-                case 'secondary': txt += 'usa-button--base '; break;
-                case 'error': 
-                case 'danger': txt += 'usa-button--secondary '; break;
-                case 'success': txt += 'usx-btn-success '; break;
+                case 'primary':
+                    txt += 'usa-button--default ';
+                    break;
+                case 'secondary':
+                    txt += 'usa-button--base ';
+                    break;
+                case 'error':
+                case 'danger':
+                    txt += 'usa-button--secondary ';
+                    break;
+                case 'success':
+                    txt += 'usx-btn-success ';
+                    break;
                 case 'warn':
-                case 'warning': txt += 'usx-btn-warning '; break;
-                case 'info': txt += 'usa-button--accent-cool '; break;
+                case 'warning':
+                    txt += 'usx-btn-warning ';
+                    break;
+                case 'info':
+                    txt += 'usa-button--accent-cool ';
+                    break;
 
-                case 'inverse': txt += "usa-button--outline usa-button--inverse"; break;
+                case 'inverse':
+                    txt += 'usa-button--outline usa-button--inverse';
+                    break;
 
-                case 'outline-primary': txt += 'usa-button--outline usx-btn-outline-primary '; break;
-                case 'outline-secondary': txt += 'usx-btn-outline usx-btn-outline-secondary '; break;
-                case 'outline-error': 
-                case 'outline-danger': txt += 'usx-btn-outline usx-btn-outline-danger '; break;
-                case 'outline-success': txt += 'usx-btn-outline usx-btn-outline-success '; break;
-                case 'outline-warn': 
-                case 'outline-warning': txt += 'usx-btn-outline usx-btn-outline-warning '; break;
-                case 'outline-info': txt += 'usx-btn-outline usx-btn-outline-info '; break;
+                case 'outline-primary':
+                    txt += 'usa-button--outline usx-btn-outline-primary ';
+                    break;
+                case 'outline-secondary':
+                    txt += 'usx-btn-outline usx-btn-outline-secondary ';
+                    break;
+                case 'outline-error':
+                case 'outline-danger':
+                    txt += 'usx-btn-outline usx-btn-outline-danger ';
+                    break;
+                case 'outline-success':
+                    txt += 'usx-btn-outline usx-btn-outline-success ';
+                    break;
+                case 'outline-warn':
+                case 'outline-warning':
+                    txt += 'usx-btn-outline usx-btn-outline-warning ';
+                    break;
+                case 'outline-info':
+                    txt += 'usx-btn-outline usx-btn-outline-info ';
+                    break;
 
-                default: txt += 'usa-button--base ';
+                default:
+                    txt += 'usa-button--base ';
             }
-        
 
             return txt;
         }
     },
     methods: {
-        onClick(){
+        onClick() {
             // If this is a link, go to that link
-            if (this.href){
-                if (this.target == '_self'){
+            if (this.href) {
+                if (this.target == '_self') {
                     window.location.replace(this.href);
-                }
-                else {
+                } else {
                     window.open(this.href, this.target);
                 }
-            }            
-            // if there is a 'to' prop, and vue-router is being used, go to the route
-            else if (this.to && this.$router){
-                this.$router.push(this.to);
             }
-            else {
+            // if there is a 'to' prop, and vue-router is being used, go to the route
+            else if (this.to && this.$router) {
+                this.$router.push(this.to);
+            } else {
                 // Bubble up the button click
                 this.$emit('click');
             }
@@ -175,14 +196,12 @@ export default {
 };
 </script>
 <style lang="scss">
-
-@import "@/styles/uswds-vue/core.scss";
-@import "@/styles/uswds-vue/variables.scss";
-@import "@/styles/uswds-vue/functions.scss";
-@import "@/styles/uswds-vue/colors.scss";
+@import '@/styles/uswds-vue/core.scss';
+@import '@/styles/uswds-vue/variables.scss';
+@import '@/styles/uswds-vue/functions.scss';
+@import '@/styles/uswds-vue/colors.scss';
 
 .usa-button {
-
     &.usx-btn-success {
         font-weight: bold;
         border-color: map-get($theme-border-colors, 'success');
@@ -200,7 +219,7 @@ export default {
         color: white;
         &:hover {
             background-color: darken(map-get($theme-colors, 'warning'), 10%);
-        }        
+        }
     }
 
     &.usx-btn-outline {
@@ -230,7 +249,7 @@ export default {
         color: map-get($theme-colors, 'danger');
         box-shadow: inset 0 0 0 2px map-get($theme-colors, 'indangerfo') !important;
     }
-    
+
     &.usx-btn-outline-warning {
         color: map-get($theme-colors, 'warning');
         box-shadow: inset 0 0 0 2px map-get($theme-colors, 'warning') !important;
@@ -240,7 +259,5 @@ export default {
         color: map-get($theme-colors, 'success');
         box-shadow: inset 0 0 0 2px map-get($theme-colors, 'success') !important;
     }
-
 }
-
 </style>

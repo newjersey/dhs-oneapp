@@ -1,6 +1,5 @@
 <template>
     <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
-        
         <h2 v-if="config[step].title">{{ config[step].title }}</h2>
 
         <us-row class="p-0">
@@ -71,7 +70,7 @@
                 <us-button type="button" variant="primary" class="mr-2" @click="onBack()" :disabled="step == 0"><i class="fas fa-arrow-circle-left"></i> Back</us-button>
 
                 <us-button type="submit" variant="primary" class="mr-2" @click="onNext()" v-if="step < noSteps - 1">Next <i class="fas fa-arrow-circle-right"></i></us-button>
-                
+
                 <us-button type="submit" variant="primary" class="mr-2" v-else>Submit</us-button>
 
                 <us-button type="button" variant="outline-primary" @click="onNext()">Skip</us-button>

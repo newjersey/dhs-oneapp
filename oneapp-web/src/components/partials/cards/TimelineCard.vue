@@ -1,6 +1,6 @@
 <template>
     <section class="timeline-card">
-        <div class="time-pill">{{number}}</div>
+        <div class="time-pill">{{ number }}</div>
         <div class="card-body">
             <h3 v-t>{{ title }}</h3>
             <slot></slot>
@@ -19,7 +19,7 @@ export default {
         number: {
             type: [String, Number],
             default: 1
-        },        
+        },
         variant: {
             type: String,
             default: 'info'
@@ -29,7 +29,6 @@ export default {
 </script>
 <style lang="scss">
 .timeline-card {
-    
     //margin-top: 30px;
     //margin-bottom: 30px;
 
@@ -38,7 +37,7 @@ export default {
     margin-right: 30px;
 
     background-color: transparent;
-    border-left: 8px solid #CCCCCC;
+    border-left: 8px solid #cccccc;
 
     .time-pill {
         position: relative;
@@ -48,18 +47,17 @@ export default {
         height: 36px;
         width: 36px;
         color: white;
-        border: 4px solid #FFFFFF;
+        border: 4px solid #ffffff;
         border-radius: 18px;
         background-color: #757575;
         display: inline-block;
         font-size: 16px;
         font-weight: bold;
         line-height: 1.8em;
-        text-align: center;        
+        text-align: center;
     }
 
     .card-body {
-
         margin-top: -70px;
         padding-top: 10px;
         padding-bottom: 20px;

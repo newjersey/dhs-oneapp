@@ -1,4 +1,3 @@
-
 <template>
     <svg
         version="1.1"
@@ -31,10 +30,10 @@
 </template>
 
 <script>
-import UsIcon from "./UsIcon";
+import UsIcon from './UsIcon';
 
 export default {
     name: 'icon-flag-small',
-    component: {UsIcon}
+    component: { UsIcon }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
-    <input 
-        class="usa-input" 
+    <input
+        class="usa-input"
         :name="name"
         :id="divId"
         v-model="currentValue"
@@ -11,7 +11,7 @@
             'usa-input--error': valid === false,
             'usa-input--success': valid === true
         }"
-    />        
+    />
 </template>
 <script>
 export default {
@@ -22,8 +22,8 @@ export default {
         },
         divId: {
             type: String,
-            default(){
-                return `id-` + Math.floor(100 + Math.random()*10000);
+            default() {
+                return `id-` + Math.floor(100 + Math.random() * 10000);
             }
         },
         disabled: {
@@ -33,7 +33,7 @@ export default {
         valid: {
             type: Boolean,
             default: null
-        },        
+        },
         name: {
             type: String,
             default: ''
@@ -53,7 +53,7 @@ export default {
         description: {
             type: String,
             default: null
-        }       
+        }
     },
     data() {
         return {
@@ -82,6 +82,6 @@ export default {
                 this.isUpdating = false;
             });
         }
-    }    
+    }
 };
 </script>

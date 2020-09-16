@@ -1,16 +1,15 @@
 <template>
-    <validation-provider tag="div" :rules="opts.rules"  :name="opts.name" :vid="vid" v-slot="v">
-           
-        <us-form-group 
-            :label="opts.label" 
+    <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v">
+        <us-form-group
+            :label="opts.label"
             :helpText="opts.help"
-            :label-sr-only="opts.hideLabel" 
-            :label-for="divId" 
+            :label-sr-only="opts.hideLabel"
+            :label-for="divId"
             :error="opts.error || v.errors[0]"
-            label-class="oneapp-form-label">
-            
-            <template v-slot:validation-error="{error}">
-                <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{error}}</span>
+            label-class="oneapp-form-label"
+        >
+            <template v-slot:validation-error="{ error }">
+                <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{ error }}</span>
             </template>
 
             <us-combo-box
@@ -22,9 +21,7 @@
                 :placeholder="opts.placeholder"
                 :valid="getValidationState(v)"
             ></us-combo-box>
-
         </us-form-group>
- 
     </validation-provider>
 </template>
 
@@ -41,7 +38,7 @@ export default {
     props: {
         // value, required, disabled, name, label, placeholder, description, hideLabel
         // provided by the InputMixin
-    },   
+    },
     mounted() {},
     data() {
         // divId, isUpdating, vid, currentValue, inputName
