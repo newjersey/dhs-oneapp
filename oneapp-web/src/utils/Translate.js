@@ -17,7 +17,6 @@ var Translate = {};
  * @param {object} options Pass in the 2-letter iso-code for the locale, or set dynamically later.
  */
 Translate.install = function (Vue, options) {
-
     let watchers = [];
     let fuse = null;
     let missingList = [];
@@ -28,16 +27,18 @@ Translate.install = function (Vue, options) {
 
     const messages = {
         en: {
-            h0: 'Apply for New Jersey social services',
-            h1: 'Already started an application?',
-            h2: 'Sign In',
-            h3: 'Get food or cash assistance through one application'
+            home_0: 'Apply for New Jersey social services',
+            home_1: 'Already started an application?',
+            home_2: 'Sign In',
+            home_3: 'Get food or cash assistance through one application',
+            login_1: 'Password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.'
         },
         es: {
-            h0: 'Solicitar servicios sociales de Nueva Jersey',
-            h1: '¿Ya comenzó una aplicación?',
-            h2: 'Iniciar sesión',
-            h3: 'Obtenga asistencia alimentaria o en efectivo a través de una solicitud.'
+            home_0: 'Solicitar servicios sociales de Nueva Jersey',
+            home_1: '¿Ya comenzó una aplicación?',
+            home_2: 'Iniciar sesión',
+            home_3: 'Obtenga asistencia alimentaria o en efectivo a través de una solicitud.',
+            login_1: 'La contraseña debe tener de 8 a 15 caracteres, contener al menos una letra y un número. No se permiten caracteres especiales ni espacios.'
         }
     };
 
@@ -51,18 +52,18 @@ Translate.install = function (Vue, options) {
         });
     }
 
-    console.log(msgHash)
+    console.log(msgHash);
 
     // Create indexed string lookup
     const opts = {
         keys: ['txt'],
         includeScore: true,
         shouldSort: true,
-        // threshold: At what point does the match algorithm give up. A threshold of 0.0 requires 
+        // threshold: At what point does the match algorithm give up. A threshold of 0.0 requires
         // a perfect match (of both letters and location), a threshold of 1.0 would match anything.
         threshold: 0.1,
-        sortFn: (a,b) => {
-            return (a.score > b.score) ? -1 : 1;
+        sortFn: (a, b) => {
+            return a.score > b.score ? -1 : 1;
         }
     };
 
@@ -87,11 +88,9 @@ Translate.install = function (Vue, options) {
     // ///////////////////////////////////////////////////////////////////////////////////////
 
     const _findMessage = function (val) {
-
         let matches = fuse.search(val);
 
         if (matches && matches.length > 0) {
-
             console.log(`MATCH: "${val}"`, matches);
 
             return matches[0].item;
@@ -102,14 +101,13 @@ Translate.install = function (Vue, options) {
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
-    const _translateElement = function(el, depth){
-
-        if (!depth){
+    const _translateElement = function (el, depth) {
+        if (!depth) {
             depth = 0;
         }
 
         // Get the div text, but only for the parent but ignore child nodes
-        let val = (el.firstChild) ? el.firstChild.data : null;
+        let val = el.firstChild ? el.firstChild.data : null;
         let key = el.dataset.translateKey;
 
         //console.log(`[${depth}] element txt = "${val}"`);
@@ -120,8 +118,7 @@ Translate.install = function (Vue, options) {
             el.dataset.translateKey = key;
             // Start watching this element and update
             watchers.push(el);
-        }
-        else if (!val){
+        } else if (!val) {
             key = 'no-data';
             el.dataset.translateKey = key;
         }
@@ -146,14 +143,13 @@ Translate.install = function (Vue, options) {
 
         var children = el.children;
         for (var i = 0; i < children.length; i++) {
-
             // Translate the child element, unless it has a translate directive on it already!
-            if (!children[i].attributes['data-translate-key']){
+            if (!children[i].attributes['data-translate-key']) {
                 //console.log(`[${depth}] Child ${children[i].className} ${i}`, children[i].attributes);
-                _translateElement(children[i], depth+1);
+                _translateElement(children[i], depth + 1);
             }
         }
-    }
+    };
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
@@ -191,7 +187,7 @@ Translate.install = function (Vue, options) {
 
     // ///////////////////////////////////////////////////////////////////////////////////////
 
-    Vue.setLocale = Vue.prototype.$setLocale = newLocale => {
+    Vue.setLocale = Vue.prototype.$setLocale = (newLocale) => {
         //console.log(`Setting locale from ${locale} to ${newLocale}`)
         previousLocale = locale;
         locale = newLocale;

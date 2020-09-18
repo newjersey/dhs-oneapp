@@ -1,10 +1,10 @@
 var Logger = {};
 
-Logger.install = function(Vue, options) {
+Logger.install = function (Vue, options) {
     var level = 'debug';
     var logLevel = 0;
 
-    var __getConsoleLevel = function(levelString) {
+    var __getConsoleLevel = function (levelString) {
         switch (levelString) {
             case 'debug':
                 return 'log';
@@ -23,7 +23,7 @@ Logger.install = function(Vue, options) {
         return 'log';
     };
 
-    var __getLevel = function(levelString) {
+    var __getLevel = function (levelString) {
         var log_level = 1;
 
         switch (levelString) {
@@ -50,7 +50,7 @@ Logger.install = function(Vue, options) {
         return log_level;
     };
 
-    var __updateNumericLogLevel = function() {
+    var __updateNumericLogLevel = function () {
         switch (level) {
             case 'debug':
                 logLevel = 1;
@@ -91,7 +91,7 @@ Logger.install = function(Vue, options) {
 	};
     */
 
-    var __message = function(ctx, args, level) {
+    var __message = function (ctx, args, level) {
         if (__getLevel(level) < logLevel || typeof console === 'undefined') {
             return;
         }
@@ -118,23 +118,23 @@ Logger.install = function(Vue, options) {
         __updateNumericLogLevel();
     }
 
-    Vue.log = Vue.prototype.$log = function() {
+    Vue.log = Vue.prototype.$log = function () {
         __message(this, Array.from(arguments), 'debug');
     };
 
-    Vue.logDebug = Vue.prototype.$logDebug = function() {
+    Vue.logDebug = Vue.prototype.$logDebug = function () {
         __message(this, Array.from(arguments), 'debug');
     };
 
-    Vue.logInfo = Vue.prototype.$logInfo = function() {
+    Vue.logInfo = Vue.prototype.$logInfo = function () {
         __message(this, Array.from(arguments), 'info');
     };
 
-    Vue.logWarn = Vue.prototype.$logWarn = function() {
+    Vue.logWarn = Vue.prototype.$logWarn = function () {
         __message(this, Array.from(arguments), 'warn');
     };
 
-    Vue.logError = Vue.prototype.$logError = function() {
+    Vue.logError = Vue.prototype.$logError = function () {
         __message(this, Array.from(arguments), 'error');
     };
 };

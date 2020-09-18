@@ -1,10 +1,8 @@
 <template>
-    <div 
-        class="usa-alert m-0" 
-        :class="[alertClass, {'usa-alert--slim': size=='sm', 'usa-alert--no-icon': noIcon, 'no-border': noBorder}]">
-        <div class="usa-alert__body ">
+    <div class="usa-alert m-0" :class="[alertClass, { 'usa-alert--slim': size == 'sm', 'usa-alert--no-icon': noIcon, 'no-border': noBorder }]">
+        <div class="usa-alert__body">
             <slot name="header">
-                <h3 class="usa-alert__heading" v-if="title">{{title}}</h3>
+                <h3 class="usa-alert__heading" v-if="title">{{ title }}</h3>
             </slot>
             <p class="usa-alert__text">
                 <slot name="default">
@@ -19,11 +17,11 @@
 /**
  * USWDS alert component
  * Supports a default slot for the body content, and a 'header' slot for title.
- * @props 
+ * @props
  *    variant (string): info, error|danger, success, warning|warn
  *    size (string): normal (default), small|slim
  *    noIcon (bool): false (default), true
- *    title (string): 
+ *    title (string):
  */
 export default {
     name: 'us-alert',
@@ -31,15 +29,15 @@ export default {
         variant: {
             type: String,
             default: 'info'
-        },           
+        },
         noIcon: {
             type: Boolean,
             default: false
-        },     
+        },
         noBorder: {
             type: Boolean,
             default: false
-        },           
+        },
         // Size; normal, small (aka slim)
         size: {
             type: String,
@@ -51,56 +49,50 @@ export default {
         }
     },
     computed: {
-        alertClass(){
-            
+        alertClass() {
             let variant = '';
 
-            switch (this.variant){
-                case 'error': 
-                case 'danger': 
-                    variant = 'usa-alert--error'; 
+            switch (this.variant) {
+                case 'error':
+                case 'danger':
+                    variant = 'usa-alert--error';
                     break;
-                case 'success': 
-                    variant = 'usa-alert--success'; 
+                case 'success':
+                    variant = 'usa-alert--success';
                     break;
                 case 'warn':
                 case 'warning':
-                    variant = 'usa-alert--warning'; 
+                    variant = 'usa-alert--warning';
                     break;
-                case 'info': 
-                    variant = 'usa-alert--info'; 
+                case 'info':
+                    variant = 'usa-alert--info';
                     break;
-                case 'primary': 
+                case 'primary':
                     variant = 'usa-alert--info bg-light text-dark';
-                    break;                    
-                default: 
-                    variant = 'usa-alert--info'; 
+                    break;
+                default:
+                    variant = 'usa-alert--info';
                     break;
             }
 
-            
-
-            if (this.size == 'small' || this.size == 'slim'){
+            if (this.size == 'small' || this.size == 'slim') {
                 variant += ' usa-alert--slim';
             }
 
-            if (this.noIcon){
+            if (this.noIcon) {
                 variant += ' usa-alert--no-icon';
             }
 
             return variant;
-
         }
-    }    
+    }
 };
 </script>
 <style lang="scss">
-
-
 .usa-alert {
     &.no-border::before {
         background-color: transparent;
-    }    
+    }
 }
 
 /*

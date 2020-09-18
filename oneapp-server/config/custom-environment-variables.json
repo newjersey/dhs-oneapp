@@ -1,8 +1,12 @@
 {
     "database": {
         "host": "DB_HOST",
+        "port": "DB_PORT",
         "user": "DB_USER",
         "pass": "DB_PASS",
         "sid": "DB_SID"
+    },
+    "server": {
+        "port": "PORT"
     }
 }

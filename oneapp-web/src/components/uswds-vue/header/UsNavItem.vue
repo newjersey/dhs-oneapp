@@ -7,7 +7,6 @@
 </template>
 
 <script>
-
 /**
  * USWDS nav link component
  */

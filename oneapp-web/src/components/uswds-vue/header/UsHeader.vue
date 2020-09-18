@@ -1,14 +1,10 @@
 <template>
-
     <div>
+        <header class="usa-header usa-header--basic" :class="`bg-${variant}`">
+            <div class="usa-nav-container">
+                <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 
-    <header class="usa-header usa-header--basic" :class="`bg-${variant}`">
-
-        <div class="usa-nav-container">
-            
-            <a class="usa-skipnav" href="#main-content">Skip to main content</a>
-                
-            <!--
+                <!--
             <div class="usa-navbar">
                 <div class="usa-logo" id="basic-logo">
                     <em class="usa-logo__text">
@@ -19,7 +15,7 @@
             </div>
             -->
 
-            <slot></slot>
+                <slot></slot>
 
                 <!--
 
@@ -93,17 +89,14 @@
                 </form>
                 
             </nav>
-            -->
-        </div>
-    </header>
+            --></div>
+        </header>
 
-    <main id="main-content"></main>
-
+        <main id="main-content"></main>
     </div>
 </template>
 
 <script>
-
 /**
  * USWDS alert component
  * Supports a default slot for the body content, and a 'header' slot for title.
@@ -115,8 +108,7 @@
  */
 export default {
     name: 'us-header',
-    components: {        
-    },
+    components: {},
     props: {
         variant: {
             type: String,
@@ -125,7 +117,6 @@ export default {
     },
     computed: {
         alertClass() {
-
             let variant = '';
 
             switch (this.variant) {
