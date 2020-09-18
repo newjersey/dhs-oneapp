@@ -86,7 +86,7 @@ class UserDao extends SQLDataSource {
   async getUserPasswordHintQuestion(USER_ID, SELECTED_LANGUAGE = 0) {
     // This is helpful to understand this syntax: https://github.com/knex/knex/issues/3451
     const con = await this.knex.client.pool.acquire().promise;
-    await this.knex.client.transaction(async (tx) => {
+    return this.knex.client.transaction(async (tx) => {
       const UserType = await con.getDbObjectClass('OA_RT_USER');
       const user = new UserType({ USER_ID });
 
@@ -96,20 +96,7 @@ class UserDao extends SQLDataSource {
         msg: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
       };
 
-      const response = await tx.raw('begin OA_PKG_GEN.SP_GET_HINT(:user, :lang, :msg); end;', bindVars);
-      const responseCode = parseInt(response[1], 10);
-
-      // Handle main success
-      if (responseCode === 1) {
-        console.log(user);
-        return 'mainFlow';
-      }
-
-      if (responseCode === -2) {
-        throw new ApolloError('User account locked.', `DB_ERROR: ${responseCode}`);
-      } else {
-        throw new ApolloError('User not found.', `DB_ERROR: ${responseCode}`);
-      }
+      return tx.raw('begin OA_PKG_GEN.SP_GET_HINT(:user, :lang, :msg); end;', bindVars);
     }, { connection: con });
   }
 }
