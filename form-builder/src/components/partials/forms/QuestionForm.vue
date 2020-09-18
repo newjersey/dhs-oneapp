@@ -28,6 +28,17 @@
             </b-col>
         </b-row>
 
+        <b-row>
+            <b-col>
+                <label>Required dependency</label>
+                <help>This question is required, of the answer to the linked question is X</help>
+            </b-col>
+            <b-col>
+                <label>Visible dependency</label>
+                <help>This question is only shown if the answer to the linked question is X</help>
+            </b-col>
+        </b-row>
+
         <hr/>
 
         On answer X, link to page Y

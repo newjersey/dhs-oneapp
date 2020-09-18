@@ -31,71 +31,89 @@ const getIpsum = (noWords) => {
 
 module.exports = [
     {
-        id: 0,
-        title: 'Kitchen Sink',
-        canSkip: false,
-        fields: [
-            { type: 'email', key: 'testEmail', label: 'What is you email?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
-            { type: 'password', key: 'testPassword', label: 'What is your password?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
-            { type: 'phone', key: 'testPhone', label: 'What is your phone number?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
-            { type: 'zip', key: 'testZip', label: 'What is your zip code?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true }
-        ]
-    },
-    {
-        id: 1,
+        id: null,
         title: 'Basic Information',
-        canSkip: false,
-        fields: [
-            { type: 'text', key: 'firstName', label: 'What’s your first name?', help: 'Legally as it appears on your ID', required: true },
-            { type: 'text', key: 'middleName', label: 'What’s your middle name?', help: 'This is optional', required: false },
-            { type: 'text', key: 'maidenName', label: 'What’s your maiden name?', help: 'This is optional', required: false },
-            { type: 'text', key: 'lastName', label: 'What’s your last name?', help: 'Legally as it appears on your ID', required: true },
-            { type: 'divider', title: 'Tell us about yourself', lead: '' },
-            { type: 'text', key: 'firstName', label: 'What’s your first name?', help: 'Legally as it appears on your ID', required: true },
-            { type: 'text', key: 'middleName', label: 'What’s your middle name?', help: 'This is optional', required: false },
-            { type: 'text', key: 'maidenName', label: 'What’s your maiden name?', help: 'This is optional', required: false },
-            { type: 'text', key: 'lastName', label: 'What’s your last name?', help: 'Legally as it appears on your ID', required: true },
-            { type: 'divider', title: 'Who is the payee?', lead: '' },
-            { type: 'confirm', key: 'isPayee', label: 'Are you the payee?', help: 'The payee is the adult household member who will be issued the benefits if you’re deemed eligible for NJ SNAP, TANF, or GA benefits.', required: true},
-            { type: 'divider', title: 'What’s your current living situation?', lead: '' },
-            { type: 'confirm', key: 'isHomeless', label: 'Are you currently experiencing homelessness?', required: true }
+        type: 'section',
+        pages: [
+            {
+                id: 0,
+                title: 'Kitchen Sink',
+                canSkip: false,
+                type: 'page',
+                section: null,
+                fields: [
+                    { type: 'email', key: 'testEmail', label: 'What is you email?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
+                    { type: 'password', key: 'testPassword', label: 'What is your password?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
+                    { type: 'phone', key: 'testPhone', label: 'What is your phone number?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true },
+                    { type: 'zip', key: 'testZip', label: 'What is your zip code?', help: 'Lorem ipsum dolor sit amet consectetur adipiscing elit', required: true }
+                ]
+            }        
         ]
     },
-    { 
-        id: 2,
-        title: 'Enter Address',  
-        canSkip: true,
-        fields: [
-            {key: 'address1', label: 'Address Line 1', type: 'text', required: true},
-            {key: 'address2', label: 'Address Line 2', type: 'text'},
-            {key: 'city', label: 'City', type: 'text', required: true},
-            {type: 'row', fields: [
-                {key: 'state', label: 'State', type: 'state', required: true},
-                {key: 'zip', label: 'Zip', type: 'zip', required: true}
-            ]}
-        ],
-    
-    },
     {
-        id: 3,
-        title: 'Personal Info',
-        canSkip: true,
-        fields: [
-            {key: 'firstName', label: 'First name', type: 'text', required: true},
-            {key: 'lastName', label: 'Last name', type: 'text', required: true},
-            {key: 'phoneNumber', label: 'Phone Number', type: 'phone', required: true},
-            {key: 'ssn', label: 'Social Security', type: 'ssn', description: 'We need this to verify your accounts, we will never sell your contact information!'},
-            {key: 'dateOfBirth', label: 'Date of birth', type: 'date', startDate: new Date('1970')}
-        ],
-      
-    },
-    {
-        id: 4,
-        title: 'Verification Documents',
-        canSkip: true,
-        fields: [
-            {key: 'doc', label: 'Drivers License', type: 'file'}
-        ]     
-    }  
+        id: null,
+        title: 'Other Stuff',
+        type: 'section',
+        pages: [
+            {
+                id: null,
+                title: 'Test Page',
+                canSkip: false,
+                type: 'page',
+                fields: [
+                    { type: 'text', key: 'firstName', label: 'What’s your first name?', help: 'Legally as it appears on your ID', required: true },
+                    { type: 'text', key: 'middleName', label: 'What’s your middle name?', help: 'This is optional', required: false },
+                    { type: 'text', key: 'maidenName', label: 'What’s your maiden name?', help: 'This is optional', required: false },
+                    { type: 'text', key: 'lastName', label: 'What’s your last name?', help: 'Legally as it appears on your ID', required: true },
+                    { type: 'divider', title: 'Tell us about yourself', lead: '' },
+                    { type: 'text', key: 'firstName', label: 'What’s your first name?', help: 'Legally as it appears on your ID', required: true },
+                    { type: 'text', key: 'middleName', label: 'What’s your middle name?', help: 'This is optional', required: false },
+                    { type: 'text', key: 'maidenName', label: 'What’s your maiden name?', help: 'This is optional', required: false },
+                    { type: 'text', key: 'lastName', label: 'What’s your last name?', help: 'Legally as it appears on your ID', required: true },
+                    { type: 'divider', title: 'Who is the payee?', lead: '' },
+                    { type: 'confirm', key: 'isPayee', label: 'Are you the payee?', help: 'The payee is the adult household member who will be issued the benefits if you’re deemed eligible for NJ SNAP, TANF, or GA benefits.', required: true},
+                    { type: 'divider', title: 'What’s your current living situation?', lead: '' },
+                    { type: 'confirm', key: 'isHomeless', label: 'Are you currently experiencing homelessness?', required: true }
+                ]
+            },
+            { 
+                id: null,
+                title: 'Enter Address',  
+                canSkip: true,
+                fields: [
+                    {key: 'address1', label: 'Address Line 1', type: 'text', required: true},
+                    {key: 'address2', label: 'Address Line 2', type: 'text'},
+                    {key: 'city', label: 'City', type: 'text', required: true},
+                    {type: 'row', fields: [
+                        {key: 'state', label: 'State', type: 'state', required: true},
+                        {key: 'zip', label: 'Zip', type: 'zip', required: true}
+                    ]}
+                ],
+            
+            },
+            {
+                id: null,
+                title: 'Personal Info',
+                canSkip: true,
+                fields: [
+                    {key: 'firstName', label: 'First name', type: 'text', required: true},
+                    {key: 'lastName', label: 'Last name', type: 'text', required: true},
+                    {key: 'phoneNumber', label: 'Phone Number', type: 'phone', required: true},
+                    {key: 'ssn', label: 'Social Security', type: 'ssn', description: 'We need this to verify your accounts, we will never sell your contact information!'},
+                    {key: 'dateOfBirth', label: 'Date of birth', type: 'date', startDate: new Date('1970')}
+                ],
+              
+            },
+            {
+                id: null,
+                title: 'Verification Documents',
+                canSkip: true,
+                fields: [
+                    {key: 'doc', label: 'Drivers License', type: 'file'}
+                ]     
+            }            
+        ]
+    }    
+  
 
 ];
