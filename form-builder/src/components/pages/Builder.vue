@@ -3,7 +3,7 @@
         
         <b-row class="px-2">
             
-            <b-col md="4" class="px-1">
+            <b-col md="3" class="px-1">
                 <b-card>
                     <page-list v-model="selectedPage" />
                 </b-card>
@@ -16,13 +16,13 @@
                     <pre>{{selectedPage}}</pre>
                     -->
 
-                <b-card v-if="selectedPage._id && selectedSection._id" class="mb-2" >
+                <b-card class="mb-2" >
                     
                     <b-row>
-                        <b-col>
+                        <b-col v-if="selectedSection._id && selectedSection._id">
                             <form-input-text v-model="selectedSection.title" :config="{label: 'Section Title', required: true}"/>
                         </b-col>
-                        <b-col>
+                        <b-col v-if="selectedPage._id && selectedSection._id">
                             <form-input-text v-model="selectedPage.title" :config="{label: 'Page Title', required: true}"/>
                         </b-col>
                     </b-row>                    
@@ -35,11 +35,18 @@
                 </b-card>
 
                 <b-card v-if="selectedPage._id">
-                    <question-list v-model="selectedQuestion"/>
-                </b-card>
 
-                <b-card v-if="selectedPage._id && selectedQuestion" title="Question Settings" class="mt-2">
-                    <question-form v-model="selectedQuestion"></question-form>
+                    <b-row>
+                        <b-col md="3">
+                            <question-list v-model="selectedQuestion"/>
+                        </b-col>
+                        <b-col>
+                            <div v-if="selectedPage._id && selectedQuestion">
+                                <question-form v-model="selectedQuestion"></question-form>
+                            </div>
+                        </b-col>
+                    </b-row>
+
                 </b-card>
 
             </b-col>
@@ -74,9 +81,14 @@ export default {
         await this.$store.dispatch('loadConfig');
     },
     methods: {
+
         async onSaveSettings(){
-            await this.selectedPage.save();
-            await this.selectedSection.save();
+            if (this.selectedPage && this.selectedPage.save){
+                await this.selectedPage.save();
+            }
+            if (this.selectedSection && this.selectedSection.save){
+                await this.selectedSection.save();
+            }
         }
     }
 };

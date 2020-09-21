@@ -12,4 +12,4 @@ var schema = new Schema({
 })
 
 
-module.exports = mongoose.model('Page', schema)
+module.exports = mongoose.model('Page', schema);

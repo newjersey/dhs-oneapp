@@ -41,12 +41,19 @@ const SectionAPI = {
 
 	async update(req, res) {	
 		
-		var forboden = ['_id'];
+		var forboden = ['_id', '__v'];
 		
-		for (var key in req.body.section) {
+		const fields = Object.keys(Section.schema.paths);
+
+		for (var key in Section.schema.paths) {
+
+			Logger.debug(`[${key}] req.body[${key}] = ${req.body[key]}`);
 			
-			if (_.indexOf(forboden, key) === -1 && req.body.section.hasOwnProperty(key)) {								
-				req.section[key] = req.body.section[key];
+			if (_.indexOf(forboden, key) === -1 && req.body.hasOwnProperty(key)) {								
+				req.section[key] = req.body[key];
+			}
+			else if (_.indexOf(forboden, key) !== -1 && req.body.hasOwnProperty(key)) {				
+				Logger.warn(`[${key}] forbidden!`);
 			}
 		}
 

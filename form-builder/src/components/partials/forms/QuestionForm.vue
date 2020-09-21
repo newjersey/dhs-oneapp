@@ -1,6 +1,15 @@
 <template>
     <div v-if="question">
 
+        <div class="mb-3">
+            Settings
+            <!-- 
+            <b-button variant="link" class="m-0 p-0 mr-1 text-danger" size="sm" @click="onAddQuestion()">
+                <i class="fas fa-trash"></i> Delete
+            </b-button>               
+            -->
+        </div>
+
         <b-row>
             <b-col>
                 <form-input-text v-model="question.label" :config="{label: 'Label', required: true}"/>
@@ -9,6 +18,15 @@
                 <form-input-text v-model="question.name" :config="{label: 'Name', required: false}"/>
             </b-col>
         </b-row>
+
+        <b-row>
+            <b-col>
+                <form-input-text v-model="question.order" :config="{label: 'Order', type:'number', required: true}"/>
+            </b-col>
+            <b-col>
+            </b-col>
+        </b-row>
+
 
         <b-row>
             <b-col>
@@ -24,7 +42,7 @@
                 />
             </b-col>
             <b-col>
-                <form-input-text v-model="question.key" :config="{label: 'Key', required: true}"/>
+                <form-input-text v-model="question.key" :config="{label: 'Key', required: false, help: 'This is the database field'}"/>
             </b-col>
         </b-row>
 

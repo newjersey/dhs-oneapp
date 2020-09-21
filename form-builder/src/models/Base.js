@@ -11,7 +11,7 @@ class Base {
 
     static async _send(verb, cmd, data) {
 
-        console.log(`SENDING = ${Base.rootUrl}/${cmd}`);
+        console.log(`SENDING = [${verb.toUpperCase()}] ${Base.rootUrl}/${cmd}`);
 
         try {
 
