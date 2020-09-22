@@ -16,6 +16,8 @@
                 :id="divId"
                 :name="opts.name"
                 :options="opts.options"
+                :labelField="opts.labelField"
+                :keyField="opts.keyField"
                 v-model="currentValue"
                 :disabled="opts.disabled"
                 :placeholder="opts.placeholder"
@@ -30,7 +32,7 @@ import { ValidationProvider } from 'vee-validate';
 import InputMixin from '@/components/mixins/InputMixin.js';
 
 export default {
-    name: 'form-input-text',
+    name: 'form-input-select',
     components: {
         ValidationProvider
     },
