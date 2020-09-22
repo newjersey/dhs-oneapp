@@ -37,6 +37,7 @@ const service = {
   rules,
 
   buildPermissions: (permissions) => shield(permissions, {
+    allowExternalErrors: true,
     fallbackRule: rules.isAuthenticated,
     fallbackError: (ex) => {
       if (ex instanceof ApolloError || ex instanceof UserInputError) {

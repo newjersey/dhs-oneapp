@@ -1,5 +1,15 @@
+// eslint-disable-next-line import/newline-after-import
+const dotenv = require('dotenv');
+dotenv.config();
+
 const config = require('config');
 const args = require('yargs').argv;
+
+// eslint-disable-next-line import/order
+const logger = require('./logger.config');
+
+logger.info('Starting with environment config: %s', config.util.getEnv('NODE_ENV'));
+
 const express = require('express');
 const expressJwt = require('express-jwt');
 const { ApolloServer } = require('apollo-server-express');
@@ -10,7 +20,6 @@ const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-co
 // eslint-disable-next-line no-unused-vars
 const cfConfig = require('./cf.config.js'); // cfConfig must be first import to override config values with CloudFoundary values
 const dataSources = require('./db');
-const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
 const { typeDefs, resolvers, permissions } = require('./schema');
 

@@ -1,5 +1,6 @@
-const { gql } = require('apollo-server-express');
+const { gql, ApolloError } = require('apollo-server-express');
 const { allow } = require('graphql-shield');
+const _ = require('lodash');
 const AuthenticationService = require('../services/AuthenticationService');
 
 const typeDef = gql`
@@ -17,6 +18,8 @@ const typeDef = gql`
     current: User!
     "Check if a USER_ID is available"
     userAvailable(USER_ID: String!): Boolean
+    "Return a user's password hint question id, for resetting the password"
+    userPasswordHintQuestion(USER_ID: String!): String
   }
 
   type User {
@@ -78,6 +81,25 @@ const resolvers = {
       const userExists = await dataSources.UserDao.doesUserExist(USER_ID);
       return userExists === false;
     },
+    userPasswordHintQuestion: async (_parent, { USER_ID }, { dataSources }) => {
+      const response = await dataSources.UserDao.getUserPasswordHintQuestion(USER_ID);
+      const user = response[0];
+      const responseCode = parseInt(response[1], 10);
+
+      // Handle main success
+      if (responseCode === 1) {
+        if (_.every([user.HINT_QUESTION, user.EMAIL_ADDRESS], _.isEmpty)) {
+          throw new ApolloError('No email address or hint question. Unable to reset account.', `DB_ERROR: ${responseCode}`);
+        }
+        return user.HINT_QUESTION;
+      }
+
+      if (responseCode === -2) {
+        throw new ApolloError('User account locked.', `DB_ERROR: ${responseCode}`);
+      } else {
+        throw new ApolloError('User not found.', `DB_ERROR: ${responseCode}`);
+      }
+    },
   },
 };
 
@@ -92,6 +114,7 @@ const permissions = {
   JwtToken: allow,
   Users: {
     userAvailable: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
+    userPasswordHintQuestion: allow,
   },
 };
 
