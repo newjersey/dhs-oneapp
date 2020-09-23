@@ -1,5 +1,10 @@
 # Validations and Required Fields
 
+- [Eligibility Calculations](#eligibility-calculations)
+  - [GET_ELIGIBILITY](#get_eligibility)
+  - [GET_FC_ELIGIBILITY](#get_fc_eligibility)
+  - [GET_GA_ELIGIBILITY](#get_ga_eligibility)
+  - [GET_TF_ELIGIBILITY](#get_tf_eligibility)
 - [Stored Procedure Validations](#stored-procedure-validations)
   - [Application (SP_VALIDATE_APP)](#application-sp_validate_app)
     - [Called](#called)
@@ -20,8 +25,28 @@
     - [Called](#called-5)
     - [Logic](#logic-5)
 
-## Stored Procedure Validations
 
+## Eligibility Calculations
+
+These are the calculations that run to determine if eligible for a program. They return eligible / ineligible.
+
+_Open Question:_ If using the quick submit flow, are these calculations bypassed?
+
+
+### GET_ELIGIBILITY
+
+
+### GET_FC_ELIGIBILITY
+
+
+### GET_GA_ELIGIBILITY
+
+
+### GET_TF_ELIGIBILITY
+
+
+
+## Stored Procedure Validations
 
 ### Application (SP_VALIDATE_APP)
 
