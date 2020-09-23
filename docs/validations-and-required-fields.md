@@ -24,6 +24,9 @@
   - [Zipcode (SP_VALIDATE_ZIPCODE)](#zipcode-sp_validate_zipcode)
     - [Called](#called-5)
     - [Logic](#logic-5)
+  - [Update Programs (SP_UPDATE_APPLICATION_PROGRAMS)](#update-programs-sp_update_application_programs)
+    - [Called](#called-6)
+    - [Logic](#logic-6)
 - [Required DB Fields](#required-db-fields)
 
 
@@ -125,6 +128,21 @@ _Open Question:_ If using the quick submit flow, are these calculations bypassed
 
 * Zipcode required OR applicant must be homeless
 * Zipcode must be a NJ zip code (looked up with county code information)
+
+
+### Update Programs (SP_UPDATE_APPLICATION_PROGRAMS)
+
+#### Called
+
+* From the application Programs page
+
+#### Logic
+
+* At least one program must be selected (SNAP, GA, or TANF)
+* If TANF is selected, and no household members under the age of 19 (and relationship is not 'SE', 'SP', or '9')
+  * No income with codes '0401'or '2107'
+    * _Why isn't this validation also run for `SP_VALIDATE_PROGRAM`?_
+* If GA is selected and household member under the age of 19 (inverse of the above - i.e. you must apply for TANF instead of GA)
 
 
 ## Required DB Fields
