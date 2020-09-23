@@ -24,6 +24,7 @@
   - [Zipcode (SP_VALIDATE_ZIPCODE)](#zipcode-sp_validate_zipcode)
     - [Called](#called-5)
     - [Logic](#logic-5)
+- [Required DB Fields](#required-db-fields)
 
 
 ## Eligibility Calculations
@@ -125,3 +126,7 @@ _Open Question:_ If using the quick submit flow, are these calculations bypassed
 * Zipcode required OR applicant must be homeless
 * Zipcode must be a NJ zip code (looked up with county code information)
 
+
+## Required DB Fields
+
+All database tables only require primary keys. All other fields are marked nullable. Database tables are not a source to determine required data.
