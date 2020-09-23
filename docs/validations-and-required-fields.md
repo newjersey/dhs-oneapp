@@ -28,6 +28,7 @@
     - [Called](#called-6)
     - [Logic](#logic-6)
 - [Required DB Fields](#required-db-fields)
+- [Required Form Fields](#required-form-fields)
 
 
 ## Eligibility Calculations
@@ -148,3 +149,11 @@ _Open Question:_ If using the quick submit flow, are these calculations bypassed
 ## Required DB Fields
 
 All database tables only require primary keys. All other fields are marked nullable. Database tables are not a source to determine required data.
+
+
+## Required Form Fields
+
+* Required fields are managed in the ASPX through a `RequiredFieldValidator` control
+* When the page is submitted, the `Utils.ValidatePage` and `Utils.ValidatePageItems` run, persisting any validations that failed to the database using the stored procedure `SP_UPDATE_APP_PAGE_INFO`.
+* The results are then used to display errors throughout the application.
+* _Note:_ There are other validators that run as well, then persist their results using this validation logic. For example: `act:MaskedEditValidator`
