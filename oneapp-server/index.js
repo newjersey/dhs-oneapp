@@ -22,6 +22,7 @@ const cfConfig = require('./cf.config.js'); // cfConfig must be first import to 
 const dataSources = require('./db');
 const AuthenticationService = require('./services/AuthenticationService');
 const { typeDefs, resolvers, permissions } = require('./schema');
+const services = require('./services');
 
 // Build the schema
 const schema = makeExecutableSchema({
@@ -64,7 +65,7 @@ const server = new ApolloServer({
     // If logged in, place the auth on the GraphQL context
     const auth = req.auth || null;
     const requestIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    return { auth, requestIP };
+    return { auth, requestIP, services };
   },
 
   // Configure our logger implementation

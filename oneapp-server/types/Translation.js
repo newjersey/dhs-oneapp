@@ -25,8 +25,8 @@ const typeDef = gql`
 
 const resolvers = {
   Query: {
-    translations: (_parent, { TEXT_IDS }, { dataSources }) => dataSources.TranslationDao.getTranslations(TEXT_IDS),
-    translation: (_parent, { TEXT_ID }, { dataSources }) => dataSources.TranslationDao.getTranslation(TEXT_ID),
+    translations: (_parent, { TEXT_IDS }, { dataSources, services }, info) => dataSources.TranslationDao.getTranslations(TEXT_IDS, services.ResolveInfoService.getReturnFields(info)),
+    translation: (_parent, { TEXT_ID }, { dataSources, services }, info) => dataSources.TranslationDao.getTranslation(TEXT_ID, services.ResolveInfoService.getReturnFields(info)),
   },
 };
 

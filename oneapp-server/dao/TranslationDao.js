@@ -1,8 +1,8 @@
 const { SQLDataSource } = require('datasource-sql');
 
 class TranslationDao extends SQLDataSource {
-  async getTranslations(TEXT_IDS) {
-    const query = this.knex.select('*')
+  async getTranslations(TEXT_IDS, fields) {
+    const query = this.knex.select(fields)
       .from('OA_CONVERSION_TEXT');
     if (TEXT_IDS) {
       query.whereIn('TEXT_ID', TEXT_IDS);
@@ -10,8 +10,8 @@ class TranslationDao extends SQLDataSource {
     return query.cache(60 * 60);
   }
 
-  async getTranslation(TEXT_ID) {
-    return this.knex.select('*')
+  async getTranslation(TEXT_ID, fields) {
+    return this.knex.select(fields)
       .from('OA_CONVERSION_TEXT')
       .where({ TEXT_ID })
       .first()
