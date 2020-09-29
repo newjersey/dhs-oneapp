@@ -1,9 +1,5 @@
+const _ = require('lodash');
+const doaObjects = require('./dao');
 const config = require('./db.config');
 
-const TranslationDao = require('./dao/TranslationDao');
-const UserDao = require('./dao/UserDao');
-
-module.exports = {
-  TranslationDao: new TranslationDao(config),
-  UserDao: new UserDao(config),
-};
+module.exports = _.mapValues(doaObjects, (DaoObject) => new DaoObject(config));

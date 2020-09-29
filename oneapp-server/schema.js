@@ -1,12 +1,10 @@
 const { gql } = require('apollo-server-express');
 const { GraphQLDate, GraphQLTime, GraphQLDateTime } = require('graphql-iso-date');
-const { merge } = require('lodash');
+const _ = require('lodash');
 const { allow } = require('graphql-shield');
 
-// Import each type in the following format
 // Schema typeDefs support validation using: https://github.com/confuser/graphql-constraint-directive#readme
-const { typeDef: Translation, resolvers: translationResolvers, permissions: translationPermissions } = require('./types/Translation');
-const { typeDef: User, resolvers: userResolvers, permissions: userPermissions } = require('./types/User');
+const Types = require('./types');
 
 const VERSION = '0.1';
 
@@ -52,22 +50,19 @@ const basePermissions = {
 // Add a type for each object type
 const typeDefs = [
   baseTypes,
-  Translation,
-  User,
+  ..._.chain(Types).mapValues((Type) => Type.typeDef).toArray().value(),
 ];
 
 // Add a resolver for each object type, merging the object into a single resolver
-const resolvers = merge(
+const resolvers = _.merge(
   baseResolvers,
-  translationResolvers,
-  userResolvers,
+  ..._.chain(Types).mapValues((Type) => Type.resolvers).toArray().value(),
 );
 
 // Add permission for each object type, merging the object into a single permission set
-const permissions = merge(
+const permissions = _.merge(
   basePermissions,
-  translationPermissions,
-  userPermissions,
+  ..._.chain(Types).mapValues((Type) => Type.permissions).toArray().value(),
 );
 
 module.exports = { typeDefs, resolvers, permissions };
