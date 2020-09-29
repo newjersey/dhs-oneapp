@@ -4,7 +4,7 @@ const { allow } = require('graphql-shield');
 const typeDef = gql`
   extend type Query {
     "All language translations"
-    translations: [Translation!]
+    translations(TEXT_IDS: [ID]): [Translation!]
     "Translation by id"
     translation(TEXT_ID: ID!): Translation
   }
@@ -19,14 +19,14 @@ const typeDef = gql`
     "Spanish"
     LANGUAGE_1: String
     "The last time the translation has been updated"
-    UPDATE_DATE: Date
+    UPDATE_DATE: DateTime
   }
 `;
 
 const resolvers = {
   Query: {
-    translations: () => [],
-    translation: () => null,
+    translations: (_parent, { TEXT_IDS }, { dataSources }) => dataSources.TranslationDao.getTranslations(TEXT_IDS),
+    translation: (_parent, { TEXT_ID }, { dataSources }) => dataSources.TranslationDao.getTranslation(TEXT_ID),
   },
 };
 
@@ -35,6 +35,7 @@ const permissions = {
     translations: allow,
     translation: allow,
   },
+  Translation: allow,
 };
 
 module.exports = { typeDef, resolvers, permissions };
