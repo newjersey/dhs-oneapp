@@ -60,13 +60,17 @@ const server = new ApolloServer({
   // Specify GraphQL config
   schema: schemaWithMiddleware,
 
-  // Process the user authentication
-  context: ({ req }) => {
-    // If logged in, place the auth on the GraphQL context
-    const auth = req.auth || null;
-    const requestIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    return { auth, requestIP, services };
-  },
+  // Populate the GraphQL context
+  context: ({ req }) => ({
+    // If logged in, place the auth
+    auth: req.auth || null,
+    // Place the requesting IP (either from load balancer or direct)
+    requestIP: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    // Place the language
+    language: services.TranslationService.getLanguage(req.headers['accept-language']),
+    // Place the services
+    services,
+  }),
 
   // Configure our logger implementation
   logger,

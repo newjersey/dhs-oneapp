@@ -14,10 +14,8 @@ const typeDef = gql`
     TEXT_ID: ID
     "Incremented on each new translated field"
     TEXT_NUMBER: Int
-    "English"
-    LANGUAGE_0: String
-    "Spanish"
-    LANGUAGE_1: String
+    "The translated text. Content-language header is used to determine the language to return"
+    TEXT: String
     "The last time the translation has been updated"
     UPDATE_DATE: DateTime
   }
@@ -25,8 +23,14 @@ const typeDef = gql`
 
 const resolvers = {
   Query: {
-    translations: (_parent, { TEXT_IDS }, { dataSources, services }, info) => dataSources.TranslationDao.getTranslations(TEXT_IDS, services.ResolveInfoService.getReturnFields(info)),
-    translation: (_parent, { TEXT_ID }, { dataSources, services }, info) => dataSources.TranslationDao.getTranslation(TEXT_ID, services.ResolveInfoService.getReturnFields(info)),
+    translations: (_parent, { TEXT_IDS }, { dataSources, services, language }, info) => {
+      const fields = services.ResolveInfoService.getReturnFields(info);
+      return dataSources.TranslationDao.getTranslations(TEXT_IDS, language.index, fields);
+    },
+    translation: (_parent, { TEXT_ID }, { dataSources, services, language }, info) => {
+      const fields = services.ResolveInfoService.getReturnFields(info);
+      return dataSources.TranslationDao.getTranslation(TEXT_ID, language.index, fields);
+    },
   },
 };
 
