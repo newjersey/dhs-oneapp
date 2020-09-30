@@ -24,11 +24,11 @@ const typeDef = gql`
 const resolvers = {
   Query: {
     translations: (_parent, { TEXT_IDS }, { dataSources, services, language }, info) => {
-      const fields = services.ResolveInfoService.getReturnFields(info);
+      const fields = services.ResolveInfoService.parseReturnFields(info);
       return dataSources.TranslationDao.getTranslations(TEXT_IDS, language.index, fields);
     },
     translation: (_parent, { TEXT_ID }, { dataSources, services, language }, info) => {
-      const fields = services.ResolveInfoService.getReturnFields(info);
+      const fields = services.ResolveInfoService.parseReturnFields(info);
       return dataSources.TranslationDao.getTranslation(TEXT_ID, language.index, fields);
     },
   },

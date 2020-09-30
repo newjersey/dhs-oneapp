@@ -2,9 +2,9 @@ const { parseResolveInfo, simplifyParsedResolveInfoFragmentWithType } = require(
 const _ = require('lodash');
 
 const service = {
-  getReturnFields: (resolveInfo) => {
-    const paredResolvedInfo = parseResolveInfo(resolveInfo);
-    const { fields } = simplifyParsedResolveInfoFragmentWithType(paredResolvedInfo, resolveInfo.returnType);
+  parseReturnFields: (resolveInfo) => {
+    const parsedResolvedInfo = parseResolveInfo(resolveInfo);
+    const { fields } = simplifyParsedResolveInfoFragmentWithType(parsedResolvedInfo, resolveInfo.returnType);
     return _.chain(fields).toArray().map('name').value();
   },
 };
