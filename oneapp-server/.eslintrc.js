@@ -6,6 +6,8 @@ module.exports = {
   ignorePatterns: [
     'jest.config.js',
     '*.test.js',
+    '__utils/**',
+    '__mocks__/**',
   ],
   rules: {
     'class-methods-use-this': ['warn'],

@@ -10,6 +10,8 @@ const expressJwt = require('express-jwt');
 const cfConfig = require('./cf.config.js'); // cfConfig must be first import to override config values with CloudFoundary values
 const logger = require('./logger.config');
 const createServer = require('./server');
+const dataSources = require('./db');
+const services = require('./services');
 
 logger.info('Starting with environment config: %s', config.util.getEnv('NODE_ENV'));
 
@@ -28,7 +30,7 @@ app.use(expressJwt({
   return next(err);
 });
 
-const server = createServer();
+const server = createServer(dataSources, services);
 server.applyMiddleware({ app, path: config.get('server.path') });
 
 // Start the server

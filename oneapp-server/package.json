@@ -38,10 +38,11 @@
     "lodash": "^4.17.19",
     "oracledb": "^5.0.0",
     "pino": "^6.6.1",
-    "require-dir": "^1.2.0",
+    "require-directory": "^2.1.1",
     "yargs": "^16.0.3"
   },
   "devDependencies": {
+    "apollo-server-testing": "^2.18.1",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",

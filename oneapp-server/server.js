@@ -4,12 +4,10 @@ const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
 const logger = require('./logger.config');
-const dataSources = require('./db');
 const AuthenticationService = require('./services/AuthenticationService');
 const { typeDefs, resolvers, permissions } = require('./schema');
-const services = require('./services');
 
-const createServer = () => {
+const createServer = (dataSources, services, context) => {
   // Build the schema
   const schema = makeExecutableSchema({
     typeDefs: [constraintDirectiveTypeDefs, ...typeDefs],
@@ -26,22 +24,24 @@ const createServer = () => {
     AuthenticationService.buildPermissions(permissions),
   );
 
+  const populateContext = ({ req }) => ({
+    // If logged in, place the auth
+    auth: req.auth || null,
+    // Place the requesting IP (either from load balancer or direct)
+    requestIP: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+    // Place the language
+    language: services.TranslationService.getLanguage(req.headers['accept-language']),
+    // Place the services
+    services,
+  });
+
   // Setup the GraphQL server
   const server = new ApolloServer({
     // Specify GraphQL config
     schema: schemaWithMiddleware,
 
     // Populate the GraphQL context
-    context: ({ req }) => ({
-      // If logged in, place the auth
-      auth: req.auth || null,
-      // Place the requesting IP (either from load balancer or direct)
-      requestIP: req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-      // Place the language
-      language: services.TranslationService.getLanguage(req.headers['accept-language']),
-      // Place the services
-      services,
-    }),
+    context: context || populateContext,
 
     // Configure our logger implementation
     logger,
