@@ -14,7 +14,7 @@
     "lint": "eslint '**/*.js' --ignore-pattern node_modules/ --ignore-pattern dist/ --fix",
     "format": "prettier-eslint --write",
     "pkg": "pkg . --out-path dist",
-    "test": "jest"
+    "test": "LOG_ENABLED=false jest"
   },
   "dependencies": {
     "accept-language-parser": "^1.5.0",
