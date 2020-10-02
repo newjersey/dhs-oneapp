@@ -14,9 +14,10 @@
     "lint": "eslint '**/*.js' --ignore-pattern node_modules/ --ignore-pattern dist/ --fix",
     "format": "prettier-eslint --write",
     "pkg": "pkg . --out-path dist",
-    "test": "jest"
+    "test": "LOG_ENABLED=false jest"
   },
   "dependencies": {
+    "accept-language-parser": "^1.5.0",
     "apollo-server-express": "^2.18.1",
     "cfenv": "^1.2.3",
     "config": "^3.3.2",
@@ -26,7 +27,9 @@
     "express-jwt": "^6.0.0",
     "graphql": "^15.3.0",
     "graphql-constraint-directive": "^2.1.0",
+    "graphql-iso-date": "^3.6.1",
     "graphql-middleware": "^4.0.2",
+    "graphql-parse-resolve-info": "^4.9.0",
     "graphql-rate-limit": "^2.0.1",
     "graphql-shield": "^7.3.6",
     "graphql-tools": "^6.2.3",
@@ -35,9 +38,11 @@
     "lodash": "^4.17.19",
     "oracledb": "^5.0.0",
     "pino": "^6.6.1",
+    "require-directory": "^2.1.1",
     "yargs": "^16.0.3"
   },
   "devDependencies": {
+    "apollo-server-testing": "^2.18.1",
     "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
