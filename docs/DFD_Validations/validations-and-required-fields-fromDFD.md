@@ -32,8 +32,8 @@
 # *Basic* 
 ### **Application Information** <br><br>
 
-![Application Information 1](applicationinfo1.png)
-![Application Information 2](applicationinfo2.png)
+![Application Information 1](ApplicationInfo1.png)
+![Application Information 2](ApplicationInfo2.png)
 
 ### 1. Question: Are you the Payee?
 ### 2. A no response to #1 above opens additional fields for the client to enter the First and last name of the payee <br>
