@@ -23,7 +23,7 @@
     "vee-validate": "^3.4.0",
     "vue": "^2.6.12",
     "vue-i18n": "^8.21.1",
-    "vue-router": "^3.4.3",
+    "vue-router": "^3.4.5",
     "vue-the-mask": "^0.11.1",
     "vuex": "^3.4.0"
   },
