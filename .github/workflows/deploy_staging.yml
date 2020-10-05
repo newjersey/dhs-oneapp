@@ -1,4 +1,4 @@
-name: Continuous Deployment (CD)
+name: Deploy - Staging
 
 on:
   schedule:
