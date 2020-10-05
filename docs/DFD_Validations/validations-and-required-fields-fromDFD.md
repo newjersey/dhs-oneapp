@@ -7,16 +7,16 @@
 ### 1.	Must be 8 to 15 characters long
 ### 2.	Must contain at least one letter
 ### 3.	Must contain at least one number
-### 4.	No special characters or spaces are allowed <br><br>
+### 4.	No special characters or spaces allowed <br><br>
 
 
 ### **Password**
 ### 1.	Must by 8 to 15 characters long
 ### 2.	Must contain at least one letter
 ### 3.	Must contain of least one number
-### 4.	No spaces characters or spaces are allowed <br><br>
+### 4.	No special characters or spaces allowed <br><br>
 
-### **Required fields (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not displayed.)**
+### **Required fields (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not required and not displayed.)**
 ### 1.	UserId
 ### 2.	Choose Password
 ### 3.	Re-enter Password
@@ -35,15 +35,14 @@
 ![Application Information 1](ApplicationInfo1.png)
 ![Application Information 2](ApplicationInfo2.png)
 
-### 1. Question: Are you the Payee?
-### 2. A no response to #1 above opens additional fields for the client to enter the First and last name of the payee <br>
-### 3. For Homeless only county is required for address<br>
-### 4. The error text "The entered zip code does not exist in the selected county" is a database validation message that is displayed when the entered zipcode is incorrect. It was created because there are zip codes that boarder multiple counties.
-### 5. A Person with no contact information (Address, phone number, or email) must check the checkbox "By checking this box I understand that I must visit my Local County Welfare Office after submitting this application in order for the application to be processed."
-### 6. The GetCounty button calls the USPS Webservice located at DHS.
-### 7. Required fields/questions are First Name, Last Name, "Are you the Payee?", Street Address, City, Zip (Resident & Mailing) County (this is required for both address and homeless), Primary Phone.
-### 8. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
-### 9. The first and forth phone number position can not be 0 or 1.<br><br>
+### 1. Question: Are you the Payee? A no response opens additional fields for the client to enter the first and last name of the payee <br>
+### 2. For Homeless only county is required for address<br>
+### 3. The error text "The entered zip code does not exist in the selected county" is a database validation message that is displayed when the entered zipcode is incorrect. It was created because there are zip codes that boarder multiple counties.
+### 4. A Person with no contact information (Address, phone number, or email) must check the checkbox "By checking this box I understand that I must visit my Local County Welfare Office after submitting this application in order for the application to be processed."
+### 5. The GetCounty button calls the DHS USPS Webservice (This webservice is located at DHS not the HUB).
+### 6. Required fields/questions are First Name, Last Name, "Are you the Payee?", Street Address, City, Zip (Resident & Mailing) County (this is required for both address and homeless), Primary Phone.
+### 7. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
+### 8. The first and forth phone number position can not be 0 or 1.<br><br>
 
 
 ## **SNAP Header**
@@ -149,7 +148,8 @@
          d. NJ SNAP&GA
          e. NJ SNAP&TANF
 ### 4. The combination Programs selection GA&TANF are not a valid option.
-### 5. Accommodation YES/NO response of YES displays additional fields.### 6. A checked response of Translator (associated with #5 above)displays the "What Language" field.
+### 5. Accommodation YES/NO response of YES displays additional fields.
+### 6. A checked response of Translator (associated with #5 above)displays the "What Language" field.
 ### 7. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
 
 # *NJ SNAP/WFNJ*
