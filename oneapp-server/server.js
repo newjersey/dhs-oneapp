@@ -3,6 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
+const { get } = require('lodash');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
 const { typeDefs, resolvers, permissions } = require('./schema');
@@ -51,7 +52,7 @@ const createServer = (dataSources, services, context) => {
         code: error.extensions.code,
         message: error.message,
         path: error.path,
-        MESSAGE_TEXT_ID: error.extensions.exception.MESSAGE_TEXT_ID,
+        MESSAGE_TEXT_ID: get(error, 'extensions.exception.MESSAGE_TEXT_ID'),
       };
     },
 
