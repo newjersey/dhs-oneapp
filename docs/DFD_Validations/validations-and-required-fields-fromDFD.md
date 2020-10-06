@@ -91,6 +91,9 @@
 ![Household1 Summary](Household2.png)
 ![Household1 Citizen](Household2CurrCompDiscont.png)
 ![Household1 Permanent Resident](Household2Remaining.png)
+![Other Member Detail2](OtherMemberIndividual2.png)
+![Other Member Detail3](OtherMemberIndividual3.png)
+![Other Member Detail4](OtherMemberIndividual4.png)
 
 ### 1. Education option "Currently in School" and "Completed/Discontinued Education" has the field "Education Grade Level" displayed on screen. All remaining options do not have this field displayed.
 ### 2. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.
@@ -221,8 +224,6 @@
 
 ![Other Member Summary](OtherIndividualsSummary.png)
 ![Other Member Detail](OtherMemberIndividual.png)
-![Other Member Detail](OtherMemberIndividual2.png)
-![Other Member Detail](OtherMemberIndividual3.png)
 
 ### 1. Yes/No on summary screen is required.
 ### 2. Dates must have standard YYYY/MM validation before submitting
