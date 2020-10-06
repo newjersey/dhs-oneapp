@@ -44,13 +44,14 @@
 ![Application Information 2](ApplicationInfo2.png)
 
 ### 1. Question: Are you the Payee? A no response opens additional fields for the client to enter the first and last name of the payee <br>
-### 2. For Homeless only county is required for address<br>
-### 3. The error text "The entered zip code does not exist in the selected county" is a database validation message that is displayed when the entered zipcode is incorrect. It was created because there are zip codes that boarder multiple counties.
-### 4. A Person with no contact information (Address, phone number, or email) must check the checkbox "By checking this box I understand that I must visit my Local County Welfare Office after submitting this application in order for the application to be processed."
-### 5. The GetCounty button calls the DHS USPS Webservice (This webservice is located at DHS not the HUB).
-### 6. Required fields/questions are First Name, Last Name, "Are you the Payee?", Street Address, City, Zip (Resident & Mailing) County (this is required for both address and homeless), Primary Phone.
-### 7. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
-### 8. The first and forth phone number position can not be 0 or 1.<br><br>
+### 2. For Homeless only county is required for address
+### 3. Street address must contain at least one character
+### 4. The error text "The entered zip code does not exist in the selected county" is a database validation message that is displayed when the entered zipcode is incorrect. It was created because there are zip codes that boarder multiple counties.
+### 5. A Person with no contact information (Address, phone number, or email) must check the checkbox "By checking this box I understand that I must visit my Local County Welfare Office after submitting this application in order for the application to be processed."
+### 6. The GetCounty button calls the DHS USPS Webservice (This webservice is located at DHS not the HUB).
+### 7. Required fields/questions are First Name, Last Name, "Are you the Payee?", Street Address, City, Zip (Resident & Mailing) County (this is required for both address and homeless), Primary Phone.
+### 8. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
+### 9. The first and forth phone number position can not be 0 or 1.<br><br>
 
 
 ## **SNAP Header**
@@ -75,13 +76,14 @@
 ![Household1 Remaining](Household1Remaining.png)
 
 ### 1. The Citizen Status field controls fields that are displayed on the screen.
-### 2. Only the Citizen and Permanent Resident screens have SSN.
+### 2. SSN is required for Citizen and Permanent Resident only if they are applying for benefits(dropdown selected YES).
 ### 3. SSN must have standard validation before submitting
 ### 4. Dates must have standard validation before submitting
 ### 5. Required fields/questions are first name, last name, Is the Member applying for benefits?, Date of Birth, Is Disabled, and Relationship to Payee.
 ### 6. Only one payee must exist.
 ### 7. Currently FAMIS can have up to 26 members in a family (May be a question for future if more are needed)
-### 8. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
+### 8. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.
+### 9. "Is disabled" is required when "Is the Member applying for benefits?" is YES.<br><br>
 
 
 ## **Household 2**
@@ -91,7 +93,9 @@
 ![Household1 Permanent Resident](Household2Remaining.png)
 
 ### 1. Education option "Currently in School" and "Completed/Discontinued Education" has the field "Education Grade Level" displayed on screen. All remaining options do not have this field displayed.
-### 2. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
+### 2. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.
+### 3. When gender is selected as FEMALE and AGE is 13 or older "Are you Pregnant" is required. If "Are you pregnant?" response  is YES then "Due Date" is required.
+### 4. The "Due Date" can not be less than the current date.<br><br>
 
 # *Income*
 ## **Earned Income**
@@ -217,6 +221,8 @@
 
 ![Other Member Summary](OtherIndividualsSummary.png)
 ![Other Member Detail](OtherMemberIndividual.png)
+![Other Member Detail](OtherMemberIndividual2.png)
+![Other Member Detail](OtherMemberIndividual3.png)
 
 ### 1. Yes/No on summary screen is required.
 ### 2. Dates must have standard YYYY/MM validation before submitting
