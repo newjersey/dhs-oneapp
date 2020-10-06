@@ -1,7 +1,8 @@
-const { gql, ApolloError } = require('apollo-server-express');
+const { gql } = require('apollo-server-express');
 const { allow } = require('graphql-shield');
 const _ = require('lodash');
 const AuthenticationService = require('../services/AuthenticationService');
+const { OneAppError } = require('../utils/OneAppError');
 
 const typeDef = gql`
   extend type Query {
@@ -89,15 +90,15 @@ const resolvers = {
       // Handle main success
       if (responseCode === 1) {
         if (_.every([user.HINT_QUESTION, user.EMAIL_ADDRESS], _.isEmpty)) {
-          throw new ApolloError('No email address or hint question. Unable to reset account.', `DB_ERROR: ${responseCode}`);
+          throw new OneAppError('No email address or hint question. Unable to reset account.', 't2258');
         }
         return user.HINT_QUESTION;
       }
 
       if (responseCode === -2) {
-        throw new ApolloError('User account locked.', `DB_ERROR: ${responseCode}`);
+        throw new OneAppError('User account locked.', 't2259');
       } else {
-        throw new ApolloError('User not found.', `DB_ERROR: ${responseCode}`);
+        throw new OneAppError('User not found.', 't2257');
       }
     },
   },

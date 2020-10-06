@@ -1,7 +1,6 @@
 /* eslint-disable class-methods-use-this */
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
-const { ApolloError } = require('apollo-server-express');
 const { OneAppError, OneAppAuthenticationError } = require('../utils/OneAppError');
 
 class UserDao extends SQLDataSource {
@@ -66,7 +65,7 @@ class UserDao extends SQLDataSource {
       // Handle an error creating a user
       const responseCode = parseInt(response[0], 10);
       if (responseCode < -1) {
-        throw new ApolloError('User not created.', `DB_ERROR: ${responseCode}`);
+        throw new OneAppError(`User not created. DB_ERROR: ${responseCode}`);
       }
 
       // Fetch the created user from the database
