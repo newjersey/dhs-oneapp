@@ -1,3 +1,11 @@
+# *Overall Validations*
+
+### 1. Apply and Save exists on all screens except the Applicant Information.
+### 2. All dates must have standard formating and validation
+### 3. All SSNs must have standard formatting and validation
+### 4. All Phone numbers must have standard formatting and validation
+### 4. After the Review screen has been reached all screens and upon clicking Update to alter any of the items on the Review screen except the Application Information screen must have an option to return directly to the Review screen.
+
 # *Authentication*
 
 
@@ -179,10 +187,18 @@
 ![Student Income Summary](StudentIncomeSummary.png)
 ![Student Income Detail](StudentIncomeDetail.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard YYYY/MM validation before submitting
+### 3. Required fields are Member name, Schol name, Fulltime/Partfull, Type of income, Loan,Grant,Scholarship amount, Period covered To<br><br>
+
 ## **Income History**
 
 ![Income History Summary](IncomeHistorySummary.png)
 ![Income History Detail](IncomeHistoryDetail.png)
+
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard YYYY/MM validation before submitting
+### 3. Required fields are Member name, Employeer name, Is this your current Employer?, Start Date, End Date<br><br>
 
 ## **Utilities**
 
@@ -192,20 +208,41 @@
 ![Utilities Expense Detail 1 thru 5](UtilitiesDetail1thru5.png)
 ![Utilities Expense Detail 6 thru 14](UtilitiesDetailRemaining.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. Utilities one through five use the screen that doesn't have the question "Is this utility used for Heating or Cooling your house?".
+### 3. Utilities that are remaining use the screen that includes question "Is this utility used for Heating or Cooling your house?".
+### 4. Required fields are First na Required fields are "Please answer the following for Utility Expense", "On whose name the utility bill is?", Amount given, How often Billed, "Is the utility used for Heating or Cooling your house?", Utility company Required fields are "Please answer the following for Utility Expense", "On whose name the utility bill is?", Amount given, How often Billed, "Is the utility used for Heating or Cooling your house?", Utility company<br><br>
+
 ## **Other Individuals**
 
 ![Other Member Summary](OtherIndividualsSummary.png)
 ![Other Member Detail](OtherMemberIndividual.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard YYYY/MM validation before submitting
+### 3. Required fields are Member name, Employeer name, Is this your current Employer?, Start Date, End Date<br><br>
+
 ## **Auth Rep**
 
 ![Authorized Representative](AuthorizeRepresentative.png)
+
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard validation before submitting
+### 3. SSN must have standard formatting and validation
+### 4. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
+### 5. Required fields are First name, Last name, Relationship to Payee<br><br>
 
 ## **Criminal History**
 
 ![Criminal History Summary](CriminalHistorySummary.png)
 ![Criminal History Detail1](CriminalHistoryDetail1.png)
 ![Criminal History Detail2](CriminalHistoryDetail2.png)
+
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard validation before submitting
+### 3. SSN must have standard formatting and validation
+### 7. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
+### 8. The first and forth phone number position can not be 0 or 1.<br><br>
 
 # *Resource*
 ## **Resources**
@@ -215,25 +252,43 @@
 ![Resource Detail Cash on Hand](ResourcesDetail1aCashOnHand.png)
 ![Resource Detail all Remaining resource details](ResourcesDetail1bRemaining.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. "Cash on hand" resource option uses the screen with "Who owns", "Resource name", "How much is the Resource worth", "Single/Joint Owner". All are required.
+### 3. Required fields for all remaining resource options are "Who owns", "Resource name", "How much is the Resource worth", "Single/Joint Owner", "Bank/Institution name". All are required.<br><br>
+
 ## **Pending Claims**
 
 ![Resource Pending Claim Summary](ResourcesPendingClaimSummary.png)
 ![Resource Pending Claim Detail](ResourcesPendingClaimDetail.png)
+
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard validation before submitting
+### 3. Required fields are "Member name", "Claim description", "Claim expected completion date", "Value of Claim"<br><br>
 
 ## **Sell/Trade**
 
 ![Resource Sell Trade Summary](ResourceSellTradeSummary.png)
 ![Resource Sell Trade Detail](ResourceSellTradeDetail.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. Dates must have standard validation before submitting
+### 3. Required fields are "Traded, given away, transferred or sold for TANF and GA purposes within the past 12 months", Traded, given away, transferred or sold for NJ SNAP purposes within the past 3 months", "Traded, given away, transferred or sold BY whom", "Item description, "Traded, given away, transferred or sold to whom", "Date of Sale or Gift", "Total Market Value", "Amount received"<br><br><br><br>
+
 ## **Real Estate**
 
 ![Resource Real Estate Summary](ResourcesRealEstateSummary.png)
 ![Resource Real Estate Detail](ResourcesRealEstateDetail.png)
 
+### 1. Yes/No on summary screen is required.
+### 2. Required fields are "Member name", "Property description", "Property value"<br><br>
+
 ## **Personal Property**
 
 ![Resource Personal Property Summary](ResourcesPersonalPropertySummary.png)
 ![Resource Personal Property Detail](ResourcesPersonalPropertyDetail.png)
+
+### 1. Yes/No on summary screen is required.
+### 2. Required fields are "Member name", "Description", "Item Value/Equity value"<br><br>
 
 # *Review*
 
@@ -252,3 +307,8 @@
 
 ![Submit1](Submit1.png)
 ![Submit2](Submit2.png)
+
+### 1. "I Read, understood and accept the above text, printed for me by the county representative" is grayed out for the NJoneapp client portal.
+### 2. "I Read, understood and accept the above text, printed for me by the county representative" is active for the NJoneapp worker portal. When this option is selected a field displays that require a workers userid.
+### 3. Button exists to print the "Important Notice"
+### 4. Required fields are "Disclaimer", "I hereby agree to electronically sign this application"<br><br>
