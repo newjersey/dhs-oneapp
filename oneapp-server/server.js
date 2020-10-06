@@ -51,6 +51,7 @@ const createServer = (dataSources, services, context) => {
         code: error.extensions.code,
         message: error.message,
         path: error.path,
+        MESSAGE_TEXT_ID: error.extensions.exception.MESSAGE_TEXT_ID,
       };
     },
 
