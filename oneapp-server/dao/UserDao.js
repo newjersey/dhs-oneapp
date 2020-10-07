@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
-const { AuthenticationError, ApolloError } = require('apollo-server-express');
+const { OneAppError, OneAppAuthenticationError } = require('../utils/OneAppError');
 
 class UserDao extends SQLDataSource {
   async getUser(USER_ID, conn = this.knex) {
@@ -32,15 +32,15 @@ class UserDao extends SQLDataSource {
       // Handle an error creating a user
       const responseCode = parseInt(response[0], 10);
       if (responseCode === 0) {
-        throw new AuthenticationError('USER_PASS_INCORRECT');
+        throw new OneAppAuthenticationError('USER_PASS_INCORRECT', 't608');
       } else if (responseCode === -1) {
-        throw new AuthenticationError('UNKNOWN_ERROR: -1');
+        throw new OneAppAuthenticationError('ACCOUNT_LOCKED', 't2260');
       } else if (responseCode === -2) {
-        throw new AuthenticationError('UNKNOWN_ERROR: -2');
+        throw new OneAppAuthenticationError('ACCOUNT_LOCKED_RECREATE_ACCOUNT', 't2259');
       } else if (responseCode === -999) {
-        throw new AuthenticationError('UNKNOWN_ERROR: -999');
+        throw new OneAppAuthenticationError('APPLICATION_45DAYS_EXPIRED', 't2319');
       } else if (responseCode < 1) {
-        throw new AuthenticationError(`Unable to authenticate. errorCode=${responseCode}`);
+        throw new OneAppError('UNKNOWN_ERROR');
       }
 
       // Fetch the created user from the database
@@ -65,7 +65,7 @@ class UserDao extends SQLDataSource {
       // Handle an error creating a user
       const responseCode = parseInt(response[0], 10);
       if (responseCode < -1) {
-        throw new ApolloError('User not created.', `DB_ERROR: ${responseCode}`);
+        throw new OneAppError(`User not created. DB_ERROR: ${responseCode}`);
       }
 
       // Fetch the created user from the database

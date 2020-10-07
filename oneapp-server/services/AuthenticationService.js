@@ -2,7 +2,8 @@ const config = require('config');
 const jwt = require('jsonwebtoken');
 const { rule, shield } = require('graphql-shield');
 const { createRateLimitRule } = require('graphql-rate-limit');
-const { AuthenticationError, ApolloError, UserInputError } = require('apollo-server-express');
+const { ApolloError, UserInputError } = require('apollo-server-express');
+const { OneAppAuthenticationError } = require('../utils/OneAppError');
 
 const rules = {
   isAuthenticated: rule({ cache: 'contextual' })(
@@ -44,7 +45,7 @@ const service = {
         return ex;
       }
 
-      return new AuthenticationError('You must be logged in to access this data.');
+      return new OneAppAuthenticationError('You must be logged in to access this data.');
     },
   }),
 
