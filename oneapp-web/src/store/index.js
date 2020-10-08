@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import _ from 'lodash';
 //import moment from 'moment';
-import User from '@/services/User.js';
+import User from '@/models/User.js';
 
 Vue.use(Vuex);
 

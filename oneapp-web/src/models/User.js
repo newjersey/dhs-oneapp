@@ -1,42 +1,15 @@
 import axios from 'axios';
+import Base from './Base';
 
-export default class User {
+class User extends Base {
+
     constructor() {
-        this.rootUrl = process.env.VUE_APP_API_ROOT_URL ? process.env.VUE_APP_API_ROOT_URL : 'http://localhost:4000';
-
-        console.log('Host: ' + window.location.host);
-        console.log('RootURL: ' + this.rootUrl);
-    }
-
-    async _send(query) {
-        const payload = query;
-        console.log('SENDING: ', payload);
-
-        try {
-            let info = await axios.post(`${this.rootUrl}/graphql/query`, { query: payload, timeout: 1000 });
-            return this._handleResponse(info);
-        } catch (err) {
-            console.error(err);
-            return null;
-        }
-    }
-
-    _handleResponse(resp) {
-        console.log('RESPONE = ', resp);
-        if (resp && resp.data) {
-            let errors = resp.data.errors;
-            let data = resp.data.data;
-            if (errors) {
-                throw errors[0];
-            }
-            return data;
-        }
-        return null;
+        super();
     }
 
     async load() {
         //const template = `query {users {current {USER_ID}}}`;
-        return await this._send(`query {users {current {USER_ID}}}`, null);
+        return await User._send(`query {users {current {USER_ID}}}`, null);
     }
 
     async update() {
@@ -44,6 +17,11 @@ export default class User {
     }
 
     async register(opts) {
+        
+        if (!opts){
+            return null;
+        }
+
         const qry = `mutation {
                 userRegister( input: {
                     USER_ID: "${opts.username}", 
@@ -54,10 +32,15 @@ export default class User {
                 } ){token}
             }`;
 
-        return await this._send(qry);
+        return await User._send(qry);
     }
 
     async login(opts) {
+
+        if (!opts){
+            return null;
+        }
+
         const qry = `mutation {
                 userAuthenticate( input: {USER_ID: "${opts.username}", PASSWORD: "${opts.password}"} )
                 {
@@ -65,7 +48,7 @@ export default class User {
                 }
             }`;
 
-        let resp = await this._send(qry);
+        let resp = await User._send(qry);
 
         if (resp && resp.userAuthenticate && resp.userAuthenticate.token) {
             this.token = resp.userAuthenticate.token;
@@ -90,3 +73,5 @@ export default class User {
         return await this._send(qry);
     }
 }
+
+export default User;
