@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>*Overall Validations*</title>
+        <style>
+</style>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item { list-style-type: none; } .task-list-item-checkbox { margin-left: -20px; vertical-align: middle; }
+</style>
+        
+        <script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+        
+    </head>
+    <body class="vscode-light">
+        <h1 id="overall-validations"><em>Overall Validations</em></h1>
+<h3 id="1-apply-and-save-exists-on-all-screens-except-the-applicant-information">1. Apply and Save exists on all screens except the Applicant Information.</h3>
+<h3 id="2-all-dates-must-have-standard-formating-and-validation">2. All dates must have standard formating and validation</h3>
+<h3 id="3-all-ssns-must-have-standard-formatting-and-validation">3. All SSNs must have standard formatting and validation</h3>
+<h3 id="4-all-phone-numbers-must-have-standard-formatting-and-validation">4. All Phone numbers must have standard formatting and validation</h3>
+<h3 id="4-after-the-review-screen-has-been-reached-all-screens-and-upon-clicking-update-to-alter-any-of-the-items-on-the-review-screen-except-the-application-information-screen-must-have-an-option-to-return-directly-to-the-review-screen">4. After the Review screen has been reached all screens and upon clicking Update to alter any of the items on the Review screen except the Application Information screen must have an option to return directly to the Review screen.</h3>
+<h1 id="authentication"><em>Authentication</em></h1>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\authentication.png" alt="Authentication"></p>
+<h3 id="userid-requirements"><strong>Userid requirements</strong></h3>
+<h3 id="1must-be-8-to-15-characters-long">1.	Must be 8 to 15 characters long</h3>
+<h3 id="2must-contain-at-least-one-letter">2.	Must contain at least one letter</h3>
+<h3 id="3must-contain-at-least-one-number">3.	Must contain at least one number</h3>
+<h3 id="4no-special-characters-or-spaces-allowed-brbr">4.	No special characters or spaces allowed <br><br></h3>
+<h3 id="password"><strong>Password</strong></h3>
+<h3 id="1must-by-8-to-15-characters-long">1.	Must by 8 to 15 characters long</h3>
+<h3 id="2must-contain-at-least-one-letter-1">2.	Must contain at least one letter</h3>
+<h3 id="3must-contain-of-least-one-number">3.	Must contain of least one number</h3>
+<h3 id="4no-special-characters-or-spaces-allowed-brbr-1">4.	No special characters or spaces allowed <br><br></h3>
+<h3 id="required-fields-all-fields-are-required-if-the-email-address-checkbox-is-checked-if-the-checkbox-is-unchecked-4-5-and-6-are-not-required-and-not-displayed"><strong>Required fields (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not required and not displayed.)</strong></h3>
+<h3 id="1userid">1.	UserId</h3>
+<h3 id="2choose-password">2.	Choose Password</h3>
+<h3 id="3re-enter-password">3.	Re-enter Password</h3>
+<h3 id="4email-address-if-checkbox-is-checked-all-remaining-fieds-are-required">4.	Email Address (if checkbox is checked all remaining fieds are required)</h3>
+<h3 id="5hint-question">5.	Hint Question</h3>
+<h3 id="6hint-answer-brbr">6.	Hint Answer <br><br></h3>
+<h3 id="email-address"><strong>Email address</strong></h3>
+<h3 id="1email-address-is-passed-to-the-contact-screen-when-entered-here">1.	Email address is passed to the Contact screen when entered here.</h3>
+<h3 id="2general-email-validation-brbrbr">2.	General email validation <br><br><br></h3>
+<h1 id="basic"><em>Basic</em></h1>
+<h3 id="application-information-brbr"><strong>Application Information</strong> <br><br></h3>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ApplicationInfo1.png" alt="Application Information 1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ApplicationInfo2.png" alt="Application Information 2"></p>
+<h3 id="1-question-are-you-the-payee-a-no-response-opens-additional-fields-for-the-client-to-enter-the-first-and-last-name-of-the-payee-br">1. Question: Are you the Payee? A no response opens additional fields for the client to enter the first and last name of the payee <br></h3>
+<h3 id="2-for-homeless-only-county-is-required-for-address">2. For Homeless only county is required for address</h3>
+<h3 id="3-street-address-must-contain-at-least-one-character">3. Street address must contain at least one character</h3>
+<h3 id="4-the-error-text-the-entered-zip-code-does-not-exist-in-the-selected-county-is-a-database-validation-message-that-is-displayed-when-the-entered-zipcode-is-incorrect-it-was-created-because-there-are-zip-codes-that-boarder-multiple-counties">4. The error text &quot;The entered zip code does not exist in the selected county&quot; is a database validation message that is displayed when the entered zipcode is incorrect. It was created because there are zip codes that boarder multiple counties.</h3>
+<h3 id="5-a-person-with-no-contact-information-address-phone-number-or-email-must-check-the-checkbox-by-checking-this-box-i-understand-that-i-must-visit-my-local-county-welfare-office-after-submitting-this-application-in-order-for-the-application-to-be-processed">5. A Person with no contact information (Address, phone number, or email) must check the checkbox &quot;By checking this box I understand that I must visit my Local County Welfare Office after submitting this application in order for the application to be processed.&quot;</h3>
+<h3 id="6-the-getcounty-button-calls-the-dhs-usps-webservice-this-webservice-is-located-at-dhs-not-the-hub">6. The GetCounty button calls the DHS USPS Webservice (This webservice is located at DHS not the HUB).</h3>
+<h3 id="7-required-fieldsquestions-are-first-name-last-name-are-you-the-payee-street-address-city-zip-resident--mailing-county-this-is-required-for-both-address-and-homeless-primary-phone">7. Required fields/questions are First Name, Last Name, &quot;Are you the Payee?&quot;, Street Address, City, Zip (Resident &amp; Mailing) County (this is required for both address and homeless), Primary Phone.</h3>
+<h3 id="8-invalid-area-codes-are-200-300-400-411-710-844-855-866-877-888-900-and-911">8. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.</h3>
+<h3 id="9-the-first-and-forth-phone-number-position-can-not-be-0-or-1brbr">9. The first and forth phone number position can not be 0 or 1.<br><br></h3>
+<h2 id="snap-header"><strong>SNAP Header</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\NJSNAPInformation.png" alt="NJ SNAP Information">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\NJSNAPInformation2.png" alt="NJ SNAP Information 2"></p>
+<h3 id="1-a-yes-response-for-question-do-you-want-to-apply-for-nj-snap-for-yourself-or-someone-else-in-your-household-sets-the-program-nj-snap-as-the-default">1. A yes response for question &quot;Do you want to apply for NJ SNAP for yourself or someone else in your household?&quot; sets the Program NJ SNAP as the default.</h3>
+<h3 id="2-required-questions-are-is-your-households-total-gross-monthly-income-less-than-15000-and-your-households-total-liquid-resources-such-as-cash-or-checkingsavings-accounts-10000-or-less-is-your-households-monthy-rent-or-mortgage-plus-utilities-more-than-your-huoseholds-total-monthly-gross-income-plus-total-liquid-resources-and-is-anyone-in-your-household-a-migrantseasonal-farm-worker">2. Required questions are &quot;Is your household's total gross monthly income less than $150.00 and your household's total liquid resources (such as cash or checking/savings accounts) $100.00 or less?&quot;, &quot;Is your household's monthy rent or mortgage plus utilities more than your huosehold's total monthly gross income plus total liquid resources?&quot;, and &quot;Is anyone in your household a migrant/seasonal farm worker?&quot;</h3>
+<h3 id="3-if-the-question-is-anyone-in-your-household-a-migrantseasonal-farm-work-has-a-response-of-yes-the-question-if-yes-has-your-household-received-emergency-snap-benefit-will-become-visible-all-fieldsdropdowns-under-the-newly-displayed-question-are-required">3. If the question, &quot;Is anyone in your household a migrant/seasonal farm work?&quot; has a response of yes the question &quot;If yes, has your household received Emergency SNAP benefit?&quot; will become visible. All fields/dropdowns under the newly displayed question are required.</h3>
+<h3 id="4-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbr">4. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br></h3>
+<p><span style="color:red"><em>NOTE: If an application doesn't have the DFD Program NJ SNAP chosen it is not sent to OneTrac.</em></span></p>
+<h2 id="household-1"><strong>Household 1</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household1Summary.png" alt="Household1 Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household1Citizen.png" alt="Household1 Citizen">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household1PermRes.png" alt="Household1 Permanent Resident">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household1Remaining.png" alt="Household1 Remaining"></p>
+<h3 id="1-the-citizen-status-field-controls-fields-that-are-displayed-on-the-screen">1. The Citizen Status field controls fields that are displayed on the screen.</h3>
+<h3 id="2-ssn-is-required-for-citizen-and-permanent-resident-only-if-they-are-applying-for-benefitsdropdown-selected-yes">2. SSN is required for Citizen and Permanent Resident only if they are applying for benefits(dropdown selected YES).</h3>
+<h3 id="3-ssn-must-have-standard-validation-before-submitting">3. SSN must have standard validation before submitting</h3>
+<h3 id="4-dates-must-have-standard-validation-before-submitting">4. Dates must have standard validation before submitting</h3>
+<h3 id="5-required-fieldsquestions-are-first-name-last-name-is-the-member-applying-for-benefits-date-of-birth-is-disabled-and-relationship-to-payee">5. Required fields/questions are first name, last name, Is the Member applying for benefits?, Date of Birth, Is Disabled, and Relationship to Payee.</h3>
+<h3 id="6-only-one-payee-must-exist">6. Only one payee must exist.</h3>
+<h3 id="7-currently-famis-can-have-up-to-26-members-in-a-family-may-be-a-question-for-future-if-more-are-needed">7. Currently FAMIS can have up to 26 members in a family (May be a question for future if more are needed)</h3>
+<h3 id="8-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screen">8. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.</h3>
+<h3 id="9-is-disabled-is-required-when-is-the-member-applying-for-benefits-is-yesbrbr">9. &quot;Is disabled&quot; is required when &quot;Is the Member applying for benefits?&quot; is YES.<br><br></h3>
+<h2 id="household-2"><strong>Household 2</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household2.png" alt="Household1 Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household2CurrCompDiscont.png" alt="Household1 Citizen">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Household2Remaining.png" alt="Household1 Permanent Resident">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\OtherMemberIndividual2.png" alt="Other Member Detail2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\OtherMemberIndividual3.png" alt="Other Member Detail3">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\OtherMemberIndividual4.png" alt="Other Member Detail4"></p>
+<h3 id="1-education-option-currently-in-school-and-completeddiscontinued-education-has-the-field-education-grade-level-displayed-on-screen-all-remaining-options-do-not-have-this-field-displayed">1. Education option &quot;Currently in School&quot; and &quot;Completed/Discontinued Education&quot; has the field &quot;Education Grade Level&quot; displayed on screen. All remaining options do not have this field displayed.</h3>
+<h3 id="2-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screen">2. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.</h3>
+<h3 id="3-when-gender-is-selected-as-female-and-age-is-13-or-older-are-you-pregnant-is-required-if-are-you-pregnant-response-is-yes-then-due-date-is-required">3. When gender is selected as FEMALE and AGE is 13 or older &quot;Are you Pregnant&quot; is required. If &quot;Are you pregnant?&quot; response  is YES then &quot;Due Date&quot; is required.</h3>
+<h3 id="4-the-due-date-can-not-be-less-than-the-current-datebrbr">4. The &quot;Due Date&quot; can not be less than the current date.<br><br></h3>
+<h1 id="income"><em>Income</em></h1>
+<h2 id="earned-income"><strong>Earned Income</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeEarnedSummary.png" alt="Earned Income Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeEarnedDetail.png" alt="Earned Income Detail"></p>
+<h3 id="1-start-date-must-have-standard-validation-before-submitting">1. Start date must have standard validation before submitting</h3>
+<h3 id="2-required-fields-are-member-name-employment-type-employer-name-start-date-full-timepart-time-hours-per-week-payment-period-work-income-before-taxes-per-pay-period">2. Required fields are Member name, Employment type, Employer name, Start date, Full Time/Part Time, Hours Per Week, Payment Period, Work income before taxes per pay period</h3>
+<h3 id="3-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr">3. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h2 id="unearned-income"><strong>Unearned Income</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeUnearnedSummary.png" alt="Unearned Income1 Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeUnearnedSummary2.png" alt="Unearned Income2 Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeUnearnedSummary3.png" alt="Unearned Income2 Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeUnearnedDetail1.png" alt="Unearned Income Detail">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeUnearnedDetail2.png" alt="Unearned Income Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required">1. Yes/No on summary screen is required</h3>
+<h3 id="2-date-last-receivedapplied-must-have-standard-validation-before-submitting">2. Date last Received/Applied must have standard validation before submitting</h3>
+<h3 id="3-required-fields-are-member-name-type-income-receivedapplied-income-amount-how-often-received">3. Required fields are Member name, Type Income, Received/Applied, Income amount, How often received?</h3>
+<h3 id="4-the-receiveapplied-response-received-displays-the-required-fields-income-amount-and-how-often-received-fields">4. The Receive/Applied response &quot;Received&quot; displays the required fields Income amount and How often received fields</h3>
+<h3 id="5-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr">5. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h2 id="dependent-care"><strong>Dependent Care</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ExpenseDependantCareSummary.png" alt="Dependant Care Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ExpenseDependantCareDetail.png" alt="Dependant Care Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-1">1. Yes/No on summary screen is required</h3>
+<h3 id="2-required-fields-are-who-pays-childadult-being-paid-for-care-provider-name-days-per-week-daily-rate-monthly-childadult-care-amount-paid">2. Required fields are Who Pays, Child/Adult being paid for, Care provider name, Days per week, Daily rate, Monthly child/adult care amount paid</h3>
+<h3 id="3-invalid-area-codes-are-200-300-400-411-710-844-855-866-877-888-900-and-911">3. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.</h3>
+<h3 id="4-the-first-and-forth-phone-number-position-can-not-be-0-or-1">4. The first and forth phone number position can not be 0 or 1.</h3>
+<h3 id="5-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr-1">5. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h2 id="child-support"><strong>Child Support</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ExpenseChildSupportSummary.png" alt="Child Support Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ExpenseChildSupportDetail.png" alt="Child Support Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-2">1. Yes/No on summary screen is required</h3>
+<h3 id="2-required-fields-on-detail-screen-are-who-pays-child-being-supported-age-of-child-monthly-amount-paid-out">2. Required fields on detail screen are Who pays, Child being supported, Age of child, Monthly amount paid out</h3>
+<h3 id="3-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr-1">3. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h1 id="programs"><em>Programs</em></h1>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program1.png" alt="Program1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program2.png" alt="Program2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program3A.png" alt="Program3">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program3B.png" alt="Program3A">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program3C.png" alt="Program3B">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Program3D.png" alt="Program3C"></p>
+<h3 id="1-under-the-eligibility-section-the-you-may-be-response-must-be-ineligible-in-red-text-or-eligible-in-green-text-this-field-is-based-on-a-high-level-eligibility-calculation">1. Under the Eligibility section the &quot;You may be&quot; response must be INELIGIBLE in red text or ELIGIBLE in green text. This field is based on a high level eligibility calculation.</h3>
+<h3 id="2-the-nj-snap-program-is-check-automatically-when-the-question-do-you-want-to-apply-for-nj-snap-for-yourself-or-someone-else-in-your-household-has-a-yes-response">2. The NJ SNAP program is check automatically when the question &quot;Do you want to apply for NJ SNAP for yourself or someone else in your household?&quot; has a YES response.</h3>
+<h3 id="3-valid-single-or-combination-program-selection-is">3. Valid single or combination Program selection is</h3>
+<pre><code>     a. NJ SNAP
+     b. GA
+     c. TANF
+     d. NJ SNAP&amp;GA
+     e. NJ SNAP&amp;TANF
+</code></pre>
+<h3 id="4-the-combination-programs-selection-gatanf-are-not-a-valid-option">4. The combination Programs selection GA&amp;TANF are not a valid option.</h3>
+<h3 id="5-accommodation-yesno-response-of-yes-displays-additional-fields">5. Accommodation YES/NO response of YES displays additional fields.</h3>
+<h3 id="6-a-checked-response-of-translator-associated-with-5-abovedisplays-the-what-language-field">6. A checked response of Translator (associated with #5 above)displays the &quot;What Language&quot; field.</h3>
+<h3 id="7-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr">7. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h1 id="nj-snapwfnj"><em>NJ SNAP/WFNJ</em></h1>
+<h2 id="snap-header-1"><strong>SNAP Header</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\SNAPHeader.png" alt="SNAP Header"></p>
+<h3 id="1-required-fields-are-do-you-pay-someone-to-provide-you-with-meals-please-select-the-head-of-the-household-does-any-member-of-the-household-expect-any-change-in-circumstances-in-the-near-future-like-the-change-in-income-household-size-resident-or-shelter-costs-etc">1. Required fields are &quot;Do you pay someone to provide you with meals?&quot;, &quot;Please select the Head of the Household, Does any member of the Household expect any change in circumstances in the near future like the change in income, household size, resident or shelter costs etc?&quot;</h3>
+<h3 id="2-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr">2. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h2 id="snap-detail"><strong>SNAP Detail</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\SNAPDetailSummary.png" alt="SNAP Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\SNAPDetailDetail1.png" alt="SNAP Detail1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\SNAPDetailDetail2.png" alt="SNAP Detail2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\SNAPDetailDetail3.png" alt="SNAP Detail3"></p>
+<h3 id="1-both-has-voluntarily-quit-a-job-in-the-last-60-days-and-has-voluntarily-quit-a-job-in-the-last-90-days-display-quit-job-reason-when-a-yes-response-is-given">1. Both &quot;Has voluntarily quit a job in the last 60 days?&quot; and &quot;Has voluntarily quit a job in the last 90 days?&quot; display &quot;Quit Job Reason&quot; when a YES response is given.</h3>
+<h3 id="2-the-question-do-you-or-any-member-of-the-household-receive-or-have-you-received-tanf-in-new-jersey-or-any-other-state-territory-or-general-assistance-ga-in-new-jersey-since-april-1997-displays-only-when-the-client-has-selected-the-ga-or-tanf-program-it-would-then-be-required">2. The question  &quot;Do you or any member of the household receive or have you received TANF in New Jersey or any other state, territory, or General Assistance (GA) in New Jersey since April 1997?&quot; displays only when the client has selected the GA or TANF program. It would then be required.</h3>
+<h3 id="3-a-yes-response-to-do-you-or-any-member-of-the-household-receive-or-have-you-received-tanf-in-new-jersey-or-any-other-state-territory-or-general-assistance-ga-in-new-jersey-since-april-1997-displays-additional-fields-when-the-additional-fields-are-displayed-they-are-required">3. A YES response to &quot;Do you or any member of the household receive or have you received TANF in New Jersey or any other state, territory, or General Assistance (GA) in New Jersey since April 1997?&quot; displays additional fields. When the additional fields are displayed they are required.</h3>
+<h3 id="4-the-questions-is-participating-in-a-federally-funded-work-study-program-is-responsible-for-a-dependent-child-under-age-6-is-responsible-for-a-dependent-household-member-between-ages-6-to-12-is-enrolled-full-time-in-an-institution-of-higher-learning-are-displayed-when-a-member-is-in-school-meaning-the-client-entered-student-information-on-the-member-other-information-screen-household-2-when-these-fields-are-displayed-they-are-required">4. The questions &quot;Is Participating in a federally funded Work Study Program&quot;, &quot;Is Responsible for a dependent child under age 6&quot;, &quot;Is Responsible for a dependent household member between ages 6 to 12?&quot;, &quot;Is enrolled full time in an institution of Higher Learning?&quot; are displayed when a member is in school. Meaning the client entered student information on the &quot;Member Other Information&quot; screen (Household 2). When these fields are displayed they are required.</h3>
+<h3 id="5-required-fields-are-has-voluntarily-quit-a-job-in-the-last-60-days-and-has-voluntarily-quit-a-job-in-the-last-90-days-on-strike">5. Required fields are &quot;Has voluntarily quit a job in the last 60 days?&quot; and &quot;Has voluntarily quit a job in the last 90 days?&quot;, &quot;On Strike&quot;.</h3>
+<h3 id="6-checking-the-checkbox-check-this-box-to-go-to-review-page-directly-and-clicking-the-next-button-will-display-the-review-screenbrbr">6. Checking the checkbox &quot;Check this box to go to review page directly&quot; and clicking the NEXT button will display the Review screen.<br><br></h3>
+<h2 id="student-income"><strong>Student Income</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\StudentIncomeSummary.png" alt="Student Income Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\StudentIncomeDetail.png" alt="Student Income Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-3">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-yyyymm-validation-before-submitting">2. Dates must have standard YYYY/MM validation before submitting</h3>
+<h3 id="3-required-fields-are-member-name-schol-name-fulltimepartfull-type-of-income-loangrantscholarship-amount-period-covered-tobrbr">3. Required fields are Member name, Schol name, Fulltime/Partfull, Type of income, Loan,Grant,Scholarship amount, Period covered To<br><br></h3>
+<h2 id="income-history"><strong>Income History</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeHistorySummary.png" alt="Income History Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\IncomeHistoryDetail.png" alt="Income History Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-4">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-yyyymm-validation-before-submitting-1">2. Dates must have standard YYYY/MM validation before submitting</h3>
+<h3 id="3-required-fields-are-member-name-employeer-name-is-this-your-current-employer-start-date-end-datebrbr">3. Required fields are Member name, Employeer name, Is this your current Employer?, Start Date, End Date<br><br></h3>
+<h2 id="utilities"><strong>Utilities</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\UtilitiesSummary1.png" alt="Utilities Expense Summary1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\UtilitiesSummary2.png" alt="Utilities Expense Summary2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\UtilitiesForHomeless.png" alt="Utilities Expense For Homeless">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\UtilitiesDetail1thru5.png" alt="Utilities Expense Detail 1 thru 5">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\UtilitiesDetailRemaining.png" alt="Utilities Expense Detail 6 thru 14"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-5">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-utilities-one-through-five-use-the-screen-that-doesnt-have-the-question-is-this-utility-used-for-heating-or-cooling-your-house">2. Utilities one through five use the screen that doesn't have the question &quot;Is this utility used for Heating or Cooling your house?&quot;.</h3>
+<h3 id="3-utilities-that-are-remaining-use-the-screen-that-includes-question-is-this-utility-used-for-heating-or-cooling-your-house">3. Utilities that are remaining use the screen that includes question &quot;Is this utility used for Heating or Cooling your house?&quot;.</h3>
+<h3 id="4-required-fields-are-first-na-required-fields-are-please-answer-the-following-for-utility-expense-on-whose-name-the-utility-bill-is-amount-given-how-often-billed-is-the-utility-used-for-heating-or-cooling-your-house-utility-company-required-fields-are-please-answer-the-following-for-utility-expense-on-whose-name-the-utility-bill-is-amount-given-how-often-billed-is-the-utility-used-for-heating-or-cooling-your-house-utility-companybrbr">4. Required fields are First na Required fields are &quot;Please answer the following for Utility Expense&quot;, &quot;On whose name the utility bill is?&quot;, Amount given, How often Billed, &quot;Is the utility used for Heating or Cooling your house?&quot;, Utility company Required fields are &quot;Please answer the following for Utility Expense&quot;, &quot;On whose name the utility bill is?&quot;, Amount given, How often Billed, &quot;Is the utility used for Heating or Cooling your house?&quot;, Utility company<br><br></h3>
+<h2 id="other-individuals"><strong>Other Individuals</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\OtherIndividualsSummary.png" alt="Other Member Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\OtherMemberIndividual.png" alt="Other Member Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-6">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-yyyymm-validation-before-submitting-2">2. Dates must have standard YYYY/MM validation before submitting</h3>
+<h3 id="3-required-fields-are-member-name-employeer-name-is-this-your-current-employer-start-date-end-datebrbr-1">3. Required fields are Member name, Employeer name, Is this your current Employer?, Start Date, End Date<br><br></h3>
+<h2 id="auth-rep"><strong>Auth Rep</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\AuthorizeRepresentative.png" alt="Authorized Representative"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-7">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-validation-before-submitting">2. Dates must have standard validation before submitting</h3>
+<h3 id="3-ssn-must-have-standard-formatting-and-validation">3. SSN must have standard formatting and validation</h3>
+<h3 id="4-invalid-area-codes-are-200-300-400-411-710-844-855-866-877-888-900-and-911">4. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.</h3>
+<h3 id="5-required-fields-are-first-name-last-name-relationship-to-payeebrbr">5. Required fields are First name, Last name, Relationship to Payee<br><br></h3>
+<h2 id="criminal-history"><strong>Criminal History</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\CriminalHistorySummary.png" alt="Criminal History Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\CriminalHistoryDetail1.png" alt="Criminal History Detail1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\CriminalHistoryDetail2.png" alt="Criminal History Detail2"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-8">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-validation-before-submitting-1">2. Dates must have standard validation before submitting</h3>
+<h3 id="3-ssn-must-have-standard-formatting-and-validation-1">3. SSN must have standard formatting and validation</h3>
+<h3 id="7-invalid-area-codes-are-200-300-400-411-710-844-855-866-877-888-900-and-911">7. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.</h3>
+<h3 id="8-the-first-and-forth-phone-number-position-can-not-be-0-or-1brbr">8. The first and forth phone number position can not be 0 or 1.<br><br></h3>
+<h1 id="resource"><em>Resource</em></h1>
+<h2 id="resources"><strong>Resources</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesSummary1.png" alt="Resource Summary1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesSummary2.png" alt="Resource Summary2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesDetail1aCashOnHand.png" alt="Resource Detail Cash on Hand">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesDetail1bRemaining.png" alt="Resource Detail all Remaining resource details"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-9">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-cash-on-hand-resource-option-uses-the-screen-with-who-owns-resource-name-how-much-is-the-resource-worth-singlejoint-owner-all-are-required">2. &quot;Cash on hand&quot; resource option uses the screen with &quot;Who owns&quot;, &quot;Resource name&quot;, &quot;How much is the Resource worth&quot;, &quot;Single/Joint Owner&quot;. All are required.</h3>
+<h3 id="3-required-fields-for-all-remaining-resource-options-are-who-owns-resource-name-how-much-is-the-resource-worth-singlejoint-owner-bankinstitution-name-all-are-requiredbrbr">3. Required fields for all remaining resource options are &quot;Who owns&quot;, &quot;Resource name&quot;, &quot;How much is the Resource worth&quot;, &quot;Single/Joint Owner&quot;, &quot;Bank/Institution name&quot;. All are required.<br><br></h3>
+<h2 id="pending-claims"><strong>Pending Claims</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesPendingClaimSummary.png" alt="Resource Pending Claim Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesPendingClaimDetail.png" alt="Resource Pending Claim Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-10">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-validation-before-submitting-2">2. Dates must have standard validation before submitting</h3>
+<h3 id="3-required-fields-are-member-name-claim-description-claim-expected-completion-date-value-of-claimbrbr">3. Required fields are &quot;Member name&quot;, &quot;Claim description&quot;, &quot;Claim expected completion date&quot;, &quot;Value of Claim&quot;<br><br></h3>
+<h2 id="selltrade"><strong>Sell/Trade</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourceSellTradeSummary.png" alt="Resource Sell Trade Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourceSellTradeDetail.png" alt="Resource Sell Trade Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-11">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-dates-must-have-standard-validation-before-submitting-3">2. Dates must have standard validation before submitting</h3>
+<h3 id="3-required-fields-are-traded-given-away-transferred-or-sold-for-tanf-and-ga-purposes-within-the-past-12-months-traded-given-away-transferred-or-sold-for-nj-snap-purposes-within-the-past-3-months-traded-given-away-transferred-or-sold-by-whom-item-description-traded-given-away-transferred-or-sold-to-whom-date-of-sale-or-gift-total-market-value-amount-receivedbrbrbrbr">3. Required fields are &quot;Traded, given away, transferred or sold for TANF and GA purposes within the past 12 months&quot;, Traded, given away, transferred or sold for NJ SNAP purposes within the past 3 months&quot;, &quot;Traded, given away, transferred or sold BY whom&quot;, &quot;Item description, &quot;Traded, given away, transferred or sold to whom&quot;, &quot;Date of Sale or Gift&quot;, &quot;Total Market Value&quot;, &quot;Amount received&quot;<br><br><br><br></h3>
+<h2 id="real-estate"><strong>Real Estate</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesRealEstateSummary.png" alt="Resource Real Estate Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesRealEstateDetail.png" alt="Resource Real Estate Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-12">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-required-fields-are-member-name-property-description-property-valuebrbr">2. Required fields are &quot;Member name&quot;, &quot;Property description&quot;, &quot;Property value&quot;<br><br></h3>
+<h2 id="personal-property"><strong>Personal Property</strong></h2>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesPersonalPropertySummary.png" alt="Resource Personal Property Summary">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\ResourcesPersonalPropertyDetail.png" alt="Resource Personal Property Detail"></p>
+<h3 id="1-yesno-on-summary-screen-is-required-13">1. Yes/No on summary screen is required.</h3>
+<h3 id="2-required-fields-are-member-name-description-item-valueequity-valuebrbr">2. Required fields are &quot;Member name&quot;, &quot;Description&quot;, &quot;Item Value/Equity value&quot;<br><br></h3>
+<h1 id="review"><em>Review</em></h1>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review1.png" alt="Review1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review2.png" alt="Review2">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review3.png" alt="Review3">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review4.png" alt="Review4">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review5.png" alt="Review5">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review6.png" alt="Review6">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review7.png" alt="Review7">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review8.png" alt="Review8">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review9.png" alt="Review9">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Review10.png" alt="Review10"></p>
+<h1 id="submit"><em>Submit</em></h1>
+<p><img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Submit1.png" alt="Submit1">
+<img src="file:///c:\Users\cafisher\dhs-oneapp\docs\DFD_Validations\Submit2.png" alt="Submit2"></p>
+<h3 id="1-i-read-understood-and-accept-the-above-text-printed-for-me-by-the-county-representative-is-grayed-out-for-the-njoneapp-client-portal">1. &quot;I Read, understood and accept the above text, printed for me by the county representative&quot; is grayed out for the NJoneapp client portal.</h3>
+<h3 id="2-i-read-understood-and-accept-the-above-text-printed-for-me-by-the-county-representative-is-active-for-the-njoneapp-worker-portal-when-this-option-is-selected-a-field-displays-that-require-a-workers-userid">2. &quot;I Read, understood and accept the above text, printed for me by the county representative&quot; is active for the NJoneapp worker portal. When this option is selected a field displays that require a workers userid.</h3>
+<h3 id="3-button-exists-to-print-the-important-notice">3. Button exists to print the &quot;Important Notice&quot;</h3>
+<h3 id="4-required-fields-are-disclaimer-i-hereby-agree-to-electronically-sign-this-applicationbrbr">4. Required fields are &quot;Disclaimer&quot;, &quot;I hereby agree to electronically sign this application&quot;<br><br></h3>
+
+    </body>
+    </html>
