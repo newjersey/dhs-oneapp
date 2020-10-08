@@ -46,7 +46,7 @@ export default {
     components: {},
     data() {
         return {
-            alertMessage: 'Alert message, system issues, or emergency information would go here.',
+            alertMessage: 'This site is just for testing and cannot accept real applications. To apply, please visit New Jersey OneApp.',
             locale: null
         };
     },
