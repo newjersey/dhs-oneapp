@@ -1,5 +1,6 @@
 <template>
     <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
+        
         <h2 v-if="config[step].title">{{ config[step].title }}</h2>
 
         <us-row class="p-0">
