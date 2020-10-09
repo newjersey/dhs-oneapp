@@ -1,3 +1,44 @@
+***NJOneApp FrontEnd Validations***
+
+- [**Overall Validations**](#overall-validations)
+- [**Authentication**](#authentication)
+    + [*Userid requirements*](#userid-requirements)
+    + [*Password*](#password)
+    + [*Required fields*](#required-fields)
+         (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not required and not displayed.)**](#required-fields--all-fields-are-required-if-the-email-address-checkbox-is-checked-if-the-checkbox-is-unchecked-4--5--and-6-are-not-required-and-not-displayed)
+    + [*Email address*](#email-address)
+- [**Basic**](#basic)
+    + [*Application Information*](#application-information)
+    + [*SNAP Header*](#snap-header)
+    + [*Household 1*](#household-1)
+    + [*Household 2*](#household-2)
+- [**Income**](#income)
+    + [*Earned Income*](#earned-income)
+    + [*Unearned Income*](#unearned-income)
++ [**Expenses**](#expenses)
+    + [*Housing Cost*](#housing_cost)
+    + [*Medical*](#medical)
+    + [*Dependent Care*](#dependent-care)
+    + [*Child Support*](#child-support)
++ [**Programs**](#programs)
+- [**NJ SNAP/WFNJ**](#nj-snapwfnj)
+    + [*SNAP Header*](#snap-header-1)
+    + [*SNAP Detail*](#snap-detail)
+    + [*Student Income*](#student-income)
+    + [*Income History*](#income-history)
+    + [*Utilities*](#utilities)
+    + [*Other Individuals*](#other-individuals)
+    + [*Auth Rep*](#auth-rep)
+    + [*Criminal History*](#criminal-history)
+ - [**Resource**](#resource)
+    + [*Income History*](#income-history)
+    + [*Pending Claims*](#pending-claims)
+    + [*Sell/Trade*](#--selltrade--)
+    + [*Real Estate*](#--real-estate--)
+    + [*Personal Property*](#--personal-property--)
+- [**Review**](#-review-)
+- [**Submit**](#-submit-)
+
 # *Overall Validations*
 
 ### 1. Apply and Save exists on all screens except the Applicant Information.
@@ -5,6 +46,11 @@
 ### 3. All SSNs must have standard formatting and validation
 ### 4. All Phone numbers must have standard formatting and validation
 ### 4. After the Review screen has been reached all screens and upon clicking Update to alter any of the items on the Review screen except the Application Information screen must have an option to return directly to the Review screen.
+### 5. First name and last name fields must be 25 characters or less (This will match FAMIS)
+### 6. A client is required to fill out the only first two screens within NJOneApp.
+### 7. A client can skip around the online application and fill out only what they have at that time. Example: Client fills out first screen, second screen, and Income screen then submits.
+### 8. The worker portal must include the workers userid on the submit screen when the worker signs for the client. This userid must be validated against the userid enter during initial signin.
+### 9. The worker portal gives the worker the ability to open directly into the Applicant Information screen, but the worker must initially authenticate to use the worker portal system.<br><br>
 
 # *Authentication*
 
@@ -24,7 +70,8 @@
 ### 3.	Must contain of least one number
 ### 4.	No special characters or spaces allowed <br><br>
 
-### **Required fields (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not required and not displayed.)**
+### **Required fields** 
+    (All fields are required if the email address checkbox is checked. If the checkbox is unchecked 4, 5, and 6 are not required and not displayed.)**
 ### 1.	UserId
 ### 2.	Choose Password
 ### 3.	Re-enter Password
@@ -123,6 +170,36 @@
 ### 3. Required fields are Member name, Type Income, Received/Applied, Income amount, How often received?
 ### 4. The Receive/Applied response "Received" displays the required fields Income amount and How often received fields
 ### 5. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
+
+# *Expenses*
+
+## **Housing cost**
+
+![Expense Housing Cost OwnBuying](ExpenseHousingCostOwnBuying.png)
+![Expense Housing Cost OwnMortgagePaid](ExpenseHousingCostOwnMortgagePaid.png)
+![Expense Housing Rent](ExpenseHousingRent.png)
+![Expense Housing Cost ShareCost](ExpenseHousingCostShareCost.png)
+![Expense Housing FreeHousing](ExpenseHousingFreeHousing.png)
+![Expense Housing Cost RentalAssistance](ExpenseHousingCostRentalAssistance.png)
+![Expense Housing Cost HUDAllowance](ExpenseHousingCostHUDAllowance.png)
+
+### 1. Yes/No on summary screen is required
+### 2. Required fields are Type of Houding Cost, Monthly Rent/Mortgage amount, Do you have an air conditioner in your house/apartment
+### 3. Invalid area codes are 200, 300, 400, 411, 710, 844, 855, 866, 877, 888, 900, and 911.
+### 4. The first and forth phone number position can not be 0 or 1.
+### 5. The "Monthly Rent/Mortgage Amount" doesn't display for option "I get my housing free of charge"
+### 6. The "Rent" option displays Landlord fields.
+### 7. The options "I own or am buying my home" and "I own my home and there is no mortgage or mortgage is fully paid" display "Property Tax" and "Insurance on Home" fields.
+### 8. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
+
+## **Medical**
+
+![Expense Medical Summary](ExpenseMedicalSummary.png)
+![Expense Medical Detail](ExpenseMedicalDetail.png)
+
+### 1. Yes/No on summary screen is required
+### 2. All fields are required
+### 3. Checking the checkbox "Check this box to go to review page directly" and clicking the NEXT button will display the Review screen.<br><br>
 
 ## **Dependent Care**
 
