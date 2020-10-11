@@ -16,7 +16,7 @@
     + [*Earned Income*](#earned-income)
     + [*Unearned Income*](#unearned-income)
 + [**Expenses**](#expenses)
-    + [*Housing Cost*](#housing_cost)
+    + [*Housing cost*](#housing-cost)
     + [*Medical*](#medical)
     + [*Dependent Care*](#dependent-care)
     + [*Child Support*](#child-support)
@@ -85,7 +85,7 @@
 
 
 # *Basic* 
-### **Application Information** <br><br>
+### **Application Information**
 
 ![Application Information 1](ApplicationInfo1.png)
 ![Application Information 2](ApplicationInfo2.png)
