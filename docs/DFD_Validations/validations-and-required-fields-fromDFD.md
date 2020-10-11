@@ -33,11 +33,11 @@
  - [**Resource**](#resource)
     + [*Income History*](#income-history)
     + [*Pending Claims*](#pending-claims)
-    + [*Sell/Trade*](#--selltrade--)
-    + [*Real Estate*](#--real-estate--)
-    + [*Personal Property*](#--personal-property--)
-- [**Review**](#-review-)
-- [**Submit**](#-submit-)
+    + [*Sell/Trade*](#selltrade)
+    + [*Real Estate*](#real-estate)
+    + [*Personal Property*](#personal-property)
+- [**Review**](#review)
+- [**Submit**](#submit)
 
 # *Overall Validations*
 
