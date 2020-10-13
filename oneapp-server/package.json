@@ -42,7 +42,7 @@
     "yargs": "^16.0.3"
   },
   "devDependencies": {
-    "apollo-server-testing": "^2.18.1",
+    "apollo-server-testing": "^2.18.2",
     "eslint": "^7.11.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.1",
