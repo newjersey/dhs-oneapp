@@ -36,7 +36,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.6",
     "lodash": "^4.17.19",
-    "oracledb": "^5.0.0",
+    "oracledb": "file:lib/oracledb-5.0.0.tgz",
     "pino": "^6.7.0",
     "require-directory": "^2.1.1",
     "yargs": "^16.0.3"

@@ -45,14 +45,6 @@ Follow these directions if you have admin rights and are not going through a res
 4. Start the oneapp-server in development mode: `yarn live`
 5. Verify the server starts up without error (there will be more to do to get it functioning, but it should start at this step)
 
-### Alternative Setup (for NJ proxy sever): Setup oneapp-server
-
-( These directions are in progress. We've encountered issues with the NJ internet proxy and are working on alternative install steps. )
-
-1. Change the directory: `cd oneapp-server`
-2. Manually install the oracledb dependency: `npm install ../../dhs-oneapp-software/windows/oracle/oracledb-5.0.0.tgz`
-
-
 ## oneapp-database
 
 If you have admin access on your machine, and have the ability to install Docker, running the database in Docker will make development easier.
