@@ -11,21 +11,23 @@
     "lint:server": "yarn --cwd oneapp-server lint",
     "test:server": "yarn --cwd oneapp-server test",
     "serve:web": "yarn --cwd oneapp-web serve",
+    "serve:server": "yarn --cwd oneapp-server live",
     "build:web": "yarn --cwd oneapp-web build",
     "build:web:staging": "yarn --cwd oneapp-web build:staging",
     "pkg:server": "yarn --cwd oneapp-server pkg",
-    "install": "yarn run install:web && yarn run install:server",
-    "lint:pre": "yarn run lint:pre:web && yarn run lint:pre:server",
-    "lint": "yarn run lint:web && yarn run lint:server",
+    "install": "run-s install:web install:server",
+    "lint:pre": "run-s lint:pre:web lint:pre:server",
+    "lint": "run-s lint:web lint:server",
     "test": "yarn run test:server",
-    "serve": "yarn run serve:web",
+    "serve": "run-p serve:*",
     "dist": "yarn run pkg:server",
     "deploy:cf:api": "cf push usds-nj-oneapp-staging-api --strategy rolling",
-    "deploy:cf:web": "yarn run install:web && yarn run build:web:staging && cf push usds-nj-oneapp-staging-web --strategy rolling",
-    "deploy:cf": "yarn run deploy:cf:api && yarn run deploy:cf:web"
+    "deploy:cf:web": "run-s install:web build:web:staging && cf push usds-nj-oneapp-staging-web --strategy rolling",
+    "deploy:cf": "run-s deploy:cf:api deploy:cf:web"
   },
   "dependencies": {},
   "devDependencies": {
+    "npm-run-all": "^4.1.5",
     "pre-commit": "^1.2.2"
   },
   "pre-commit": [
