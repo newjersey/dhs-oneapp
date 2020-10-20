@@ -1,5 +1,15 @@
 # Setup a Windows Environment for Development
 
+- [oneapp-server and oneapp-web](#oneapp-server-and-oneapp-web)
+  - [Install the Following Software](#install-the-following-software)
+  - [Clone the Repository](#clone-the-repository)
+  - [Open the Project in VSCode](#open-the-project-in-vscode)
+  - [Setup oneapp-server & oneapp-web](#setup-oneapp-server--oneapp-web)
+- [oneapp-database](#oneapp-database)
+  - [Docker Install (Optional, not possible using remote desktop / VM / Citrix)](#docker-install-optional-not-possible-using-remote-desktop--vm--citrix)
+  - [Configuring the Database](#configuring-the-database)
+- [Putting It All Together](#putting-it-all-together)
+
 ## oneapp-server and oneapp-web
 
 ### Install the Following Software
