@@ -1,20 +1,21 @@
 /* eslint-disable class-methods-use-this */
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
+const { toUpper } = require('lodash');
 const { OneAppError, OneAppAuthenticationError } = require('../utils/OneAppError');
 
 class UserDao extends SQLDataSource {
   async getUser(USER_ID, conn = this.knex) {
     return conn.select('USER_ID', 'HINT_QUESTION', 'HINT_ANSWER', 'EMAIL_ADDRESS', 'CREATION_DATE')
       .from('OA_SAP_USER')
-      .where({ USER_ID })
+      .where({ USER_ID: toUpper(USER_ID) })
       .first();
   }
 
   async doesUserExist(USER_ID, conn = this.knex) {
     const userCount = await conn
       .from('OA_SAP_USER')
-      .whereRaw('regexp_like(USER_ID, ?, \'i\')', [`^${USER_ID}$`]) // Check against case-insensitive USER_ID
+      .whereRaw('regexp_like(USER_ID, ?, \'i\')', [`^${toUpper(USER_ID)}$`]) // Check against case-insensitive USER_ID
       .count('USER_ID as users')
       .first();
     return parseInt(userCount.users, 10) > 0;
@@ -24,8 +25,12 @@ class UserDao extends SQLDataSource {
     const tx = await this.knex.transaction();
 
     try {
+      const userInput = {
+        ...user,
+        USER_ID: toUpper(user.USER_ID),
+      };
       const response = await tx.raw('begin OA_PKG_GEN.SP_AUTHENTICATE_APP_USER(?, ?); end;', [
-        { dir: oracledb.BIND_IN, type: 'OA_RT_USER', val: user },
+        { dir: oracledb.BIND_IN, type: 'OA_RT_USER', val: userInput },
         { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
       ]);
 
@@ -57,8 +62,13 @@ class UserDao extends SQLDataSource {
     const tx = await this.knex.transaction();
 
     try {
+      const userInput = {
+        ...user,
+        USER_ID: toUpper(user.USER_ID),
+        HINT_ANSWER: toUpper(user.HINT_ANSWER),
+      };
       const response = await tx.raw('begin OA_PKG_GEN.SP_INSERT_APP_USER(?, ?); end;', [
-        { dir: oracledb.BIND_IN, type: 'OA_RT_USER', val: user },
+        { dir: oracledb.BIND_IN, type: 'OA_RT_USER', val: userInput },
         { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
       ]);
 
@@ -88,7 +98,7 @@ class UserDao extends SQLDataSource {
     const con = await this.knex.client.pool.acquire().promise;
     return this.knex.client.transaction(async (tx) => {
       const UserType = await con.getDbObjectClass('OA_RT_USER');
-      const user = new UserType({ USER_ID });
+      const user = new UserType({ USER_ID: toUpper(USER_ID) });
 
       const bindVars = {
         user: { dir: oracledb.BIND_INOUT, val: user },
@@ -109,15 +119,12 @@ class UserDao extends SQLDataSource {
   async resetUserPassword(USER_ID, HINT_ANSWER, PASSWORD) {
     const con = await this.knex.client.pool.acquire().promise;
     return this.knex.client.transaction(async (tx) => {
-      const existingUser = await this.getUser(USER_ID);
-
-      // Fall back on default error messages
-      if (!existingUser) {
-        throw new OneAppError('User not found.', 't2257');
-      }
-
       const UserType = await con.getDbObjectClass('OA_RT_USER');
-      const user = new UserType({ ...existingUser, HINT_ANSWER, PASSWORD });
+      const user = new UserType({
+        USER_ID: toUpper(USER_ID),
+        HINT_ANSWER: toUpper(HINT_ANSWER),
+        PASSWORD,
+      });
 
       const bindVars = {
         user: { dir: oracledb.BIND_INOUT, val: user },
