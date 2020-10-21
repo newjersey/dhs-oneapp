@@ -2,6 +2,7 @@ const { gql } = require('apollo-server-express');
 const { allow } = require('graphql-shield');
 const _ = require('lodash');
 const config = require('config');
+const passwordGenerator = require('generate-password');
 const AuthenticationService = require('../services/AuthenticationService');
 const { OneAppError, OneAppUserInputError } = require('../utils/OneAppError');
 
@@ -78,7 +79,7 @@ const resolvers = {
       });
     },
     userPasswordReset: async (_parent, { USER_ID, HINT_ANSWER }, { dataSources, services }) => {
-      const randomPassword = 'genme';
+      const randomPassword = passwordGenerator.generate(config.util.toObject(config.get('passwordGeneratorPolicy')));
       const response = await dataSources.UserDao.resetUserPassword(USER_ID, HINT_ANSWER, randomPassword);
       const user = response[0];
       const responseCode = parseInt(response[1], 10);
@@ -97,6 +98,7 @@ const resolvers = {
       } else {
         throw new OneAppUserInputError('Answers did not match.', 't2256');
       }
+      return true;
     },
   },
   Users: {
