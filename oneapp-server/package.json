@@ -40,7 +40,8 @@
     "oracledb": "file:lib/oracledb-5.0.0.tgz",
     "pino": "^6.7.0",
     "require-directory": "^2.1.1",
-    "yargs": "^16.1.0"
+    "yargs": "^16.1.0",
+    "yn": "^4.0.0"
   },
   "devDependencies": {
     "apollo-server-testing": "^2.18.2",
