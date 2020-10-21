@@ -25,5 +25,11 @@
         "pass": "",
         "secure": false,
         "debug": false
+    },
+    "emails": {
+        "passwordReset": {
+            "from": "DoNotReply@dhs.state.nj.us",
+            "subject": "NJ OneApp Password Reset."
+        }
     }
 }

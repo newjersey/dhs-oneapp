@@ -99,6 +99,34 @@ class UserDao extends SQLDataSource {
       return tx.raw('begin OA_PKG_GEN.SP_GET_HINT(:user, :lang, :msg); end;', bindVars);
     }, { connection: con });
   }
+
+  /**
+   * Resets the user's password
+   * @param {*} USER_ID User to reset
+   * @param {*} HINT_ANSWER Used to validate if the user can reset their password
+   * @param {*} PASSWORD The new password to reset to. Will be hashed by the stored procedure
+   */
+  async resetUserPassword(USER_ID, HINT_ANSWER, PASSWORD) {
+    const con = await this.knex.client.pool.acquire().promise;
+    return this.knex.client.transaction(async (tx) => {
+      const existingUser = await this.getUser(USER_ID);
+
+      // Fall back on default error messages
+      if (!existingUser) {
+        throw new OneAppError('User not found.', 't2257');
+      }
+
+      const UserType = await con.getDbObjectClass('OA_RT_USER');
+      const user = new UserType({ ...existingUser, HINT_ANSWER, PASSWORD });
+
+      const bindVars = {
+        user: { dir: oracledb.BIND_INOUT, val: user },
+        msg: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
+      };
+
+      return tx.raw('begin OA_PKG_GEN.SP_RESET_PASSWORD(:user, :msg); end;', bindVars);
+    }, { connection: con });
+  }
 }
 
 module.exports = UserDao;
