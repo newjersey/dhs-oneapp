@@ -109,7 +109,7 @@ const permissions = {
     users: allow,
   },
   Mutation: {
-    userAuthenticate: allow,
+    userAuthenticate: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
     userRegister: allow,
   },
   JwtToken: allow,
