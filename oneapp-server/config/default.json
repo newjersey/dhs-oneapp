@@ -17,5 +17,13 @@
     "server": {
         "port": 4000,
         "path": "/"
+    },
+    "smtp": {
+        "host": "",
+        "port": 587,
+        "user": "",
+        "pass": "",
+        "secure": false,
+        "debug": false
     }
 }
