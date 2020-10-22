@@ -7,28 +7,10 @@ on:
 
 jobs:
   
-  deploy:
-    # Only deploy from the main branch
-    if: ${{ github.ref == 'refs/heads/main' }}
-
+  build_and_test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-
-    - name: Use Node.js 12.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
-
-    - name: Install CloudFoundary CLI
-      run: |
-        wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
-        echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-        sudo apt-get update
-        sudo apt-get install cf7-cli
-
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -56,7 +38,7 @@ jobs:
       with:
         path: '**/node_modules'
         key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-    
+
     - name: Install dependencies
       run: yarn install
 
@@ -65,6 +47,32 @@ jobs:
 
     - name: Test
       run: yarn test
+  
+  deploy:
+    # Only deploy from the main branch
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    runs-on: ubuntu-latest
+    needs: [build_and_test]
+
+    steps:
+    - name: Install CloudFoundary CLI
+      run: |
+        wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+        echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+        sudo apt-get update
+        sudo apt-get install cf7-cli
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+    
+    - name: Install dependencies
+      run: yarn install --ignore-scripts
     
     - name: Login to Cloud.gov
       run: cf login -a https://api.fr.cloud.gov -u ${{secrets.CF_DEPLOY_USER}} -p ${{secrets.CF_DEPLOY_PASS}} -o ${{secrets.CF_DEPLOY_ORG}} -s ${{secrets.CF_DEPLOY_SPACE}}

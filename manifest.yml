@@ -3,13 +3,13 @@ applications:
 
 - name: usds-nj-oneapp-staging-api
   path: ./oneapp-server
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   random-route: false
   memory: 256MB
   env:
     OPTIMIZE_MEMORY: true
   services:
     - usds-nj-oneapp-dev-db
-    - usds-nj-oneapp-dev-smtp
 
 - name: usds-nj-oneapp-staging-web
   path: ./oneapp-web/dist
