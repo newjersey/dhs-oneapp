@@ -26,7 +26,7 @@
         "secure": false,
         "debug": false
     },
-    "emails": {
+    "email": {
         "passwordReset": {
             "from": "DoNotReply@dhs.state.nj.us",
             "subject": "NJ OneApp Password Reset."
@@ -39,5 +39,12 @@
         "lowercase": true,
         "uppercase": true,
         "excludeSimilarCharacters": true
+    },
+    "url": {
+        "host": "http://localhost:8080",
+        "path": {
+            "signIn": "/sign-in",
+            "resetPassword": "/reset-password"
+        }
     }
 }

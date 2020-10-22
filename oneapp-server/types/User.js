@@ -3,6 +3,7 @@ const { allow } = require('graphql-shield');
 const _ = require('lodash');
 const config = require('config');
 const passwordGenerator = require('generate-password');
+const format = require('string-template');
 const AuthenticationService = require('../services/AuthenticationService');
 const { OneAppError, OneAppUserInputError } = require('../utils/OneAppError');
 
@@ -78,7 +79,7 @@ const resolvers = {
         EMAIL_ADDRESS: user.EMAIL_ADDRESS,
       });
     },
-    userPasswordReset: async (_parent, { USER_ID, HINT_ANSWER }, { dataSources, services }) => {
+    userPasswordReset: async (_parent, { USER_ID, HINT_ANSWER }, { dataSources, services, language }) => {
       const randomPassword = passwordGenerator.generate(config.util.toObject(config.get('passwordGeneratorPolicy')));
       const response = await dataSources.UserDao.resetUserPassword(USER_ID, HINT_ANSWER, randomPassword);
       const user = response[0];
@@ -86,11 +87,18 @@ const resolvers = {
 
       // Handle password successfully changed
       if (responseCode === 1) {
+        const bodyText = await dataSources.TranslationDao.getTranslationText('t2292', language.index);
+        const bodyTextArgs = [
+          user.USER_ID,
+          randomPassword,
+          `${config.get('url.host')}${config.get('url.path.signIn')}`,
+          `${config.get('url.host')}${config.get('url.path.resetPassword')}`,
+        ];
         const message = {
-          from: config.get('emails.passwordReset.from'),
+          from: config.get('email.passwordReset.from'),
           to: user.EMAIL_ADDRESS,
-          subject: config.get('emails.passwordReset.subject'),
-          html: user.PASSWORD,
+          subject: config.get('email.passwordReset.subject'),
+          html: format(bodyText, bodyTextArgs),
         };
         await services.EmailService.sendEmail(message);
       } else if (responseCode === -2) {
