@@ -25,6 +25,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-jwt": "^6.0.0",
+    "generate-password": "^1.5.1",
     "graphql": "^15.3.0",
     "graphql-constraint-directive": "^2.1.0",
     "graphql-iso-date": "^3.6.1",
@@ -36,10 +37,13 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.6",
     "lodash": "^4.17.19",
+    "nodemailer": "^6.4.14",
     "oracledb": "file:lib/oracledb-5.0.0.tgz",
     "pino": "^6.7.0",
     "require-directory": "^2.1.1",
-    "yargs": "^16.1.0"
+    "string-template": "^1.0.0",
+    "yargs": "^16.1.0",
+    "yn": "^4.0.0"
   },
   "devDependencies": {
     "apollo-server-testing": "^2.18.2",

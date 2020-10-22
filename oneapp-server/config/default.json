@@ -17,5 +17,34 @@
     "server": {
         "port": 4000,
         "path": "/"
+    },
+    "smtp": {
+        "host": "",
+        "port": 587,
+        "user": "",
+        "pass": "",
+        "secure": false,
+        "debug": false
+    },
+    "email": {
+        "passwordReset": {
+            "from": "DoNotReply@dhs.state.nj.us",
+            "subject": "NJ OneApp Password Reset."
+        }
+    },
+    "passwordGeneratorPolicy": {
+        "length": 15,
+        "numbers": true,
+        "symbols": false,
+        "lowercase": true,
+        "uppercase": true,
+        "excludeSimilarCharacters": true
+    },
+    "url": {
+        "host": "http://localhost:8080",
+        "path": {
+            "signIn": "/sign-in",
+            "resetPassword": "/reset-password"
+        }
     }
 }

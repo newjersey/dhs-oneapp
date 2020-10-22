@@ -1,0 +1,4 @@
+{
+    "jest.pathToJest": "node_modules/.bin/jest",
+    "jest.rootPath": "oneapp-server"
+}
