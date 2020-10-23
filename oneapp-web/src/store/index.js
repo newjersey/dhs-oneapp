@@ -8,17 +8,24 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        user: null
+        user: null,
+        formData: {}
     },
     mutations: {
         setUser(state, user) {
             state.user = user;
-        }
+        },
+        setFormData(state, data) {
+            state.formData = data;
+        }        
     },
     getters: {
         getUser(state) {
             return state.user;
-        }
+        },
+        getFormData(state) {
+            return state.formData;
+        }        
     },
     actions: {
         // ///////////////////////////////////////////////////////////////////////////////////////

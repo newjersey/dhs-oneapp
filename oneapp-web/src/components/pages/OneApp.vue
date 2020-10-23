@@ -19,11 +19,22 @@ export default {
     components: { FormBuilder },
     data() {
         return {
-            formData: null,
             config: formConfig
         };
     },
-    mounted() {},
+    computed: {
+        formData: {
+            get() {
+                return this.$store.state.formData;
+            },
+            set(val){
+                this.$store.commit('setFormData', val);
+            }
+        }
+    },     
+    mounted() {
+
+    },
     methods: {
         // ///////////////////////////////////////////////////////////////////////////////////////
 

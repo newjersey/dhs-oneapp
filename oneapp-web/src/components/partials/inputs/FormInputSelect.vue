@@ -1,5 +1,5 @@
 <template>
-    <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v">
+    <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
         <us-form-group
             :label="opts.label"
             :helpText="opts.help"
@@ -7,12 +7,13 @@
             :label-for="divId"
             :error="opts.error || v.errors[0]"
             label-class="oneapp-form-label"
+            :valid="getValidationState(v)"
         >
             <template v-slot:validation-error="{ error }">
                 <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{ error }}</span>
             </template>
 
-            <us-combo-box
+            <us-form-combobox
                 :id="divId"
                 :name="opts.name"
                 :options="opts.options"
@@ -20,9 +21,8 @@
                 :keyField="opts.keyField"
                 v-model="currentValue"
                 :disabled="opts.disabled"
-                :placeholder="opts.placeholder"
-                :valid="getValidationState(v)"
-            ></us-combo-box>
+                :placeholder="opts.placeholder"            
+            ></us-form-combobox>
         </us-form-group>
     </validation-provider>
 </template>

@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import formConfig from '@/assets/form.config.js';
 
 /**
  * This mixin provides all the basic machinary to support the props that an input field
@@ -33,9 +34,32 @@ const baseInputMixin = {
             divId: null,
             isUpdating: false,
             vid: null,
-            currentValue: ''
+            currentValue: '',
+            valid: null
         };
     },
+    computed: {
+        formData() {
+            return this.$store.state.formData;
+        },
+        linkedFieldValue() {
+            if (this.opts.linkedQuestion){
+                let linked = this.opts.linkedQuestion;
+                let linkedField = this.__findField(linked.id);
+                let targetVal = this.formData[linkedField.key];
+                console.log('LINKED >>>>> ', this.opts.linkedQuestion);
+                console.log('Field = ', linkedField)
+                return targetVal;
+            }
+            return null;
+        },
+        linkedShow(){
+            if (this.linkedFieldValue && this.linkedFieldValue == true){
+                return false;
+            }
+            return true;
+        }
+    },     
     watch: {
         value(newVal, oldVal) {
             if (newVal != oldVal) {
@@ -52,6 +76,8 @@ const baseInputMixin = {
     created() {},
     mounted() {
         this.opts = this.config;
+
+
 
         // validate on blur, default validates on input and blur
         //this.opts.validationMode = 'lazy';
@@ -97,6 +123,20 @@ const baseInputMixin = {
         this.__onInputChanged();
     },
     methods: {
+
+        __findField(id){
+            let section = 0;
+            let pages = formConfig[section].pages;
+            for (let i=0; i<pages.length; i+=1){
+                for (let j=0; j<pages[i].fields.length; j+=1){
+                    let field = pages[i].fields[j];
+                    if (field.id == id){
+                        return field;
+                    }
+                }
+            }
+        },
+
         /**
          * Respond to the input (v-model) being changed
          */
@@ -120,9 +160,13 @@ const baseInputMixin = {
 
         getValidationState({ dirty, validated, valid = null }) {
             if (!this.opts.required) {
-                return null;
+                this.valid = null;
             }
-            return dirty || validated ? valid : null;
+            else {
+                //console.log(`[${this.opts.type}] dirty: ${dirty}, validated: ${validated}, valid = ${valid}`)
+                this.valid = dirty || validated ? valid : null;
+            }
+            return this.valid;
         }
     }
 };

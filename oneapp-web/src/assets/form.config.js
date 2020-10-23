@@ -45,24 +45,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773060",
+                        "_id": "5f92f119bfc253ab4285c3dd",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773061",
+                        "_id": "5f92f119bfc253ab4285c3de",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773062",
+                        "_id": "5f92f119bfc253ab4285c3df",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773063",
+                        "_id": "5f92f119bfc253ab4285c3e0",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -91,24 +91,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773064",
+                        "_id": "5f92f119bfc253ab4285c3e1",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773065",
+                        "_id": "5f92f119bfc253ab4285c3e2",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773066",
+                        "_id": "5f92f119bfc253ab4285c3e3",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773067",
+                        "_id": "5f92f119bfc253ab4285c3e4",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -153,24 +153,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773068",
+                        "_id": "5f92f119bfc253ab4285c3e5",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773069",
+                        "_id": "5f92f119bfc253ab4285c3e6",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477306a",
+                        "_id": "5f92f119bfc253ab4285c3e7",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477306b",
+                        "_id": "5f92f119bfc253ab4285c3e8",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -264,24 +264,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773070",
+                        "_id": "5f92f119bfc253ab4285c3ed",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773071",
+                        "_id": "5f92f119bfc253ab4285c3ee",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773072",
+                        "_id": "5f92f119bfc253ab4285c3ef",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773073",
+                        "_id": "5f92f119bfc253ab4285c3f0",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -327,7 +327,16 @@ module.exports = [
                         "required": true,
                         "key": "5f7b8ceee06e3c3af52df2d9",
                         "linkedQuestion": null,
-                        "options": []
+                        "options": [
+                            {
+                                "value": 1,
+                                "label": "English"
+                            },
+                            {
+                                "value": 2,
+                                "label": "Spanish"
+                            }
+                        ]
                     },
                     {
                         "id": "5f7b8ceee06e3c3af52df2da",
@@ -360,24 +369,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773074",
+                        "_id": "5f92f119bfc253ab4285c3f1",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773075",
+                        "_id": "5f92f119bfc253ab4285c3f2",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773076",
+                        "_id": "5f92f119bfc253ab4285c3f3",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773077",
+                        "_id": "5f92f119bfc253ab4285c3f4",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -492,24 +501,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773078",
+                        "_id": "5f92f119bfc253ab4285c3f5",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773079",
+                        "_id": "5f92f119bfc253ab4285c3f6",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477307a",
+                        "_id": "5f92f119bfc253ab4285c3f7",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477307b",
+                        "_id": "5f92f119bfc253ab4285c3f8",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -538,24 +547,24 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c9477307c",
+                        "_id": "5f92f119bfc253ab4285c3f9",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c9477307d",
+                        "_id": "5f92f119bfc253ab4285c3fa",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477307e",
+                        "_id": "5f92f119bfc253ab4285c3fb",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c9477307f",
+                        "_id": "5f92f119bfc253ab4285c3fc",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
@@ -603,30 +612,42 @@ module.exports = [
                 "buttons": {
                     "next": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773080",
+                        "_id": "5f92f119bfc253ab4285c3fd",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     },
                     "prev": {
                         "variant": "primary",
-                        "_id": "5f925028da29704c94773081",
+                        "_id": "5f92f119bfc253ab4285c3fe",
                         "text": "Prev",
                         "icon": "fas fa-arrow-circle-right"
                     },
                     "skip": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773082",
+                        "_id": "5f92f119bfc253ab4285c3ff",
                         "text": "Skip"
                     },
                     "submit": {
                         "variant": "link",
-                        "_id": "5f925028da29704c94773083",
+                        "_id": "5f92f119bfc253ab4285c400",
                         "text": "Next",
                         "icon": "fas fa-arrow-circle-left"
                     }
                 },
                 "sectionId": "5f68fe895db214bb63d98198",
-                "fields": []
+                "fields": [
+                    {
+                        "id": "5f92dbc4bfc253ab4285c370",
+                        "type": "statement",
+                        "order": 0,
+                        "label": "Quick Submit blurb",
+                        "lead": "You’re allowed to submit an application with only your name and address. However, we strongly encourage you to continue working on the application. ",
+                        "required": true,
+                        "key": "5f92dbc4bfc253ab4285c370",
+                        "linkedQuestion": null,
+                        "options": []
+                    }
+                ]
             }
         ]
     },

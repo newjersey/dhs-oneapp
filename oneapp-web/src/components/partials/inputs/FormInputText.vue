@@ -1,5 +1,5 @@
 <template>
-    <validation-provider tag="div" :rules="opts.rules" :mode="opts.validationMode" :name="opts.name" :vid="vid" v-slot="v">
+    <validation-provider tag="div" :rules="opts.rules" :mode="opts.validationMode" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
         <us-form-group
             :label="opts.label"
             :helpText="opts.help"

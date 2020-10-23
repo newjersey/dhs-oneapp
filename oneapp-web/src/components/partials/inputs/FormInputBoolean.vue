@@ -1,4 +1,5 @@
 <template>
+
     <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
 
         <us-form-group
@@ -17,7 +18,7 @@
             <us-form-radio
                 :id="divId"
                 :name="opts.name"
-                :options="opts.options"
+                :options="options"
                 :labelField="opts.labelField"
                 :keyField="opts.keyField"
                 v-model="currentValue"
@@ -29,31 +30,24 @@
     
     </validation-provider>
 </template>
-
 <script>
 import { ValidationProvider } from 'vee-validate';
 import InputMixin from '@/components/mixins/InputMixin.js';
 
 export default {
-    name: 'form-input-radio',
+    name: 'form-input-boolean',
     components: {
         ValidationProvider
     },
     mixins: [InputMixin],
-    props: {
-        // value, required, disabled, name, label, placeholder, description, hideLabel
-        // provided by the InputMixin
-    },
-    mounted() {},
     data() {
-        // divId, isUpdating, vid, currentValue, inputName
-        // provided by the InputMixin
         return {
-            checkedNames: []
+            options: [
+                {value: true, label: 'Yes'},
+                {value: false, label: 'No'}
+            ]
         };
-    },
-    methods: {
-        // getValidationState method provided by InputMixin
     }
 };
 </script>
+

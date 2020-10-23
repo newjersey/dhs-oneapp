@@ -43,7 +43,11 @@
 
     <!-- A list of options, where each option is just text -->
 
-    <form-input-select v-else-if="config.type == 'combobox'" v-model="currentValue" :config="config" />
+    <form-input-select v-else-if="config.type == 'combobox' || config.type == 'dropdown'" v-model="currentValue" :config="config" />
+
+    <!-- Boolean (yes/no) input -->
+
+    <form-input-boolean v-else-if="config.type == 'boolean'" v-model="currentValue" :config="config" />
 
     <!-- Default to text input -->
 
@@ -61,6 +65,7 @@ import FormInputText from '@/components/partials/inputs/FormInputText.vue';
 import FormInputSelect from '@/components/partials/inputs/FormInputSelect.vue';
 import FormInputCheckbox from '@/components/partials/inputs/FormInputCheckbox.vue';
 import FormInputRadio from '@/components/partials/inputs/FormInputRadio.vue';
+import FormInputBoolean from '@/components/partials/inputs/FormInputBoolean.vue';
 import FormInputMaskedText from '@/components/partials/inputs/FormInputMaskedText.vue';
 import ValueWatcherMixin from '@/components/mixins/ValueWatcherMixin.js';
 
@@ -75,7 +80,8 @@ export default {
         FormInputSelect,
         FormInputMaskedText,
         FormInputCheckbox,
-        FormInputRadio
+        FormInputRadio,
+        FormInputBoolean
     },
     data() {
         return {
