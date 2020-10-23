@@ -1,9 +1,7 @@
 import axios from 'axios';
 
 class Base {
-
     constructor() {
-
         Base.rootUrl = process.env.VUE_APP_API_ROOT_URL ? process.env.VUE_APP_API_ROOT_URL : 'http://localhost:4000';
 
         console.log('Host: ' + window.location.host);
@@ -35,7 +33,6 @@ class Base {
         }
         return null;
     }
-
 }
 
 export default Base;

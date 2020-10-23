@@ -7,6 +7,10 @@
         <p v-if="config.lead">{{ config.lead }}</p>
     </div>
 
+    <p v-else-if="config.type == 'statement'">
+        {{config.lead}}
+    </p>
+
     <!-- Phone Number (US) -->
 
     <form-input-masked-text v-else-if="config.type == 'phone'" v-model="currentValue" :config="{ ...config, mask: '###-###-####' }" />
@@ -32,6 +36,11 @@
 
     <form-input-masked-text v-else-if="config.type == 'zip'" v-model="currentValue" :config="{ ...config, mask: '#####' }" />
 
+    <!-- A list of options, where each option is check -->
+
+    <form-input-checkbox v-else-if="config.type == 'checkbox'" v-model="currentValue" :config="config" />
+    <form-input-radio v-else-if="config.type == 'radio'" v-model="currentValue" :config="config" />
+
     <!-- A list of options, where each option is just text -->
 
     <form-input-select v-else-if="config.type == 'combo-box'" v-model="currentValue" :config="config" />
@@ -50,6 +59,8 @@
 <script>
 import FormInputText from '@/components/partials/inputs/FormInputText.vue';
 import FormInputSelect from '@/components/partials/inputs/FormInputSelect.vue';
+import FormInputCheckbox from '@/components/partials/inputs/FormInputCheckbox.vue';
+import FormInputRadio from '@/components/partials/inputs/FormInputRadio.vue';
 import FormInputMaskedText from '@/components/partials/inputs/FormInputMaskedText.vue';
 import ValueWatcherMixin from '@/components/mixins/ValueWatcherMixin.js';
 
@@ -62,7 +73,9 @@ export default {
     components: {
         FormInputText,
         FormInputSelect,
-        FormInputMaskedText
+        FormInputMaskedText,
+        FormInputCheckbox,
+        FormInputRadio
     },
     data() {
         return {

@@ -6,7 +6,7 @@
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
             <h1 v-t>Apply for food or cash assistance</h1>
 
-            <us-alert title="Save time—and save your work in progress — by signing in before starting your application" variant="primary">
+            <us-alert title="Save time—and save your work in progress — by signing in before starting your application" variant="info">
                 <p v-t>
                     When you’re signed into your account you can save your application in progress, and come back later to finish filling it out. You’ll have 45 days from the date
                     you start or update your application to submit it. If you’re unable to complete your application by then, you’ll have to start a new application.

@@ -1,8 +1,6 @@
-import axios from 'axios';
 import Base from './Base';
 
 class User extends Base {
-
     constructor() {
         super();
     }
@@ -17,8 +15,7 @@ class User extends Base {
     }
 
     async register(opts) {
-        
-        if (!opts){
+        if (!opts) {
             return null;
         }
 
@@ -36,8 +33,7 @@ class User extends Base {
     }
 
     async login(opts) {
-
-        if (!opts){
+        if (!opts) {
             return null;
         }
 
