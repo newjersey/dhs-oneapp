@@ -2,33 +2,220 @@ const { createTestClient, dataSources, services } = require('../__utils/TestingU
 const client = createTestClient();
 const passwordGenerator = require('generate-password');
 
-const { resolvers } = require('./User');
-const AuthenticationService = require('../services/AuthenticationService');
-
-const mockDataSources = {
-  UserDao: {
-    createUser: jest.fn()
-  }
-};
-
 jest.mock('generate-password');
 
-test('register creates a user and returns a token', async () => {
-  const mockUser = { USER_ID: 1 };
-  mockDataSources.UserDao.createUser.mockResolvedValue(mockUser);
+describe('userRegister mutation', () => {
+  it('registers a user and returns a token', async () => {
+    dataSources.UserDao.createUser.mockReturnValue({USER_ID: 'user123', EMAIL_ADDRESS: 'fake@email.com'});
+    services.AuthenticationService.createToken.mockReturnValue({token: 'token123'});
 
-  const mockToken = 'token';
-  AuthenticationService.createToken = jest.fn().mockReturnValue(mockToken);
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.data.userRegister.token).toEqual('token123');
 
-  const input = { USER_ID: 5 };
-  const retVal = await resolvers.Mutation.userRegister(null, { input }, { dataSources: mockDataSources });
+    expect(dataSources.UserDao.createUser).toHaveBeenCalledWith({
+      USER_ID: 'user123456',
+      PASSWORD: 'pass123456',
+      HINT_QUESTION: '2',
+      HINT_ANSWER: 'answer',
+      EMAIL_ADDRESS: 'test@test.com'
+    });
+  });
 
-  expect(retVal).toBe('token');
-  expect(mockDataSources.UserDao.createUser).toHaveBeenCalledWith(input);
-  expect(AuthenticationService.createToken).toHaveBeenCalledWith(mockUser);
+  it('requires a number in the username', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires a letter in the username', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "123",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires 8 chars in the username', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires at most 15 chars in the username', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user1234567891234",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires a no spaces in the username', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user 123456",
+          PASSWORD: "pass123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires a number in the password', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "pass",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires a letter in the password', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires 8 chars in the password', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "pass123",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires at most 15 chars in the password', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "pass12345678911234",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
+
+  it('requires no spaces in the password', async () => {
+    const query = `
+      mutation {
+        userRegister(input: {
+          USER_ID: "user123456",
+          PASSWORD: "pass 123456",
+          HINT_QUESTION: "2",
+          HINT_ANSWER: "answer",
+          EMAIL_ADDRESS: "test@test.com"
+        }) {
+          token
+        }
+      }
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
+  });
 });
 
-describe('User node', () => {
+describe('userPasswordReset mutation', () => {
   beforeEach(() => {
     passwordGenerator.generate.mockReturnValue('random-password');
   });

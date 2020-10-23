@@ -44,15 +44,15 @@ const typeDef = gql`
 
   input UserLogin {
     "Unique username for the user, which also serves as the user_id"
-    USER_ID: ID!,
+    USER_ID: String!,
     PASSWORD: String!
   }
 
   input UserInput {
     "Unique username for the user, which also serves as the user_id"
-    USER_ID: ID!,
+    USER_ID: String! @constraint(minLength: 8, maxLength: 15, pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$"),
     "Password that will be hashed by the database"
-    PASSWORD: String!,
+    PASSWORD: String! @constraint(minLength: 8, maxLength: 15, pattern: "^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$"),
     "Number representing the question used for password recovery"
     HINT_QUESTION: String!,
     HINT_ANSWER: String!,
@@ -65,16 +65,16 @@ const resolvers = {
     users: () => ({}),
   },
   Mutation: {
-    userAuthenticate: async (_parent, { input }, { dataSources }) => {
+    userAuthenticate: async (_parent, { input }, { dataSources, services }) => {
       const user = await dataSources.UserDao.authenticate(input);
-      return AuthenticationService.createToken({
+      return services.AuthenticationService.createToken({
         USER_ID: user.USER_ID,
         EMAIL_ADDRESS: user.EMAIL_ADDRESS,
       });
     },
-    userRegister: async (_parent, { input }, { dataSources }) => {
+    userRegister: async (_parent, { input }, { dataSources, services }) => {
       const user = await dataSources.UserDao.createUser(input);
-      return AuthenticationService.createToken({
+      return services.AuthenticationService.createToken({
         USER_ID: user.USER_ID,
         EMAIL_ADDRESS: user.EMAIL_ADDRESS,
       });
