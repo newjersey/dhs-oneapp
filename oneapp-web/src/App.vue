@@ -22,7 +22,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@import '@/styles/global.scss';
+@import './styles/global.scss';
 #nj-oneapp {
     height: 100%;
     .main-view {

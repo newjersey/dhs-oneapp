@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import User from '@/services/User.js';
+import User from '@/models/User.js';
 import { throttle } from 'lodash';
 // https://logaretm.github.io/vee-validate/
 import { ValidationObserver, ValidationProvider, extend, localize } from 'vee-validate';

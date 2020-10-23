@@ -1,5 +1,7 @@
 <template>
+
     <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
+
         <us-form-group
             :label="opts.label"
             :helpText="opts.help"
@@ -13,42 +15,39 @@
                 <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{ error }}</span>
             </template>
 
-            <us-form-combobox
+            <us-form-radio
                 :id="divId"
                 :name="opts.name"
-                :options="opts.options"
+                :options="options"
                 :labelField="opts.labelField"
                 :keyField="opts.keyField"
                 v-model="currentValue"
                 :disabled="opts.disabled"
-                :placeholder="opts.placeholder"            
-            ></us-form-combobox>
+                :placeholder="opts.placeholder"
+                
+            />
         </us-form-group>
+    
     </validation-provider>
 </template>
-
 <script>
 import { ValidationProvider } from 'vee-validate';
 import InputMixin from '@/components/mixins/InputMixin.js';
 
 export default {
-    name: 'form-input-select',
+    name: 'form-input-boolean',
     components: {
         ValidationProvider
     },
     mixins: [InputMixin],
-    props: {
-        // value, required, disabled, name, label, placeholder, description, hideLabel
-        // provided by the InputMixin
-    },
-    mounted() {},
     data() {
-        // divId, isUpdating, vid, currentValue, inputName
-        // provided by the InputMixin
-        return {};
-    },
-    methods: {
-        // getValidationState method provided by InputMixin
+        return {
+            options: [
+                {value: true, label: 'Yes'},
+                {value: false, label: 'No'}
+            ]
+        };
     }
 };
 </script>
+

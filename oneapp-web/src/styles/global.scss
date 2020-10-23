@@ -6,13 +6,9 @@ $theme-show-notifications: false;
 @import "~uswds/dist/scss/uswds.scss";
 
 // Import USWDS-VUE sass files
-//@import "../../../uswds-vue/src/styles/uswds-vue.scss";
-@import "./uswds-vue/core.scss";
-@import "./uswds-vue/variables.scss";
-@import "./uswds-vue/mixins.scss";
-@import "./uswds-vue/functions.scss";
-@import "./uswds-vue/utilities.scss";
-@import "./uswds-vue/colors.scss";
+//@import "~uswds-vue/src/styles/uswds-vue.scss";
+@import "../../../../uswds-vue/src/styles/uswds-vue.scss";
+
 
 // Import font awesome css
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css');

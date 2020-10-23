@@ -41,7 +41,7 @@
 
 <script>
 import FormInput from '@/components/partials/forms/FormInput.vue';
-import User from '@/services/User.js';
+import User from '@/models/User.js';
 
 export default {
     name: 'forgot-password',

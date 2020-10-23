@@ -1,6 +1,6 @@
 <template>
     <us-container id="RegisterPage" align="left">
-        <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
+        <div class="form-wrapper px-sm-2 px-md-6 px-lg-8" v-if="formData">
             <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
                 <h1 v-t>Sign Up</h1>
 
@@ -97,7 +97,7 @@
 
 <script>
 import FormInput from '@/components/partials/forms/FormInput.vue';
-import User from '@/services/User.js';
+import User from '@/models/User.js';
 
 export default {
     name: 'login',
