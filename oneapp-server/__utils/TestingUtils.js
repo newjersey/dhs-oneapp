@@ -1,11 +1,16 @@
 const { createTestClient } = require('apollo-server-testing');
+const { assign } = require('lodash');
 const createServer = require('../server');
 const dataSources = require('../db');
 const services = require('../services');
+const mockServices = module.exports = require('require-directory')(module, '../services/__mocks__', { recurse: false, exclude: /\.test\.js/ });
 const TranslationService = require('../services/TranslationService');
 
 jest.mock('../db');
 jest.mock('../services');
+
+// Replace mocked services where available
+assign(services, mockServices);
 
 const utils = {
   createTestClient: (auth = null, headers = {}) => {
