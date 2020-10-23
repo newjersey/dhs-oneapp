@@ -4,6 +4,40 @@ const passwordGenerator = require('generate-password');
 
 jest.mock('generate-password');
 
+describe('users current node', () => {
+  it('return unauthenticated without a bearer token', async () => {
+    const query = `
+      {
+        users {
+          current { USER_ID }
+        }
+      } 
+    `;
+    const response = await client.query({ query });
+    expect(response.errors[0].code).toEqual('UNAUTHENTICATED');
+    expect(response.errors[0].message).toEqual('You must be logged in to access this data.');
+  });
+  
+  it('return the current logged in user when authenticated', async () => {
+    const user = {USER_ID: 'user123456'};
+    const authClient = createTestClient({user});
+
+    dataSources.UserDao.getUser.mockReturnValue(user);
+
+    const query = `
+      {
+        users {
+          current { USER_ID }
+        }
+      } 
+    `;
+    const response = await authClient.query({ query });
+    expect(response.data.users.current).toEqual(user);
+
+    expect(dataSources.UserDao.getUser).toHaveBeenCalledWith(user.USER_ID);
+  });
+});
+
 describe('userRegister mutation', () => {
   it('registers a user and returns a token', async () => {
     dataSources.UserDao.createUser.mockReturnValue({USER_ID: 'user123', EMAIL_ADDRESS: 'fake@email.com'});
