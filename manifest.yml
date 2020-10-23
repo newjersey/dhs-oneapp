@@ -3,6 +3,7 @@ applications:
 
 - name: usds-nj-oneapp-staging-api
   path: ./oneapp-server
+  buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   random-route: false
   memory: 256MB
   env:

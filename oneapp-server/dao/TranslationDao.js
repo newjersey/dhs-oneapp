@@ -32,6 +32,16 @@ class TranslationDao extends SQLDataSource {
       .first()
       .cache(60 * 60);
   }
+
+  /**
+   * Get the translated text only for a given TEXT_ID and langIndex
+   * @param {*} TEXT_ID
+   * @param {*} langIndex
+   */
+  async getTranslationText(TEXT_ID, langIndex) {
+    const translation = await this.getTranslation(TEXT_ID, langIndex, ['TEXT']);
+    return translation.TEXT;
+  }
 }
 
 module.exports = TranslationDao;

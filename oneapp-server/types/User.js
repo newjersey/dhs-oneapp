@@ -1,8 +1,11 @@
 const { gql } = require('apollo-server-express');
 const { allow } = require('graphql-shield');
 const _ = require('lodash');
+const config = require('config');
+const passwordGenerator = require('generate-password');
+const format = require('string-template');
 const AuthenticationService = require('../services/AuthenticationService');
-const { OneAppError } = require('../utils/OneAppError');
+const { OneAppError, OneAppUserInputError } = require('../utils/OneAppError');
 
 const typeDef = gql`
   extend type Query {
@@ -12,6 +15,7 @@ const typeDef = gql`
   extend type Mutation {
     userAuthenticate(input: UserLogin!): JwtToken
     userRegister(input: UserInput!): JwtToken
+    userPasswordReset(USER_ID: String!, HINT_ANSWER: String!): Boolean
   }
 
   type Users {
@@ -75,6 +79,35 @@ const resolvers = {
         EMAIL_ADDRESS: user.EMAIL_ADDRESS,
       });
     },
+    userPasswordReset: async (_parent, { USER_ID, HINT_ANSWER }, { dataSources, services, language }) => {
+      const randomPassword = passwordGenerator.generate(config.util.toObject(config.get('passwordGeneratorPolicy')));
+      const response = await dataSources.UserDao.resetUserPassword(USER_ID, HINT_ANSWER, randomPassword);
+      const user = response[0];
+      const responseCode = parseInt(response[1], 10);
+
+      // Handle password successfully changed
+      if (responseCode === 1) {
+        const bodyText = await dataSources.TranslationDao.getTranslationText('t2292', language.index);
+        const bodyTextArgs = [
+          user.USER_ID,
+          randomPassword,
+          `${config.get('url.host')}${config.get('url.path.signIn')}`,
+          `${config.get('url.host')}${config.get('url.path.resetPassword')}`,
+        ];
+        const message = {
+          from: config.get('email.passwordReset.from'),
+          to: user.EMAIL_ADDRESS,
+          subject: config.get('email.passwordReset.subject'),
+          html: format(bodyText, bodyTextArgs),
+        };
+        await services.EmailService.sendEmail(message);
+      } else if (responseCode === -2) {
+        throw new OneAppError('User account locked.', 't2259');
+      } else {
+        throw new OneAppUserInputError('Answers did not match.', 't2256');
+      }
+      return true;
+    },
   },
   Users: {
     current: (_parent, _args, { auth, dataSources }) => dataSources.UserDao.getUser(auth.user.USER_ID),
@@ -109,8 +142,9 @@ const permissions = {
     users: allow,
   },
   Mutation: {
-    userAuthenticate: allow,
+    userAuthenticate: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
     userRegister: allow,
+    userPasswordReset: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
   },
   JwtToken: allow,
   Users: {

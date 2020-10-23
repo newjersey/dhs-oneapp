@@ -71,6 +71,9 @@ jobs:
       with:
         node-version: 12.x
     
+    - name: Install dependencies
+      run: yarn install --ignore-scripts
+    
     - name: Login to Cloud.gov
       run: cf login -a https://api.fr.cloud.gov -u ${{secrets.CF_DEPLOY_USER}} -p ${{secrets.CF_DEPLOY_PASS}} -o ${{secrets.CF_DEPLOY_ORG}} -s ${{secrets.CF_DEPLOY_SPACE}}
 

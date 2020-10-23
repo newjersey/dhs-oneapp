@@ -8,5 +8,13 @@
     },
     "server": {
         "port": "PORT"
+    },
+    "smtp": {
+        "host": "SMTP_HOST",
+        "port": "SMTP_PORT",
+        "user": "SMTP_USER",
+        "pass": "SMTP_PASS",
+        "secure": "SMTP_SECURE",
+        "debug": "SMTP_DEBUG"
     }
 }

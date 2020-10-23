@@ -12,13 +12,13 @@ const rules = {
       return hasAuthenticatedUser;
     },
   ),
-  rateLimit: createRateLimitRule({
+  rateLimit: (options) => createRateLimitRule({
     // Rate limit context is a hybrid of requestIP and authenticated user
     identifyContext: (ctx) => ({
       auth: ctx.auth,
       requestIP: ctx.requestIP,
     }),
-  }),
+  })(options),
 };
 
 const service = {
