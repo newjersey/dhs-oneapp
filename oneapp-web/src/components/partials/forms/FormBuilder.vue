@@ -1,101 +1,37 @@
 <template>
+
     <div>
-        <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
-            <h2 class="page-title" v-if="page.title">{{ page.title }}</h2>
 
-            <us-row class="p-0">
-                <us-col class="wizard-dashes" v-for="n in noSteps" :key="n" :class="{ active: n == pageIndex + 1, visited: n <= pageIndex }"> </us-col>
-            </us-row>
+        <h2 class="page-title" v-if="title">{{ title }}</h2>
 
-            <us-step-indicator :step="pageIndex" :steps="pages" />
-            <!--
-            <h3 class="mt-3">
-                <us-pill variant="primary">{{ pageIndex + 1 }}</us-pill>
-                <span class="page-count mr-1"> of {{ noSteps }}</span>
-                {{ page.title }}
-            </h3>
-            -->
+        <us-step-indicator :step="pageIndex" :steps="pages" />
+        
+        <us-validated-form :config="pages[1].fields">
 
-            <us-form @submit="handleSubmit(doSubmit)" v-if="formData" size="lg" class="mt-5 pb-3">
-                <!--
-                <span v-for="(section, sectionIndex) in page.sections" :key="sectionIndex">            
-                    <span v-for="(item, index) in section.fields" :key="index">
-                        <form-input :config="item" v-model="formData[item.key]" />
-                    </span>
-                </span>
-                -->
+            <us-button type="button" variant="primary" class="mr-2" @click="onBack()" :disabled="pageIndex == 0">
+                <i class="fas fa-arrow-circle-left"></i> Back
+            </us-button>
 
-                <!-- SUPPORT FOR A SLOT -->
-                <span v-if="page.slotId">
-                    <slot :name="page.slotId" v-bind:formData="page" />
-                </span>
+            <us-button type="submit" variant="primary" class="mr-2" @click="onNext()" v-if="pageIndex < noSteps - 1">
+                Next <i class="fas fa-arrow-circle-right"></i>
+            </us-button>
+            <us-button type="submit" variant="primary" class="mr-2" v-else>Submit</us-button>
 
-                <span v-else>
-                    <span v-for="(item, index) in page.fields" :key="index">
-                        <!-- If this item is just an array of other items -->
+            <us-button type="button" variant="outline-primary" @click="onNext()">Skip</us-button>
 
-                        <us-row v-if="Array.isArray(item)">
-                            <us-col
-                                v-for="subItem in item"
-                                :key="subItem.key"
-                                :sm="subItem.col && subItem.col.sm ? subItem.col.sm : null"
-                                :md="subItem.col && subItem.col.md ? subItem.col.md : null"
-                                :lg="subItem.col && subItem.col.lg ? subItem.col.lg : null"
-                                :xl="subItem.col && subItem.col.xl ? subItem.col.xl : null"
-                            >
-                                <form-input :config="item" v-model="formData[item.key]" />
-                            </us-col>
-                        </us-row>
+        </us-validated-form>
+        -->
 
-                        <!-- If this item is of type row with more col info -->
-
-                        <us-row v-else-if="item.type == 'row'">
-                            <us-col
-                                v-for="subItem in item.fields"
-                                :key="subItem.key"
-                                :sm="subItem.col && subItem.col.sm ? subItem.col.sm : null"
-                                :md="subItem.col && subItem.col.md ? subItem.col.md : null"
-                                :lg="subItem.col && subItem.col.lg ? subItem.col.lg : null"
-                                :xl="subItem.col && subItem.col.xl ? subItem.col.xl : null"
-                            >
-                                <form-input :config="subItem" v-model="formData[subItem.key]" />
-                            </us-col>
-                        </us-row>
-
-                        <!-- Otherwise, simple case -->
-
-                        <form-input :config="item" v-model="formData[item.key]" />
-                    </span>
-                </span>
-
-                <!-- FORM BUTTON (IF JUST ONE) -->
-
-                <div class="mt-4" align="left">
-                    <us-button type="button" variant="primary" class="mr-2" @click="onBack()" :disabled="pageIndex == 0"><i class="fas fa-arrow-circle-left"></i> Back</us-button>
-
-                    <us-button type="submit" variant="primary" class="mr-2" @click="onNext()" v-if="pageIndex < noSteps - 1"
-                        >Next <i class="fas fa-arrow-circle-right"></i
-                    ></us-button>
-
-                    <us-button type="submit" variant="primary" class="mr-2" v-else>Submit</us-button>
-
-                    <us-button type="button" variant="outline-primary" @click="onNext()">Skip</us-button>
-                </div>
-            </us-form>
-
-            <!--
-            <pre class="text-muted">{{ formData }}</pre>
-            -->
-        </validation-observer>
     </div>
+
 </template>
 
 <script>
-import FormInput from '@/components/partials/forms/FormInput.vue';
+//import FormInput from '@/components/partials/forms/FormInput.vue';
 
 export default {
     name: 'validated-form',
-    components: { FormInput },
+    components: {  },
     props: {
         value: {
             default: null
@@ -104,15 +40,14 @@ export default {
             type: String,
             default: 'Form Title'
         },
-        config: {
+        pages: {
             type: [Array, Object],
             default: null
         }
     },
     data() {
         return {
-            sectionIndex: 0,
-            pageIndex: 0,
+            pageIndex: 1,
             formData: null,
             error: null
         };
@@ -121,23 +56,6 @@ export default {
         this.init();
     },
     computed: {
-        pages() {
-            if (!this.config || !this.config[this.sectionIndex].pages) {
-                return null;
-            }
-            return this.config[this.sectionIndex].pages;
-        },
-        page: {
-            get() {
-                if (!this.config || !this.config[this.sectionIndex].pages) {
-                    return null;
-                }
-                return this.config[this.sectionIndex].pages[this.pageIndex];
-            },
-            set(val) {
-                this.config[this.pageIndex][this.sectionIndex] = val;
-            }
-        },
         noSteps() {
             if (this.config && this.config.length) {
                 return this.config.length;

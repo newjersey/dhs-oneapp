@@ -43,7 +43,7 @@
 
     <!-- A list of options, where each option is just text -->
 
-    <form-input-select v-else-if="config.type == 'combo-box'" v-model="currentValue" :config="config" />
+    <form-input-select v-else-if="config.type == 'combobox'" v-model="currentValue" :config="config" />
 
     <!-- Default to text input -->
 

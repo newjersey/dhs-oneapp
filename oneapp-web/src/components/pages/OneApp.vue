@@ -1,7 +1,7 @@
 <template>
     <us-container id="OneAppPage" align="left">
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
-            <form-builder v-model="formData" :config="config" />
+            <form-builder v-model="formData" :pages="config[0].pages" :title="config[0].title" />
         </div>
 
         <!--
