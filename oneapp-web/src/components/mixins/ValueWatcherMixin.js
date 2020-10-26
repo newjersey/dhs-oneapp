@@ -38,6 +38,7 @@ export default {
     },
     methods: {
         __onValueChanged() {
+            console.log('>>>>>> ', this.value);
             this.isUpdating = true;
             this.currentValue = this.value;
             this.$nextTick(() => {

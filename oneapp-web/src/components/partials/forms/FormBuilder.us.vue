@@ -1,31 +1,21 @@
 <template>
-
     <div>
-
         <h2 class="page-title" v-if="title">{{ title }}</h2>
 
         <us-step-indicator :step="pageIndex" :steps="pages" />
-        
+
         <us-validated-form :config="pages[pageIndex].fields">
+            <us-button type="button" variant="primary" class="mr-2" @click="onBack()" :disabled="pageIndex == 0"> <i class="fas fa-arrow-circle-left"></i> Back </us-button>
 
-            <us-button type="button" variant="primary" class="mr-2" @click="onBack()" :disabled="pageIndex == 0">
-                <i class="fas fa-arrow-circle-left"></i> Back
-            </us-button>
-
-            <us-button type="submit" variant="primary" class="mr-2" @click="onNext()" v-if="pageIndex < noSteps - 1">
-                Next <i class="fas fa-arrow-circle-right"></i>
-            </us-button>
+            <us-button type="submit" variant="primary" class="mr-2" @click="onNext()" v-if="pageIndex < noSteps - 1"> Next <i class="fas fa-arrow-circle-right"></i> </us-button>
             <span v-else>
                 <us-button type="submit" variant="primary" class="mr-2">Continue</us-button>
-                <us-button type="button" variant="link" class="ml-2">Submit an application with just my name and address</us-button>                
+                <us-button type="button" variant="link" class="ml-2">Submit an application with just my name and address</us-button>
             </span>
 
             <us-button type="button" variant="outline-primary" @click="onNext()">Skip</us-button>
-
         </us-validated-form>
-
     </div>
-
 </template>
 
 <script>
@@ -33,7 +23,7 @@
 
 export default {
     name: 'validated-form',
-    components: {  },
+    components: {},
     props: {
         value: {
             default: null

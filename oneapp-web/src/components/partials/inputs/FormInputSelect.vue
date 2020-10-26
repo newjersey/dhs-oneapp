@@ -21,7 +21,8 @@
                 :keyField="opts.keyField"
                 v-model="currentValue"
                 :disabled="opts.disabled"
-                :placeholder="opts.placeholder"            
+                :placeholder="opts.placeholder"
+                :valid="getValidationState(v)"
             ></us-form-combobox>
         </us-form-group>
     </validation-provider>
