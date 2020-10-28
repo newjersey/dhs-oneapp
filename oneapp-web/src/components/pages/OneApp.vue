@@ -6,7 +6,7 @@
             <us-step-indicator :step="step" :steps="section.pages" />
 
             <span v-for="(page, index) in section.pages" :key="index">
-                <us-form @submit="doSubmit" size="lg" class="mt-5 pb-3" v-if="step == index">
+                <us-form @submit="doSubmit" size="lg" class="mt-5 pb-3" :validate="true" v-if="step == index">
                     <span v-for="(item, index) in page.fields" :key="index">
                         <form-input :config="item" v-model="formData[item.key]" />
                     </span>
@@ -44,7 +44,7 @@ export default {
             //formData: {},
             config: formConfig,
             sectionIndex: 0,
-            step: 3
+            step: 0
         };
     },
     computed: {

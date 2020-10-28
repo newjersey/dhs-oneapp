@@ -25,7 +25,9 @@
     "deploy:cf:web": "run-s install:web build:web:staging && cf push usds-nj-oneapp-staging-web --strategy rolling",
     "deploy:cf": "run-s deploy:cf:api deploy:cf:web"
   },
-  "dependencies": {},
+  "dependencies": {
+    "uswds-vue": "^0.1.16"
+  },
   "devDependencies": {
     "npm-run-all": "^4.1.5",
     "pre-commit": "^1.2.2"

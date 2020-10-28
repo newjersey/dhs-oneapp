@@ -8,9 +8,10 @@ import './validation.js';
 import Notifications from './utils/Notifcations';
 //import VueI18n from 'vue-i18n';
 
-//import { UswdsVue } from 'uswds-vue';
+import uswds from 'uswds/dist/js/uswds.min.js';
+import { UswdsVue } from 'uswds-vue';
 // Until stable, pulling from here
-import { UswdsVue } from '../../../uswds-vue/src/main.js';
+//import { UswdsVue } from '../../../uswds-vue/src/main.js';
 
 /*
 const messages= {
