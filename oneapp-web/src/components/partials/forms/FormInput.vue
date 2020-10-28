@@ -135,7 +135,7 @@
         <!-- Default to text input -->
 
         <us-form-input
-            v-else-if="config.type == 'text'"
+            v-else-if="config.type == 'text' || config.type == 'password'"
             :name="config.name"
             :type="config.type || 'text'"
             :disabled="config.disabled"

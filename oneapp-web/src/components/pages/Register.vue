@@ -11,10 +11,9 @@
                         :config="{
                             type: 'text',
                             label: 'Username',
-                            rules: 'required|username-available',
+                            rules: {required:true, 'username-available':true},
                             name: 'username',
                             help: 'Your username must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.',
-                            required: true
                         }"
                         v-model="formData.username"
                     />
@@ -24,7 +23,7 @@
                             type: 'email',
                             label: 'Email Address',
                             name: 'email',
-                            required: true
+                            rules: {required:true, email: true}
                         }"
                         v-model="formData.email"
                     />
@@ -35,7 +34,7 @@
                             label: 'Password',
                             name: 'password',
                             help: 'Your password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed.',
-                            required: true
+                            required: {required:true, 'password-complex': true}
                         }"
                         v-model="formData.password"
                     />
@@ -45,7 +44,7 @@
                             type: 'password-confirm',
                             label: 'Confirm your password',
                             name: 'password confirmation',
-                            required: true
+                            required: {required:true, matches: 'password'}
                         }"
                         v-model="formData.password2"
                     />
@@ -98,6 +97,8 @@
 <script>
 import FormInput from '@/components/partials/forms/FormInput.vue';
 import User from '@/models/User.js';
+import Validator from 'uswds-vue';
+import Vue from 'vue';
 
 export default {
     name: 'login',
@@ -118,6 +119,37 @@ export default {
         };
     },
     async mounted() {
+
+        Validator.extend('password-complex', {
+            validator: (str) => {
+
+                if (!str) {
+                    str = '';
+                }
+
+                const hasLetters = /[a-zA-Z]/.test(str);
+                const hasNumbers = /\d/.test(str);
+                const hasLength = str.length >= 8 && str.length <= 15;
+                const hasNonalphas = /\W/.test(str);
+
+                //const test = `hasLetters = ${hasLetters}, hasNumbers = ${hasNumbers}, hasLength = ${hasLength}, hasNonalphas = ${hasNonalphas}`;
+
+                //console.log(test)
+
+                if (hasLetters && !hasNonalphas && hasNumbers && hasLength) {
+                    return true;
+                }
+
+                return false;
+            },
+            message: () => {
+                return {
+                    'en': Vue.t('Password must be 8 to 15 characters long, contain at least one letter and one number. No special characters or spaces are allowed')
+                }
+            }
+        });
+      
+        // matches
         await this.$store.dispatch('register');
     },
     methods: {
