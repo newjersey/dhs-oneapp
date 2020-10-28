@@ -87,12 +87,15 @@ Application info:
 
 Every DAL is called to display info about the application. Thoughts are for quick submit to only calls the SELECT_* stored procedures for the above sections we're filling out during quick submit.
 
+* `OA_PKG_APP.SP_VALIDATE_PROGRAM`
+* `OA_PKG_APP.SP_VALIDATE_HCSUA_SELECTION`
+* `OA_PKG_APP.SP_VALIDATE_PAYEE`
+
 ### `/Forms/Application/Programs.aspx`
 
 TANF:
 * `OA_PKG_APP.SP_SELECT_TANF_GA_HEADER`
 * `OA_PKG_APP.SP_UPDATE_TANF_GA_HEADER`
-* `OA_PKG_APP.SP_DELETE_TANF_GA_HEADER`
 
 Eligibility Calcs:
 * `OA_PKG_UTIL.GET_ELIGIBILITY`
@@ -120,10 +123,15 @@ This is an information only page (disclaimer form).
 ## Open Questions
 
 * When are `DELETE_` stored procedures called?
+  * For the above stored procedures, the application actually never calls the DAL delete methods. They seem to have been written in the event they'd be used in the future. Some delete methods are used, but that only seems to on one-to-many relationships, like household members, where records can be deleted in the UI.
 * Do we show TANF/GA information for our SNAP quick submit prototype?
 * Do we mock USPS API for dev/staging environments?
+  * Yes
 * What is exactly happening on the `frmNewApplication` page with the alternative flows?
+  * Reached out to Carmen for clarification.
 * Where does an application id get created (i.e. which stored procedure)?
+  * Prior to submitting, the user id is application id. The table column is called application id, but the ASP.net logic insert the user id into the column.
 * Does the review page have any logic to mark an application as reviewed in the database?
+  * Just the `_VALIDATE_` stored procedures are called.
 * Do we need to use the `_APP_PAGE_INFO` stored procedures if we're using a different validation system / don't need to show app progress in the same way? (Submission may require them filled out to some extent.)
 * Does the back-end need to handle anything with the disclaimer outside of translations?
