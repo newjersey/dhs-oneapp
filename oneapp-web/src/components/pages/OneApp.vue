@@ -1,6 +1,7 @@
 <template>
     <us-container id="OneAppPage" align="left">
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
+
             <h2 class="page-title" v-if="section && section.title">{{ config[0].title }}</h2>
 
             <us-step-indicator :step="step" :steps="section.pages" />
@@ -26,7 +27,9 @@
                 </us-form>
             </span>
 
+            <!--
             <pre>{{ formData }}</pre>
+            -->
         </div>
     </us-container>
 </template>
@@ -107,6 +110,29 @@ export default {
 
 <style lang="scss">
 #OneAppPage {
+
+    .usa-step-indicator__heading {
+        font-size: 20px;
+    }
+
+    .usa-step-indicator__total-steps {
+        font-size: 15px;
+    }
+
+    .usa-step-indicator__current-step {
+        height: 25px;
+        width: 25px;
+        color: #FFFFFF;
+        font-family: "Public Sans";
+        font-size: 15px;
+        font-weight: normal;
+        letter-spacing: 0;
+        line-height: 26px;
+        text-align: center;
+        padding: 0;
+        margin-right: 3px;
+    }
+
     .form-wrapper {
         width: 100%;
         //max-width: 850px;

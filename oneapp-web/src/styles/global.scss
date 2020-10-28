@@ -6,8 +6,8 @@ $theme-show-notifications: false;
 @import "~uswds/dist/scss/uswds.scss";
 
 // Import USWDS-VUE sass files
-//@import "~uswds-vue/src/styles/uswds-vue.scss";
-@import "../../../../uswds-vue/src/styles/uswds-vue.scss";
+@import "~uswds-vue/dist/uswds-vue.css";
+//@import "../../../../uswds-vue/src/styles/uswds-vue.scss";
 
 
 // Import font awesome css

@@ -8011,6 +8011,11 @@ modify-values@^1.0.0:
   resolved "https://registry.yarnpkg.com/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -11534,6 +11539,17 @@ use@^3.1.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
+
+uswds-vue@^0.1.18:
+  version "0.1.18"
+  resolved "https://registry.yarnpkg.com/uswds-vue/-/uswds-vue-0.1.18.tgz#6989dc2f30a023fc7cc1ad9ef018942077931565"
+  integrity sha512-9nn5iaXo9i9fF/9Y11FEwYcIJR22DWekPaDmghV1+mY7XPikMWmCMgka4Qtrhvwvfd5EBDmK4hwTwu1AMetMtw==
+  dependencies:
+    core-js "^3.6.5"
+    lodash "^4.17.20"
+    moment "^2.29.1"
+    uswds "^2.9.0"
+    vue-the-mask "^0.11.1"
 
 uswds@^2.9.0:
   version "2.9.0"

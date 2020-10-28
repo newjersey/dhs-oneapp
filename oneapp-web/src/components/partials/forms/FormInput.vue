@@ -12,6 +12,7 @@
     </p>
 
     <us-form-group v-else :label="config.label" :helpText="config.help" :label-sr-only="config.hideLabel" label-class="oneapp-form-label">
+
         <!-- Using a slot for the error message so we can surface it for translation -->
         <template v-slot:validation-error="{ error }">
             <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{ error }}</span>
@@ -117,6 +118,17 @@
             :required="config.required"
             type="email"
             :rules="{ required: true, email: true }"
+            v-model="currentValue"
+        />
+
+        <!-- Date input -->
+
+        <us-form-date
+            v-else-if="config.type == 'date'"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
             v-model="currentValue"
         />
 
