@@ -1,6 +1,5 @@
 <template>
     <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
-
         <us-form-group
             :label="opts.label"
             :helpText="opts.help"
@@ -23,10 +22,9 @@
                 v-model="currentValue"
                 :disabled="opts.disabled"
                 :placeholder="opts.placeholder"
-                
+                :valid="getValidationState(v)"
             />
         </us-form-group>
-    
     </validation-provider>
 </template>
 

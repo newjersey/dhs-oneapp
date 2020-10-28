@@ -17,7 +17,7 @@ export default new Vuex.Store({
         },
         setFormData(state, data) {
             state.formData = data;
-        }        
+        }
     },
     getters: {
         getUser(state) {
@@ -25,7 +25,7 @@ export default new Vuex.Store({
         },
         getFormData(state) {
             return state.formData;
-        }        
+        }
     },
     actions: {
         // ///////////////////////////////////////////////////////////////////////////////////////

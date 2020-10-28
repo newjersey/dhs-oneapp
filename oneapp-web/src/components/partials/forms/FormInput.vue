@@ -8,97 +8,187 @@
     </div>
 
     <p v-else-if="config.type == 'statement'">
-        {{config.lead}}
+        {{ config.lead }}
     </p>
 
-    <!-- Phone Number (US) -->
+    <us-form-group v-else :label="config.label" :helpText="config.help" :label-sr-only="config.hideLabel" label-class="oneapp-form-label">
+        <!-- Using a slot for the error message so we can surface it for translation -->
+        <template v-slot:validation-error="{ error }">
+            <span v-if="error" class="usa-error-message" id="input-error-message" role="alert" v-t>{{ error }}</span>
+        </template>
 
-    <form-input-masked-text v-else-if="config.type == 'phone'" v-model="currentValue" :config="{ ...config, mask: '###-###-####' }" />
+        <!-- A list of options, where each option is check -->
 
-    <!-- Social Security Number -->
+        <us-form-checkbox
+            v-if="config.type == 'checkbox'"
+            :name="config.name"
+            :options="config.options"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-masked-text v-else-if="config.type == 'ssn'" v-model="currentValue" :config="{ ...config, mask: '###-##-####' }" />
+        <!-- A list of options, where each option is check -->
 
-    <!-- Email -->
+        <us-form-radio
+            v-else-if="config.type == 'radio'"
+            :name="config.name"
+            :options="config.options"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-text v-else-if="config.type == 'email'" v-model="currentValue" :config="{ ...config, rules: { required: true, email: true } }" />
+        <!-- A list of options, where each option is just text -->
 
-    <!-- Password -->
+        <us-form-combobox
+            v-else-if="config.type == 'combobox' || config.type == 'dropdown'"
+            :options="config.options"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-text type="password" v-else-if="config.type == 'password'" v-model="currentValue" :config="{ ...config, rules: 'required|password-complex' }" />
-    <form-input-text type="password" v-else-if="config.type == 'password-confirm'" v-model="currentValue" :config="{ ...config, rules: 'required|confirmed:pwdConfirmedVid' }" />
+        <!-- Boolean (yes/no) input -->
 
-    <!-- Url -->
+        <us-form-boolean
+            v-else-if="config.type == 'boolean'"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-masked-text v-else-if="config.type == 'url'" v-model="currentValue" :config="{ ...config, rules: { required: true, url: true } }" />
+        <!-- Zip code -->
 
-    <!-- Zip Code -->
+        <us-form-input-masked
+            v-else-if="config.type == 'zip'"
+            mask="#####"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-masked-text v-else-if="config.type == 'zip'" v-model="currentValue" :config="{ ...config, mask: '#####' }" />
+        <!-- Phone Number (US) -->
 
-    <!-- A list of options, where each option is check -->
+        <us-form-input-masked
+            v-else-if="config.type == 'phone'"
+            mask="###-###-####"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-checkbox v-else-if="config.type == 'checkbox'" v-model="currentValue" :config="config" />
-    <form-input-radio v-else-if="config.type == 'radio'" v-model="currentValue" :config="config" />
+        <!-- Social Security Number -->
 
-    <!-- A list of options, where each option is just text -->
+        <us-form-input-masked
+            v-else-if="config.type == 'ssn'"
+            mask="###-##-####"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-select v-else-if="config.type == 'combobox' || config.type == 'dropdown'" v-model="currentValue" :config="config" />
+        <!-- Email -->
 
-    <!-- Boolean (yes/no) input -->
+        <us-form-input
+            v-else-if="config.type == 'email'"
+            :name="config.name"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            type="email"
+            :rules="{ required: true, email: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-boolean v-else-if="config.type == 'boolean'" v-model="currentValue" :config="config" />
+        <!-- Default to text input -->
 
-    <!-- Default to text input -->
+        <us-form-input
+            v-else-if="config.type == 'text'"
+            :name="config.name"
+            :type="config.type || 'text'"
+            :disabled="config.disabled"
+            :placeholder="config.placeholder"
+            :required="config.required"
+            :rules="{ required: true }"
+            v-model="currentValue"
+        />
 
-    <form-input-text v-else-if="config.type == 'text'" v-model="currentValue" :config="config" />
+        <!-- Else, show an alert! -->
 
-    <!-- Else, show an alert! -->
-
-    <div v-else class="w-100">
-        <form-input-text v-model="currentValue" :config="{ ...config, disabled: true, placeholder: `ERROR: ${config.type} is a unknown form input type` }" />
-    </div>
+        <div v-else class="w-100 mt-2 mb-2">
+            <us-alert variant="warning" :title="`${config.type} is a unknown field type`">
+                {{ config.label }}
+            </us-alert>
+        </div>
+    </us-form-group>
 </template>
 
 <script>
-import FormInputText from '@/components/partials/inputs/FormInputText.vue';
-import FormInputSelect from '@/components/partials/inputs/FormInputSelect.vue';
-import FormInputCheckbox from '@/components/partials/inputs/FormInputCheckbox.vue';
-import FormInputRadio from '@/components/partials/inputs/FormInputRadio.vue';
-import FormInputBoolean from '@/components/partials/inputs/FormInputBoolean.vue';
-import FormInputMaskedText from '@/components/partials/inputs/FormInputMaskedText.vue';
-import ValueWatcherMixin from '@/components/mixins/ValueWatcherMixin.js';
-
 /**
  * This is a generic form input, it figures out the specific input type from the configuration passed in
  * and sets up appropriate rules and masking
  */
 export default {
     name: 'form-input',
-    components: {
-        FormInputText,
-        FormInputSelect,
-        FormInputMaskedText,
-        FormInputCheckbox,
-        FormInputRadio,
-        FormInputBoolean
+    props: {
+        value: {
+            default: ''
+        },
+        config: {
+            type: Object,
+            default: null
+        }
     },
     data() {
         return {
-            // isUpdating, currentValue provided by the InputMixin
-            passwordRules: {
-                required: true,
-                alpha_num: true,
-                min: { length: 8 },
-                max: { length: 15 }
-            }
+            isUpdating: false,
+            currentValue: null
         };
     },
-    mixins: [ValueWatcherMixin],
-    props: {
-        // value prop provided by the InputMixin
-        config: {
-            type: Object
+    watch: {
+        value(newVal, oldVal) {
+            if (newVal != oldVal) {
+                this.__onValueChanged();
+            }
+        },
+        currentValue(val) {
+            if (!this.isUpdating) {
+                // allows us to use v-model on our input.
+                this.$emit('input', val);
+            }
+        }
+    },
+    mounted() {
+        this.currentValue = this.value;
+        console.log('Setting value to ', this.value);
+    },
+    methods: {
+        __onValueChanged() {
+            this.isUpdating = true;
+            this.currentValue = this.value;
+            this.$nextTick(() => {
+                this.isUpdating = false;
+            });
         }
     }
 };

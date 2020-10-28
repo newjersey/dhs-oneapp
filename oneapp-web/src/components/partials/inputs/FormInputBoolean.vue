@@ -1,7 +1,5 @@
 <template>
-
     <validation-provider tag="div" :rules="opts.rules" :name="opts.name" :vid="vid" v-slot="v" v-if="linkedShow">
-
         <us-form-group
             :label="opts.label"
             :helpText="opts.help"
@@ -24,10 +22,8 @@
                 v-model="currentValue"
                 :disabled="opts.disabled"
                 :placeholder="opts.placeholder"
-                
             />
         </us-form-group>
-    
     </validation-provider>
 </template>
 <script>
@@ -43,11 +39,10 @@ export default {
     data() {
         return {
             options: [
-                {value: true, label: 'Yes'},
-                {value: false, label: 'No'}
+                { value: true, label: 'Yes' },
+                { value: false, label: 'No' }
             ]
         };
     }
 };
 </script>
-
