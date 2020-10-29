@@ -11540,10 +11540,10 @@ use@^3.1.0:
   resolved "https://registry.yarnpkg.com/use/-/use-3.1.1.tgz#d50c8cac79a19fbc20f2911f56eb973f4e10070f"
   integrity sha512-cwESVXlO3url9YWlFW/TA9cshCEhtu7IKJ/p5soJ/gGpj7vbvFrAY/eIioQ6Dw23KjZhYgiIo8HOs1nQ2vr/oQ==
 
-uswds-vue@^0.1.18:
-  version "0.1.18"
-  resolved "https://registry.yarnpkg.com/uswds-vue/-/uswds-vue-0.1.18.tgz#6989dc2f30a023fc7cc1ad9ef018942077931565"
-  integrity sha512-9nn5iaXo9i9fF/9Y11FEwYcIJR22DWekPaDmghV1+mY7XPikMWmCMgka4Qtrhvwvfd5EBDmK4hwTwu1AMetMtw==
+uswds-vue@^0.1.21:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/uswds-vue/-/uswds-vue-0.1.21.tgz#489b6a54b78ae8eb648434ff4c189f12e041797f"
+  integrity sha512-Xu2CP+KHwzVBcRKLGF/x9yEPU/nTLPy1Qq7+UTZwbsBI0BWyxpdzNkCdDy6YWk5kkLHYHS8DzKjaLfsL4UKzTw==
   dependencies:
     core-js "^3.6.5"
     lodash "^4.17.20"
@@ -11646,11 +11646,6 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
-
-vee-validate@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-3.4.0.tgz#dcdefcd45d43823c8b26aceee55f067ef56ca800"
-  integrity sha512-qxcqrGYr2gchZOjyhBKu7G4NOyOTmH6vk8APGdxAiL/0Iy2QZP/vcOYNbx7+zMhg7P3q418AseHR1sbckB5I+A==
 
 vendors@^1.0.0:
   version "1.0.4"

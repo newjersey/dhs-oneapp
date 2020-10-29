@@ -4,13 +4,14 @@ class Base {
     constructor() {
         Base.rootUrl = process.env.VUE_APP_API_ROOT_URL ? process.env.VUE_APP_API_ROOT_URL : 'http://localhost:4000';
 
-        console.log('Host: ' + window.location.host);
-        console.log('RootURL: ' + Base.rootUrl);
+        //console.log('Host: ' + window.location.host);
+        //console.log('RootURL: ' + Base.rootUrl);
     }
 
     static async _send(query) {
         const payload = query;
-        console.log('SENDING: ', payload);
+
+        //console.log('SENDING: ', payload);
 
         try {
             let info = await axios.post(`${Base.rootUrl}/graphql/query`, { query: payload, timeout: 1000 });
@@ -22,7 +23,7 @@ class Base {
     }
 
     static _handleResponse(resp) {
-        console.log('RESPONE = ', resp);
+        //console.log('RESPONE = ', resp);
         if (resp && resp.data) {
             let errors = resp.data.errors;
             let data = resp.data.data;

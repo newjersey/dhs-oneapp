@@ -91,7 +91,8 @@ Translate.install = function (Vue, options) {
         let matches = fuse.search(val);
 
         if (matches && matches.length > 0) {
-            console.log(`MATCH: "${val}"`, matches);
+            
+            //console.log(`MATCH: "${val}"`, matches);
 
             return matches[0].item;
         }

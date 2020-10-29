@@ -4,11 +4,13 @@ import router from './router.js';
 import store from './store';
 import Logger from './utils/Logger';
 import Translate from './utils/Translate';
-import './validation.js';
 import Notifications from './utils/Notifcations';
 //import VueI18n from 'vue-i18n';
 
+console.log('BOOOOOOOM', process.env);
+
 import uswds from 'uswds/dist/js/uswds.min.js';
+
 import { UswdsVue } from 'uswds-vue';
 
 // Until stable, pulling from here

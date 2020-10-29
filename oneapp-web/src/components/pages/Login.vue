@@ -1,7 +1,7 @@
 <template>
     <us-container id="LoginPage" align="left">
         <div class="form-wrapper px-sm-2 px-md-6 px-lg-8">
-            <validation-observer class="validated-form" ref="observer" v-slot="{ handleSubmit }">
+
                 <h1 v-t>
                     Sign In
                     <us-button variant="link" :to="{ name: 'register' }" v-t>or create a new account</us-button>
@@ -10,26 +10,26 @@
                 <h2 v-t>Log into your NJOneApp account</h2>
 
                 <us-form @submit="handleSubmit(doSubmit)" size="lg" class="mt-5 pb-3">
-                    <form-input
-                        :config="{
-                            type: 'text',
-                            label: 'Username',
-                            name: 'username',
-                            required: true
-                        }"
-                        v-model="formData.username"
-                    />
 
-                    <form-input
-                        :config="{
-                            type: 'password',
-                            label: 'Password',
-                            name: 'password',
-                            rules: 'required',
-                            required: true
-                        }"
-                        v-model="formData.password"
-                    />
+                    <us-form-group label="Username">
+                        <us-form-input
+                            type='text'
+                            label='Username'
+                            :rules="{required:true}"
+                            name='username'
+                            v-model="formData.username"
+                        />
+                    </us-form-group>
+
+                    <us-form-group label="Password">
+                        <us-form-input
+                            v-t
+                            type="password"
+                            name="password"
+                            :rules="{required:true}"                            
+                            v-model="formData.password"
+                        />                    
+                    </us-form-group>
 
                     <div class="mt-2" align="left">
                         <us-button type="submit" variant="primary" class="mr-2" :isLoading="isLoading" v-t>Sign In</us-button>
@@ -37,7 +37,6 @@
 
                     <us-alert variant="error" v-t class="mt-3" v-if="error">Username or password is incorrect</us-alert>
                 </us-form>
-            </validation-observer>
 
             <hr class="mb-4 mt-2" />
 
@@ -55,12 +54,10 @@
 </template>
 
 <script>
-import FormInput from '@/components/partials/forms/FormInput.vue';
 
 export default {
     name: 'login',
     components: {
-        FormInput
     },
     data() {
         return {
