@@ -9,6 +9,8 @@
   - [Docker Install (Optional, not possible using remote desktop / VM / Citrix)](#docker-install-optional-not-possible-using-remote-desktop--vm--citrix)
   - [Configuring the Database](#configuring-the-database)
 - [Putting It All Together](#putting-it-all-together)
+- [Troubleshooting](#troubleshooting)
+  - [VisualStudio Code Terminal on Windows](#visualstudio-code-terminal-on-windows)
 
 ## oneapp-server and oneapp-web
 
@@ -87,3 +89,26 @@ Replace each of the values with the connection information for your database. Re
 With all the above steps completed, you should now be able to fully start up the server. Run the following command from the root directory to start the server (with live reloading support):
 
 `yarn serve`
+
+## Troubleshooting
+
+### VisualStudio Code Terminal on Windows
+
+If you're having trouble running yarn on the terminal within VisualStudio Code, make sure you're using Git Bash as your default terminal. You can customize which terminal is used as your default terminal by editing your user's setting.json file. To do so:
+
+1. Click the settings cog on the bottom left of the window. Select the Settings option.
+![Settings Image 1](images/vscode-terminal-1.png)
+
+2. On the settings page that loads, select the user tab.
+![Settings Image 2](images/vscode-terminal-2.png)
+
+3. On the top right, click the button labeled "Open Settings (JSON)".
+![Settings Image 3](images/vscode-terminal-3.png)
+
+4. On the new tab that opens up, edit your settings to add this setting option:
+```
+{
+    "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+}
+```
+Note: Change the path to point to the actual location of where Git Bash is installed on your machine.
