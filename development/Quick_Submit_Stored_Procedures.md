@@ -134,5 +134,6 @@ This is an information only page (disclaimer form).
 * Does the review page have any logic to mark an application as reviewed in the database?
   * Just the `_VALIDATE_` stored procedures are called.
 * Do we need to use the `_APP_PAGE_INFO` and `_APPLICATION_ITEMS` stored procedures if we're using a different validation system / don't need to show app progress in the same way? (Submission may require them filled out to some extent.)
+  * Page info contains some metrics information, such at the number of times that page has been visited. Do we need replicate this? Is NJ using these values?
 * Are we building this to assume full backward compatibility?
 * Does the back-end need to handle anything with the disclaimer outside of translations?
