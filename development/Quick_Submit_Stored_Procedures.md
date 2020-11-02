@@ -133,5 +133,6 @@ This is an information only page (disclaimer form).
   * Prior to submitting, the user id is application id. The table column is called application id, but the ASP.net logic insert the user id into the column.
 * Does the review page have any logic to mark an application as reviewed in the database?
   * Just the `_VALIDATE_` stored procedures are called.
-* Do we need to use the `_APP_PAGE_INFO` stored procedures if we're using a different validation system / don't need to show app progress in the same way? (Submission may require them filled out to some extent.)
+* Do we need to use the `_APP_PAGE_INFO` and `_APPLICATION_ITEMS` stored procedures if we're using a different validation system / don't need to show app progress in the same way? (Submission may require them filled out to some extent.)
+* Are we building this to assume full backward compatibility?
 * Does the back-end need to handle anything with the disclaimer outside of translations?
