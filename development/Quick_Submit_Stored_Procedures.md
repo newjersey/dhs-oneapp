@@ -79,7 +79,7 @@ Food stamp info:
 * `OA_PKG_APP.SP_SELECT_FOOD_STAMP_INFO`
 * `OA_PKG_APP.SP_UPDATE_FOOD_STAMP_INFO`
 
-Application info:
+Application info (part of validations):
 * `OA_PKG_APP.SP_SELECT_APPLICATION_ITEMS`
 * `OA_PKG_APP.SP_UPDATE_APPLICATION_ITEMS`
 
