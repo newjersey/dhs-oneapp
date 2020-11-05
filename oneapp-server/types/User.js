@@ -9,7 +9,7 @@ const { OneAppError, OneAppUserInputError } = require('../utils/OneAppError');
 
 const typeDef = gql`
   extend type Query {
-    users: Users
+    users: UserQuery
   }
 
   extend type Mutation {
@@ -18,7 +18,7 @@ const typeDef = gql`
     userPasswordReset(USER_ID: String!, HINT_ANSWER: String!): Boolean
   }
 
-  type Users {
+  type UserQuery {
     "Current logged in user"
     current: User!
     "Check if a USER_ID is available"
@@ -109,7 +109,7 @@ const resolvers = {
       return true;
     },
   },
-  Users: {
+  UserQuery: {
     current: (_parent, _args, { auth, dataSources }) => dataSources.UserDao.getUser(auth.user.USER_ID),
     userAvailable: async (_parent, { USER_ID }, { dataSources }) => {
       const userExists = await dataSources.UserDao.doesUserExist(USER_ID);
@@ -147,7 +147,7 @@ const permissions = {
     userPasswordReset: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
   },
   JwtToken: allow,
-  Users: {
+  UserQuery: {
     userAvailable: AuthenticationService.rules.rateLimit({ window: '1m', max: 20 }),
     userPasswordHintQuestion: allow,
   },
