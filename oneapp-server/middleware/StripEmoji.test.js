@@ -18,20 +18,26 @@ describe('StripEmoji middleware', () => {
       args2: {
         also: '🚀',
         has: {
-          emoji: '🤓 in here'
-        }
+          emoji: '🤓 in here',
+          and: 'here 😱',
+          oh_yeah: ' for good measure lets trim '
+        },
+        double_emoji_too: ' 🍕🌮 '
       }
     };
 
     await StripEmoji(resolve, root, args, context, info);
 
     expect(resolve).toHaveBeenCalledWith(root, {
-      arg1: 'Has  emoji',
+      arg1: 'Has emoji',
       args2: {
         also: '',
         has: {
-          emoji: ' in here'
-        }
+          emoji: 'in here',
+          and: 'here',
+          oh_yeah: 'for good measure lets trim'
+        },
+        double_emoji_too: ''
       }
     }, context, info);
   });
