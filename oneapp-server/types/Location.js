@@ -5,6 +5,8 @@ const typeDef = gql`
   extend type Query {
     "All counties"
     counties: [Location!]
+    "Check if zipcode and county provided is a valid NJ zipcode"
+    isValidNJZipcode(ZIPCODE: Int!, COUNTY_NUMBER: Int!): Boolean
   }
 
   type Location {
@@ -16,12 +18,14 @@ const typeDef = gql`
 const resolvers = {
   Query: {
     counties: (_parent, _args, { dataSources }) => dataSources.LocationDao.getCounties(),
+    isValidNJZipcode: async (_parent, { ZIPCODE, COUNTY_NUMBER }, { dataSources }) => dataSources.LocationDao.isValidNJZipcode(ZIPCODE, COUNTY_NUMBER),
   },
 };
 
 const permissions = {
   Query: {
     counties: allow,
+    isValidNJZipcode: allow,
   },
   Location: allow,
 };
