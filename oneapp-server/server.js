@@ -3,10 +3,11 @@ const { ApolloServer } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 const { applyMiddleware } = require('graphql-middleware');
 const { constraintDirective, constraintDirectiveTypeDefs } = require('graphql-constraint-directive');
-const { get } = require('lodash');
+const { get, values } = require('lodash');
 const logger = require('./logger.config');
 const AuthenticationService = require('./services/AuthenticationService');
 const { typeDefs, resolvers, permissions } = require('./schema');
+const middleware = require('./middleware');
 
 const createServer = (dataSources, services, context) => {
   // Build the schema
@@ -23,6 +24,7 @@ const createServer = (dataSources, services, context) => {
   const schemaWithMiddleware = applyMiddleware(
     schema,
     AuthenticationService.buildPermissions(permissions),
+    ...values(middleware),
   );
 
   const populateContext = ({ req }) => ({
