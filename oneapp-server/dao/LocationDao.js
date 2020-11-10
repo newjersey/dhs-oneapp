@@ -17,6 +17,21 @@ class LocationDao extends SQLDataSource {
       .first();
     return parseInt(zipcodeCount.zipcodes, 10) > 0;
   }
+
+  async getCountyForUser(USER_ID) {
+    const countyNumber = await this.knex.select('COUNTY_NUMBER')
+      .from('OA_APP_APPLICATION_CONTACT')
+      .where({ APPLICATION_NUMBER: USER_ID })
+      .first();
+    const countyName = await this.knex.select('COUNTY_NAME')
+      .from('OA_COUNTY')
+      .where({ COUNTY_NUMBER: countyNumber })
+      .first();
+    return {
+      COUNTY_NUMBER: countyNumber,
+      COUNTY_NAME: countyName,
+    };
+  }
 }
 
 module.exports = LocationDao;
