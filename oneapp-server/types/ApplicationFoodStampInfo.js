@@ -5,10 +5,6 @@ const typeDef = gql`
     foodStampInfo: ApplicationFoodStampInfo
   }
 
-  extend type Mutation {
-    foodStampInfoUpdate(input: ApplicationFoodStampInfoInput!): ApplicationFoodStampInfo
-  }
-
   type ApplicationFoodStampInfo {
     "Monthly household income is less than $150 a month"
     IS_GROSS_INCOME_LT_150: Boolean
@@ -46,10 +42,7 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    foodStampInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.FoodStampInfoDao.getFoodStampInfo(auth.user.USER_ID, language.code),
-  },
-  Mutation: {
-    foodStampInfoUpdate: async (_parent, { input }, { dataSources }) => dataSources.FoodStampInfoDao.updateFoodStampInfo(input),
+    foodStampInfo: () => ({}),
   },
 };
 
