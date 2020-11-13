@@ -47,7 +47,7 @@
     "node-sass": "^4.12.0",
     "oracledb": "../oneapp-server/lib/oracledb-5.0.0.tgz",
     "prettier": "^2.1.2",
-    "sass-loader": "^10.0.2",
+    "sass-loader": "^10.0.5",
     "sqlite3": "^5.0.0",
     "vue-template-compiler": "^2.6.12",
     "winston": "^3.3.3"
