@@ -5,6 +5,10 @@ const typeDef = gql`
     programInfo: ApplicationProgramInfo
   }
 
+  extend type Mutation {
+    programInfoUpdate(input: ApplicationProgramInfoInput!): ApplicationProgramInfo
+  }
+
   type ApplicationProgramInfo {
     "Applying for SNAP"
     IS_FS_SELECTED: Boolean
@@ -74,7 +78,10 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    programInfo: () => ({}),
+    programInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.ApplicationProgramInfoDao.getProgramInfo(auth.user.USER_ID, language.code),
+  },
+  Mutation: {
+    programInfoUpdate: async (_parent, { input }, { dataSources }) => dataSources.ApplicationProgramInfoDao.updateProgramInfo(input),
   },
 };
 
