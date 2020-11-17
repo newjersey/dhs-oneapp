@@ -1,4 +1,6 @@
 const { gql } = require('apollo-server-express');
+const { isNil } = require('lodash');
+const logger = require('../logger.config');
 
 const typeDef = gql`
   extend type Query {
@@ -6,15 +8,51 @@ const typeDef = gql`
     application: Application
   }
 
+  extend type Mutation {
+    applicationUpdate(input: ApplicationInput!): Application
+  }
+
   type Application {
     "The id of the application. This will be the same as the user id."
     APPLICATION_NUMBER: ID
+  }
+
+  input ApplicationInput {
+    contact: ApplicationContactInput
+    foodStampInfo: ApplicationFoodStampInfoInput
+    programInfo: ApplicationProgramInfoInput
   }
 `;
 
 const resolvers = {
   Query: {
-    application: () => ({}),
+    application: (_parent, _args, { auth }) => ({
+      APPLICATION_NUMBER: auth.user.USER_ID,
+    }),
+  },
+  Mutation: {
+    applicationUpdate: async (_parent, { input }, { auth }) => {
+      const APPLICATION_NUMBER = auth.user.USER_ID;
+      logger.info('Performing upsert on application (%s)', APPLICATION_NUMBER);
+
+      const application = {
+        APPLICATION_NUMBER,
+      };
+
+      if (!isNil(input.contact)) {
+        logger.debug('Application (%s) update contains contact information', APPLICATION_NUMBER);
+      }
+
+      if (!isNil(input.foodStampInfo)) {
+        logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
+      }
+
+      if (!isNil(input.programInfo)) {
+        logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
+      }
+
+      return application;
+    },
   },
 };
 
