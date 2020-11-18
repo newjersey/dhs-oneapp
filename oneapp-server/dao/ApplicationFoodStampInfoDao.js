@@ -1,10 +1,10 @@
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
 
-class FoodStampInfoDao extends SQLDataSource {
+class ApplicationFoodStampInfoDao extends SQLDataSource {
   async getFoodStampInfo(APPLICATION_ID, LANGUAGE) {
     const con = await this.knex.client.pool.acquire().promise;
-    return this.knex.client.transaction(async (tx) => {
+    const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
         app_id: { dir: oracledb.BIND_IN, val: APPLICATION_ID },
         lang: { dir: oracledb.BIND_IN, val: LANGUAGE },
@@ -12,6 +12,7 @@ class FoodStampInfoDao extends SQLDataSource {
       };
       return tx.raw('begin OA_PKG_APP.SP_SELECT_FOOD_STAMP_INFO(:app_id, :lang, :info); end;', bindVars);
     }, { connection: con });
+    return response[0];
   }
 
   async updateFoodStampInfo(input) {
@@ -26,4 +27,4 @@ class FoodStampInfoDao extends SQLDataSource {
   }
 }
 
-module.exports = FoodStampInfoDao;
+module.exports = ApplicationFoodStampInfoDao;
