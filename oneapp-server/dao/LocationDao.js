@@ -11,13 +11,13 @@ class LocationDao extends SQLDataSource {
 
   /**
    * Returns whether the provided zipcode is valid in NJ
-   * @param {*} ZIPCODE
-   * @param {*} COUNTY_NUMBER
-   * @param {*} IS_HOMELESS
+   * @param {*} ZIPCODE Zipcode in string format because all NJ zipcodes start with `0`
+   * @param {*} COUNTY_NUMBER Code of county provided
+   * @param {*} IS_HOMELESS If true, validation returns true
    */
   async isValidNJZipcode(ZIPCODE, COUNTY_NUMBER, IS_HOMELESS) {
     const con = await this.knex.client.pool.acquire().promise;
-    return this.knex.client.transaction(async (tx) => {
+    const response = await this.knex.client.transaction(async (tx) => {
       // Stored procedure expects string value
       const isHomelessStr = IS_HOMELESS ? 'True' : 'False';
       const bindVars = {
@@ -28,6 +28,7 @@ class LocationDao extends SQLDataSource {
       };
       return tx.raw('begin OA_PKG_APP.SP_VALIDATE_ZIPCODE(:zipcode, :county, :is_homeless, :is_valid); end;', bindVars);
     }, { connection: con });
+    return response[0] !== 0;
   }
 
   async getCountyDetails(USER_ID) {
