@@ -31,7 +31,7 @@ const resolvers = {
     }),
   },
   Mutation: {
-    applicationUpdate: async (_parent, { input }, { auth }) => {
+    applicationUpdate: async (_parent, { input }, { dataSources, auth }) => {
       const APPLICATION_NUMBER = auth.user.USER_ID;
       logger.info('Performing upsert on application (%s)', APPLICATION_NUMBER);
 
@@ -45,6 +45,7 @@ const resolvers = {
 
       if (!isNil(input.foodStampInfo)) {
         logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
+        dataSources.FoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo);
       }
 
       if (!isNil(input.programInfo)) {
