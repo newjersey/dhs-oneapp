@@ -15,10 +15,10 @@
     "format": "prettier-eslint --write",
     "pkg": "pkg . --out-path dist",
     "test": "LOG_ENABLED=false jest",
-    "doc:serve": "dociql -d -t doc doc/config.yml",
-    "doc:build": "dociql -t doc doc/config.yml",
-    "doc:build:wait": "run-s wait:serve doc:build",
-    "doc": "npm-run-all -p -r start doc:build:wait",
+    "docs:serve": "dociql -d -t docs docs/config.yml",
+    "docs:build": "dociql -t docs docs/config.yml",
+    "docs:build:wait": "run-s wait:serve docs:build",
+    "docs": "npm-run-all -p -r start docs:build:wait",
     "wait:serve": "wait-on tcp:4000"
   },
   "dependencies": {
