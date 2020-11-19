@@ -5,10 +5,6 @@ const typeDef = gql`
     foodStampInfo: ApplicationFoodStampInfo
   }
 
-  extend type Mutation {
-    foodStampInfoUpdate(input: ApplicationFoodStampInfoInput!): ApplicationFoodStampInfo
-  }
-
   type ApplicationFoodStampInfo {
     "Monthly household income is less than $150 a month"
     IS_GROSS_INCOME_LT_150: Boolean
