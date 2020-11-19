@@ -31,3 +31,7 @@ yarn-error.log*
 *.sln
 *.sw?
 database/dmp/import.log
+
+# oneapp-server docs
+oneapp-server/doc/*
+!oneapp-server/doc/config.yml

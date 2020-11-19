@@ -8,6 +8,7 @@ module.exports = {
     '*.test.js',
     '__utils/**',
     '__mocks__/**',
+    'doc/**',
   ],
   rules: {
     'class-methods-use-this': ['warn'],
