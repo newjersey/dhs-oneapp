@@ -7,14 +7,19 @@
   "private": true,
   "scripts": {
     "start": "yarn serve",
-    "serve": "node index.js",
+    "serve": "node index.js | pino-pretty",
     "serve:mock": "node index.js --mock | pino-pretty",
     "live": "nodemon --inspect index.js | pino-pretty",
     "lint:pre": "eslint '**/*.js' --ignore-pattern node_modules/ --ignore-pattern dist/ --no-fix",
     "lint": "eslint '**/*.js' --ignore-pattern node_modules/ --ignore-pattern dist/ --fix",
     "format": "prettier-eslint --write",
     "pkg": "pkg . --out-path dist",
-    "test": "LOG_ENABLED=false jest"
+    "test": "LOG_ENABLED=false jest",
+    "docs:serve": "dociql -d -t docs docs/config.yml",
+    "docs:build": "dociql -t docs docs/config.yml",
+    "docs:build:wait": "run-s wait:serve docs:build",
+    "docs": "npm-run-all -p -r start docs:build:wait",
+    "wait:serve": "wait-on tcp:4000"
   },
   "dependencies": {
     "accept-language-parser": "^1.5.0",
@@ -49,15 +54,18 @@
   },
   "devDependencies": {
     "apollo-server-testing": "^2.19.0",
+    "dociql": "^1.0.3",
     "eslint": "^7.13.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-promise": "^4.2.1",
     "jest": "^26.6.3",
     "nodemon": "^2.0.6",
+    "npm-run-all": "^4.1.5",
     "pino-pretty": "^4.3.0",
     "pkg": "^4.4.9",
-    "prettier-eslint-cli": "^5.0.0"
+    "prettier-eslint-cli": "^5.0.0",
+    "wait-on": "^5.2.0"
   },
   "engines": {
     "node": ">=12.0.0",

@@ -1,0 +1,18 @@
+# To fetch schema from
+introspection: http://localhost:4000
+
+servers: # same format as for OpenAPI Specification
+  - url: https://usds-nj-oneapp-staging-api.app.cloud.gov
+    description: USDS Staging
+
+info: # same format as for OpenAPI Specification
+  title: NJ OneApp GraphQL Server
+  description: New Jersey OneApp back-end server re-implemented as a GraphQL server
+
+domains:
+  - name: Top Level Menu Section # Name of the domain
+    description: Description  # Description of the domain
+    usecases:         
+      - name: Fetch 'Some' field # Operation name
+        description: Markdown enabled description for operation # Opearation description
+        query: query._version # Query example - fetching single field
