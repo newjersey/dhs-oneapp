@@ -19,15 +19,62 @@
         <nav id="nav" role="navigation">
           <h5>Topics</h5>
           <a href="#introduction">Introduction</a>
-          <h5>Paths</h5>
-          <!-- <section>
-                <a href="#path-fetch_-some-_field">fetch_&#x27;some&#x27;_field</a>
-                <ul> -->
-          <!-- <li> -->
-          <a href="#operation-fetch_-some-_field-post"> Fetch &#x27;Some&#x27; field </a>
-          <!-- </li> -->
-          <!-- </ul>
-              </section> -->
+          <h5>Operations</h5>
+          <section>
+            <a href="#tag-Server-Information">Server Information</a>
+            <ul>
+              <li>
+                <a href="#operation-fetch_version-post"> Fetch version </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Authentication">Authentication</a>
+            <ul>
+              <li>
+                <a href="#operation-check_if_username_is_available-post"> Check if username is available </a>
+              </li>
+              <li>
+                <a href="#operation-register_user-post"> Register user </a>
+              </li>
+              <li>
+                <a href="#operation-login_user-post"> Login user </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Forgot-Credentials">Forgot Credentials</a>
+            <ul>
+              <li>
+                <a href="#operation-fetch_a_user-s_hint_question-post"> Fetch a user&#x27;s hint question </a>
+              </li>
+              <li>
+                <a href="#operation-reset_a_user-s_password-post"> Reset a user&#x27;s password </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-Translations">Translations</a>
+            <ul>
+              <li>
+                <a href="#operation-lookup_a_single_translation_value-post"> Lookup a single translation value </a>
+              </li>
+              <li>
+                <a href="#operation-lookup_multiple_translation_values-post"> Lookup multiple translation values </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-OneApp-Application">OneApp Application</a>
+            <ul>
+              <li>
+                <a href="#operation-fetch_the_user-s_application-post"> Fetch the user&#x27;s application </a>
+              </li>
+              <li>
+                <a href="#operation-persis_the_user-s_application-post"> Persis the user&#x27;s application </a>
+              </li>
+            </ul>
+          </section>
           <h5>Schema Definitions</h5>
           <a href="#definition-Application"> Application </a>
           <a href="#definition-ApplicationContact"> ApplicationContact </a>
@@ -47,8 +94,8 @@
           <a href="#definition-ID"> ID </a>
           <a href="#definition-Int"> Int </a>
           <a href="#definition-JwtToken"> JwtToken </a>
-          <a href="#definition-Location"> Location </a>
           <a href="#definition-PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09"> PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09 </a>
+          <a href="#definition-ServerVersion"> ServerVersion </a>
           <a href="#definition-String"> String </a>
           <a href="#definition-Time"> Time </a>
           <a href="#definition-Translation"> Translation </a>
@@ -84,24 +131,28 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               </div>
             </div>
           </div>
-          <h1>Paths</h1>
-          <span id="path-fetch_-some-_field"></span>
-          <div id="operation-fetch_-some-_field-post" class="operation panel" data-traverse-target="operation-fetch_-some-_field-post">
+          <h1 id="tag-Server-Information" class="swagger-summary-tag" data-traverse-target="tag-Server-Information">Server Information</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Understand the current running version of the server</p>
+            </div>
+          </div>
+          <div id="operation-fetch_version-post" class="operation panel" data-traverse-target="operation-fetch_version-post">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
             <div class="operation-tags">
-              <a class="label" href="#tag-Top-Level-Menu-Section">Top Level Menu Section</a>
+              <a class="label" href="#tag-Server-Information">Server Information</a>
               <!---->
             </div>
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Fetch &apos;Some&apos; field</span>
+              <span class="operation-summary">Fetch version</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
                 <section class="swagger-operation-description">
-                  <p>Markdown enabled description for operation</p>
+                  <p>Check the Git commit information the server was built from</p>
                 </section>
               </div>
             </div>
@@ -120,12 +171,15 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                     <html>
                     <head></head>
                     <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> _version<span class="hljs-tag">{
-  <span class="hljs-symbol">_version</span>
+  <span class="hljs-symbol">_version<span class="hljs-tag">{
+    <span class="hljs-symbol">commitHash</span>
+    <span class="hljs-symbol">commitDate</span>
+  }</span></span>
 }</span></span>
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20_version%7B%0A%20%20_version%0A%7D" target="_blank">Try it now
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20_version%7B%0A%20%20_version%7B%0A%20%20%20%20commitHash%0A%20%20%20%20commitDate%0A%20%20%7D%0A%7D" target="_blank">Try it now
                       <a/> </section>
               </div>
             </div>
@@ -143,7 +197,11 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <div class="prop-row prop-inner">
                     <div class="prop-name">type</div>
                     <div class="prop-value">
-                      <div class="json-property-type">string</div>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/ServerVersion">ServerVersion</a>
+                        </div>
+                      </div>
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
@@ -162,7 +220,1228 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;data&quot;</span>: {
-    <span class="hljs-attr">&quot;_version&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    <span class="hljs-attr">&quot;_version&quot;</span>: {
+      <span class="hljs-attr">&quot;commitHash&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Authentication" class="swagger-summary-tag" data-traverse-target="tag-Authentication">Authentication</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Register and login a user into OneApp</p>
+            </div>
+          </div>
+          <div id="operation-check_if_username_is_available-post" class="operation panel" data-traverse-target="operation-check_if_username_is_available-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Authentication">Authentication</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Check if username is available</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Checks the database if the username has been registered before</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> users<span class="hljs-tag">{
+  <span class="hljs-symbol">users<span class="hljs-tag">{
+    <span class="hljs-symbol">userAvailable<span class="hljs-tag">(USER_ID: <span class="hljs-code">$USER_ID</span>)</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20users%7B%0A%20%20users%7B%0A%20%20%20%20userAvailable(USER_ID%3A%20%24USER_ID)%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/UserQuery">UserQuery</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;users&quot;</span>: {
+      <span class="hljs-attr">&quot;userAvailable&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-register_user-post" class="operation panel" data-traverse-target="operation-register_user-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Authentication">Authentication</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Register user</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Create a new account for the user. The JWT can then be used as an <code>Authentication: Bearer &lt;token&gt;</code>.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">input:
+                        <span class="prop-type">
+                          <div class="json-property-type">
+                            <div class="">
+                              <a class="json-schema-ref" href="#/definitions/UserInput">UserInput</a>
+                            </div>
+                          </div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> userRegister<span class="hljs-tag">(<span class="hljs-code">$input</span>:<span class="hljs-type"> UserInput!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">userRegister<span class="hljs-tag">(input: <span class="hljs-code">$input</span>)</span><span class="hljs-tag">{
+    <span class="hljs-symbol">token</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;input&quot;</span>: {
+    <span class="hljs-attr">&quot;USER_ID&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+    <span class="hljs-attr">&quot;PASSWORD&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+    <span class="hljs-attr">&quot;HINT_QUESTION&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;HINT_ANSWER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;EMAIL_ADDRESS&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>
+  }
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20userRegister(%24input%3A%20UserInput!)%7B%0A%20%20userRegister(input%3A%20%24input)%7B%0A%20%20%20%20token%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/JwtToken">JwtToken</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;userRegister&quot;</span>: {
+      <span class="hljs-attr">&quot;token&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-login_user-post" class="operation panel" data-traverse-target="operation-login_user-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Authentication">Authentication</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Login user</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Login an existing user. The JWT can then be used as an <code>Authentication: Bearer &lt;token&gt;</code>.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">input:
+                        <span class="prop-type">
+                          <div class="json-property-type">
+                            <div class="">
+                              <a class="json-schema-ref" href="#/definitions/UserLogin">UserLogin</a>
+                            </div>
+                          </div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> userAuthenticate<span class="hljs-tag">(<span class="hljs-code">$input</span>:<span class="hljs-type"> UserLogin!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">userAuthenticate<span class="hljs-tag">(input: <span class="hljs-code">$input</span>)</span><span class="hljs-tag">{
+    <span class="hljs-symbol">token</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;input&quot;</span>: {
+    <span class="hljs-attr">&quot;USER_ID&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+    <span class="hljs-attr">&quot;PASSWORD&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+  }
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20userAuthenticate(%24input%3A%20UserLogin!)%7B%0A%20%20userAuthenticate(input%3A%20%24input)%7B%0A%20%20%20%20token%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/JwtToken">JwtToken</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;userAuthenticate&quot;</span>: {
+      <span class="hljs-attr">&quot;token&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Forgot-Credentials" class="swagger-summary-tag" data-traverse-target="tag-Forgot-Credentials">Forgot Credentials</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>When the user forgets their login information</p>
+            </div>
+          </div>
+          <div id="operation-fetch_a_user-s_hint_question-post" class="operation panel" data-traverse-target="operation-fetch_a_user-s_hint_question-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Forgot-Credentials">Forgot Credentials</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Fetch a user&apos;s hint question</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>The hint question is needed to determine what to the ask the user when resetting their password</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> users<span class="hljs-tag">{
+  <span class="hljs-symbol">users<span class="hljs-tag">{
+    <span class="hljs-symbol">userPasswordHintQuestion<span class="hljs-tag">(USER_ID: <span class="hljs-code">$USER_ID</span>)</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20users%7B%0A%20%20users%7B%0A%20%20%20%20userPasswordHintQuestion(USER_ID%3A%20%24USER_ID)%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/UserQuery">UserQuery</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;users&quot;</span>: {
+      <span class="hljs-attr">&quot;userPasswordHintQuestion&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-reset_a_user-s_password-post" class="operation panel" data-traverse-target="operation-reset_a_user-s_password-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Forgot-Credentials">Forgot Credentials</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Reset a user&apos;s password</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Using the user&#39;s response to their hint question, generate a send the user a new password at their email address</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">USER_ID:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">HINT_ANSWER:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> userPasswordReset<span class="hljs-tag">(<span class="hljs-code">$USER_ID</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$HINT_ANSWER</span>:<span class="hljs-type"> String!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">userPasswordReset<span class="hljs-tag">(USER_ID: <span class="hljs-code">$USER_ID</span>, HINT_ANSWER: <span class="hljs-code">$HINT_ANSWER</span>)</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;USER_ID&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;HINT_ANSWER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20userPasswordReset(%24USER_ID%3A%20String!%2C%20%24HINT_ANSWER%3A%20String!)%7B%0A%20%20userPasswordReset(USER_ID%3A%20%24USER_ID%2C%20HINT_ANSWER%3A%20%24HINT_ANSWER)%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">boolean</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;userPasswordReset&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-Translations" class="swagger-summary-tag" data-traverse-target="tag-Translations">Translations</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Look up translation values for fields. All queries through the entire application support the <code>Accept-Language</code> header to return correctly translated values.</p>
+            </div>
+          </div>
+          <div id="operation-lookup_a_single_translation_value-post" class="operation panel" data-traverse-target="operation-lookup_a_single_translation_value-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Translations">Translations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Lookup a single translation value</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Helpful for return the phrases for error messages, etc.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">TEXT_ID:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> translation<span class="hljs-tag">(<span class="hljs-code">$TEXT_ID</span>: ID!)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">translation<span class="hljs-tag">(TEXT_ID: <span class="hljs-code">$TEXT_ID</span>)</span><span class="hljs-tag">{
+    <span class="hljs-symbol">TEXT_ID</span>
+    <span class="hljs-symbol">TEXT_NUMBER</span>
+    <span class="hljs-symbol">TEXT</span>
+    <span class="hljs-symbol">UPDATE_DATE</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;TEXT_ID&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20translation(%24TEXT_ID%3A%20ID!)%7B%0A%20%20translation(TEXT_ID%3A%20%24TEXT_ID)%7B%0A%20%20%20%20TEXT_ID%0A%20%20%20%20TEXT_NUMBER%0A%20%20%20%20TEXT%0A%20%20%20%20UPDATE_DATE%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Translation">Translation</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;translation&quot;</span>: {
+      <span class="hljs-attr">&quot;TEXT_ID&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;TEXT_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+      <span class="hljs-attr">&quot;TEXT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-lookup_multiple_translation_values-post" class="operation panel" data-traverse-target="operation-lookup_multiple_translation_values-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Translations">Translations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Lookup multiple translation values</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>This will return all available languages if no <code>TEXT_IDS</code> are provided, but can be filtered down by passing one more more <code>TEXT_ID</code> values.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">TEXT_IDS:
+                        <span class="prop-type">
+                          <div class="json-property-type">string[]</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> translations<span class="hljs-tag">(<span class="hljs-code">$TEXT_IDS</span>: [ID])</span><span class="hljs-tag">{
+  <span class="hljs-symbol">translations<span class="hljs-tag">(TEXT_IDS: <span class="hljs-code">$TEXT_IDS</span>)</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;TEXT_IDS&quot;</span>: [
+    <span class="hljs-string">&quot;string&quot;</span>
+  ]
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20translations(%24TEXT_IDS%3A%20%5BID%5D)%7B%0A%20%20translations(TEXT_IDS%3A%20%24TEXT_IDS)%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/Translation">Translation</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;translations&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;TEXT_ID&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;TEXT_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;TEXT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-OneApp-Application" class="swagger-summary-tag" data-traverse-target="tag-OneApp-Application">OneApp Application</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Work with an in-progress application</p>
+            </div>
+          </div>
+          <div id="operation-fetch_the_user-s_application-post" class="operation panel" data-traverse-target="operation-fetch_the_user-s_application-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-OneApp-Application">OneApp Application</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Fetch the user&apos;s application</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Return the user&#39;s current application in whatever state was last saved to the server</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> application<span class="hljs-tag">{
+  <span class="hljs-symbol">application<span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+    <span class="hljs-symbol">contact<span class="hljs-tag">{
+      <span class="hljs-symbol">APPLICANT_FIRST_NAME</span>
+      <span class="hljs-symbol">APPLICANT_LAST_NAME</span>
+      <span class="hljs-symbol">APPLICANT_MIDDLE_NAME</span>
+      <span class="hljs-symbol">APPLICANT_MAIDEN_NAME</span>
+      <span class="hljs-symbol">PAYEE_FIRST_NAME</span>
+      <span class="hljs-symbol">PAYEE_LAST_NAME</span>
+      <span class="hljs-symbol">IS_HOMELESS</span>
+      <span class="hljs-symbol">ADDRESS1</span>
+      <span class="hljs-symbol">ADDRESS2</span>
+      <span class="hljs-symbol">CITY</span>
+      <span class="hljs-symbol">STATE</span>
+      <span class="hljs-symbol">ZIP</span>
+      <span class="hljs-symbol">ZIP4</span>
+      <span class="hljs-symbol">COUNTY_NUMBER</span>
+      <span class="hljs-symbol">M_ADDRESS1</span>
+      <span class="hljs-symbol">M_ADDRESS2</span>
+      <span class="hljs-symbol">M_CITY</span>
+      <span class="hljs-symbol">M_STATE</span>
+      <span class="hljs-symbol">M_ZIP</span>
+      <span class="hljs-symbol">M_ZIP4</span>
+      <span class="hljs-symbol">HOME_PHONE_NUMBER</span>
+      <span class="hljs-symbol">WORK_PHONE_NUMBER</span>
+      <span class="hljs-symbol">CELL_PHONE_NUMBER</span>
+      <span class="hljs-symbol">OTHER_PHONE_NUMBER</span>
+      <span class="hljs-symbol">EMAIL_ADDRESS</span>
+      <span class="hljs-symbol">NO_PHONE_NUMBER</span>
+      <span class="hljs-symbol">NO_CONTACT_INFORMATION</span>
+      <span class="hljs-symbol">APPLICATION_TYPE</span>
+      <span class="hljs-symbol">APPLICATION_SUBTYPE</span>
+    }</span></span>
+    <span class="hljs-symbol">foodStampInfo<span class="hljs-tag">{
+      <span class="hljs-symbol">IS_GROSS_INCOME_LT_150</span>
+      <span class="hljs-symbol">IS_RENT_GT_GROSS_INCOME</span>
+      <span class="hljs-symbol">HAS_MIGRANT_FARM_WORKER</span>
+      <span class="hljs-symbol">HAS_RECEIVED_EMERGENCY_FS</span>
+      <span class="hljs-symbol">EMERGENCY_FS_DATE</span>
+      <span class="hljs-symbol">EMERGENCY_FS_LOCATION</span>
+      <span class="hljs-symbol">EMERGENCY_FS_STATE</span>
+    }</span></span>
+    <span class="hljs-symbol">programInfo<span class="hljs-tag">{
+      <span class="hljs-symbol">IS_FS_SELECTED</span>
+      <span class="hljs-symbol">IS_TF_SELECTED</span>
+      <span class="hljs-symbol">IS_GA_SELECTED</span>
+      <span class="hljs-symbol">HAVE_ACTIVE_CASE_CURRENTLY</span>
+      <span class="hljs-symbol">CURRENT_CASE_NUMBERS</span>
+      <span class="hljs-symbol">HAD_ACTIVE_CASE_PREVIOULSY</span>
+      <span class="hljs-symbol">PREVIOUS_CASE_NUMBERS</span>
+      <span class="hljs-symbol">SPOKEN_LANGUAGE</span>
+      <span class="hljs-symbol">NEED_ACCOMODATION</span>
+      <span class="hljs-symbol">NEED_ACM_TRANSLATOR</span>
+      <span class="hljs-symbol">NEED_ACM_SIGNING</span>
+      <span class="hljs-symbol">NEED_ACM_VISUALLY_IMPAIRED</span>
+      <span class="hljs-symbol">NEED_ACM_OTHER</span>
+      <span class="hljs-symbol">ACM_TRA_LANGUAGE</span>
+      <span class="hljs-symbol">ACM_OTH_DESCRIPTION</span>
+    }</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20application%7B%0A%20%20application%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%20%20contact%7B%0A%20%20%20%20%20%20APPLICANT_FIRST_NAME%0A%20%20%20%20%20%20APPLICANT_LAST_NAME%0A%20%20%20%20%20%20APPLICANT_MIDDLE_NAME%0A%20%20%20%20%20%20APPLICANT_MAIDEN_NAME%0A%20%20%20%20%20%20PAYEE_FIRST_NAME%0A%20%20%20%20%20%20PAYEE_LAST_NAME%0A%20%20%20%20%20%20IS_HOMELESS%0A%20%20%20%20%20%20ADDRESS1%0A%20%20%20%20%20%20ADDRESS2%0A%20%20%20%20%20%20CITY%0A%20%20%20%20%20%20STATE%0A%20%20%20%20%20%20ZIP%0A%20%20%20%20%20%20ZIP4%0A%20%20%20%20%20%20COUNTY_NUMBER%0A%20%20%20%20%20%20M_ADDRESS1%0A%20%20%20%20%20%20M_ADDRESS2%0A%20%20%20%20%20%20M_CITY%0A%20%20%20%20%20%20M_STATE%0A%20%20%20%20%20%20M_ZIP%0A%20%20%20%20%20%20M_ZIP4%0A%20%20%20%20%20%20HOME_PHONE_NUMBER%0A%20%20%20%20%20%20WORK_PHONE_NUMBER%0A%20%20%20%20%20%20CELL_PHONE_NUMBER%0A%20%20%20%20%20%20OTHER_PHONE_NUMBER%0A%20%20%20%20%20%20EMAIL_ADDRESS%0A%20%20%20%20%20%20NO_PHONE_NUMBER%0A%20%20%20%20%20%20NO_CONTACT_INFORMATION%0A%20%20%20%20%20%20APPLICATION_TYPE%0A%20%20%20%20%20%20APPLICATION_SUBTYPE%0A%20%20%20%20%7D%0A%20%20%20%20foodStampInfo%7B%0A%20%20%20%20%20%20IS_GROSS_INCOME_LT_150%0A%20%20%20%20%20%20IS_RENT_GT_GROSS_INCOME%0A%20%20%20%20%20%20HAS_MIGRANT_FARM_WORKER%0A%20%20%20%20%20%20HAS_RECEIVED_EMERGENCY_FS%0A%20%20%20%20%20%20EMERGENCY_FS_DATE%0A%20%20%20%20%20%20EMERGENCY_FS_LOCATION%0A%20%20%20%20%20%20EMERGENCY_FS_STATE%0A%20%20%20%20%7D%0A%20%20%20%20programInfo%7B%0A%20%20%20%20%20%20IS_FS_SELECTED%0A%20%20%20%20%20%20IS_TF_SELECTED%0A%20%20%20%20%20%20IS_GA_SELECTED%0A%20%20%20%20%20%20HAVE_ACTIVE_CASE_CURRENTLY%0A%20%20%20%20%20%20CURRENT_CASE_NUMBERS%0A%20%20%20%20%20%20HAD_ACTIVE_CASE_PREVIOULSY%0A%20%20%20%20%20%20PREVIOUS_CASE_NUMBERS%0A%20%20%20%20%20%20SPOKEN_LANGUAGE%0A%20%20%20%20%20%20NEED_ACCOMODATION%0A%20%20%20%20%20%20NEED_ACM_TRANSLATOR%0A%20%20%20%20%20%20NEED_ACM_SIGNING%0A%20%20%20%20%20%20NEED_ACM_VISUALLY_IMPAIRED%0A%20%20%20%20%20%20NEED_ACM_OTHER%0A%20%20%20%20%20%20ACM_TRA_LANGUAGE%0A%20%20%20%20%20%20ACM_OTH_DESCRIPTION%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;application&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;contact&quot;</span>: {
+        <span class="hljs-attr">&quot;APPLICANT_FIRST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;APPLICANT_LAST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;APPLICANT_MIDDLE_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;APPLICANT_MAIDEN_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;PAYEE_FIRST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;PAYEE_LAST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;IS_HOMELESS&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;ADDRESS1&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;ADDRESS2&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;CITY&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;ZIP&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;ZIP4&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;M_ADDRESS1&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;M_ADDRESS2&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;M_CITY&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;M_STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;M_ZIP&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;M_ZIP4&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;HOME_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;WORK_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;CELL_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;OTHER_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+        <span class="hljs-attr">&quot;EMAIL_ADDRESS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;NO_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;NO_CONTACT_INFORMATION&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+      },
+      <span class="hljs-attr">&quot;foodStampInfo&quot;</span>: {
+        <span class="hljs-attr">&quot;IS_GROSS_INCOME_LT_150&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;IS_RENT_GT_GROSS_INCOME&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;HAS_MIGRANT_FARM_WORKER&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;HAS_RECEIVED_EMERGENCY_FS&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;EMERGENCY_FS_LOCATION&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;EMERGENCY_FS_STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      },
+      <span class="hljs-attr">&quot;programInfo&quot;</span>: {
+        <span class="hljs-attr">&quot;IS_FS_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;IS_TF_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;IS_GA_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;HAVE_ACTIVE_CASE_CURRENTLY&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;CURRENT_CASE_NUMBERS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;HAD_ACTIVE_CASE_PREVIOULSY&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;PREVIOUS_CASE_NUMBERS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;SPOKEN_LANGUAGE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;NEED_ACCOMODATION&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;NEED_ACM_TRANSLATOR&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;NEED_ACM_SIGNING&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;NEED_ACM_VISUALLY_IMPAIRED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;NEED_ACM_OTHER&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+        <span class="hljs-attr">&quot;ACM_TRA_LANGUAGE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;ACM_OTH_DESCRIPTION&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-persis_the_user-s_application-post" class="operation panel" data-traverse-target="operation-persis_the_user-s_application-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-OneApp-Application">OneApp Application</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Persis the user&apos;s application</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Perform an upsert of the user&#39;s application. The back-end server will determine how to persist this to the Oracle database via stored procedures.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">input:
+                        <span class="prop-type">
+                          <div class="json-property-type">
+                            <div class="">
+                              <a class="json-schema-ref" href="#/definitions/ApplicationInput">ApplicationInput</a>
+                            </div>
+                          </div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> applicationUpdate<span class="hljs-tag">(<span class="hljs-code">$input</span>:<span class="hljs-type"> ApplicationInput!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">applicationUpdate<span class="hljs-tag">(input: <span class="hljs-code">$input</span>)</span><span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;input&quot;</span>: {
+    <span class="hljs-attr">&quot;contact&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICANT_FIRST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;APPLICANT_LAST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;APPLICANT_MIDDLE_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;APPLICANT_MAIDEN_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;PAYEE_FIRST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;PAYEE_LAST_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;IS_HOMELESS&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;ADDRESS1&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;ADDRESS2&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;CITY&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;ZIP&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;ZIP4&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;M_ADDRESS1&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;M_ADDRESS2&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;M_CITY&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;M_STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;M_ZIP&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;M_ZIP4&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;HOME_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;WORK_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;CELL_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;OTHER_PHONE_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>,
+      <span class="hljs-attr">&quot;EMAIL_ADDRESS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;foodStampInfo&quot;</span>: {
+      <span class="hljs-attr">&quot;IS_GROSS_INCOME_LT_150&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;IS_RENT_GT_GROSS_INCOME&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;HAS_MIGRANT_FARM_WORKER&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;HAS_RECEIVED_EMERGENCY_FS&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;EMERGENCY_FS_DATE&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>,
+      <span class="hljs-attr">&quot;EMERGENCY_FS_LOCATION&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;EMERGENCY_FS_STATE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    },
+    <span class="hljs-attr">&quot;programInfo&quot;</span>: {
+      <span class="hljs-attr">&quot;IS_FS_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;IS_TF_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;IS_GA_SELECTED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;HAVE_ACTIVE_CASE_CURRENTLY&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;CURRENT_CASE_NUMBERS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;HAD_ACTIVE_CASE_PREVIOULSY&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;PREVIOUS_CASE_NUMBERS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;SPOKEN_LANGUAGE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;NEED_ACCOMODATION&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;NEED_ACM_TRANSLATOR&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;NEED_ACM_SIGNING&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;NEED_ACM_VISUALLY_IMPAIRED&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>,
+      <span class="hljs-attr">&quot;NEED_ACM_OTHER&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20applicationUpdate(%24input%3A%20ApplicationInput!)%7B%0A%20%20applicationUpdate(input%3A%20%24input)%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;applicationUpdate&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
   }
 }
 </code></pre> </body>
@@ -2173,57 +3452,6 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               </div>
             </div>
           </div>
-          <div id="definition-Location" class="definition panel" data-traverse-target="definition-Location">
-            <h2 class="panel-title">
-              <a name="/definitions/Location"></a>Location: object
-              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
-              <span class="json-property-range" title="Value limits"></span>
-              
-              
-              </span> -->
-            </h2>
-            <div class="doc-row">
-              <div class="doc-copy">
-                <section class="json-schema-properties">
-                  <dl>
-                    <dt data-property-name="COUNTY_NAME">
-                      <span class="json-property-name">COUNTY_NAME:</span>
-                      <div class="json-property-type">
-                        <div class="json-schema-ref-string">
-                          <a class="json-schema-ref" href="#/definitions/String">String</a>
-                        </div>
-                      </div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                    <dt data-property-name="COUNTY_NUMBER">
-                      <span class="json-property-name">COUNTY_NUMBER:</span>
-                      <div class="json-property-type">
-                        <div class="json-schema-ref-string">
-                          <a class="json-schema-ref" href="#/definitions/String">String</a>
-                        </div>
-                      </div>
-                      <span class="json-property-range" title="Value limits"></span>
-                    </dt>
-                  </dl>
-                </section>
-              </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Example</h5>
-                  <!-- <div class="hljs"> -->
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">&quot;COUNTY_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
-  <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-}
-</code></pre> </body>
-                  </html>
-                  <!-- </div> -->
-                </section>
-              </div>
-            </div>
-          </div>
           <div id="definition-PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09" class="definition panel" data-traverse-target="definition-PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09">
             <h2 class="panel-title">
               <a name="/definitions/PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09"></a>PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09: object
@@ -2242,6 +3470,63 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-gql"><span class="hljs-symbol">object</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-ServerVersion" class="definition panel" data-traverse-target="definition-ServerVersion">
+            <h2 class="panel-title">
+              <a name="/definitions/ServerVersion"></a>ServerVersion: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="commitHash" class="has-description">
+                      <span class="json-property-name">commitHash:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Git commit the server is built off of</p>
+                    </dd>
+                    <dt data-property-name="commitDate" class="has-description">
+                      <span class="json-property-name">commitDate:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/DateTime">DateTime</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd>
+                      <p>Date of the git commit the server is built off of</p>
+                    </dd>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;commitHash&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;commitDate&quot;</span>: <span class="hljs-string">&quot;object&quot;</span>
+}
 </code></pre> </body>
                   </html>
                   <!-- </div> -->
