@@ -19,7 +19,8 @@
     "docs:build": "dociql -t docs docs/config.yml",
     "docs:build:wait": "run-s wait:serve docs:build",
     "docs": "npm-run-all -p -r start docs:build:wait",
-    "wait:serve": "wait-on tcp:4000"
+    "wait:serve": "wait-on tcp:4000",
+    "deploy:pre": "git rev-parse HEAD > COMMIT_HASH && git log -1 --format=%ct > COMMIT_DATE"
   },
   "dependencies": {
     "accept-language-parser": "^1.5.0",

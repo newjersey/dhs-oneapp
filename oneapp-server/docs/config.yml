@@ -1,18 +1,65 @@
 # To fetch schema from
 introspection: http://localhost:4000
 
-servers: # same format as for OpenAPI Specification
+servers:
   - url: https://usds-nj-oneapp-staging-api.app.cloud.gov
     description: USDS Staging
 
-info: # same format as for OpenAPI Specification
+info:
   title: NJ OneApp GraphQL Server
   description: New Jersey OneApp back-end server re-implemented as a GraphQL server
 
 domains:
-  - name: Top Level Menu Section # Name of the domain
-    description: Description  # Description of the domain
+  - name: Server Information
+    description: Understand the current running version of the server 
     usecases:         
-      - name: Fetch 'Some' field # Operation name
-        description: Markdown enabled description for operation # Opearation description
-        query: query._version # Query example - fetching single field
+      - name: Fetch version
+        description: Check the Git commit information the server was built from
+        query: query._version
+  
+  - name: Authentication
+    description: Register and login a user into OneApp
+    usecases:
+      - name: Check if username is available
+        description: Checks the database if the username has been registered before
+        query: query.users
+        select: userAvailable
+        expand: userAvailable
+      - name: Register user
+        description: 'Create a new account for the user. The JWT can then be used as an `Authentication: Bearer <token>`.'
+        query: mutation.userRegister
+      - name: Login user
+        description: 'Login an existing user. The JWT can then be used as an `Authentication: Bearer <token>`.'
+        query: mutation.userAuthenticate
+  
+  - name: Forgot Credentials
+    description: When the user forgets their login information
+    usecases:
+      - name: Fetch a user's hint question
+        description: The hint question is needed to determine what to the ask the user when resetting their password
+        query: query.users
+        select: userPasswordHintQuestion
+      - name: Reset a user's password
+        description: Using the user's response to their hint question, generate a send the user a new password at their email address
+        query: mutation.userPasswordReset
+  
+  - name: Translations
+    description: Look up translation values for fields. All queries through the entire application support the `Accept-Language` header to return correctly translated values.
+    usecases:
+      - name: Lookup a single translation value
+        description: Helpful for return the phrases for error messages, etc.
+        query: query.translation
+      - name: Lookup multiple translation values
+        description: This will return all available languages if no `TEXT_IDS` are provided, but can be filtered down by passing one more more `TEXT_ID` values.
+        query: query.translations
+  
+  - name: OneApp Application
+    description: Work with an in-progress application
+    usecases:
+      - name: Fetch the user's application
+        description: Return the user's current application in whatever state was last saved to the server
+        query: query.application
+        expand: contact,foodStampInfo,programInfo
+      - name: Persis the user's application
+        description: Perform an upsert of the user's application. The back-end server will determine how to persist this to the Oracle database via stored procedures.
+        query: mutation.applicationUpdate

@@ -6,8 +6,6 @@ const { allow } = require('graphql-shield');
 // Schema typeDefs support validation using: https://github.com/confuser/graphql-constraint-directive#readme
 const Types = require('./types');
 
-const VERSION = '0.1';
-
 // The base query object which is extended in each resolver
 const baseTypes = gql`
     scalar Date
@@ -15,13 +13,25 @@ const baseTypes = gql`
     scalar DateTime
 
     type Query {
-      _version: String
+      _version: ServerVersion
     }
 
     type Mutation {
-      _version: String
+      _version: ServerVersion
+    }
+
+    type ServerVersion {
+      "Git commit the server is built off of"
+      commitHash: String
+      "Date of the git commit the server is built off of"
+      commitDate: DateTime
     }
 `;
+
+const serverVersionResolver = (_parent, _args, { services }) => ({
+  commitHash: services.GitVersionService.fetchCommitHash(),
+  commitDate: services.GitVersionService.fetchCommitDate(),
+});
 
 // Resolvers needed for each type as schema types cannot be null
 // Other types will extend these base resolvers
@@ -30,10 +40,10 @@ const baseResolvers = {
   Time: GraphQLTime,
   DateTime: GraphQLDateTime,
   Query: {
-    _version: () => `OneApp GraphQL Server v${VERSION}`,
+    _version: serverVersionResolver,
   },
   Mutation: {
-    _version: () => `OneApp GraphQL Server v${VERSION}`,
+    _version: serverVersionResolver,
   },
 };
 
@@ -45,6 +55,7 @@ const basePermissions = {
   Mutation: {
     _version: allow,
   },
+  ServerVersion: allow,
 };
 
 // Add a type for each object type
