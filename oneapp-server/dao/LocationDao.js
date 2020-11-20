@@ -33,13 +33,19 @@ class LocationDao extends SQLDataSource {
 
   async getCountyDetails(USER_ID) {
     const con = await this.knex.client.pool.acquire().promise;
-    return this.knex.client.transaction(async (tx) => {
+    const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
         user_id: { dir: oracledb.BIND_IN, val: USER_ID },
-        county: { dir: oracledb.BIND_OUT },
+        county: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_CURSOR },
       };
       return tx.raw('begin OA_PKG_GEN.SP_GET_COUNTY_DETAILS(:user_id, :county); end;', bindVars);
     }, { connection: con });
+    const result = await response[0].getRow();
+    response[0].close();
+    return {
+      COUNTY_NAME: result ? result.getString('COUNTY_NAME') : null,
+      COUNTY_NUMBER: result ? result.getString('COUNTY_NUMBER') : null,
+    };
   }
 }
 
