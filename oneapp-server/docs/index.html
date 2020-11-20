@@ -71,7 +71,21 @@
                 <a href="#operation-fetch_the_user-s_application-post"> Fetch the user&#x27;s application </a>
               </li>
               <li>
-                <a href="#operation-persis_the_user-s_application-post"> Persis the user&#x27;s application </a>
+                <a href="#operation-persist_the_user-s_application-post"> Persist the user&#x27;s application </a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <a href="#tag-NJ-Locations">NJ Locations</a>
+            <ul>
+              <li>
+                <a href="#operation-fetch_all_nj_counties-post"> Fetch all NJ counties </a>
+              </li>
+              <li>
+                <a href="#operation-verify_a_zipcode_exists_in_new_jersey-post"> Verify a zipcode exists in New Jersey </a>
+              </li>
+              <li>
+                <a href="#operation-fetch_a_user-s_county_information-post"> Fetch a user&#x27;s county information </a>
               </li>
             </ul>
           </section>
@@ -94,6 +108,7 @@
           <a href="#definition-ID"> ID </a>
           <a href="#definition-Int"> Int </a>
           <a href="#definition-JwtToken"> JwtToken </a>
+          <a href="#definition-Location"> Location </a>
           <a href="#definition-PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09"> PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09 </a>
           <a href="#definition-ServerVersion"> ServerVersion </a>
           <a href="#definition-String"> String </a>
@@ -118,7 +133,8 @@
           <div id="introduction" data-traverse-target="introduction">
             <div class="doc-row">
               <div class="doc-copy">
-                <p>New Jersey OneApp back-end server re-implemented as a GraphQL server</p>
+                <p>New Jersey OneApp back-end server re-implemented as a GraphQL server.</p>
+                <p>When running the GraphQL server locally, the server can be started with the command <code>yarn serve:mock</code> to return dummy data (helpful when developing against queries not yet implemented.) </p>
               </div>
               <div class="doc-examples">
                 <section>
@@ -1276,7 +1292,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               </div>
             </div>
           </div>
-          <div id="operation-persis_the_user-s_application-post" class="operation panel" data-traverse-target="operation-persis_the_user-s_application-post">
+          <div id="operation-persist_the_user-s_application-post" class="operation panel" data-traverse-target="operation-persist_the_user-s_application-post">
             <!-- <section class="operation-tags row"> -->
             <!-- <div class="doc-copy"> -->
             <div class="operation-tags">
@@ -1286,7 +1302,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
             <!-- </div> -->
             <!-- </section> -->
             <h2 class="operation-title">
-              <span class="operation-summary">Persis the user&apos;s application</span>
+              <span class="operation-summary">Persist the user&apos;s application</span>
             </h2>
             <div class="doc-row">
               <div class="doc-copy">
@@ -1441,6 +1457,342 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
   <span class="hljs-attr">&quot;data&quot;</span>: {
     <span class="hljs-attr">&quot;applicationUpdate&quot;</span>: {
       <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <h1 id="tag-NJ-Locations" class="swagger-summary-tag" data-traverse-target="tag-NJ-Locations">NJ Locations</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Lookup New Jersey location information. There are also helpful queries for pre-populate user&#39;s county.</p>
+            </div>
+          </div>
+          <div id="operation-fetch_all_nj_counties-post" class="operation panel" data-traverse-target="operation-fetch_all_nj_counties-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-NJ-Locations">NJ Locations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Fetch all NJ counties</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Useful for populating dropdowns</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> counties<span class="hljs-tag">{
+  <span class="hljs-symbol">counties</span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20counties%7B%0A%20%20counties%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-array">
+                          <a class="json-schema-ref" href="#/definitions/Location">Location</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;counties&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;COUNTY_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+        <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>
+      }
+    ]
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-verify_a_zipcode_exists_in_new_jersey-post" class="operation panel" data-traverse-target="operation-verify_a_zipcode_exists_in_new_jersey-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-NJ-Locations">NJ Locations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Verify a zipcode exists in New Jersey</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Given a zipcode, checks if the zipcode is a valid New Jersey USPS zipcode</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+                <section class="swagger-request-params">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">ZIPCODE:
+                        <span class="prop-type">
+                          <div class="json-property-type">string</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">COUNTY_NUMBER:
+                        <span class="prop-type">
+                          <div class="json-property-type">integer</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">IS_HOMELESS:
+                        <span class="prop-type">
+                          <div class="json-property-type">boolean</div>
+                          <span class="json-property-range" title="Value limits"></span>
+                        </span>
+                      </div>
+                    </div>
+                    <div class="prop-value">
+                      <p class="no-description">(no description)</p>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> isValidNJZipcode<span class="hljs-tag">(<span class="hljs-code">$ZIPCODE</span>:<span class="hljs-type"> String!</span>, <span class="hljs-code">$COUNTY_NUMBER</span>:<span class="hljs-type"> Int!</span>, <span class="hljs-code">$IS_HOMELESS</span>:<span class="hljs-type"> Boolean!</span>)</span><span class="hljs-tag">{
+  <span class="hljs-symbol">isValidNJZipcode<span class="hljs-tag">(ZIPCODE: <span class="hljs-code">$ZIPCODE</span>, COUNTY_NUMBER: <span class="hljs-code">$COUNTY_NUMBER</span>, IS_HOMELESS: <span class="hljs-code">$IS_HOMELESS</span>)</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <h5>Variables</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;ZIPCODE&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>,
+  <span class="hljs-attr">&quot;IS_HOMELESS&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+}
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20isValidNJZipcode(%24ZIPCODE%3A%20String!%2C%20%24COUNTY_NUMBER%3A%20Int!%2C%20%24IS_HOMELESS%3A%20Boolean!)%7B%0A%20%20isValidNJZipcode(ZIPCODE%3A%20%24ZIPCODE%2C%20COUNTY_NUMBER%3A%20%24COUNTY_NUMBER%2C%20IS_HOMELESS%3A%20%24IS_HOMELESS)%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">boolean</div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;isValidNJZipcode&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-fetch_a_user-s_county_information-post" class="operation panel" data-traverse-target="operation-fetch_a_user-s_county_information-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-NJ-Locations">NJ Locations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Fetch a user&apos;s county information</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>After persisting the user&#39;s address via the <code>mutation.applicationUpdate</code> query, this query will return the county information for user. This allows the UI to pre-select and guess the county in the dropdown without making the user pick their county.</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> getCountyDetails<span class="hljs-tag">{
+  <span class="hljs-symbol">getCountyDetails<span class="hljs-tag">{
+    <span class="hljs-symbol">COUNTY_NAME</span>
+    <span class="hljs-symbol">COUNTY_NUMBER</span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20getCountyDetails%7B%0A%20%20getCountyDetails%7B%0A%20%20%20%20COUNTY_NAME%0A%20%20%20%20COUNTY_NUMBER%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Location">Location</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;getCountyDetails&quot;</span>: {
+      <span class="hljs-attr">&quot;COUNTY_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;integer&quot;</span>
     }
   }
 }
@@ -3444,6 +3796,57 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;token&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-Location" class="definition panel" data-traverse-target="definition-Location">
+            <h2 class="panel-title">
+              <a name="/definitions/Location"></a>Location: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="COUNTY_NAME">
+                      <span class="json-property-name">COUNTY_NAME:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="COUNTY_NUMBER">
+                      <span class="json-property-name">COUNTY_NUMBER:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-number">
+                          <a class="json-schema-ref" href="#/definitions/Int">Int</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;COUNTY_NAME&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;COUNTY_NUMBER&quot;</span>: <span class="hljs-string">&quot;number&quot;</span>
 }
 </code></pre> </body>
                   </html>

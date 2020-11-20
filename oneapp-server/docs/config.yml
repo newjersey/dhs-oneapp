@@ -7,7 +7,11 @@ servers:
 
 info:
   title: NJ OneApp GraphQL Server
-  description: New Jersey OneApp back-end server re-implemented as a GraphQL server
+  description: >
+    New Jersey OneApp back-end server re-implemented as a GraphQL server.
+    
+
+    When running the GraphQL server locally, the server can be started with the command `yarn serve:mock` to return dummy data (helpful when developing against queries not yet implemented.) 
 
 domains:
   - name: Server Information
@@ -60,6 +64,19 @@ domains:
         description: Return the user's current application in whatever state was last saved to the server
         query: query.application
         expand: contact,foodStampInfo,programInfo
-      - name: Persis the user's application
+      - name: Persist the user's application
         description: Perform an upsert of the user's application. The back-end server will determine how to persist this to the Oracle database via stored procedures.
         query: mutation.applicationUpdate
+  
+  - name: NJ Locations
+    description: Lookup New Jersey location information. There are also helpful queries for pre-populate user's county.
+    usecases:
+      - name: Fetch all NJ counties
+        description: Useful for populating dropdowns
+        query: query.counties
+      - name: Verify a zipcode exists in New Jersey
+        description: Given a zipcode, checks if the zipcode is a valid New Jersey USPS zipcode
+        query: query.isValidNJZipcode
+      - name: Fetch a user's county information
+        description: After persisting the user's address via the `mutation.applicationUpdate` query, this query will return the county information for user. This allows the UI to pre-select and guess the county in the dropdown without making the user pick their county.
+        query: query.getCountyDetails
