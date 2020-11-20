@@ -43,8 +43,8 @@ class LocationDao extends SQLDataSource {
     const result = await response[0].getRow();
     response[0].close();
     return {
-      COUNTY_NAME: result ? result.getString('COUNTY_NAME') : null,
-      COUNTY_NUMBER: result ? result.getString('COUNTY_NUMBER') : null,
+      COUNTY_NAME: result ? result.COUNTY_NAME : null,
+      COUNTY_NUMBER: result ? result.COUNTY_NUMBER : null,
     };
   }
 }

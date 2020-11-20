@@ -29,7 +29,6 @@ const permissions = {
   Query: {
     counties: allow,
     isValidNJZipcode: allow,
-    getCountyDetails: allow,
   },
   Location: allow,
 };
