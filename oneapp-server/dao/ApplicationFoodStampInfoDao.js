@@ -1,5 +1,6 @@
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
+const { OneAppError } = require('../utils/OneAppError');
 
 class ApplicationFoodStampInfoDao extends SQLDataSource {
   async getFoodStampInfo(APPLICATION_ID, LANGUAGE) {
@@ -17,13 +18,21 @@ class ApplicationFoodStampInfoDao extends SQLDataSource {
 
   async updateFoodStampInfo(input) {
     const con = await this.knex.client.pool.acquire().promise;
-    return this.knex.client.transaction(async (tx) => {
+    const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
         input: { dir: oracledb.BIND_IN, val: input },
         msg: { dir: oracledb.BIND_OUT },
       };
       return tx.raw('begin OA_PKG_APP.SP_UPDATE_FOOD_STAMP_INFO(:input, :msg); end;', bindVars);
     }, { connection: con });
+
+    // Handle an error
+    const responseCode = parseInt(response[0], 10);
+    if (responseCode < 0) {
+      throw new OneAppError(`Food stamp info not updated. DB_ERROR: ${responseCode}`);
+    }
+
+    return responseCode;
   }
 }
 

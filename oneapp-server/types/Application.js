@@ -39,18 +39,23 @@ const resolvers = {
         APPLICATION_NUMBER,
       };
 
+      // Gather all update calls
+      const updateCalls = [];
       if (!isNil(input.contact)) {
         logger.debug('Application (%s) update contains contact information', APPLICATION_NUMBER);
       }
 
       if (!isNil(input.foodStampInfo)) {
         logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
-        await dataSources.FoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo);
+        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo));
       }
 
       if (!isNil(input.programInfo)) {
         logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
       }
+
+      // Run all update calls in parallel
+      await Promise.all(updateCalls);
 
       return application;
     },
