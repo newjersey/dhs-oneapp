@@ -133,7 +133,7 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    contact: () => ({}),
+    contact: (_parent, _args, { dataSources, auth, language }) => dataSources.ApplicationContactDao.getContact(auth.user.USER_ID, language.code),
   },
 };
 
