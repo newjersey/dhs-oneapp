@@ -21,7 +21,7 @@
     "test": "yarn run test:server",
     "serve": "run-p serve:*",
     "dist": "yarn run pkg:server",
-    "deploy:cf:api": "cf push usds-nj-oneapp-staging-api --strategy rolling",
+    "deploy:cf:api": "yarn --cwd oneapp-server deploy:pre && cf push usds-nj-oneapp-staging-api --strategy rolling",
     "deploy:cf:web": "run-s install:web build:web:staging && cf push usds-nj-oneapp-staging-web --strategy rolling",
     "deploy:cf": "run-s deploy:cf:api deploy:cf:web"
   },
