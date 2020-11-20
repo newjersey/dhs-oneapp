@@ -31,3 +31,6 @@ yarn-error.log*
 *.sln
 *.sw?
 database/dmp/import.log
+
+# Build info for Cloud.gov
+oneapp-server/COMMIT_*
