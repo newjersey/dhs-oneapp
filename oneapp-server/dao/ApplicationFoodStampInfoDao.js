@@ -18,9 +18,19 @@ class ApplicationFoodStampInfoDao extends SQLDataSource {
 
   async updateFoodStampInfo(input) {
     const con = await this.knex.client.pool.acquire().promise;
+
+    const parsedInput = input;
+
+    // Enforce logic for emergency foodstamp fields
+    if (parsedInput.HAS_RECEIVED_EMERGENCY_FS === false) {
+      parsedInput.EMERGENCY_FS_DATE = null;
+      parsedInput.EMERGENCY_FS_LOCATION = null;
+      parsedInput.EMERGENCY_FS_STATE = null;
+    }
+
     const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
-        input: { dir: oracledb.BIND_IN, val: input },
+        input: { dir: oracledb.BIND_IN, val: parsedInput },
         msg: { dir: oracledb.BIND_OUT },
       };
       return tx.raw('begin OA_PKG_APP.SP_UPDATE_FOOD_STAMP_INFO(:input, :msg); end;', bindVars);

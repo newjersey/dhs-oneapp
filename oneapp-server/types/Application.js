@@ -9,7 +9,7 @@ const typeDef = gql`
   }
 
   extend type Mutation {
-    applicationUpdate(input: ApplicationInput!): Application
+    applicationUpdate(input: ApplicationInput!): Boolean
   }
 
   type Application {
@@ -35,10 +35,6 @@ const resolvers = {
       const APPLICATION_NUMBER = auth.user.USER_ID;
       logger.info('Performing upsert on application (%s)', APPLICATION_NUMBER);
 
-      const application = {
-        APPLICATION_NUMBER,
-      };
-
       // Gather all update calls
       const updateCalls = [];
       if (!isNil(input.contact)) {
@@ -57,7 +53,7 @@ const resolvers = {
       // Run all update calls in parallel
       await Promise.all(updateCalls);
 
-      return application;
+      return true;
     },
   },
 };
