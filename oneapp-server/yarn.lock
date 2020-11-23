@@ -4854,10 +4854,10 @@ graphql-2-json-schema@^0.2.0:
     functional-json-schema "0.0.2-3"
     lodash "^4.17.10"
 
-graphql-constraint-directive@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/graphql-constraint-directive/-/graphql-constraint-directive-2.1.0.tgz#30a737720825bc8042e0fffe6cc7f666d69df9b5"
-  integrity sha512-gd8wKppP5ZlDm3EALZUwkSNSP7vTdbDECIVDAMnCX+ZaN1s+qNgStuMT8vQ46BKu0h27zcOsX9Kn/TKDjf8dig==
+graphql-constraint-directive@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-constraint-directive/-/graphql-constraint-directive-2.1.1.tgz#d27cef70c6713e0b49c910ea6e71e11c6d4ca65a"
+  integrity sha512-KybJ4yIqN61ZukJf711UQ3pt4qHBUduXgjG/aO6tfDt2O6Ogdp1WJWzw3tl+WR/OcnAn4gAGLZxQ1KKMPAk6FQ==
   dependencies:
     "@graphql-tools/schema" "^6.0.9"
     "@graphql-tools/utils" "^6.0.9"
