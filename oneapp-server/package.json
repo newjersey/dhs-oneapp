@@ -35,7 +35,7 @@
     "express-jwt": "^6.0.0",
     "generate-password": "^1.5.1",
     "graphql": "^15.4.0",
-    "graphql-constraint-directive": "^2.1.0",
+    "graphql-constraint-directive": "^2.1.1",
     "graphql-iso-date": "^3.6.1",
     "graphql-middleware": "^4.0.2",
     "graphql-parse-resolve-info": "^4.9.0",
