@@ -10,11 +10,3 @@ applications:
     OPTIMIZE_MEMORY: true
   services:
     - usds-nj-oneapp-dev-db
-
-- name: usds-nj-oneapp-staging-web
-  path: ./oneapp-web/dist
-  buildpack: https://github.com/cloudfoundry/staticfile-buildpack.git
-  random-route: false
-  memory: 64MB
-  env:
-    FORCE_HTTPS: true
