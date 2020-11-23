@@ -4,7 +4,7 @@ const typeDef = gql`
   extend type Application {
     programInfo: ApplicationProgramInfo
   }
-
+  
   type ApplicationProgramInfo {
     "Applying for SNAP"
     IS_FS_SELECTED: Boolean

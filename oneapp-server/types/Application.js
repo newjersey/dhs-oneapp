@@ -9,7 +9,7 @@ const typeDef = gql`
   }
 
   extend type Mutation {
-    applicationUpdate(input: ApplicationInput!): Application
+    applicationUpdate(input: ApplicationInput!): Boolean
   }
 
   type Application {
@@ -31,27 +31,29 @@ const resolvers = {
     }),
   },
   Mutation: {
-    applicationUpdate: async (_parent, { input }, { auth }) => {
+    applicationUpdate: async (_parent, { input }, { dataSources, auth }) => {
       const APPLICATION_NUMBER = auth.user.USER_ID;
       logger.info('Performing upsert on application (%s)', APPLICATION_NUMBER);
 
-      const application = {
-        APPLICATION_NUMBER,
-      };
-
+      // Gather all update calls
+      const updateCalls = [];
       if (!isNil(input.contact)) {
         logger.debug('Application (%s) update contains contact information', APPLICATION_NUMBER);
       }
 
       if (!isNil(input.foodStampInfo)) {
         logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
+        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo));
       }
 
       if (!isNil(input.programInfo)) {
         logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
       }
 
-      return application;
+      // Run all update calls in parallel
+      await Promise.all(updateCalls);
+
+      return true;
     },
   },
 };
