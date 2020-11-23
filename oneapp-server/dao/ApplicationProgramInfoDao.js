@@ -16,13 +16,21 @@ class ApplicationProgramInfoDao extends SQLDataSource {
 
   async updateProgramInfo(input) {
     const con = await this.knex.client.pool.acquire().promise;
-    return this.knex.client.transaction(async (tx) => {
+    const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
         input: { dir: oracledb.BIND_IN, val: input },
         msg: { dir: oracledb.BIND_OUT },
       };
       return tx.raw('begin OA_PKG_APP.SP_UPDATE_APPLICATION_PROGRAMS(:input, :msg); end;', bindVars);
     }, { connection: con });
+
+    // Handle an error
+    const responseCode = parseInt(response[0], 10);
+    if (responseCode < 0) {
+      throw new OneAppError(`Program info not updated. DB_ERROR: ${responseCode}`);
+    }
+
+    return responseCode;
   }
 }
 
