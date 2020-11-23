@@ -1,5 +1,6 @@
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
+const { OneAppError } = require('../utils/OneAppError');
 
 class ApplicationProgramInfoDao extends SQLDataSource {
   async getProgramInfo(APPLICATION_ID, LANGUAGE) {
