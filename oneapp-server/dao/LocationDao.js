@@ -47,6 +47,11 @@ class LocationDao extends SQLDataSource {
       COUNTY_NUMBER: result ? result.COUNTY_NUMBER : null,
     };
   }
+
+  async isValidAddress(input) {
+    // TODO: implement using USPS API
+    return input !== null;
+  }
 }
 
 module.exports = LocationDao;
