@@ -3,20 +3,19 @@ const oracledb = require('oracledb');
 
 class EligibilityCalcsDao extends SQLDataSource {
   async getEligibility(APPLICATION_ID, LANGUAGE) {
-    return await this.getEligibilityImpl('begin OA_PKG_UTIL.GET_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
+    return this.getEligibilityImpl('begin OA_PKG_UTIL.GET_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
   }
 
   async getFcEligibility(APPLICATION_ID, LANGUAGE) {
-    return await this.getEligibilityImpl('begin OA_PKG_UTIL.GET_FC_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
-
+    return this.getEligibilityImpl('begin OA_PKG_UTIL.GET_FC_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
   }
 
   async getTfEligibility(APPLICATION_ID, LANGUAGE) {
-    return await this.getEligibilityImpl('begin OA_PKG_UTIL.GET_TF_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
+    return this.getEligibilityImpl('begin OA_PKG_UTIL.GET_TF_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
   }
 
   async getGaEligibility(APPLICATION_ID, LANGUAGE) {
-    return await this.getEligibilityImpl('begin OA_PKG_UTIL.GET_GA_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
+    return this.getEligibilityImpl('begin OA_PKG_UTIL.GET_GA_ELIGIBILITY(:app_id, :lang, :eligibility); end;', APPLICATION_ID, LANGUAGE);
   }
 
   async getEligibilityImpl(QUERY, APPLICATION_ID, LANGUAGE) {
