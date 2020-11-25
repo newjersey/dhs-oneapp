@@ -1,5 +1,6 @@
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
+const soap = require('soap');
 
 class LocationDao extends SQLDataSource {
   async getCounties() {
@@ -49,7 +50,14 @@ class LocationDao extends SQLDataSource {
   }
 
   async isValidAddress(input) {
-    // TODO: implement using USPS API
+    const url = 'https://sws.dhs.state.nj.us/uspsControl.wsdl';
+    const args = {address: input.ADDRESS, CtyStateOrZip: input.CITY, accessKey: '***REMOVED***'}
+    return await soap.createClientAsync(url).then((client) => {
+      return client.validateAddress(args);
+    }).then((result) => {
+      console.log(result);
+      return result;
+    });
     return input !== null;
   }
 }

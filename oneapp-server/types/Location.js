@@ -18,10 +18,15 @@ const typeDef = gql`
     COUNTY_NUMBER: Int,
   }
 
-  type AddressInput {
+  input CountyInput {
+    COUNTY_NAME: String,
+    COUNTY_NUMBER: Int,
+  }
+
+  input AddressInput {
     ADDRESS: String,
     CITY: String,
-    COUNTY: County,
+    COUNTY: CountyInput,
     STATE: String,
     ZIP: String,
     ZIP4: String,
