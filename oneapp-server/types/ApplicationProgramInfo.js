@@ -15,11 +15,11 @@ const typeDef = gql`
     "Has active SNAP case"
     HAVE_ACTIVE_CASE_CURRENTLY: Boolean!
     "Case number(s) of active SNAP applications"
-    CURRENT_CASE_NUMBERS: String
+    CURRENT_CASE_NUMBERS: String @constraint(pattern: "^[a-zA-Z0-9,'#@&\-_/\s]+$", maxLength: 50)
     "Has received SNAP previously"
     HAD_ACTIVE_CASE_PREVIOULSY: Boolean!
     "Case number(s) of previous SNAP applications"
-    PREVIOUS_CASE_NUMBERS: String
+    PREVIOUS_CASE_NUMBERS: String @constraint(pattern: "^[a-zA-Z0-9,'#@&\-_/\s]+$", maxLength: 50)
     "Spoken language of applicant"
     SPOKEN_LANGUAGE: String!
     "Applicant needs accommodation"
@@ -35,7 +35,7 @@ const typeDef = gql`
     "Accommodation translator language"
     ACM_TRA_LANGUAGE: String
     "Description of other accommodation type"
-    ACM_OTH_DESCRIPTION: String
+    ACM_OTH_DESCRIPTION: String @constraint(pattern: "^[a-zA-Z0-9.,'-'\s]{1,500}$", maxLength: 500)
   }
 
   input ApplicationProgramInfoInput {
@@ -48,11 +48,11 @@ const typeDef = gql`
     "Has active SNAP case"
     HAVE_ACTIVE_CASE_CURRENTLY: Boolean!
     "Case number(s) of active SNAP applications"
-    CURRENT_CASE_NUMBERS: String
+    CURRENT_CASE_NUMBERS: String @constraint(pattern: "^[a-zA-Z0-9,'#@&\-_/\s]+$", maxLength: 50)
     "Has received SNAP previously"
     HAD_ACTIVE_CASE_PREVIOULSY: Boolean!
     "Case number(s) of previous SNAP applications"
-    PREVIOUS_CASE_NUMBERS: String
+    PREVIOUS_CASE_NUMBERS: String @constraint(pattern: "^[a-zA-Z0-9,'#@&\-_/\s]+$", maxLength: 50)
     "Spoken language of applicant"
     SPOKEN_LANGUAGE: String!
     "Applicant needs accommodation"
@@ -68,7 +68,7 @@ const typeDef = gql`
     "Accommodation translator language"
     ACM_TRA_LANGUAGE: String
     "Description of other accommodation type"
-    ACM_OTH_DESCRIPTION: String
+    ACM_OTH_DESCRIPTION: String @constraint(pattern: "^[a-zA-Z0-9.,'-'\s]{1,500}$", maxLength: 500)
   }
 `;
 

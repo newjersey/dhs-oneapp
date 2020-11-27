@@ -9,7 +9,7 @@ class ApplicationProgramInfoDao extends SQLDataSource {
       const bindVars = {
         app_id: { dir: oracledb.BIND_IN, val: APPLICATION_ID },
         lang: { dir: oracledb.BIND_IN, val: LANGUAGE },
-        info: { dir: oracledb.BIND_OUT },
+        info: { dir: oracledb.BIND_OUT, type: 'OA_RT_APPLICATION_PROGRAMS' },
       };
       return tx.raw('begin OA_PKG_APP.SP_SELECT_APPLICATION_PROGRAMS(:app_id, :lang, :info); end;', bindVars);
     }, { connection: con });
