@@ -1,6 +1,9 @@
 const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
-const soap = require('soap');
+// const soap = require('soap');
+
+// const USPS_ACCESS_KEY = '***REMOVED***';
+// const USPS_WSDL_URL = 'https://sws.dhs.state.nj.us/uspsControl.wsdl';
 
 class LocationDao extends SQLDataSource {
   async getCounties() {
@@ -49,15 +52,10 @@ class LocationDao extends SQLDataSource {
     };
   }
 
-  async isValidAddress(input) {
-    const url = 'https://sws.dhs.state.nj.us/uspsControl.wsdl';
-    const args = {address: input.ADDRESS, CtyStateOrZip: input.CITY, accessKey: '***REMOVED***'}
-    return await soap.createClientAsync(url).then((client) => {
-      return client.validateAddress(args);
-    }).then((result) => {
-      console.log(result);
-      return result;
-    });
+  static isValidAddress(input) {
+    // const args = { address: input.ADDRESS, CtyStateOrZip: input.CITY, accessKey: USPS_ACCESS_KEY };
+    // const response = await soap.createClientAsync(USPS_WSDL_URL).then((client) => client.validateAddress(args)).then((result) => result);
+    // return response;
     return input !== null;
   }
 }
