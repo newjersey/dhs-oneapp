@@ -18,7 +18,7 @@ describe('food stamp eligibility', () => {
     expect(response.errors[0].message).toEqual('You must be logged in to access this data.');
   });
   
-  it('return the current logged in user when authenticated', async () => {
+  it('return the foodstamp eligibility calculations', async () => {
     const user = {USER_ID: 'user123456'};
     const authClient = createTestClient({user});
     const foodstampCalcs = {FOODSTAMP_TEST: 'INELIGIBLE', FOODSTAMP_BENEFITS: 'test', GROSS_INCOME_TEST: 'PASSED', NET_INCOME_TEST: 'PASSED'};
