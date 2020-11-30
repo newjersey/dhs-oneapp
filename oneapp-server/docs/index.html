@@ -89,6 +89,23 @@
               </li>
             </ul>
           </section>
+          <section>
+            <a href="#tag-Eligibility-Calculations">Eligibility Calculations</a>
+            <ul>
+              <li>
+                <a href="#operation-check_eligibility_for_food_stamp_program-post"> Check eligibility for food stamp program </a>
+              </li>
+              <li>
+                <a href="#operation-check_eligibility_for_family_care_-medicaid-_program-post"> Check eligibility for Family Care (Medicaid) program </a>
+              </li>
+              <li>
+                <a href="#operation-check_eligibility_for_tanf_program-post"> Check eligibility for TANF program </a>
+              </li>
+              <li>
+                <a href="#operation-check_eligibility_for_general_assistance_program-post"> Check eligibility for General Assistance program </a>
+              </li>
+            </ul>
+          </section>
           <h5>Schema Definitions</h5>
           <a href="#definition-Application"> Application </a>
           <a href="#definition-ApplicationContact"> ApplicationContact </a>
@@ -104,7 +121,12 @@
           <a href="#definition-Date"> Date </a>
           <a href="#definition-DateTime"> DateTime </a>
           <a href="#definition-EMAIL_ADDRESS_String_NotNull_format_email"> EMAIL_ADDRESS_String_NotNull_format_email </a>
+          <a href="#definition-EligibilityCalcs"> EligibilityCalcs </a>
+          <a href="#definition-EligibilityTestResult"> EligibilityTestResult </a>
+          <a href="#definition-EligibilityValue"> EligibilityValue </a>
+          <a href="#definition-FcEligibilityCalcs"> FcEligibilityCalcs </a>
           <a href="#definition-Float"> Float </a>
+          <a href="#definition-GaEligibilityCalcs"> GaEligibilityCalcs </a>
           <a href="#definition-ID"> ID </a>
           <a href="#definition-Int"> Int </a>
           <a href="#definition-JwtToken"> JwtToken </a>
@@ -112,6 +134,7 @@
           <a href="#definition-PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09"> PASSWORD_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09 </a>
           <a href="#definition-ServerVersion"> ServerVersion </a>
           <a href="#definition-String"> String </a>
+          <a href="#definition-TfEligibilityCalcs"> TfEligibilityCalcs </a>
           <a href="#definition-Time"> Time </a>
           <a href="#definition-Translation"> Translation </a>
           <a href="#definition-USER_ID_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09"> USER_ID_String_NotNull_minLength_8_maxLength_15_pattern_09azAZazAZ09 </a>
@@ -1345,9 +1368,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                     <html>
                     <head></head>
                     <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">mutation</span> applicationUpdate<span class="hljs-tag">(<span class="hljs-code">$input</span>:<span class="hljs-type"> ApplicationInput!</span>)</span><span class="hljs-tag">{
-  <span class="hljs-symbol">applicationUpdate<span class="hljs-tag">(input: <span class="hljs-code">$input</span>)</span><span class="hljs-tag">{
-    <span class="hljs-symbol">APPLICATION_NUMBER</span>
-  }</span></span>
+  <span class="hljs-symbol">applicationUpdate<span class="hljs-tag">(input: <span class="hljs-code">$input</span>)</span></span>
 }</span></span>
 </code></pre> </body>
                     </html>
@@ -1414,7 +1435,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
 </code></pre> </body>
                     </html>
                     <!-- </div> -->
-                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20applicationUpdate(%24input%3A%20ApplicationInput!)%7B%0A%20%20applicationUpdate(input%3A%20%24input)%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=mutation%20applicationUpdate(%24input%3A%20ApplicationInput!)%7B%0A%20%20applicationUpdate(input%3A%20%24input)%0A%7D" target="_blank">Try it now
                       <a/> </section>
               </div>
             </div>
@@ -1432,11 +1453,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <div class="prop-row prop-inner">
                     <div class="prop-name">type</div>
                     <div class="prop-value">
-                      <div class="json-property-type">
-                        <div class="">
-                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
-                        </div>
-                      </div>
+                      <div class="json-property-type">boolean</div>
                       <span class="json-property-range" title="Value limits"></span>
                     </div>
                   </div>
@@ -1455,9 +1472,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <head></head>
                   <body><pre><code class="hljs language-json">{
   <span class="hljs-attr">&quot;data&quot;</span>: {
-    <span class="hljs-attr">&quot;applicationUpdate&quot;</span>: {
-      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
-    }
+    <span class="hljs-attr">&quot;applicationUpdate&quot;</span>: <span class="hljs-string">&quot;boolean&quot;</span>
   }
 }
 </code></pre> </body>
@@ -1803,6 +1818,426 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               </div>
             </div>
           </div>
+          <h1 id="tag-Eligibility-Calculations" class="swagger-summary-tag" data-traverse-target="tag-Eligibility-Calculations">Eligibility Calculations</h1>
+          <div class="tag-description doc-row">
+            <div class="doc-copy">
+              <p>Check the eligibility of an application for each safety net program.</p>
+            </div>
+          </div>
+          <div id="operation-check_eligibility_for_food_stamp_program-post" class="operation panel" data-traverse-target="operation-check_eligibility_for_food_stamp_program-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Eligibility-Calculations">Eligibility Calculations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Check eligibility for food stamp program</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Returns results of income tests and food stamp benefits</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> application<span class="hljs-tag">{
+  <span class="hljs-symbol">application<span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+    <span class="hljs-symbol">eligibility<span class="hljs-tag">{
+      <span class="hljs-symbol">FOODSTAMP_TEST</span>
+      <span class="hljs-symbol">FOODSTAMP_BENEFITS</span>
+      <span class="hljs-symbol">GROSS_INCOME_TEST</span>
+      <span class="hljs-symbol">NET_INCOME_TEST</span>
+    }</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20application%7B%0A%20%20application%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%20%20eligibility%7B%0A%20%20%20%20%20%20FOODSTAMP_TEST%0A%20%20%20%20%20%20FOODSTAMP_BENEFITS%0A%20%20%20%20%20%20GROSS_INCOME_TEST%0A%20%20%20%20%20%20NET_INCOME_TEST%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;application&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;eligibility&quot;</span>: {
+        <span class="hljs-attr">&quot;FOODSTAMP_BENEFITS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-check_eligibility_for_family_care_-medicaid-_program-post" class="operation panel" data-traverse-target="operation-check_eligibility_for_family_care_-medicaid-_program-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Eligibility-Calculations">Eligibility Calculations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Check eligibility for Family Care (Medicaid) program</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Returns results of Family Care (Medicaid) test and amount</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> application<span class="hljs-tag">{
+  <span class="hljs-symbol">application<span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+    <span class="hljs-symbol">fcEligibility<span class="hljs-tag">{
+      <span class="hljs-symbol">AFDCL_TEST</span>
+      <span class="hljs-symbol">MDCH_TEST</span>
+      <span class="hljs-symbol">MDIN_TEST</span>
+      <span class="hljs-symbol">MDPR_TEST</span>
+      <span class="hljs-symbol">MDPC_TEST</span>
+      <span class="hljs-symbol">FCCH_TEST</span>
+      <span class="hljs-symbol">FCPR_TEST</span>
+      <span class="hljs-symbol">FCPC_TEST</span>
+      <span class="hljs-symbol">NCPA_TEST</span>
+      <span class="hljs-symbol">FPL</span>
+    }</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20application%7B%0A%20%20application%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%20%20fcEligibility%7B%0A%20%20%20%20%20%20AFDCL_TEST%0A%20%20%20%20%20%20MDCH_TEST%0A%20%20%20%20%20%20MDIN_TEST%0A%20%20%20%20%20%20MDPR_TEST%0A%20%20%20%20%20%20MDPC_TEST%0A%20%20%20%20%20%20FCCH_TEST%0A%20%20%20%20%20%20FCPR_TEST%0A%20%20%20%20%20%20FCPC_TEST%0A%20%20%20%20%20%20NCPA_TEST%0A%20%20%20%20%20%20FPL%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;application&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;fcEligibility&quot;</span>: {
+        <span class="hljs-attr">&quot;FPL&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-check_eligibility_for_tanf_program-post" class="operation panel" data-traverse-target="operation-check_eligibility_for_tanf_program-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Eligibility-Calculations">Eligibility Calculations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Check eligibility for TANF program</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Returns results of TANF test and amount</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> application<span class="hljs-tag">{
+  <span class="hljs-symbol">application<span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+    <span class="hljs-symbol">tfEligibility<span class="hljs-tag">{
+      <span class="hljs-symbol">TANF_TEST</span>
+      <span class="hljs-symbol">TANF_AMOUNT</span>
+    }</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20application%7B%0A%20%20application%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%20%20tfEligibility%7B%0A%20%20%20%20%20%20TANF_TEST%0A%20%20%20%20%20%20TANF_AMOUNT%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;application&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;tfEligibility&quot;</span>: {
+        <span class="hljs-attr">&quot;TANF_AMOUNT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="operation-check_eligibility_for_general_assistance_program-post" class="operation panel" data-traverse-target="operation-check_eligibility_for_general_assistance_program-post">
+            <!-- <section class="operation-tags row"> -->
+            <!-- <div class="doc-copy"> -->
+            <div class="operation-tags">
+              <a class="label" href="#tag-Eligibility-Calculations">Eligibility Calculations</a>
+              <!---->
+            </div>
+            <!-- </div> -->
+            <!-- </section> -->
+            <h2 class="operation-title">
+              <span class="operation-summary">Check eligibility for General Assistance program</span>
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-operation-description">
+                  <p>Returns results of GA test and amount</p>
+                </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-request-body"> </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h4>Example</h3>
+                    <h5>Request Content-Types:
+                      <span>application/json</span>
+                    </h5>
+                    <h5>Query</h5>
+                    <!-- <div class="hljs"> -->
+                    <html>
+                    <head></head>
+                    <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> application<span class="hljs-tag">{
+  <span class="hljs-symbol">application<span class="hljs-tag">{
+    <span class="hljs-symbol">APPLICATION_NUMBER</span>
+    <span class="hljs-symbol">gaEligibility<span class="hljs-tag">{
+      <span class="hljs-symbol">TANF_TEST</span>
+      <span class="hljs-symbol">TANF_AMOUNT</span>
+    }</span></span>
+  }</span></span>
+}</span></span>
+</code></pre> </body>
+                    </html>
+                    <!-- </div> -->
+                    <a href="https://usds-nj-oneapp-staging-api.app.cloud.gov?query=query%20application%7B%0A%20%20application%7B%0A%20%20%20%20APPLICATION_NUMBER%0A%20%20%20%20gaEligibility%7B%0A%20%20%20%20%20%20TANF_TEST%0A%20%20%20%20%20%20TANF_AMOUNT%0A%20%20%20%20%7D%0A%20%20%7D%0A%7D" target="_blank">Try it now
+                      <a/> </section>
+              </div>
+            </div>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="swagger-responses">
+                  <div class="prop-row prop-group">
+                    <div class="prop-name">
+                      <div class="prop-title">200 OK</div>
+                    </div>
+                    <div class="prop-value">
+                      <p>Successful operation</p>
+                    </div>
+                  </div>
+                  <div class="prop-row prop-inner">
+                    <div class="prop-name">type</div>
+                    <div class="prop-value">
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/Application">Application</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </div>
+                  </div>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <h5>Response Content-Types:
+                  <span>application/json</span>
+                </h5>
+                <section>
+                  <h5>Response Example
+                    <span>(200 OK)</span>
+                  </h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;data&quot;</span>: {
+    <span class="hljs-attr">&quot;application&quot;</span>: {
+      <span class="hljs-attr">&quot;APPLICATION_NUMBER&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+      <span class="hljs-attr">&quot;gaEligibility&quot;</span>: {
+        <span class="hljs-attr">&quot;TANF_AMOUNT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+      }
+    }
+  }
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <h1>Schema Definitions</h1>
           <div id="definition-Application" class="definition panel" data-traverse-target="definition-Application">
             <h2 class="panel-title">
@@ -1855,6 +2290,42 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                       <div class="json-property-type">
                         <div class="">
                           <a class="json-schema-ref" href="#/definitions/ApplicationProgramInfo">ApplicationProgramInfo</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="eligibility">
+                      <span class="json-property-name">eligibility:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityCalcs">EligibilityCalcs</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="fcEligibility">
+                      <span class="json-property-name">fcEligibility:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/FcEligibilityCalcs">FcEligibilityCalcs</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="tfEligibility">
+                      <span class="json-property-name">tfEligibility:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/TfEligibilityCalcs">TfEligibilityCalcs</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="gaEligibility">
+                      <span class="json-property-name">gaEligibility:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/GaEligibilityCalcs">GaEligibilityCalcs</a>
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
@@ -2714,6 +3185,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Monthly household income is less than $150 a month</p>
@@ -2726,6 +3198,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Rent is greater than applicant gross income</p>
@@ -2738,6 +3211,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Applicant household has migrant farm worker</p>
@@ -2750,6 +3224,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Household is receiving emergency foodstamps</p>
@@ -2836,6 +3311,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Monthly household income is less than $150 a month</p>
@@ -2848,6 +3324,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Rent is greater than applicant gross income</p>
@@ -2860,6 +3337,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Applicant household has migrant farm worker</p>
@@ -2872,6 +3350,7 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                         </div>
                       </div>
                       <span class="json-property-range" title="Value limits"></span>
+                      <span class="json-property-required"></span>
                     </dt>
                     <dd>
                       <p>Household is receiving emergency foodstamps</p>
@@ -3671,6 +4150,276 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               </div>
             </div>
           </div>
+          <div id="definition-EligibilityCalcs" class="definition panel" data-traverse-target="definition-EligibilityCalcs">
+            <h2 class="panel-title">
+              <a name="/definitions/EligibilityCalcs"></a>EligibilityCalcs: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="FOODSTAMP_TEST">
+                      <span class="json-property-name">FOODSTAMP_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="FOODSTAMP_BENEFITS">
+                      <span class="json-property-name">FOODSTAMP_BENEFITS:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="GROSS_INCOME_TEST">
+                      <span class="json-property-name">GROSS_INCOME_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityTestResult">EligibilityTestResult</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="NET_INCOME_TEST">
+                      <span class="json-property-name">NET_INCOME_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityTestResult">EligibilityTestResult</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;FOODSTAMP_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;FOODSTAMP_BENEFITS&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;GROSS_INCOME_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;NET_INCOME_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-EligibilityTestResult" class="definition panel" data-traverse-target="definition-EligibilityTestResult">
+            <h2 class="panel-title">
+              <a name="/definitions/EligibilityTestResult"></a>EligibilityTestResult: string
+              <!-- <span class="json-property-type"><div class="json-property-type"></div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-anyOf">
+                  <dl>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">FAILED</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd> </dd>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">PASSED</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd> </dd>
+                  </dl>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-EligibilityValue" class="definition panel" data-traverse-target="definition-EligibilityValue">
+            <h2 class="panel-title">
+              <a name="/definitions/EligibilityValue"></a>EligibilityValue: string
+              <!-- <span class="json-property-type"><div class="json-property-type"></div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-anyOf">
+                  <dl>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">INELIGIBLE</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd> </dd>
+                    <dt>
+                      <div class="json-property-type">object</div>
+                      <span class="json-property-enum" title="Possible values">
+                        <span class="json-property-enum-item">ELIGIBLE</span>
+                      </span>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dd> </dd>
+                  </dl>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-FcEligibilityCalcs" class="definition panel" data-traverse-target="definition-FcEligibilityCalcs">
+            <h2 class="panel-title">
+              <a name="/definitions/FcEligibilityCalcs"></a>FcEligibilityCalcs: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="AFDCL_TEST">
+                      <span class="json-property-name">AFDCL_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="MDCH_TEST">
+                      <span class="json-property-name">MDCH_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="MDIN_TEST">
+                      <span class="json-property-name">MDIN_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="MDPR_TEST">
+                      <span class="json-property-name">MDPR_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="MDPC_TEST">
+                      <span class="json-property-name">MDPC_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="FCCH_TEST">
+                      <span class="json-property-name">FCCH_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="FCPR_TEST">
+                      <span class="json-property-name">FCPR_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="FCPC_TEST">
+                      <span class="json-property-name">FCPC_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="NCPA_TEST">
+                      <span class="json-property-name">NCPA_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="FPL">
+                      <span class="json-property-name">FPL:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;AFDCL_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;MDCH_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;MDIN_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;MDPR_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;MDPC_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;FCCH_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;FCPR_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;FCPC_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;NCPA_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;FPL&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
           <div id="definition-Float" class="definition panel" data-traverse-target="definition-Float">
             <h2 class="panel-title">
               <a name="/definitions/Float"></a>Float: number
@@ -3694,6 +4443,57 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
                   <html>
                   <head></head>
                   <body><pre><code class="hljs language-gql"><span class="hljs-symbol">number</span>
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-GaEligibilityCalcs" class="definition panel" data-traverse-target="definition-GaEligibilityCalcs">
+            <h2 class="panel-title">
+              <a name="/definitions/GaEligibilityCalcs"></a>GaEligibilityCalcs: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="TANF_TEST">
+                      <span class="json-property-name">TANF_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="TANF_AMOUNT">
+                      <span class="json-property-name">TANF_AMOUNT:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;TANF_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;TANF_AMOUNT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
 </code></pre> </body>
                   </html>
                   <!-- </div> -->
@@ -3950,6 +4750,57 @@ https://usds-nj-oneapp-staging-api.app.cloud.gov
               <div class="doc-copy">
                 <section class="json-schema-description">
                   <p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.</p>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div id="definition-TfEligibilityCalcs" class="definition panel" data-traverse-target="definition-TfEligibilityCalcs">
+            <h2 class="panel-title">
+              <a name="/definitions/TfEligibilityCalcs"></a>TfEligibilityCalcs: object
+              <!-- <span class="json-property-type"><div class="json-property-type">object</div>
+              <span class="json-property-range" title="Value limits"></span>
+              
+              
+              </span> -->
+            </h2>
+            <div class="doc-row">
+              <div class="doc-copy">
+                <section class="json-schema-properties">
+                  <dl>
+                    <dt data-property-name="TANF_TEST">
+                      <span class="json-property-name">TANF_TEST:</span>
+                      <div class="json-property-type">
+                        <div class="">
+                          <a class="json-schema-ref" href="#/definitions/EligibilityValue">EligibilityValue</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                    <dt data-property-name="TANF_AMOUNT">
+                      <span class="json-property-name">TANF_AMOUNT:</span>
+                      <div class="json-property-type">
+                        <div class="json-schema-ref-string">
+                          <a class="json-schema-ref" href="#/definitions/String">String</a>
+                        </div>
+                      </div>
+                      <span class="json-property-range" title="Value limits"></span>
+                    </dt>
+                  </dl>
+                </section>
+              </div>
+              <div class="doc-examples">
+                <section>
+                  <h5>Example</h5>
+                  <!-- <div class="hljs"> -->
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-json">{
+  <span class="hljs-attr">&quot;TANF_TEST&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>,
+  <span class="hljs-attr">&quot;TANF_AMOUNT&quot;</span>: <span class="hljs-string">&quot;string&quot;</span>
+}
+</code></pre> </body>
+                  </html>
+                  <!-- </div> -->
                 </section>
               </div>
             </div>
