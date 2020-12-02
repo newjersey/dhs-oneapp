@@ -28,11 +28,11 @@ const typeDef = gql`
     "Applicant address city"
     CITY: String @constraint(pattern: "^[a-zA-Z0-9.,'#@&\-_/\s]*$", maxLength: 50)
     "Applicant address state"
-    STATE: String
+    STATE: State
     "Applicant address zipcode"
-    ZIP: Int @constraint(maxLength: 5)
+    ZIP: Int @constraint(minLength: 5, maxLength: 5)
     "Applicant address zipcode extend 4"
-    ZIP4: Int
+    ZIP4: Int @constraint(minLength: 4, maxLength: 4)
     "New Jersey county id, retrieved from zipcode to county lookup"
     COUNTY_NUMBER: Int!
     "Mailing address line 1"
@@ -42,11 +42,11 @@ const typeDef = gql`
     "Mailing address city"
     M_CITY: String @constraint(pattern: "^[a-zA-Z0-9.,'#@&\-_/\s]*$", maxLength: 50)
     "Mailing address state"
-    M_STATE: String
+    M_STATE: State
     "Mailing address zipcode"
-    M_ZIP: Int @constraint(maxLength: 5)
+    M_ZIP: Int @constraint(minLength: 5, maxLength: 5)
     "Mailing address zipcode extended 4"
-    M_ZIP4: Int @constraint(maxLength: 4)
+    M_ZIP4: Int @constraint(minLength: 4, maxLength: 4)
     "Applicant home phone number"
     HOME_PHONE_NUMBER: Int @constraint(pattern: "^(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{4}$", maxLength: 12)
     "Applicant work phone number"
@@ -89,11 +89,11 @@ const typeDef = gql`
     "Applicant address city"
     CITY: String @constraint(pattern: "^[a-zA-Z0-9.,'#@&\-_/\s]*$", maxLength: 50)
     "Applicant address state"
-    STATE: String
+    STATE: State
     "Applicant address zipcode"
-    ZIP: Int @constraint(maxLength: 5)
+    ZIP: Int @constraint(minLength: 5, maxLength: 5)
     "Applicant address zipcode extend 4"
-    ZIP4: Int
+    ZIP4: Int @constraint(minLength: 4, maxLength: 4)
     "New Jersey county id, retrieved from zipcode to county lookup"
     COUNTY_NUMBER: Int!
     "Mailing address line 1"
@@ -103,11 +103,11 @@ const typeDef = gql`
     "Mailing address city"
     M_CITY: String @constraint(pattern: "^[a-zA-Z0-9.,'#@&\-_/\s]*$", maxLength: 50)
     "Mailing address state"
-    M_STATE: String
+    M_STATE: State
     "Mailing address zipcode"
-    M_ZIP: Int @constraint(maxLength: 5)
+    M_ZIP: Int @constraint(minLength: 5, maxLength: 5)
     "Mailing address zipcode extended 4"
-    M_ZIP4: Int @constraint(maxLength: 4)
+    M_ZIP4: Int @constraint(minLength: 4, maxLength: 4)
     "Applicant home phone number"
     HOME_PHONE_NUMBER: Int @constraint(pattern: "^(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?(\([2-9]\d{2}\)|[2-9]\d{2})[- .]?\d{4}$", maxLength: 12)
     "Applicant work phone number"
@@ -128,6 +128,10 @@ const typeDef = gql`
   enum ApplicationSubtype {
     "New Jersey Helps"
     NJHE
+  }
+
+  enum State {
+    NJ
   }
 `;
 
