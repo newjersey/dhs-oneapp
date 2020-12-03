@@ -5,7 +5,7 @@ applications:
   path: ./oneapp-server
   buildpack: https://github.com/cloudfoundry/nodejs-buildpack
   random-route: false
-  memory: 256MB
+  memory: 64MB
   env:
     OPTIMIZE_MEMORY: true
   services:
