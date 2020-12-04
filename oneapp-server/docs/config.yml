@@ -88,8 +88,8 @@ domains:
         description: Returns results of income tests and food stamp benefits
         query: query.application
         expand: eligibility
-      - name: Check eligibility for Family Care (Medicaid) program
-        description: Returns results of Family Care (Medicaid) test and amount
+      - name: [DEPRECATED] Check eligibility for Family Care (Medicaid) program
+        description: [DEPRECATED] Returns results of Family Care (Medicaid) test and amount
         query: query.application
         expand: fcEligibility
       - name: Check eligibility for TANF program
