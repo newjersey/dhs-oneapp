@@ -10,6 +10,7 @@ const typeDef = gql`
 
   extend type Mutation {
     applicationUpdate(input: ApplicationInput!): Boolean
+    applicationSend(DISCLAIMER_UNDERSTOOD: ApplicationDisclaimerUnderstood!): ApplicationSendResult
   }
 
   type Application {
@@ -17,10 +18,26 @@ const typeDef = gql`
     APPLICATION_NUMBER: ID
   }
 
+  type ApplicationSendResult {
+    "The id of the submitted application. This will be different after submission and no longer match the user id."
+    APPLICATION_NUMBER: ID
+  }
+
   input ApplicationInput {
     contact: ApplicationContactInput
     foodStampInfo: ApplicationFoodStampInfoInput
     programInfo: ApplicationProgramInfoInput
+  }
+
+  enum ApplicationDisclaimerUnderstood {
+    "I Read, Understood and Accept the above text."
+    Y,
+    "County workers only: I Read, Understood and Accept the above text, printed for me by the county representative."
+    W,
+    "I Read but don't Understand the above text."
+    D,
+    "I Read and don't Accept the above text."
+    N
   }
 `;
 
@@ -55,6 +72,10 @@ const resolvers = {
       await Promise.all(updateCalls);
 
       return true;
+    },
+    applicationSend: async (_parent, { DISCLAIMER_UNDERSTOOD }, { dataSources, auth }) => {
+      const APPLICATION_NUMBER = auth.user.USER_ID;
+      return dataSources.ApplicationDao.sendApplication(APPLICATION_NUMBER, DISCLAIMER_UNDERSTOOD);
     },
   },
 };
