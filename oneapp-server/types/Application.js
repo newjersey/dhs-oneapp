@@ -22,7 +22,7 @@ const typeDef = gql`
     foodStampInfo: ApplicationFoodStampInfoInput
     programInfo: ApplicationProgramInfoInput
     tanfGaHeader: TanfGaHeaderInput
-    applicationItems: ApplicationItemsInput
+    items: ApplicationItemsInput
   }
 `;
 
@@ -59,9 +59,9 @@ const resolvers = {
         updateCalls.push(dataSources.TanfGaHeaderDao.updateTanfGaHeader(input.tanfGaHeader));
       }
 
-      if (!isNil(input.applicationItems)) {
+      if (!isNil(input.items)) {
         logger.debug('Application (%s) update contains application items', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.ApplicationItemsDao.updateItems(input.applicationItems));
+        updateCalls.push(dataSources.ApplicationItemsDao.updateItems(APPLICATION_NUMBER, input.items));
       }
 
       // Run all update calls in parallel

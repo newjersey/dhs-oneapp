@@ -3,27 +3,28 @@ const oracledb = require('oracledb');
 const { OneAppError } = require('../utils/OneAppError');
 
 class ApplicationItemsDao extends SQLDataSource {
-  async getItems(APPLICATION_ID, LANGUAGE) {
+  async getItems(APPLICATION_ID, CODE_TYPE, LANGUAGE) {
     const con = await this.knex.client.pool.acquire().promise;
     const response = await this.knex.client.transaction(async (tx) => {
       const bindVars = {
         app_id: { dir: oracledb.BIND_IN, val: APPLICATION_ID },
+        code_type: { dir: oracledb.BIND_IN, val: CODE_TYPE },
         lang: { dir: oracledb.BIND_IN, val: LANGUAGE },
         info: { dir: oracledb.BIND_OUT, type: 'OA_TT_APPLICATION_ITEMS' },
       };
-      return tx.raw('begin OA_PKG_APP.SP_SELECT_APPLICATION_ITEMS(:app_id, :lang, :info); end;', bindVars);
+      return tx.raw('begin OA_PKG_APP.SP_SELECT_APPLICATION_ITEMS(:app_id, :code_type, :lang, :info); end;', bindVars);
     }, { connection: con });
     return response[0].getElement(0);
   }
 
-  async updateContact(APPLICATION_NUMBER, input) {
+  async updateItems(APPLICATION_NUMBER, input) {
     const con = await this.knex.client.pool.acquire().promise;
     const response = await this.knex.client.transaction(async (tx) => {
       const ItemType = await con.getDbObjectClass('OA_TT_APPLICATION_ITEMS');
       const item = new ItemType({
         APPLICATION_NUMBER,
-        CODE_TYPE: 'FI', // Always used for food stamp
-        CODE: 'FI',
+        CODE_TYPE: input.CODE_TYPE,
+        CODE: input.CODE,
         HAVE_THIS: input.HAVE_THIS ? 'Y' : 'N',
       });
       const bindVars = {
