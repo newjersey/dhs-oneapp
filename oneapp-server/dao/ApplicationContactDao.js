@@ -13,7 +13,7 @@ class ApplicationContactDao extends SQLDataSource {
       };
       return tx.raw('begin OA_PKG_APP.SP_SELECT_APP_CONTACT(:app_id, :lang, :info); end;', bindVars);
     }, { connection: con });
-    return response[0];
+    return response[0].getElement(0);
   }
 
   async updateContact(APPLICATION_NUMBER, input) {
