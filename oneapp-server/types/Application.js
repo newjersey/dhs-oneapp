@@ -6,10 +6,14 @@ const typeDef = gql`
   extend type Query {
     "Safety net benefits application for SNAP, TANF, GA"
     application: Application
+    "Confirmation details after submitting an application"
+    applicationConfirmation(APPLICATION_NUMBER: ID!): ApplicationConfirmation
   }
 
   extend type Mutation {
+    "Update an in-progress application"
     applicationUpdate(input: ApplicationInput!): Boolean
+    "Send / submit an in-progess application"
     applicationSend(DISCLAIMER_UNDERSTOOD: ApplicationDisclaimerUnderstood!): ApplicationSendResult
   }
 
@@ -21,6 +25,35 @@ const typeDef = gql`
   type ApplicationSendResult {
     "The id of the submitted application. This will be different after submission and no longer match the user id."
     APPLICATION_NUMBER: ID
+  }
+
+  type ApplicationConfirmation {
+    "Submitted application id"
+    APPLICATION_NUMBER: ID
+    "Email address of the applicant"
+    EMAIL_ADDRESS: String
+    "SNAP application: Y/N"
+    IS_FS_SELECTED: String
+    "TANF application: Y/N"
+    IS_TF_SELECTED: String
+    "General Assistance: Y/N"
+    IS_GA_SELECTED: String
+    "When the application was sent"
+    SENT_DATE: String
+    "When the application is effective"
+    EFFECTIVE_DATE: String
+    "County the application has been submitted to"
+    COUNTY_NAME: String
+    "Country main office address 1"
+    MOFF_ADDRESS1: String
+    "Country main office address 2"
+    MOFF_ADDRESS2: String
+    "Country main office city"
+    MOFF_CITY: String
+    "Country main office zip"
+    MOFF_ZIP: String
+    "Country main office phone number"
+    MOFF_PHONE_NUMBER: String
   }
 
   input ApplicationInput {
