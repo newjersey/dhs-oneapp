@@ -6,25 +6,25 @@ const typeDef = gql`
   }
   type TanfGaHeader {
     "Confirmed will seek employment"
-    WILL_SEEK_EMPLOYMENT: Boolean!
+    WILL_SEEK_EMPLOYMENT: String!
     "Confirmed will register for work with New Jersey One Step Career Center"
-    WILL_REGISTER_FOR_WORK: Boolean!
+    WILL_REGISTER_FOR_WORK: String!
     "Is willing to work"
-    WILLING_TO_WORK: Boolean!
+    WILLING_TO_WORK: String!
     "If plan to continue living in New Jersey"
-    WILL_CONTINUE_LIVING_IN_NJ: Boolean!
+    WILL_CONTINUE_LIVING_IN_NJ: String!
     "Reason provided if not planning on continuing to live in New Jersey"
     WONT_CONTINUE_REASON: String
   }
   input TanfGaHeaderInput {
     "Confirmed will seek employment"
-    WILL_SEEK_EMPLOYMENT: Boolean!
+    WILL_SEEK_EMPLOYMENT: String!
     "Confirmed will register for work with New Jersey One Step Career Center"
-    WILL_REGISTER_FOR_WORK: Boolean!
+    WILL_REGISTER_FOR_WORK: String!
     "Is willing to work"
-    WILLING_TO_WORK: Boolean!
+    WILLING_TO_WORK: String!
     "If plan to continue living in New Jersey"
-    WILL_CONTINUE_LIVING_IN_NJ: Boolean!
+    WILL_CONTINUE_LIVING_IN_NJ: String!
     "Reason provided if not planning on continuing to live in New Jersey"
     WONT_CONTINUE_REASON: String
   }
