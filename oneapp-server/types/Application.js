@@ -55,7 +55,7 @@ const resolvers = {
 
       if (!isNil(input.tanfGaHeader)) {
         logger.debug('Application (%s) update contains TANF/GA header', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.TanfGaHeaderDao.updateTanfGaHeader(input.tanfGaHeader));
+        updateCalls.push(dataSources.TanfGaHeaderDao.updateTanfGaHeader(APPLICATION_NUMBER, input.tanfGaHeader));
       }
 
       // Run all update calls in parallel

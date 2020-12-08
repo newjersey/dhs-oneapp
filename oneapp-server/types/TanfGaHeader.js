@@ -32,7 +32,7 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    tanfGaHeader: (_parent, _args, { dataSources, auth, language }) => dataSources.TanfGaHeaderDao.getTanfGaHeader(auth.user.USER_ID, language.code),
+    tanfGaHeader: (_parent, _args, { dataSources, auth, language }) => dataSources.TanfGaHeaderDao.getTanfGaHeader(auth.user.USER_ID, language.index),
   },
 };
 
