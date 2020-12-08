@@ -79,6 +79,7 @@ const resolvers = {
     application: (_parent, _args, { auth }) => ({
       APPLICATION_NUMBER: auth.user.USER_ID,
     }),
+    applicationConfirmation: (_parent, { APPLICATION_NUMBER }, { dataSources, auth }) => dataSources.ApplicationDao.fetchConfirmationDetails(APPLICATION_NUMBER, auth.user.USER_ID),
   },
   Mutation: {
     applicationUpdate: async (_parent, { input }, { dataSources, auth }) => {
