@@ -16,11 +16,13 @@ class ApplicationContactDao extends SQLDataSource {
     return response[0];
   }
 
-  async updateContact(input) {
+  async updateContact(APPLICATION_NUMBER, input) {
     const con = await this.knex.client.pool.acquire().promise;
     const response = await this.knex.client.transaction(async (tx) => {
       const ContactType = await con.getDbObjectClass('OA_RT_APP_CONTACT');
       const contact = new ContactType({
+        APPLICATION_NUMBER,
+        APPLICATION_TYPE: 'OA', // Always OA for OneApp
         APPLICANT_FIRST_NAME: input.APPLICANT_FIRST_NAME,
         APPLICANT_LAST_NAME: input.APPLICANT_LAST_NAME,
         APPLICANT_MIDDLE_NAME: input.APPLICANT_MIDDLE_NAME,
