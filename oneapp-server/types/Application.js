@@ -39,6 +39,7 @@ const resolvers = {
       const updateCalls = [];
       if (!isNil(input.contact)) {
         logger.debug('Application (%s) update contains contact information', APPLICATION_NUMBER);
+        updateCalls.push(dataSources.ApplicationContactDao.updateContact(APPLICATION_NUMBER, input.contact));
       }
 
       if (!isNil(input.foodStampInfo)) {
