@@ -20,7 +20,6 @@ const typeDef = gql`
     "Code for the given applicaation"
     CODE: String!
     "If this item exists in the application"
-    "If this item exists in the application"
     HAVE_THIS: Boolean
   }
 `;
