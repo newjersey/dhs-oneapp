@@ -1,8 +1,5 @@
 const { createTestClient, dataSources, services } = require('../__utils/TestingUtils');
 const client = createTestClient();
-const passwordGenerator = require('generate-password');
-
-jest.mock('generate-password');
 
 describe('applicationUpdate mutation', () => {
   it('updates contact info', async () => {
