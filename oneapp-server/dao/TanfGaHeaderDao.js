@@ -2,7 +2,6 @@ const { SQLDataSource } = require('datasource-sql');
 const oracledb = require('oracledb');
 const { OneAppError } = require('../utils/OneAppError');
 
-
 class TanfGaHeaderDao extends SQLDataSource {
   async getTanfGaHeader(APPLICATION_ID, LANGUAGE) {
     const con = await this.knex.client.pool.acquire().promise;
