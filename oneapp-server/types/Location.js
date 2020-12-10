@@ -9,8 +9,8 @@ const typeDef = gql`
     isValidNJZipcode(ZIPCODE: String!, COUNTY_NUMBER: Int!, IS_HOMELESS: Boolean!): Boolean
     "Returns county name of given user"
     getCountyDetails: County
-    "Check if valid USPS address"
-    isValidAddress(input: AddressInput!): Boolean
+    "Return details if valid USPS address"
+    getAddressDetails(ADDRESS: String!, ZIPCODE: String!): Address
   }
 
   type County {
@@ -23,10 +23,11 @@ const typeDef = gql`
     COUNTY_NUMBER: Int,
   }
 
-  input AddressInput {
-    ADDRESS: String,
+  type Address {
+    ADDRESS1: String,
+    ADDRESS2: String,
     CITY: String,
-    COUNTY: CountyInput,
+    COUNTY: County,
     STATE: String,
     ZIP: String,
     ZIP4: String,
@@ -38,7 +39,7 @@ const resolvers = {
     counties: (_parent, _args, { dataSources }) => dataSources.LocationDao.getCounties(),
     isValidNJZipcode: async (_parent, { ZIPCODE, COUNTY_NUMBER, IS_HOMELESS }, { dataSources }) => dataSources.LocationDao.isValidNJZipcode(ZIPCODE, COUNTY_NUMBER, IS_HOMELESS),
     getCountyDetails: async (_parent, _args, { auth, dataSources }) => dataSources.LocationDao.getCountyDetails(auth.user.USER_ID),
-    isValidAddress: async (_parent, { input }, { dataSources }) => dataSources.LocationDao.isValidAddress(input),
+    getAddressDetails: async (_parent, { ADDRESS, ZIPCODE }, { services }) => services.USPSValidationService.getAddressDetails(ADDRESS, ZIPCODE),
   },
 };
 
@@ -46,7 +47,6 @@ const permissions = {
   Query: {
     counties: allow,
     isValidNJZipcode: allow,
-    isValidAddress: allow,
   },
   County: allow,
 };

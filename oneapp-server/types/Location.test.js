@@ -1,5 +1,6 @@
-const { createTestClient, dataSources } = require('../__utils/TestingUtils');
+const { createTestClient, dataSources, services } = require('../__utils/TestingUtils');
 const client = createTestClient();
+const { OneAppError } = require('../utils/OneAppError');
 
 // All NJ zipcodes start with 0
 const ZIPCODE = "07001";
@@ -73,5 +74,58 @@ describe('get county for user', () => {
     const response = await authClient.query({ query });
     expect(dataSources.LocationDao.getCountyDetails).toHaveBeenCalledWith(USER_ID);
     expect(response.data.getCountyDetails).toEqual(COUNTY);
+  });
+});
+
+describe('fetch validated mailing address details', () => {
+  const user = {USER_ID};
+  const authClient = createTestClient({user});
+
+  it('returns details for valid address', async () => {
+    const ADDRESS = '41 Airpark Rd';
+    const CITY = 'Princeton';
+    const STATE = 'NJ';
+    const ZIP = '08540';
+    const ZIP4 = '1500';
+    services.USPSValidationService.getAddressDetails.mockReturnValue({
+      ADDRESS1: ADDRESS, CITY, STATE, ZIP, ZIP4,
+    });
+
+    const query = `
+      {
+        getAddressDetails(ADDRESS: "41 Airpark Rd", ZIPCODE: "08540") {
+          ADDRESS1
+          CITY
+          ZIP4
+        }
+      } 
+    `;
+    const response = await authClient.query({ query });
+    expect(services.USPSValidationService.getAddressDetails).toHaveBeenCalledWith(ADDRESS, ZIP);
+    expect(response.data.getAddressDetails.ADDRESS1).toEqual(ADDRESS);
+    expect(response.data.getAddressDetails.CITY).toEqual(CITY);
+    expect(response.data.getAddressDetails.ZIP4).toEqual(ZIP4);
+  });
+
+  it('throws OneAppError for invalid mailing address', async () => {
+    const user = {USER_ID};
+    const authClient = createTestClient({user});
+
+    services.USPSValidationService.getAddressDetails.mockReturnValue(new OneAppError('Please verify your mailing address.', 't2245'));
+
+    const query = `
+    {
+      getAddressDetails(ADDRESS: "Invalid address", ZIPCODE: "11111") {
+        ADDRESS1
+        CITY
+        ZIP4
+      }
+    }  
+    `;
+
+    const response = await authClient.query({ query });
+    expect(services.USPSValidationService.getAddressDetails).toHaveBeenCalledWith("Invalid address", "11111");
+    expect(response.errors[0].code).toEqual('OneAppError');
+    expect(response.errors[0].message).toEqual('Please verify your mailing address.');
   });
 });

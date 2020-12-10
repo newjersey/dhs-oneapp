@@ -47,11 +47,6 @@ class LocationDao extends SQLDataSource {
       COUNTY_NUMBER: result ? result.COUNTY_NUMBER : null,
     };
   }
-
-  static isValidAddress(input) {
-    // TODO: fill in functionality
-    return input !== null;
-  }
 }
 
 module.exports = LocationDao;
