@@ -18,19 +18,18 @@ class ApplicationFoodStampInfoDao extends SQLDataSource {
 
   async updateFoodStampInfo(APPLICATION_NUMBER, input) {
     const con = await this.knex.client.pool.acquire().promise;
-    const FoodStampInfoType = await con.getDbObjectClass('OA_RT_FOOD_STAMP_INFO');
-    const foodStampInfo = new FoodStampInfoType({
-      APPLICATION_NUMBER,
-      IS_GROSS_INCOME_LT_150: input.IS_GROSS_INCOME_LT_150 ? 'Y' : 'N',
-      IS_RENT_GT_GROSS_INCOME: input.IS_RENT_GT_GROSS_INCOME ? 'Y' : 'N',
-      HAS_MIGRANT_FARM_WORKER: input.HAS_MIGRANT_FARM_WORKER ? 'Y' : 'N',
-      HAS_RECEIVED_EMERGENCY_FS: input.HAS_RECEIVED_EMERGENCY_FS ? 'Y' : 'N',
-      EMERGENCY_FS_DATE: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_DATE : null,
-      EMERGENCY_FS_LOCATION: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_LOCATION : null,
-      EMERGENCY_FS_STATE: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_STATE : null,
-    });
-
     const response = await this.knex.client.transaction(async (tx) => {
+      const FoodStampInfoType = await con.getDbObjectClass('OA_RT_FOOD_STAMP_INFO');
+      const foodStampInfo = new FoodStampInfoType({
+        APPLICATION_NUMBER,
+        IS_GROSS_INCOME_LT_150: input.IS_GROSS_INCOME_LT_150 ? 'Y' : 'N',
+        IS_RENT_GT_GROSS_INCOME: input.IS_RENT_GT_GROSS_INCOME ? 'Y' : 'N',
+        HAS_MIGRANT_FARM_WORKER: input.HAS_MIGRANT_FARM_WORKER ? 'Y' : 'N',
+        HAS_RECEIVED_EMERGENCY_FS: input.HAS_RECEIVED_EMERGENCY_FS ? 'Y' : 'N',
+        EMERGENCY_FS_DATE: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_DATE : null,
+        EMERGENCY_FS_LOCATION: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_LOCATION : null,
+        EMERGENCY_FS_STATE: input.HAS_RECEIVED_EMERGENCY_FS ? input.EMERGENCY_FS_STATE : null,
+      });
       const bindVars = {
         input: { dir: oracledb.BIND_IN, val: foodStampInfo },
         msg: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
