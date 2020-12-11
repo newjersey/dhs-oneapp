@@ -47,7 +47,7 @@ class ApplicationDao extends SQLDataSource {
           app_id: { dir: oracledb.BIND_IN, val: APPLICATION_NUMBER },
           confirmation: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_CURSOR },
         };
-        return tx.raw('begin OA_PKG_APP.GET_CONFIRMATION_DETAILS(:app_id, :confirmation); end;', bindVars);
+        return tx.raw('begin OA_PKG_GEN.SP_GET_CONFIRMATION_DETAILS(:app_id, :confirmation); end;', bindVars);
       }, { connection: con });
 
       try {
