@@ -60,6 +60,8 @@ const typeDef = gql`
     contact: ApplicationContactInput
     foodStampInfo: ApplicationFoodStampInfoInput
     programInfo: ApplicationProgramInfoInput
+    tanfGaHeader: TanfGaHeaderInput
+    items: ApplicationItemsInput
   }
 
   enum ApplicationDisclaimerUnderstood {
@@ -101,6 +103,16 @@ const resolvers = {
       if (!isNil(input.programInfo)) {
         logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
         updateCalls.push(dataSources.ApplicationProgramInfoDao.updateProgramInfo(input.programInfo));
+      }
+
+      if (!isNil(input.tanfGaHeader)) {
+        logger.debug('Application (%s) update contains TANF/GA header', APPLICATION_NUMBER);
+        updateCalls.push(dataSources.TanfGaHeaderDao.updateTanfGaHeader(APPLICATION_NUMBER, input.tanfGaHeader));
+      }
+
+      if (!isNil(input.items)) {
+        logger.debug('Application (%s) update contains application items', APPLICATION_NUMBER);
+        updateCalls.push(dataSources.ApplicationItemsDao.updateItems(APPLICATION_NUMBER, input.items));
       }
 
       // Run all update calls in parallel
