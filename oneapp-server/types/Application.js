@@ -46,7 +46,7 @@ const resolvers = {
 
       if (!isNil(input.foodStampInfo)) {
         logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo));
+        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(APPLICATION_NUMBER, input.foodStampInfo));
       }
 
       if (!isNil(input.programInfo)) {
