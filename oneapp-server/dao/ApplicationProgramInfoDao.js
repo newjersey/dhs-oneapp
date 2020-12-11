@@ -15,12 +15,31 @@ class ApplicationProgramInfoDao extends SQLDataSource {
     }, { connection: con });
   }
 
-  async updateProgramInfo(input) {
+  async updateProgramInfo(APPLICATION_NUMBER, input) {
     const con = await this.knex.client.pool.acquire().promise;
     const response = await this.knex.client.transaction(async (tx) => {
+      const ApplicationProgramsType = await con.getDbObjectClass('OA_RT_APPLICATION_PROGRAMS');
+      const applicationPrograms = new ApplicationProgramsType({
+        APPLICATION_NUMBER,
+        IS_FS_SELECTED: input.IS_FS_SELECTED ? 'Y' : 'N',
+        IS_TF_SELECTED: input.IS_TF_SELECTED ? 'Y' : 'N',
+        IS_GA_SELECTED: input.IS_GA_SELECTED ? 'Y' : 'N',
+        HAVE_ACTIVE_CASE_CURRENTLY: input.HAVE_ACTIVE_CASE_CURRENTLY ? 'Y' : 'N',
+        CURRENT_CASE_NUMBERS: input.CURRENT_CASE_NUMBERS,
+        HAD_ACTIVE_CASE_PREVIOULSY: input.HAD_ACTIVE_CASE_PREVIOULSY ? 'Y' : 'N',
+        PREVIOUS_CASE_NUMBERS: input.PREVIOUS_CASE_NUMBERS,
+        SPOKEN_LANGUAGE: input.SPOKEN_LANGUAGE,
+        NEED_ACCOMODATION: input.NEED_ACCOMODATION ? 'Y' : 'N',
+        NEED_ACM_TRANSLATOR: input.NEED_ACM_TRANSLATOR ? 'Y' : 'N',
+        NEED_ACM_SIGNING: input.NEED_ACM_SIGNING ? 'Y' : 'N',
+        NEED_ACM_VISUALLY_IMPAIRED: input.NEED_ACM_VISUALLY_IMPAIRED ? 'Y' : 'N',
+        NEED_ACM_OTHER: input.NEED_ACM_OTHER ? 'Y' : 'N',
+        ACM_TRA_LANGUAGE: input.ACM_TRA_LANGUAGE,
+        ACM_OTH_DESCRIPTION: input.ACM_OTH_DESCRIPTION,
+      });
       const bindVars = {
-        input: { dir: oracledb.BIND_IN, val: input },
-        msg: { dir: oracledb.BIND_OUT },
+        input: { dir: oracledb.BIND_IN, val: applicationPrograms },
+        msg: { dir: oracledb.BIND_OUT, type: oracledb.DB_TYPE_NUMBER },
       };
       return tx.raw('begin OA_PKG_APP.SP_UPDATE_APPLICATION_PROGRAMS(:input, :msg); end;', bindVars);
     }, { connection: con });
