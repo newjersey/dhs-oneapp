@@ -8,7 +8,7 @@ const typeDef = gql`
   type ApplicationItems {
     "Type of code for the given application component"
     CODE_TYPE: String!
-    "Code for the given applicaation"
+    "Code for the given application"
     CODE: String!
     "If this item exists in the application"
     HAVE_THIS: Boolean
@@ -17,7 +17,7 @@ const typeDef = gql`
   input ApplicationItemsInput {
     "Type of code for the given application component"
     CODE_TYPE: String!
-    "Code for the given applicaation"
+    "Code for the given application"
     CODE: String!
     "If this item exists in the application"
     HAVE_THIS: Boolean

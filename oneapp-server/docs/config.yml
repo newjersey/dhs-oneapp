@@ -63,10 +63,24 @@ domains:
       - name: Fetch the user's application
         description: Return the user's current application in whatever state was last saved to the server
         query: query.application
-        expand: contact,foodStampInfo,programInfo
+        expand: contact,foodStampInfo,programInfo,tanfGaHeader
       - name: Persist the user's application
-        description: Perform an upsert of the user's application. The back-end server will determine how to persist this to the Oracle database via stored procedures.
+        description: >
+          Perform an upsert of the user's application. The back-end server will determine how to persist this to the Oracle database via stored procedures.
+
+
+          **Note:** To submit a SNAP application, the existing stored procedures' expect an item of `{CODE_TYPE: 'FI', CODE: 'FI', HAVE_THIS: true}`. This indicates this is a SNAP application.
         query: mutation.applicationUpdate
+      - name: Send the user's application
+        description: >
+          Sends the users' application to UAP for processing
+
+
+          **Note:** The `APPLICATION_NUMBER` will change after sending the application. You will need the `APPLICATION_NUMBER` to get the confirmation team.
+        query: mutation.applicationSend
+      - name: Display the user's application confirmation
+        description: Returns all the information the user needs to confirm their application has been received
+        query: query.applicationConfirmation
   
   - name: NJ Locations
     description: Lookup New Jersey location information. There are also helpful queries for pre-populate user's county.
@@ -80,6 +94,9 @@ domains:
       - name: Fetch a user's county information
         description: After persisting the user's address via the `mutation.applicationUpdate` query, this query will return the county information for user. This allows the UI to pre-select and guess the county in the dropdown without making the user pick their county.
         query: query.getCountyDetails
+      - name: USPS address details
+        description: Confirm the address exists in the USPS's database and the formatting is correct. If an address does not exist and error will be returned.
+        query: query.getAddressDetails
 
   - name: Eligibility Calculations
     description: Check the eligibility of an application for each safety net program.
