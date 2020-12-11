@@ -102,7 +102,7 @@ const resolvers = {
 
       if (!isNil(input.programInfo)) {
         logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.ApplicationProgramInfoDao.updateProgramInfo(input.programInfo));
+        updateCalls.push(dataSources.ApplicationProgramInfoDao.updateProgramInfo(APPLICATION_NUMBER, input.programInfo));
       }
 
       if (!isNil(input.tanfGaHeader)) {
