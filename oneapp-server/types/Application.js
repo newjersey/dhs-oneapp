@@ -46,12 +46,12 @@ const resolvers = {
 
       if (!isNil(input.foodStampInfo)) {
         logger.debug('Application (%s) update contains foodStampInfo', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(input.foodStampInfo));
+        updateCalls.push(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo(APPLICATION_NUMBER, input.foodStampInfo));
       }
 
       if (!isNil(input.programInfo)) {
         logger.debug('Application (%s) update contains programInfo', APPLICATION_NUMBER);
-        updateCalls.push(dataSources.ApplicationProgramInfoDao.updateProgramInfo(input.programInfo));
+        updateCalls.push(dataSources.ApplicationProgramInfoDao.updateProgramInfo(APPLICATION_NUMBER, input.programInfo));
       }
 
       if (!isNil(input.tanfGaHeader)) {

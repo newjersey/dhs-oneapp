@@ -22,11 +22,11 @@ class TanfGaHeaderDao extends SQLDataSource {
       const HeaderType = await con.getDbObjectClass('OA_RT_TANF_GA_HEADER');
       const header = new HeaderType({
         APPLICATION_NUMBER,
-        WILL_SEEK_EMPLOYMENT: input.WILL_SEEK_EMPLOYMENT,
-        WILL_REGISTER_FOR_WORK: input.WILL_REGISTER_FOR_WORK,
-        WILLING_TO_WORK: input.WILLING_TO_WORK,
-        WILL_CONTINUE_LIVING_IN_NJ: input.WILL_CONTINUE_LIVING_IN_NJ,
-        WONT_CONTINUE_REASON: input.WILL_CONTINUE_LIVING_IN_NJ === true ? null : input.WILL_CONTINUE_LIVING_IN_NJ,
+        WILL_SEEK_EMPLOYMENT: input.WILL_SEEK_EMPLOYMENT ? 'Y' : 'N',
+        WILL_REGISTER_FOR_WORK: input.WILL_REGISTER_FOR_WORK ? 'Y' : 'N',
+        WILLING_TO_WORK: input.WILLING_TO_WORK ? 'Y' : 'N',
+        WILL_CONTINUE_LIVING_IN_NJ: input.WILL_CONTINUE_LIVING_IN_NJ ? 'Y' : 'N',
+        WONT_CONTINUE_REASON: input.WILL_CONTINUE_LIVING_IN_NJ === true ? null : input.WONT_CONTINUE_REASON,
       });
       const bindVars = {
         input: { dir: oracledb.BIND_IN, val: header },
