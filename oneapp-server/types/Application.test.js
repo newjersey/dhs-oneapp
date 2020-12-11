@@ -84,4 +84,112 @@ describe('applicationUpdate mutation', () => {
     const response = await authClient.query({ query });
     expect(response.errors[0].code).toEqual('GRAPHQL_VALIDATION_FAILED');
   });
+
+  it('updates both food stamp and program info', async () => {
+    const user = {USER_ID: 'user123'};
+    const authClient = createTestClient({user});
+
+    dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo.mockReturnValue(1);
+    dataSources.ApplicationProgramInfoDao.updateProgramInfo.mockReturnValue(1);
+
+    const query = `
+      mutation {
+        applicationUpdate(input: {
+          foodStampInfo: {
+            IS_GROSS_INCOME_LT_150: true,
+            IS_RENT_GT_GROSS_INCOME: true,
+            HAS_MIGRANT_FARM_WORKER: false,
+            HAS_RECEIVED_EMERGENCY_FS: true,
+            EMERGENCY_FS_DATE: "2020-01-01",
+            EMERGENCY_FS_LOCATION: "Newark",
+            EMERGENCY_FS_STATE: "NJ",
+          },
+          programInfo: {
+            IS_FS_SELECTED: true,
+            IS_TF_SELECTED: false,
+            IS_GA_SELECTED: false,
+            HAVE_ACTIVE_CASE_CURRENTLY: true,
+            CURRENT_CASE_NUMBERS: "123456",
+            HAD_ACTIVE_CASE_PREVIOULSY: true,
+            PREVIOUS_CASE_NUMBERS: "12345",
+            SPOKEN_LANGUAGE: "en",
+            NEED_ACCOMODATION: true,
+            NEED_ACM_TRANSLATOR: false,
+            NEED_ACM_SIGNING: true,
+            NEED_ACM_VISUALLY_IMPAIRED: false,
+            NEED_ACM_OTHER: false,
+          }
+        })
+      }
+    `;
+    const response = await authClient.query({ query });
+    expect(response.data.applicationUpdate).toEqual(true);
+
+    expect(dataSources.ApplicationFoodStampInfoDao.updateFoodStampInfo).toHaveBeenCalledWith(
+      "user123",
+      {
+        IS_GROSS_INCOME_LT_150: true,
+        IS_RENT_GT_GROSS_INCOME: true,
+        HAS_MIGRANT_FARM_WORKER: false,
+        HAS_RECEIVED_EMERGENCY_FS: true,
+        EMERGENCY_FS_DATE: new Date("2020-01-01"),
+        EMERGENCY_FS_LOCATION: "Newark",
+        EMERGENCY_FS_STATE: "NJ",
+      },
+    );
+
+    expect(dataSources.ApplicationProgramInfoDao.updateProgramInfo).toHaveBeenCalledWith(
+      "user123",
+      {
+        IS_FS_SELECTED: true,
+        IS_TF_SELECTED: false,
+        IS_GA_SELECTED: false,
+        HAVE_ACTIVE_CASE_CURRENTLY: true,
+        CURRENT_CASE_NUMBERS: "123456",
+        HAD_ACTIVE_CASE_PREVIOULSY: true,
+        PREVIOUS_CASE_NUMBERS: "12345",
+        SPOKEN_LANGUAGE: "en",
+        NEED_ACCOMODATION: true,
+        NEED_ACM_TRANSLATOR: false,
+        NEED_ACM_SIGNING: true,
+        NEED_ACM_VISUALLY_IMPAIRED: false,
+        NEED_ACM_OTHER: false,
+      },
+    );
+  });
+
+  it('updates TANF/GA header', async () => {
+    const user = {USER_ID: 'user123'};
+    const authClient = createTestClient({user});
+    const REASON = "A reason for moving";
+
+    dataSources.TanfGaHeaderDao.updateTanfGaHeader.mockReturnValue(1);
+
+    const query = `
+      mutation {
+        applicationUpdate(input: {
+          tanfGaHeader: {
+            WILL_SEEK_EMPLOYMENT: true,
+            WILL_REGISTER_FOR_WORK: false,
+            WILLING_TO_WORK: true,
+            WILL_CONTINUE_LIVING_IN_NJ: false,
+            WONT_CONTINUE_REASON: "A reason for moving",
+          }
+        })
+      }
+    `;
+    const response = await authClient.query({ query });
+    expect(response.data.applicationUpdate).toEqual(true);
+
+    expect(dataSources.TanfGaHeaderDao.updateTanfGaHeader).toHaveBeenCalledWith(
+      "user123",
+      {
+        WILL_SEEK_EMPLOYMENT: true,
+        WILL_REGISTER_FOR_WORK: false,
+        WILLING_TO_WORK: true,
+        WILL_CONTINUE_LIVING_IN_NJ: false,
+        WONT_CONTINUE_REASON: REASON,
+      },
+    );
+  });
 });
