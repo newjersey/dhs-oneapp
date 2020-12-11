@@ -42,7 +42,7 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    foodStampInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.FoodStampInfoDao.getFoodStampInfo(auth.user.USER_ID, language.code),
+    foodStampInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.ApplicationFoodStampInfoDao.getFoodStampInfo(auth.user.USER_ID, language.index),
   },
 };
 

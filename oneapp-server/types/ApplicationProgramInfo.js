@@ -74,7 +74,7 @@ const typeDef = gql`
 
 const resolvers = {
   Application: {
-    programInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.ApplicationProgramInfoDao.getProgramInfo(auth.user.USER_ID, language.code),
+    programInfo: (_parent, _args, { dataSources, auth, language }) => dataSources.ApplicationProgramInfoDao.getProgramInfo(auth.user.USER_ID, language.index),
   },
 };
 

@@ -1,11 +1,7 @@
-const { createTestClient, dataSources, services } = require('../__utils/TestingUtils');
-const client = createTestClient();
-const passwordGenerator = require('generate-password');
-
-jest.mock('generate-password');
+const { createTestClient, dataSources } = require('../__utils/TestingUtils');
 
 describe('application contact query', () => {
-  it('updates contact info', async () => {
+  it('fetches contact info', async () => {
     const user = {USER_ID: 'user123'};
     const authClient = createTestClient({user});
 
