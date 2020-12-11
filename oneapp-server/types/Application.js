@@ -39,9 +39,9 @@ const typeDef = gql`
     "General Assistance"
     IS_GA_SELECTED: Boolean
     "When the application was sent"
-    SENT_DATE: String
+    SENT_DATE: DateTime
     "When the application is effective"
-    EFFECTIVE_DATE: String
+    EFFECTIVE_DATE: DateTime
     "County the application has been submitted to"
     COUNTY_NAME: String
     "County main office address 1"
