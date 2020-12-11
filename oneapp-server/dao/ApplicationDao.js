@@ -52,7 +52,12 @@ class ApplicationDao extends SQLDataSource {
 
       try {
         const result = await response[0].getRow();
-        return result;
+        return {
+          ...result,
+          IS_FS_SELECTED: result.IS_FS_SELECTED === 'Y',
+          IS_TF_SELECTED: result.IS_TF_SELECTED === 'Y',
+          IS_GA_SELECTED: result.IS_GA_SELECTED === 'Y',
+        };
       } finally {
         response[0].close();
       }

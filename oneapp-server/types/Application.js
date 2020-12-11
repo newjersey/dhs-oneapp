@@ -32,12 +32,12 @@ const typeDef = gql`
     APPLICATION_NUMBER: ID
     "Email address of the applicant"
     EMAIL_ADDRESS: String
-    "SNAP application: Y/N"
-    IS_FS_SELECTED: String
-    "TANF application: Y/N"
-    IS_TF_SELECTED: String
-    "General Assistance: Y/N"
-    IS_GA_SELECTED: String
+    "SNAP application"
+    IS_FS_SELECTED: Boolean
+    "TANF application"
+    IS_TF_SELECTED: Boolean
+    "General Assistance"
+    IS_GA_SELECTED: Boolean
     "When the application was sent"
     SENT_DATE: String
     "When the application is effective"
