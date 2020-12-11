@@ -44,15 +44,15 @@ const typeDef = gql`
     EFFECTIVE_DATE: String
     "County the application has been submitted to"
     COUNTY_NAME: String
-    "Country main office address 1"
+    "County main office address 1"
     MOFF_ADDRESS1: String
-    "Country main office address 2"
+    "County main office address 2"
     MOFF_ADDRESS2: String
-    "Country main office city"
+    "County main office city"
     MOFF_CITY: String
-    "Country main office zip"
+    "County main office zip"
     MOFF_ZIP: String
-    "Country main office phone number"
+    "County main office phone number"
     MOFF_PHONE_NUMBER: String
   }
 
