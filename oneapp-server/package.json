@@ -43,7 +43,7 @@
     "graphql-shield": "^7.4.3",
     "graphql-tools": "^7.0.2",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.12",
+    "knex": "^0.21.13",
     "lodash": "^4.17.19",
     "nodemailer": "^6.4.16",
     "oracledb": "file:lib/oracledb-5.0.0.tgz",
