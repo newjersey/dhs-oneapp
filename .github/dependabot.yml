@@ -7,8 +7,8 @@ updates:
     interval: weekly
     time: "10:00"
   open-pull-requests-limit: 10
-  assignees:
-    - "ronaldheft-usds"
+#   assignees:
+#     - "ronaldheft-usds"
 
 - package-ecosystem: npm
   directory: "/oneapp-server/"
@@ -16,5 +16,5 @@ updates:
     interval: weekly
     time: "10:00"
   open-pull-requests-limit: 10
-  assignees:
-    - "ronaldheft-usds"
+#   assignees:
+#     - "ronaldheft-usds"
