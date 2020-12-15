@@ -37,7 +37,7 @@
     "graphql": "^15.4.0",
     "graphql-constraint-directive": "^2.1.1",
     "graphql-iso-date": "^3.6.1",
-    "graphql-middleware": "^4.0.2",
+    "graphql-middleware": "^4.0.3",
     "graphql-parse-resolve-info": "^4.10.0",
     "graphql-rate-limit": "^2.0.1",
     "graphql-shield": "^7.4.3",
