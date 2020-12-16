@@ -1,5 +1,7 @@
 # Treehouse Recommended Courses
 
+**USDS Note:** *These are helpful skills to know to work with this prototype.*
+
 Courses are organized by topic, not necessarily skill level.
 
 - [Git / GitHub](#git--github)

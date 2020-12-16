@@ -1,5 +1,7 @@
 # Quality Assurance Process
 
+**USDS Note:** *This is a rough draft of our QA plan.*
+
 ## Engineering
 
 ### Define requirements

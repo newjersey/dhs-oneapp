@@ -1,5 +1,7 @@
 # Architecture Notes
 
+**USDS Note:** *This was our original planning on what could be done to modernize the legacy OneApp.*
+
 ## Front-End Research
 
 The following options were considered;

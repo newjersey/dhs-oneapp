@@ -1,3 +1,5 @@
+**USDS Note:** *This was our original thinking about goals for the project. Some of these may be outdated.*
+
 ### Design Principles
    * Easy to understand - applicant can easily make it through the process
    * Simple as possible - applicant can complete the process in a minimal amount of steps

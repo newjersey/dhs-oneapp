@@ -1,5 +1,7 @@
 # Validations and Required Fields
 
+**USDS Note:** *Further validations have been made in `/DFD_Validations`*.
+
 - [Eligibility Calculations](#eligibility-calculations)
   - [GET_ELIGIBILITY](#get_eligibility)
   - [GET_FC_ELIGIBILITY](#get_fc_eligibility)
