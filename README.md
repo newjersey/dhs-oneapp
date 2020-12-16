@@ -1,51 +1,41 @@
-# The NJ DHS OneApp, mk2
+# The NJ DHS OneApp
 
-1. [Database Setup](/docs/oracle-setup.md)
-2. [Architecture Notes](/docs/architecture-notes.md)
-3. [Server Setup](/docs/server.md)
+A prototype for replacing the quick submit flow with a GraphQL API back-end on top of the existing OneApp Oracle database.
 
-## Contributing & Versioning
+- [Sister Repositories](#sister-repositories)
+- [Helpful Information in This Repo](#helpful-information-in-this-repo)
+- [Running the OneApp Server](#running-the-oneapp-server)
 
-We follow the semantic versioning convention, when you commit do so in the following manner;
+## Sister Repositories
 
-```
-git commit -m "fix: JIRA-1234 Fixed bug on foo"
-git commit -m "feat: JIRA-2345 Adds new Widget"
-git commit -m "chore: JIRA-3456 Updated README"
-git commit -m 'feat: JIRA-4567 Added new theme
-```
+The following repositories may be helpful in addition to this one. Many of the repositories used to live in this repository, but we split them out into their own dedicated repos.
 
-We use [standard_version](https://github.com/conventional-changelog/standard-version) to automate versioning and release notes.
+These repositories are currently private and will require approval from a New Jersey GitHub admin for access.
 
-Simply run `yarn run release` to bump the version number appropriately and generate release notes. Run `git push --follow-tags origin main` to publish.
+| Repo                | Description                                                                                                   |
+| :------------------ | :------------------------------------------------------------------------------------------------------------ |
+| dhs-oneapp-web      | The front-end resources for the OneApp prototype, built on top of Vue.js using the U.S. Web Design System.    |
+| dhs-oneapp-database | The OneApp Oracle development database, Dockerized for ease of development.                                   |
+| dhs-oneapp-legacy   | The legacy OneApp code base. This is from a snapshot early in 2020 and it does not contain the latest code.   |
+| dhs-oneapp-software | Pre-downloaded dependencies for developers on the New Jersey network who may encounter firewall restrictions. |
 
+## Helpful Information in This Repo
 
-## Project setup
+| Page                                                 | Description                                                                  |
+| :--------------------------------------------------- | :--------------------------------------------------------------------------- |
+| [/development](/development)                         | Documentation on the legacy OneApp emails and stored procedures.             |
+| [/docs/DFD_Validations](/docs/DFD_Validations)       | All of the legacy OneApp validations, documented and verified by New Jersey. |
+| [/docs/lighthouse-reports](/docs/lighthouse-reports) | SEO reports against the legacy version of OneApp.                            |
+| [/oneapp-server](/oneapp-server)                     | The code for the GraphQL API server.                                         |
 
-```bash
-yarn install
+This repository also contains a number of GitHub issues for tracking our development work. The issues have not been groomed and cleaned up since USDS stopped working on the project, so information in the GitHub issues may be outdated.
 
-# Compiles and hot-reloads for development
-yarn serve
+## Running the OneApp Server
 
-# Compiles and minifies for production
-yarn build
+Directions for running the server on Windows can be found here: [/development/Windows_Setup.md](/development/Windows_Setup.md)
 
-# Run your unit tests
-yarn test:unit
+To run on Mac / Linux install Git, node, and yarn and run:
 
-# Lints and fixes files
-yarn lint
-```
+`yarn install`
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-## Build production server
-
-```bash
-yarn dist
-```
-
-Fully bundled server artifacts can be found in `oneapp-server/dist`.
+Available scripts and commands for the OneApp server can be found by exploring the `package.json` file.
