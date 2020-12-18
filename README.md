@@ -23,6 +23,7 @@ These repositories are currently private and will require approval from a New Je
 
 | Page                                                 | Description                                                                  |
 | :--------------------------------------------------- | :--------------------------------------------------------------------------- |
+| [/plan](/plan).                                      | Outlines initial goals and metrics for OneApp modernization.                 |
 | [/development](/development)                         | Documentation on the legacy OneApp emails and stored procedures.             |
 | [/docs/DFD_Validations](/docs/DFD_Validations)       | All of the legacy OneApp validations, documented and verified by New Jersey. |
 | [/docs/lighthouse-reports](/docs/lighthouse-reports) | SEO reports against the legacy version of OneApp.                            |
