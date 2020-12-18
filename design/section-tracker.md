@@ -5,13 +5,13 @@
 ## Revised NJ OneApp IA
 | #   | Section           | Sub-section                | Prototype link                                                         | NJ Approved | Content Approved |
 | --- | ----------------- | -------------------------- | ---------------------------------------------------------------------- | ----------- | ---------------- |
-| .   | Homepage          |                            | https://dhs.invisionapp.com/d/main#/console/20094964/426634090/preview |             |                  |
-| .   | Form Intro        |                            | https://dhs.invisionapp.com/d/main#/console/20094964/426634091/preview |             |                  |
+| .   | Homepage          |                            |  |             |                  |
+| .   | Form Intro        |                            |  |             |                  |
 | .   | Account Creation  |                            |                                                                        |             |                  |
-| .   | Sign in           |                            | https://dhs.invisionapp.com/d/main#/console/20094964/421673557/preview |             |                  |
-| .   | Forgot Username   |                            | https://dhs.invisionapp.com/d/main#/console/20094964/421673558/preview |             |                  |
-| .   | Forgot Password   |                            | https://dhs.invisionapp.com/d/main#/console/20094964/421673559/preview |             |                  |
-| .   | Check App Status  |                            | https://dhs.invisionapp.com/d/main#/console/20094964/425126495/preview |             |                  |
+| .   | Sign in           |                            |  |             |                  |
+| .   | Forgot Username   |                            | |             |                  |
+| .   | Forgot Password   |                            |  |             |                  |
+| .   | Check App Status  |                            |  |             |                  |
 | .   | Application List  |                            |                                                                        |             |                  |
 | 1.0 | Basic information | Programs                   |                                                                        |             |                  |
 | 2   |                   | Applicant Information      |                                                                        |             |                  |
