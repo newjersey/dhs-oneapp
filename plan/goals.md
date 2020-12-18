@@ -1,8 +1,10 @@
+**USDS Note:** *This was our original thinking about goals for the project. Some of these may be outdated.*
+
 ### Design Principles
-   * Easy to understand - applicant can easily make it through the process
-   * Simple as possible - applicant can complete the process in a minimal amount of steps
-   * Enables informed decisions - applicant understands implications of their actions in the process
-   * Accessible - responsive, mobile friendly, and ADA compliant
+   * Easy to understand - applicant can easily make it through the application process without caseworker support
+   * Simple as possible - applicant can complete the application process in as few steps as possible
+   * Enables informed decisions - applicant understands the implications of all of their actions in the application process
+   * Accessible - the application is responsive, mobile friendly, and ADA compliant, and provides an equitable and positive experience for the applicant
 
 ### Vision
 *Deliver a re-engineered and refashioned OneApp that prioritizes the user's needs, can be easily maintained/evolved by NJ DHS and that serves as a USDS national model for a modern safety net benefit application.* 

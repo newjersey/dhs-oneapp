@@ -1,5 +1,8 @@
 
 # OneApp System Emails
+
+**USDS Note:** *This contains the list of known emails OneApp sends to end users. There are additional emails OneApp sends to system admins, but those are contained within the Oracle stored procedures.*
+
 - [Confirmation](#confirmation)
 - [Forgot User Name](#forgot-user-name)
 - [Reset User](#reset-user)

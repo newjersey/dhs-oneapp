@@ -1,5 +1,7 @@
 # OneApp Stored Procedures
 
+**USDS Note:** *This is a list of all stored procedures in OneApp, along with their method signatures.*
+
 - [Stored Procedure List](#stored-procedure-list)
 - [Method Signatures](#method-signatures)
 - [Object Types](#object-types)
