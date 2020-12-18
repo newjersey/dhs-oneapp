@@ -1,1 +1,1 @@
-This folder documents USDS' initial thinking, design principles, and approach to the OneApp modernization. 
+This folder documents USDS' initial goals, design principles, and metrics for the OneApp modernization. 
