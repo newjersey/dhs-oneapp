@@ -47,7 +47,7 @@
     "lodash": "^4.17.19",
     "nodemailer": "^6.4.16",
     "oracledb": "file:lib/oracledb-5.0.0.tgz",
-    "pino": "^6.7.0",
+    "pino": "^6.8.0",
     "require-directory": "^2.1.1",
     "string-template": "^1.0.0",
     "yargs": "^16.2.0",
